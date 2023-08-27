@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+
+.login-container {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 0.5s ease;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Efecto hover del botón */
+button:hover {
+  background-color: #555; /* Color al pasar el cursor sobre el botón */
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos CSS previos sin cambios */
+
+.registration-container {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 0.5s ease;
+  margin-top: 2rem;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Efecto hover del botón */
+button:hover {
+  background-color: #555;
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Para que el video esté detrás del contenido */
+}

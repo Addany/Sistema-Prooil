@@ -1,0 +1,55 @@
+<!-- Página de Préstamo -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prestamos de Herramientas</title>
+  <link rel="stylesheet" href="css/estilosprestamodevolucion.css">
+</head>
+<body>
+  <header>
+    <!-- Barra de navegación aquí -->
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="form-container">
+        <h1>Formulario de Préstamo</h1>
+        <form id="loanForm">
+          <label for="workerName">Nombre del Trabajador:</label>
+          <input type="text" id="workerName" required>
+
+          <label for="toolName">Nombre de la Herramienta:</label>
+          <input type="text" id="toolName" required>
+
+          <label for="toolType">Tipo de Herramienta:</label>
+          <input type="text" id="toolType" required>
+
+          <label for="toolQR">Código QR de la Herramienta:</label>
+          <input type="text" id="toolQR" required>
+
+          <label for="loanDate">Fecha de Préstamo:</label>
+          <input type="date" id="loanDate" required>
+
+          <div class="loan-buttons">
+            <button type="button" onclick="startScan()">Iniciar Escaneo</button>
+            <button type="button" onclick="stopScan()">Detener Escaneo</button>
+            <button type="button" onclick="cancelLoan()">Cancelar Préstamo</button>
+            <button type="submit">Solicitar Préstamo</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="video-container">
+        <video id="preview"></video>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+  <script src="css/scriptsprestamodevolucion.js"></script>
+</body>
+</html>
+
+

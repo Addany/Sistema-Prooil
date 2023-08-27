@@ -1,0 +1,106 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Estilos para el formulario */
+.form-container {
+  flex: 1;
+  max-width: 400px;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-container h1 {
+  text-align: center;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilos para los botones */
+.loan-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.loan-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.loan-buttons button:nth-child(1) {
+  background-color: #007bff;
+}
+
+.loan-buttons button:nth-child(2) {
+  background-color: #dc3545;
+}
+
+
+/* Estilos para el video */
+.video-container {
+  flex: 1;
+  max-width: 400px;
+  position: relative;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#preview {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+.video-container .button1{
+  position: absolute;
+  right:200px;
+}
+
+/* Estilos para los botones */
+.loan-buttons1 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.loan-buttons1 button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #edadad;
+  cursor: pointer;
+}

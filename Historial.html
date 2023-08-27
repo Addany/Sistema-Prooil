@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historial de Préstamos y Devoluciones</title>
+  <link rel="stylesheet" href="css/estilohistorial.css">
+</head>
+<body>
+  <header>
+    <!-- Barra de navegación aquí -->
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="form-container">
+        <h1>Buscar en el Historial</h1>
+        <form class="form-buscar">
+          <div class="input-group">
+            <label for="textoBuscar">Buscar por texto:</label>
+            <input type="text" id="textoBuscar" placeholder="Nombre del trabajador, herramienta, tipo de herramienta o código QR">
+          </div>
+          <div class="input-group">
+            <label for="fechaBuscar">Buscar por fecha:</label>
+            <input type="date" id="fechaBuscar">
+          </div>
+          <div class="input-group">
+            <label for="categoria">Categoría:</label>
+            <select id="categoria">
+              <option value="todos">Todos</option>
+              <option value="Préstamo">Préstamo</option>
+              <option value="Devolución">Devolución</option>
+            </select>
+          </div>
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
+      <div class="history-cards">
+        <!-- Las fichas del historial se generarán aquí -->
+      </div>
+    </section>
+  </main>
+
+  <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+  <script src="css/scriptshistorial.js"></script>
+</body>
+</html>
+
+
