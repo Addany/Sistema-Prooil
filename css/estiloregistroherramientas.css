@@ -1,53 +1,55 @@
-body {
+body, html {
+  height: 100%;
   margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f8;
+  padding: 20px;
 }
 
 .container {
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  border-radius: 5px;
-  max-width: 400px;
+  border-radius: 10px;
+  max-width: 1000px;
   width: 100%;
-  animation: fadeIn 0.5s ease;
   margin: auto;
-  align-self: center; /* Centrar verticalmente */
-  margin-top: 20px; /* Ajustar margen superior */
-  margin-bottom: 20px; /* Ajustar margen inferior */
 }
 
 h1 {
   text-align: center;
   margin-bottom: 2rem;
+  color: #333;
 }
 
 .form-registro {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .input-group {
   margin-bottom: 1rem;
+  flex: 0 0 48%;
 }
 
 .input-group label {
-  margin-bottom: 5px;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
 }
 
 .input-group input,
-.input-group textarea {
+.input-group textarea,
+.input-group select {
   padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   width: 100%;
+  font-size: 16px;
 }
 
 .input-group textarea {
@@ -55,56 +57,51 @@ h1 {
 }
 
 .registrar-button {
-  background-color: #333;
+  background-color: #007BFF;
   color: #fff;
   padding: 0.5rem;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 40%;
+  margin: 0 auto;
 }
 
-/* Efecto hover del botón */
 .registrar-button:hover {
-  background-color: #555;
+  background-color: #0056b3;
 }
 
 .qr-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
-}
-
-.qr-container img {
-  max-width: 50px;
-  height: auto;
-  margin-bottom: 10px;
+  margin-top: 1.5rem;
+  width: 100%;
 }
 
 .qr-button {
   padding: 0.5rem;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   color: #fff;
   cursor: pointer;
   background-color: #28a745;
+  transition: background-color 0.3s ease;
+  width: 40%;
+  margin: 0 auto;
 }
-
-/* Efecto hover del botón */
 .qr-button:hover {
   background-color: #218838;
 }
 
-/* Animación de aparición */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .input-group, .registrar-button, .qr-container {
+    flex: 0 0 100%;
   }
 }
-
 
