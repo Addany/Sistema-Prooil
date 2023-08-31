@@ -1,49 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historial de Préstamos y Devoluciones</title>
-  <link rel="stylesheet" href="css/estilohistorial.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Préstamos y Devoluciones</title>
+    <link rel="stylesheet" href="css/estilohistorial.css">
 </head>
+
 <body>
-  <header>
-    <!-- Barra de navegación aquí -->
-  </header>
+    <header>
+        <!-- Barra de navegación aquí -->
+    </header>
 
-  <main>
-    <section class="container">
-      <div class="form-container">
-        <h1>Buscar en el Historial</h1>
-        <form class="form-buscar">
-          <div class="input-group">
-            <label for="textoBuscar">Buscar por texto:</label>
-            <input type="text" id="textoBuscar" placeholder="Nombre del trabajador, herramienta, tipo de herramienta o código QR">
-          </div>
-          <div class="input-group">
-            <label for="fechaBuscar">Buscar por fecha:</label>
-            <input type="date" id="fechaBuscar">
-          </div>
-          <div class="input-group">
-            <label for="categoria">Categoría:</label>
-            <select id="categoria">
-              <option value="todos">Todos</option>
-              <option value="Préstamo">Préstamo</option>
-              <option value="Devolución">Devolución</option>
-            </select>
-          </div>
-          <button type="submit">Buscar</button>
-        </form>
-      </div>
-      <div class="history-cards">
-        <!-- Las fichas del historial se generarán aquí -->
-      </div>
-    </section>
-  </main>
+    <main>
+        <section class="container">
+            <div class="form-container">
+                <h1>Buscar en el Historial</h1>
+                <form class="form-buscar">
+                  <div class="input-group">
+                      <label for="buscador">Buscar por texto:</label>
+                      <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                  </div>
+                  <div class="input-group">
+                      <label for="fecha">Buscar por fecha:</label>
+                      <input type="date" id="fecha" onchange="buscar()">
+                  </div>
+                  <div class="input-group">
+                      <label for="categoria">Categoría:</label>
+                      <select id="categoria" onchange="buscar()">
+                          <option value="todos">Todos</option>
+                          <option value="Prestado">Prestado</option>
+                          <option value="Devuelto">Devuelto</option>
+                      </select>
+                      <button type="submit">Buscar</button>
+                  </div>
+              </form>
+            </div>
+            <table id="tabla-historial">
+                <thead>
+                    <tr>
+                        <th>Estatus</th>
+                        <th>Folio</th>
+                        <th>Nombre del Trabajador</th>
+                        <th>Nombre de la Herramienta</th>
+                        <th>Fecha de Transacción</th>
+                        <th>Fecha de Devolución</th>
+                        <th>Observaciones</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas de la tabla se generarán aquí -->
+                </tbody>
+            </table>
+        </section>
+    </main>
 
-  <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-  <script src="css/scriptshistorial.js"></script>
+    <div id="overlay"></div>
+  <div id="popup" >
+      <form id="editarHerramientaForm">
+          <input type="hidden" id="editId">
+          <input type="text" id="editEstatus" placeholder="Estatus">
+          <input type="text" id="editFolio" placeholder="Folio">
+          <input type="text" id="editNombre del Trabajador" placeholder="Nombre del Trabajador">
+          <input type="text" id="editOrdenCompra" placeholder="Orden de compra">
+          <input type="text" id="editSerie" placeholder="No. Serie">
+          <input type="text" id="editEstado" placeholder="Estado">
+          <input type="text" id="editColor" placeholder="Color">
+          <input type="text" id="editTipo" placeholder="Tipo">
+          <input type="date" id="editFecha">
+          <input type="text" id="editDescripcion" placeholder="Descripción">
+          <button type="submit">Guardar</button>
+          <button id="cancelarEdicion">Cancelar</button>
+      </form>
+  </div>
+
+    <script src="js/scriptshistorial.js"></script>
 </body>
+
 </html>
-
-

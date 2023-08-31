@@ -12,3 +12,12 @@ form.addEventListener('submit', (e) => {
     window.location.href = '/index.html';
   }, 500); // La animación tiene una duración de 0.5 segundos (500ms)
 });
+
+function previewImage(event) {
+  const reader = new FileReader();
+  reader.onload = function(){
+    const output = document.getElementById('output');
+    output.src = reader.result;
+  };
+  reader.readAsDataURL(event.target.files[0]);
+}

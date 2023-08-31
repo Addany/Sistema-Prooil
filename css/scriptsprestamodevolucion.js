@@ -4,12 +4,13 @@ let isScanning = false;
 
 // Función para iniciar el escaneo
 function startScan() {
+  document.getElementById("cameraOff").style.display = "none";
   if (!scanner) {
     const videoElem = document.getElementById("preview");
     scanner = new Instascan.Scanner({ video: videoElem });
     scanner.addListener("scan", function (content) {
       if (isScanning) {
-        document.getElementById("toolQR").value = content;
+        document.getElementById("toolName").value = content;
         stopScan();
       }
     });
@@ -31,6 +32,7 @@ function startScan() {
 
 // Función para detener el escaneo
 function stopScan() {
+  document.getElementById("cameraOff").style.display = "block";
   if (scanner && isScanning) {
     scanner.stop();
     isScanning = false;
@@ -52,18 +54,7 @@ document.getElementById("loanForm").addEventListener("submit", function (event) 
   cancelLoan();
 });
 
-// Función para cancelar la devolución
-function cancelReturn() {
-  document.getElementById("returnForm").reset();
-  stopScan();
-}
-
-// Event listener para el formulario de devolución
-document.getElementById("returnForm").addEventListener("submit", function (event) {
-  event.preventDefault();
-  // Lógica para manejar la devolución aquí
-
-  // Después de manejar la devolución, puedes resetear el formulario
-  cancelReturn();
-});
-
+// Cuando la página se carga, muestra el mensaje de "Cámara Apagada"
+window.onload = function() {
+  document.getElementById("cameraOff").style.display = "block";
+};
