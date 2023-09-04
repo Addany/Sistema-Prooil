@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Préstamos y Devoluciones</title>
+    <link rel="stylesheet" href="css/estilotrabajadores.css">
+</head>
+<body>
+    <header>
+        <!-- Barra de navegación aquí -->
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="form-container">
+                <form class="form-buscar">
+                    <div class="input-group">
+                        <label for="buscador">Buscar por texto:</label>
+                        <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                    </div>
+                    <div class="input-group">
+                        <label for="fecha">Buscar por fecha:</label>
+                        <input type="date" id="fecha" onchange="buscar()">
+                    </div>
+                    <div class="input-group">
+                        <label for="categoria">Categoría:</label>
+                        <select id="categoria" onchange="buscar()">
+                            <option value="todos">Todos</option>
+                            <option value="Tecnología">Tecnología</option>
+                            <option value="Industrial">Industrial</option>
+                            <option value="Almacén">Almacén</option>
+                            <!-- ... otras áreas ... -->
+                        </select>  
+                        <button type="button" onclick="buscar()">Buscar</button>
+                    </div>
+                </form>
+            </div>
+            <table id="tabla-trabajadores">
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Correo Electrónico</th>
+                        <th>Área de Trabajo</th>
+                        <th>Fecha de Ingreso</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas de la tabla se generarán aquí -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="overlay"></div>
+    <div id="popupEditar">
+        <form id="editarTrabajadorForm">
+            <h3>Editar datos</h3>
+            <img id="editFoto" src="" alt="Foto del trabajador">
+            <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
+            <input type="text" id="editID" placeholder="ID">
+            <input type="text" id="editNombre" placeholder="Nombre">
+            <input type="text" id="editTelefono" placeholder="Teléfono">
+            <input type="email" id="editCorreo" placeholder="Correo Electrónico">
+            <input type="text" id="editAreaTrabajo" placeholder="Área de Trabajo">
+            <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
+            <button type="submit">Guardar</button>
+            <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
+        </form>
+    </div>
+
+ 
+
+    <script src="js/scriptstrabajadores.js"></script>
+</body>
+</html>

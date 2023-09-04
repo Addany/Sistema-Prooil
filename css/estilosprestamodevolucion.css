@@ -192,3 +192,10 @@ body {
   color: black;
   font-weight: normal; /* agrega esta línea */
 }
+
+.buttonform{
+  background-color: green;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+}

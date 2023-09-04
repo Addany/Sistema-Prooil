@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de Préstamos y Devoluciones</title>
     <link rel="stylesheet" href="css/estilohistorial.css">
 </head>
-
 <body>
     <header>
         <!-- Barra de navegación aquí -->
@@ -16,26 +14,25 @@
     <main>
         <section class="container">
             <div class="form-container">
-                <h1>Buscar en el Historial</h1>
                 <form class="form-buscar">
-                  <div class="input-group">
-                      <label for="buscador">Buscar por texto:</label>
-                      <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
-                  </div>
-                  <div class="input-group">
-                      <label for="fecha">Buscar por fecha:</label>
-                      <input type="date" id="fecha" onchange="buscar()">
-                  </div>
-                  <div class="input-group">
-                      <label for="categoria">Categoría:</label>
-                      <select id="categoria" onchange="buscar()">
-                          <option value="todos">Todos</option>
-                          <option value="Prestado">Prestado</option>
-                          <option value="Devuelto">Devuelto</option>
-                      </select>
-                      <button type="submit">Buscar</button>
-                  </div>
-              </form>
+                    <div class="input-group">
+                        <label for="buscador">Buscar por texto:</label>
+                        <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                    </div>
+                    <div class="input-group">
+                        <label for="fecha">Buscar por fecha:</label>
+                        <input type="date" id="fecha" onchange="buscar()">
+                    </div>
+                    <div class="input-group">
+                        <label for="categoria">Categoría:</label>
+                        <select id="categoria" onchange="buscar()">
+                            <option value="todos">Todos</option>
+                            <option value="Prestado">Prestado</option>
+                            <option value="Devuelto">Devuelto</option>
+                        </select>
+                        <button type="button" onclick="buscar()">Buscar</button>
+                    </div>
+                </form>
             </div>
             <table id="tabla-historial">
                 <thead>
@@ -43,9 +40,9 @@
                         <th>Estatus</th>
                         <th>Folio</th>
                         <th>Nombre del Trabajador</th>
-                        <th>Nombre de la Herramienta</th>
                         <th>Fecha de Transacción</th>
                         <th>Fecha de Devolución</th>
+                        <th>Quien Autorizó</th>
                         <th>Observaciones</th>
                         <th>Acciones</th>
                     </tr>
@@ -58,25 +55,36 @@
     </main>
 
     <div id="overlay"></div>
-  <div id="popup" >
-      <form id="editarHerramientaForm">
-          <input type="hidden" id="editId">
-          <input type="text" id="editEstatus" placeholder="Estatus">
-          <input type="text" id="editFolio" placeholder="Folio">
-          <input type="text" id="editNombre del Trabajador" placeholder="Nombre del Trabajador">
-          <input type="text" id="editOrdenCompra" placeholder="Orden de compra">
-          <input type="text" id="editSerie" placeholder="No. Serie">
-          <input type="text" id="editEstado" placeholder="Estado">
-          <input type="text" id="editColor" placeholder="Color">
-          <input type="text" id="editTipo" placeholder="Tipo">
-          <input type="date" id="editFecha">
-          <input type="text" id="editDescripcion" placeholder="Descripción">
-          <button type="submit">Guardar</button>
-          <button id="cancelarEdicion">Cancelar</button>
-      </form>
-  </div>
+    <div id="popupEditar">
+        <form id="editarPrestamoForm"> 
+            <h3>Editar datos</h3>
+            <input type="hidden" id="editId">
+            <input type="text" id="editEstatus" placeholder="Estatus">
+            <input type="text" id="editFolio" placeholder="Folio">
+            <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
+            <input type="text" id="editNombreHerramienta" placeholder="Nombre de la Herramienta"> 
+            <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
+            <input type="text" id="editFechaDevolucion" placeholder="Fecha de Devolución"> 
+            <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
+            <input type="text" id="editObservaciones" placeholder="Observaciones">
+            <button type="submit">Guardar</button>
+            <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
+        </form>
+    </div>
+
+    <div id="popupVer" class="popup">
+        <form id="verPrestamoForm"> 
+            <h3>Detalles del Préstamo</h3>
+            <label>Herramientas Prestadas:</label>
+            <ul id="listaHerramientas">
+                <!-- Lista de herramientas con checkbox -->
+            </ul>
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" placeholder="Ingrese observaciones aquí..."></textarea>
+            <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  
+        </form>
+    </div>
 
     <script src="js/scriptshistorial.js"></script>
 </body>
-
 </html>
