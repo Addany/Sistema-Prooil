@@ -1,3 +1,13 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const submenuParents = document.querySelectorAll('.submenu-parent');
+
+  submenuParents.forEach(submenuParent => {
+    submenuParent.addEventListener('click', () => {
+      const submenu = submenuParent.querySelector('.submenu');
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+});
 document.addEventListener("DOMContentLoaded", function () {
   const navToggle = document.querySelector(".nav-toggle");
   const navList = document.querySelector(".nav-list");
@@ -7,9 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
     navToggle.classList.toggle("active");
   });
 });
-
-
-
 
 const slides = document.querySelectorAll('.slide');
 let currentSlide = 0;
