@@ -11,162 +11,23 @@ historialAlmacen = [
     tipo: "Herramienta Manual",
     fechaRegistro: "2023-08-01",
     descripcion: "Destornillador plano",
- 
+    estatus: "Prestado",
   },
   {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
+    id: 1123123123125,
+    nombre: "Des123123",
+    marca: "M123123asd",
+    ordenCompra: "12131232145",
+    tamaño: "5mm",
+    noSerie: "A123123213123",
+    estado: "N123123vo",
+    color: "Rojo",
+    tipo: "Herramienta Manual2",
+    fechaRegistro: "2023-08-01",
+    descripcion: "Destornillador plano",
+    estatus: "Devuelto",
+  }
 
-  },
-  {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
-
-  },
-  {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
-
-  },
-  {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
-
-  },
-  {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
-
-  },
-  {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
-
-  },
-  {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
-
-  },
-  {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
-
-  },
-  {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
-
-  },
-  {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
-
-  },
-  {
-    id: 2,
-    nombre: "Taladro",
-    marca: "MarcaY",
-    ordenCompra: "67890",
-    tamaño: "10mm",
-    noSerie: "DEF456",
-    estado: "Usado",
-    color: "Azul",
-    tipo: "Eléctrica",
-    fechaRegistro: "2023-08-15",
-    descripcion: "Taladro con velocidad variable",
-
-  },
 
   // ... más datos
 ];
@@ -207,6 +68,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     herramienta.tipo = document.getElementById("editTipo").value;
     herramienta.fechaRegistro = document.getElementById("editFecha").value;
     herramienta.descripcion = document.getElementById("editDescripcion").value;
+    herramienta.estatus = document.getElementById("editEstatus").value;
     generarTablaHistorial(historialAlmacen);
     popup.style.display = "none";
     cerrarPopup();
@@ -226,6 +88,7 @@ function editarHerramienta(id) {
   document.getElementById("editTipo").value = herramienta.tipo;
   document.getElementById("editFecha").value = herramienta.fechaRegistro;
   document.getElementById("editDescripcion").value = herramienta.descripcion;
+  document.getElementById("editEstatus").value = herramienta.estatus;
   var popup = document.getElementById("popup");
   popup.style.display = "block";
   abrirPopup();
@@ -248,8 +111,11 @@ function generarTablaHistorial(data) {
       <td>${item.tipo}</td>
       <td>${item.fechaRegistro}</td>
       <td>${item.descripcion}</td>
-      <td><button class="accion-button"onclick="editarHerramienta(${item.id})">Editar</button>
-      <button class="accion-button"onclick="DescargarQR(${item.id})">DescargarQR</button>
+      <td>${item.estatus}</td>
+      <td>
+        <button class="accion-button"onclick="editarHerramienta(${item.id})">Editar</button>
+        <button class="accion-button"onclick="DescargarQR(${item.id})">DescargarQR</button>
+        <button class="accion-button" onclick="eliminarHerramienta(${item.id})">Elimina</button>
       </td>
       
     `;
@@ -294,4 +160,14 @@ function abrirPopup() {
 function cerrarPopup() {
   document.getElementById('overlay').style.display = 'none';
   document.getElementById('popup').style.display = 'none';
+}
+
+function eliminarHerramienta(id) {
+  const index = historialAlmacen.findIndex(item => item.id === id);
+  if (index !== -1) {
+    historialAlmacen.splice(index, 1); // Elimina el elemento del array.
+    generarTablaHistorial(historialAlmacen); // Actualiza la tabla.
+  } else {
+    console.error(`Herramienta con ID ${id} no encontrada.`);
+  }
 }

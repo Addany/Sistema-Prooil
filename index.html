@@ -15,10 +15,40 @@
     </div>
     <ul class="nav-list">
       <li> <a href="#"> <i class="fa-solid fa-house"></i>Inicio</a></li>
-      <li><a href="#" >Herramientas prestadas</a></li>
-      <li><a href="#">Herramientas disponibles</a></li>
-      <li><a href="#">Inciar como Administrador</a></li>
-      <li><a href="#">Cerrar sesion </a></li>
+
+    <li class="submenu-parent">
+      <a href="#"><i class="fa-solid fa-handshake"></i>Prestamos y Entregas</a>
+      <ul class="submenu">
+        <li><a href="#"><i class="fa-solid fa-rectangle-list"></i> Historial de prestamos</a></li>
+        <li><a href="#"><i class="fa-solid fa-rectangle-list"></i> Historial de entregas de EPP</a></li>
+      </ul>
+    </li>
+    <li class="submenu-parent">
+      <a href="#"><i class="fa-solid fa-screwdriver-wrench"></i>Herramienta y EPP</a>
+      <ul class="submenu">
+        <li><a href="#"><i class="fa-solid fa-toolbox"></i> Registrar herramienta</a></li>
+        <li><a href="#"><i class="fa-solid fa-rectangle-list"></i> Historial de herramientas</a></li>
+        <li><a href="#"><i class="fa-solid fa-helmet-safety"></i>Registrar EPP</a></li>
+        <li><a href="#"><i class="fa-solid fa-rectangle-list"></i> Historial de EPP</a></li>
+      </ul>
+    </li>
+    <li class="submenu-parent">
+      <a href="#"><i class="fa-solid fa-dolly"></i>Almacenista</a>
+      <ul class="submenu">
+        <li><a href="#"><i class="fa-solid fa-address-card"></i></i> Registrar almacenista</a></li>
+        <li><a href="#"><i class="fa-solid fa-box"></i> Almacenistas</a></li>
+      </ul>
+    </li>
+    <li class="submenu-parent">
+      <a href="#"><i class="fa-solid fa-briefcase"></i>Trabajador</a>
+      <ul class="submenu">
+        <li><a href="#"><i class="fa-solid fa-address-card"></i></i>Registrar trabajador</a></li>
+        <li><a href="#"><i class="fa-solid fa-address-card"></i></i>Registrar Invitado</a></li>
+        <li><a href="#"><i class="fa-solid fa-box"></i> Trabajadores/ Invitados</a></li>
+      </ul>
+    </li>
+
+    <li> <a href="#"> <i class="fa-solid fa-circle-xmark"></i></i>Cerrar sesion</a></li>
 
     </ul>
     <div class="nav-toggle">
@@ -56,7 +86,7 @@
     <h2>¿Qué acción deseas realizar?</h2>
     <div class="popup-buttons">
       <button><a href="Prestamo.html">Hacer un préstamo</a></button>
-      <button ><a href="Prestamo.html">Hacer una devolucion</a></button>
+      <button ><a href="Prestamo.html">Hacer una entrega</a></button>
       <button onclick="closePopup()">Cerrar</button>
     </div>
   </div>

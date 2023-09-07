@@ -84,23 +84,6 @@ tr:nth-child(even) {
   max-width: 400px;
   z-index: 1000;
 }
-
-#popupVer {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  width: 100%;
-  max-width: 400px;
-  z-index: 1000;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-
 #overlay {
   display: none;
   position: fixed;
@@ -148,49 +131,26 @@ tr:nth-child(even) {
   background-color: #ddd;
 }
 
-#popupVer form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.foto-container {
+  position: relative;
+  display: inline-block;
 }
 
-#popupVer h2 {
-  margin-bottom: 10px;
+.foto-container img {
+  width: 100px; /* O cualquier otro tamaño que desees */
+  height: 100px;
 }
 
-#popupVer label {
-  margin-bottom: 5px;
-}
-
-#popupVer #listaHerramientas {
-  margin-bottom: 10px;
-  padding-left: 0;
-  list-style-type: none;
-}
-
-#popupVer textarea {
-  width: 190%; /* Estableciendo el ancho al 100% para que se expanda a lo ancho del popup */
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  resize: vertical; /* Permite al usuario redimensionar el textarea solo verticalmente */
-}
-
-#popupVer button {
+.foto-container input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 10px;
-  margin-left: 6rem;
-  border-radius: 5px;
-  border: none;
-  margin-bottom: 0.3rem;
-  background-color: #008CBA;
-  color: white;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
 
-#popupVer button:hover {
-  background-color: #007B9E;
-}
 
 /* Estilo responsive para dispositivos móviles */
 @media (max-width: 768px) {

@@ -1,0 +1,105 @@
+/* Estilo básico para centrar el formulario */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Estilos para el formulario */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h1 {
+  text-align: center;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-container select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-container textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilos para los botones */
+.delivery-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.delivery-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 0.2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.delivery-buttons button:nth-child(1) {
+  background-color: #28a745;
+}
+
+.delivery-buttons button:nth-child(2) {
+  background-color: #dc3545;
+}
+
+/* Estilo para la tabla */
+.table-container {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#selected-epp-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#selected-epp-table th, #selected-epp-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#selected-epp-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f2f2f2;
+  color: black;
+  font-weight: normal;
+}
+
+.buttonform {
+  background-color: red;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+}
