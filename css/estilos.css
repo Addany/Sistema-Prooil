@@ -271,6 +271,12 @@ h1 {
   font-weight: bold;
 }
 
+@media (max-width: 600px) {
+  .popup-overlay {
+      padding: 10px;
+  }
+}
+
 
 .submenu-parent {
   position: relative;
