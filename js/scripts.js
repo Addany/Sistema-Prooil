@@ -1,13 +1,29 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const submenuParents = document.querySelectorAll('.submenu-parent');
 
-  submenuParents.forEach(submenuParent => {
-    submenuParent.addEventListener('click', () => {
-      const submenu = submenuParent.querySelector('.submenu');
-      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-    });
+
+$(document).ready(function(){
+  $('.submenu-parent > a').on('click', function(e){
+    e.preventDefault();
+    
+    // Toma el submenú hermano del enlace clicado
+    var submenu = $(this).siblings('.submenu');
+    
+    // Cierra todos los submenús
+    $('.submenu').not(submenu).slideUp();
+    
+    // Conmuta el estado abierto/cerrado del submenú clicado
+    submenu.slideToggle();
   });
 });
+
+$(document).ready(function(){
+  $('.menu-item').on('click', function(e){
+    e.preventDefault();
+    $('.submenu').hide();
+    
+    $(this).next('.submenu').show();
+  });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const navToggle = document.querySelector(".nav-toggle");
   const navList = document.querySelector(".nav-list");
