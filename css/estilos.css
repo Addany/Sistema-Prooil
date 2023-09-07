@@ -184,7 +184,7 @@ h1 {
 .custom-button {
   position: absolute;
   bottom: 120px;
-  left: 53px; /* Lo mantendremos a la izquierda en pantallas grandes */
+  left: 53px; /* Se establece en una posición fija en la izquierda en pantallas grandes */
   font-family: Arial, sans-serif;
   font-size: 16px;
   padding: 15px 30px;
@@ -196,7 +196,6 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex; /* Utilizamos Flexbox */
   align-items: center; /* Centra verticalmente el contenido */
-  transition: background-color 0.3s, transform 0.3s; /* Agregamos efecto de transición */
 }
 
 .custom-button i {
@@ -207,17 +206,16 @@ h1 {
 /* Estilos para el efecto hover */
 .custom-button:hover {
   background-color: #2980b9;
-  transform: scale(1.05);
 }
 
 /* Estilos responsivos */
 @media screen and (max-width: 768px) {
   .custom-button {
     font-size: 14px;
-    padding: 20px 40px;
+    padding: 10px 20px;
     bottom: 60px;
-    left: 35%;
-    
+    left: 50%; /* Centramos el botón horizontalmente en pantallas medianas */
+    transform: translateX(-50%); /* Ajustamos el centro del botón */
   }
 }
 
@@ -226,8 +224,8 @@ h1 {
     font-size: 12px;
     padding: 8px 16px;
     bottom: 30px;
-    left: 50%; /* Centramos el botón en pantallas muy pequeñas */
-    transform: translateX(-50%); /* Usamos translateX para centrar correctamente el botón */
+    left: 50%; /* Centramos el botón horizontalmente en pantallas pequeñas */
+    transform: translateX(-50%); /* Ajustamos el centro del botón */
   }
 }
 
