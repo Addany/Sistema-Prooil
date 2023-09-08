@@ -21,3 +21,7 @@ function previewImage(event) {
   };
   reader.readAsDataURL(event.target.files[0]);
 }
+
+function goBackToIndex() {
+  window.location.href = '/index.html';
+}
