@@ -211,8 +211,8 @@ h1 {
 /* Estilos responsivos */
 @media screen and (max-width: 768px) {
   .custom-button {
-    font-size: 14px;
-    padding: 10px 20px;
+    font-size: 20px;
+    padding: 30px 30px;
     bottom: 60px;
     left: 50%; /* Centramos el botón horizontalmente en pantallas medianas */
     transform: translateX(-50%); /* Ajustamos el centro del botón */
@@ -221,9 +221,9 @@ h1 {
 
 @media screen and (max-width: 480px) {
   .custom-button {
-    font-size: 12px;
-    padding: 8px 16px;
-    bottom: 30px;
+    font-size: 20px;
+    padding: 20px 30px;
+    bottom: 80px;
     left: 50%; /* Centramos el botón horizontalmente en pantallas pequeñas */
     transform: translateX(-50%); /* Ajustamos el centro del botón */
   }
