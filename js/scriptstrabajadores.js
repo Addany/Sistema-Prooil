@@ -1,110 +1,231 @@
 const trabajadores = [
   {
-    id: "001",
+    foto: "Resources/imagen1.jpg",
+    estado: "Alta",
+    tipoRegistro:"Invitado",
+    id: "001324",
     nombre: "Juan Perez",
-    telefono: "555-1234",
+    telefono: "+52 921 172 2326",
     correo: "juanperez@mail.com",
-    areaTrabajo: "Tecnología",
+    areaTrabajo: "Almacen",
     fechaIngreso: "2023-08-03",
-    foto: "ruta/de/foto.jpg"
   },
   {
-    id: "002",
-    nombre: "Pedro Gomez",
-    telefono: "555-1235",
-    correo: "pedrogomez@mail.com",
-    areaTrabajo: "Tecnología",
-    fechaIngreso: "2023-08-06",
-    foto: "ruta/de/foto2.jpg"
+    foto: "Resources/imagen1.jpg",
+    estado: "Baja",
+    tipoRegistro:"Invitado",
+    id: "001324",
+    nombre: "Juan Perez",
+    telefono: "+52 921 172 2326",
+    correo: "juanperez@mail.com",
+    areaTrabajo: "Almacen",
+    fechaIngreso: "2023-08-03",
+  },
+  {
+    foto: "Resources/imagen1.jpg",
+    estado: "Alta",
+    tipoRegistro:"Invitado",
+    id: "001324",
+    nombre: "Juan Perez",
+    telefono: "+52 921 172 2326",
+    correo: "juanperez@mail.com",
+    areaTrabajo: "Almacen",
+    fechaIngreso: "2023-08-03",
   },
 ];
 
+const elementos = {
+  tabla: document.getElementById('tabla-trabajadores').getElementsByTagName('tbody')[0],
+  buscador: document.getElementById('buscador'),
+  fecha: document.getElementById('fecha'),
+  categoria: document.getElementById('categoria'),
+  editFoto: document.getElementById('editFoto'),
+  editEstado: document.getElementById('editEstado'),
+  editTipoRegistro: document.getElementById('editTipoRegistro'),
+  editID: document.getElementById('editID'),
+  editNombre: document.getElementById('editNombre'),
+  editTelefono: document.getElementById('editTelefono'),
+  editCorreo: document.getElementById('editCorreo'),
+  editAreaTrabajo: document.getElementById('editAreaTrabajo'),
+  editFechaIngreso: document.getElementById('editFechaIngreso'),
+  overlay: document.getElementById('overlay'),
+  popupEditar: document.getElementById('popupEditar'),
+};
+
 function generarTablaTrabajadores(data) {
-  const tabla = document.getElementById('tabla-trabajadores').getElementsByTagName('tbody')[0];
-  tabla.innerHTML = "";
+  let contenidoTabla = '';
   data.forEach(item => {
-      const newRow = tabla.insertRow();
-      newRow.innerHTML = `
-          <td><img src="${item.foto}" alt="Foto de ${item.nombre}" class="foto-trabajador"></td>
-          <td>${item.id}</td>
-          <td>${item.nombre}</td>
-          <td>${item.telefono}</td>
-          <td>${item.correo}</td>
-          <td>${item.areaTrabajo}</td>
-          <td>${item.fechaIngreso}</td>
-          <td>
-              <button class="accion-button" onclick="editarTrabajadorForm('${item.id}')">Editar</button>
-              <button class="accion-button" onclick="eliminarTrabajador('${item.id}')">Eliminar</button>
-          </td>
-      `;
+    contenidoTabla += `
+      <tr>
+        <td data-label="Foto"><img src="${item.foto}" alt="Foto de ${item.nombre}" class="foto-trabajador"></td>
+        <td data-label="Estado">${item.estado}</td>
+        <td data-label="Tipo de Registro">${item.tipoRegistro}</td>
+        <td data-label="ID">${item.id}</td>
+        <td data-label="Nombre">${item.nombre}</td>
+        <td data-label="Teléfono">${item.telefono}</td>
+        <td data-label="Correo">${item.correo}</td>
+        <td data-label="Área de Trabajo">${item.areaTrabajo}</td>
+        <td data-label="Fecha de Ingreso">${item.fechaIngreso}</td>
+        <td data-label="Acciones"><button class="accion-button" onclick="editarTrabajadorForm('${item.id}')">Editar</button></td>
+      </tr>`;
   });
+  elementos.tabla.innerHTML = contenidoTabla;
 }
 
 function editarTrabajadorForm(id) {
   const trabajador = trabajadores.find(item => item.id === id);
   if (trabajador) {
-      document.getElementById("editFoto").src = trabajador.foto;
-      document.getElementById("editID").value = trabajador.id;
-      document.getElementById("editNombre").value = trabajador.nombre;
-      document.getElementById("editTelefono").value = trabajador.telefono;
-      document.getElementById("editCorreo").value = trabajador.correo;
-      document.getElementById("editAreaTrabajo").value = trabajador.areaTrabajo;
-      document.getElementById("editFechaIngreso").value = trabajador.fechaIngreso;
+    const nip = prompt('Por favor ingresa el NIP para editar:');
+    if (nip === '1234') { // Reemplaza '1234' con tu NIP real
+      const {
+        editFoto, editEstado, editTipoRegistro, 
+        editID, editNombre, editTelefono,
+        editCorreo, editAreaTrabajo, editFechaIngreso 
+      } = elementos;
+
+      editFoto.src = trabajador.foto;
+      editEstado.value = trabajador.estado;
+      editTipoRegistro.value = trabajador.tipoRegistro;
+      editID.value = trabajador.id;
+      editNombre.value = trabajador.nombre;
+      editTelefono.value = trabajador.telefono;
+      editCorreo.value = trabajador.correo;
+      editAreaTrabajo.value = trabajador.areaTrabajo;
+      editFechaIngreso.value = trabajador.fechaIngreso;
 
       abrirPopup('popupEditar');
+    } else {
+      alert('NIP incorrecto, no puedes editar.');
+    }
   }
 }
+
+document.getElementById('editarTrabajadorForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  guardarEdicion();
+});
+
+function guardarEdicion() {
+  if (!validarFormulario()) {
+    return;
+  }
+
+  const trabajadorEditado = trabajadores.find(trabajador => trabajador.id === elementos.editID.value);
+
+  if (trabajadorEditado) {
+    trabajadorEditado.foto = nuevaFoto || trabajadorEditado.foto;
+    trabajadorEditado.estado = elementos.editEstado.value;
+    trabajadorEditado.tipoRegistro = elementos.editTipoRegistro.value;
+    trabajadorEditado.nombre = elementos.editNombre.value;
+    trabajadorEditado.telefono = elementos.editTelefono.value;
+    trabajadorEditado.correo = elementos.editCorreo.value;
+    trabajadorEditado.areaTrabajo = elementos.editAreaTrabajo.value;
+    trabajadorEditado.fechaIngreso = elementos.editFechaIngreso.value;
+
+    generarTablaTrabajadores(trabajadores);
+    cerrarPopup('popupEditar');
+  }
+}
+
+function validarFormulario() {
+  const { editCorreo, editNombre, editTelefono } = elementos;
+
+  if (!editCorreo.value.includes('@')) {
+    alert('Por favor, introduce un correo electrónico válido');
+    return false;
+  }
+  if (!editNombre.value) {
+    alert('El nombre no puede estar vacío');
+    return false;
+  }
+  if (!editTelefono.value.match(/^\+?\d+/)) {
+    alert('Por favor, introduce un número de teléfono válido');
+    return false;
+  }
+
+  return true;
+}
+
+let nuevaFoto;  
 
 function actualizarFoto(event) {
   const file = event.target.files[0];
   if (file) {
     const reader = new FileReader();
     reader.onload = function(e) {
-      document.getElementById('editFoto').src = e.target.result;
-    }
+      nuevaFoto = e.target.result;  
+    };
     reader.readAsDataURL(file);
   }
 }
 
+function resetearBusqueda() {
+  document.getElementById('buscador').value = '';
+  document.getElementById('fecha').value = '';
+  document.getElementById('categoria').value = 'todos';
+
+  generarTablaTrabajadores(trabajadores);
+}
+
 function abrirPopup(id) {
-  document.getElementById(id).style.display = 'block';
-  document.getElementById('overlay').style.display = 'block';
+  elementos[id].style.display = 'block';
+  elementos.overlay.style.display = 'block';
 }
 
 function cerrarPopup(id) {
-  document.getElementById(id).style.display = 'none';
-  document.getElementById('overlay').style.display = 'none';
+  elementos[id].style.display = 'none';
+  elementos.overlay.style.display = 'none';
+}
+
+let indiceTrabajadores = {};
+
+function crearIndice() {
+  trabajadores.forEach((trabajador, index) => {
+    const valores = [
+      trabajador.nombre,
+      trabajador.tipoRegistro,
+      trabajador.id,
+      trabajador.telefono,
+      trabajador.areaTrabajo,
+      trabajador.correo
+    ];
+
+    valores.forEach(valor => {
+      if(valor) {
+        const clave = valor.toLowerCase();
+        if (!indiceTrabajadores[clave]) {
+          indiceTrabajadores[clave] = [];
+        }
+        indiceTrabajadores[clave].push(index);
+      }
+    });
+  });
 }
 
 function buscar() {
-  const texto = document.getElementById('buscador').value.toLowerCase();
-  const fecha = document.getElementById('fecha').value;
-  const categoria = document.getElementById('categoria').value; // Eliminado toLowerCase()
+  const { buscador, fecha, categoria } = elementos;
+  const texto = buscador.value.toLowerCase();
+  const fechaVal = fecha.value;
+  const categoriaVal = categoria.value;
 
-  console.log({ texto, fecha, categoria }); 
+  let resultados = [];
 
-  const resultados = trabajadores.filter(trabajador => {
-    const coincideTexto = texto ? 
-      (trabajador.nombre.toLowerCase().includes(texto) || 
-       trabajador.correo.toLowerCase().includes(texto)) : 
-      true;
+  if (indiceTrabajadores[texto]) {
+    resultados = indiceTrabajadores[texto].map(indice => trabajadores[indice]);
+  } else {
+    resultados = trabajadores;
+  }
 
-    const coincideFecha = fecha ? 
-      (trabajador.fechaIngreso === fecha) : 
-      true;
+  resultados = resultados.filter(trabajador => {
+    const coincideFecha = !fechaVal || (trabajador.fechaIngreso === fechaVal);
+    const coincideCategoria = categoriaVal === "todos" || (trabajador.estado === categoriaVal);
 
-    const coincideCategoria = categoria !== "todos" ? 
-      (trabajador.areaTrabajo === categoria) :  // Eliminado toLowerCase()
-      true;
-
-      console.log('Coincide categoría:', coincideCategoria);
-      
-  return coincideTexto && coincideFecha && coincideCategoria;
+    return coincideFecha && coincideCategoria;
   });
-
-  console.log({ resultados });
 
   generarTablaTrabajadores(resultados);
 }
+
+crearIndice();
 
 generarTablaTrabajadores(trabajadores);

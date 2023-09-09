@@ -9,6 +9,9 @@
 <body>
   <div class="registration-container">
     <button class="close-button" onclick="goBackToIndex()">X</button>
+    <div class="image-container">
+      <img id="output" class="image-preview" width="100" alt="Imagen del trabajador" />
+    </div>
     <h2>Registro de Invitado</h2>
     <form id="registration-form">
         <input type="text" name="worker_name" placeholder="Nombre del Invitado" required>
@@ -17,7 +20,6 @@
         <label for=""> Introduce una foto:
           <input type="file" name="worker_image" accept="image/*" onchange="previewImage(event)" required>
         </label>
-      <img id="output" width="100"class="image-preview"/>
       <button type="submit">Registrarse</button>
     </form>
   </div>

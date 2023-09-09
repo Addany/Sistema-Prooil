@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de Préstamos y Devoluciones</title>
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/estilotrabajadores.css">
 </head>
 <body>
@@ -27,32 +28,35 @@
                         <label for="categoria">Categoría:</label>
                         <select id="categoria" onchange="buscar()">
                             <option value="todos">Todos</option>
-                            <option value="Tecnología">Tecnología</option>
-                            <option value="Industrial">Industrial</option>
-                            <option value="Almacén">Almacén</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Baja">Baja</option>
                             <!-- ... otras áreas ... -->
                         </select>  
-                        <button type="button" onclick="buscar()">Buscar</button>
+                        <button type="button" onclick="resetearBusqueda()">Limpiar busqueda</button>
                     </div>
                 </form>
             </div>
             <table id="tabla-trabajadores">
-                <thead>
-                    <tr>
-                        <th>Foto</th>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Correo Electrónico</th>
-                        <th>Área de Trabajo</th>
-                        <th>Fecha de Ingreso</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Las filas de la tabla se generarán aquí -->
-                </tbody>
-            </table>
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Estado</th>
+                    <th>Tipo de registro</th>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Correo Electrónico</th>
+                    <th>Área de Trabajo</th>
+                    <th>Fecha de Ingreso</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                </tr>
+            </tbody>
+        </table>
         </section>
     </main>
 
@@ -60,19 +64,37 @@
     <div id="popupEditar">
         <form id="editarTrabajadorForm">
             <h3>Editar datos</h3>
-            <img id="editFoto" src="" alt="Foto del trabajador">
+            <img id="editFoto" src="" >
             <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
+            
+            <select id="editEstado">
+                <option value="Alta">Alta</option>
+                <option value="Baja">Baja</option>
+            </select>
+            
+            <select id="editTipoRegistro">
+                <option value="Trabajador">Trabajador</option>
+                <option value="Invitado">Invitado</option>
+            </select>
+            
             <input type="text" id="editID" placeholder="ID">
             <input type="text" id="editNombre" placeholder="Nombre">
             <input type="text" id="editTelefono" placeholder="Teléfono">
             <input type="email" id="editCorreo" placeholder="Correo Electrónico">
-            <input type="text" id="editAreaTrabajo" placeholder="Área de Trabajo">
+            
+            <select id="editAreaTrabajo">
+                <option value="Almacen">Almacen</option>
+                <!-- Agrega más opciones de áreas como esta -->
+                <option value="Administración">Administración</option>
+                <option value="Logística">Logística</option>
+                <option value="Recursos Humanos">Recursos Humanos</option>
+            </select>
+            
             <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
             <button type="submit">Guardar</button>
             <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
         </form>
     </div>
-
  
 
     <script src="js/scriptstrabajadores.js"></script>
