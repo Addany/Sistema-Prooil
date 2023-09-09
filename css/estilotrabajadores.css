@@ -9,20 +9,25 @@ body {
   justify-content: space-between;
   padding: 20px;
   background: #f1f1f1;
+  flex-wrap: wrap; /* Esto permite que los elementos pasen a la siguiente línea si no hay suficiente espacio */
 }
 
-.form-buscar input,
-.form-buscar select,
+.form-buscar input, 
+.form-buscar select, 
 .form-buscar button {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ddd;
+  box-sizing: border-box;
+  flex: 1 1 calc(25% - 22px); /* Esto le da a cada elemento un ancho flexible */
+  margin: 0 10px 10px 0; /* Esto añade un poco de margen entre los elementos */
 }
 
 .form-buscar button {
   background: #4CAF50;
   color: white;
   border: none;
+  flex: 0 0 auto; /* Esto permite que el botón mantenga su tamaño, en lugar de expandirse para igualar el ancho de los otros elementos */
 }
 
 .form-buscar button:hover {
@@ -150,9 +155,21 @@ tr:nth-child(even) {
 @media (max-width: 768px) {
   .form-buscar {
     flex-direction: column;
+    align-items: stretch; 
+  }
+
+  .form-buscar input, 
+  .form-buscar select, 
+  .form-buscar button {
+    width: calc(106% - 20px); /* Aquí ajustamos el ancho para compensar el padding y border */
+    height: 40px; 
+    margin-bottom: 10px; 
+  }
+
+  .form-buscar button {
+    margin-bottom: 0; 
   }
 }
-
 @media (max-width: 600px) {
   table {
     width: 100%;
