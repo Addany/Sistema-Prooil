@@ -93,19 +93,27 @@ p {
   font-style: inherit;
 }
 
+.image-container {
+  position: relative;
+  width: 100px; /* Ajusta como sea necesario */
+  height: 100px; /* Asegúrate de que sea igual a la anchura para un círculo perfecto */
+  margin: 0 auto 20px; /* Centrar y agregar margen inferior */
+  border-radius: 50%; /* Hace que la imagen sea circular */
+  overflow: hidden; /* Asegura que la imagen no sobresalga del contorno circular */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Agrega una sombra suave */
+}
+
 .image-preview {
   display: block;
-  margin: 10px 0;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 100%; /* Asegura que la imagen llene completamente el contenedor */
+  height: 100%; /* Asegura que la imagen llene completamente el contenedor */
+  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin distorsionarse */
   transition: transform 0.3s;
 }
 
 .image-preview:hover {
   transform: scale(1.05);
 }
-
 /* Media Queries for Responsiveness */
 @media (max-width: 600px) {
   .login-container, .registration-container {
