@@ -138,7 +138,6 @@ tr:nth-child(even) {
 }
 
 
-
 #editFoto {
   width: 50px; /* Asegúrate de que estas dimensiones sean iguales */
   height: 50px; /* para obtener una forma circular perfecta */
@@ -169,7 +168,19 @@ tr:nth-child(even) {
   .form-buscar button {
     margin-bottom: 0; 
   }
+
+  #popupEditar {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  #popupEditar form input,
+  #popupEditar form select,
+  #popupEditar form button {
+    margin-bottom: 5px; 
+  }
 }
+
 @media (max-width: 600px) {
   table {
     width: 100%;
@@ -205,5 +216,9 @@ tr:nth-child(even) {
   td[data-label]:before {
     content: attr(data-label);
     font-weight: bold;
+  }
+
+  #popupEditar {
+    max-width: 85%;
   }
 }
