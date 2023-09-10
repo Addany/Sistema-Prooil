@@ -8,6 +8,17 @@ const trabajadores = [
     telefono: "+52 921 172 2326",
     correo: "juanperez@mail.com",
     areaTrabajo: "Almacen",
+    fechaIngreso: "2023-07-03",
+  },
+  {
+    foto: "Resources/imagen1.jpg",
+    estado: "Alta",
+    tipoRegistro:"Invitado",
+    id: "001324",
+    nombre: "Juan Perez",
+    telefono: "+52 921 172 2326",
+    correo: "juanperez@mail.com",
+    areaTrabajo: "Almacen",
     fechaIngreso: "2023-08-03",
   },
   {
@@ -30,7 +41,7 @@ const trabajadores = [
     telefono: "+52 921 172 2326",
     correo: "juanperez@mail.com",
     areaTrabajo: "Almacen",
-    fechaIngreso: "2023-08-03",
+    fechaIngreso: "2023-09-03",
   },
 ];
 
@@ -38,6 +49,8 @@ const elementos = {
   tabla: document.getElementById('tabla-trabajadores').getElementsByTagName('tbody')[0],
   buscador: document.getElementById('buscador'),
   fecha: document.getElementById('fecha'),
+  fechaInicio: document.getElementById('fechaInicio'),
+  fechaFin: document.getElementById('fechaFin'),
   categoria: document.getElementById('categoria'),
   editFoto: document.getElementById('editFoto'),
   editEstado: document.getElementById('editEstado'),
@@ -187,7 +200,9 @@ function crearIndice() {
       trabajador.id,
       trabajador.telefono,
       trabajador.areaTrabajo,
-      trabajador.correo
+      trabajador.correo,
+      trabajador.estado,
+      trabajador.fechaIngreso, // Añadir fecha de ingreso también al índice
     ];
 
     valores.forEach(valor => {
@@ -196,28 +211,50 @@ function crearIndice() {
         if (!indiceTrabajadores[clave]) {
           indiceTrabajadores[clave] = [];
         }
-        indiceTrabajadores[clave].push(index);
+        if (!indiceTrabajadores[clave].includes(index)) {
+          indiceTrabajadores[clave].push(index);
+        }
       }
     });
   });
 }
 
 function buscar() {
-  const { buscador, fecha, categoria } = elementos;
-  const texto = buscador.value.toLowerCase();
-  const fechaVal = fecha.value;
-  const categoriaVal = categoria.value;
+  const texto = elementos.buscador.value.toLowerCase();
+  const categoriaVal = elementos.categoria.value;
 
-  let resultados = [];
+  let resultados = new Set();
 
-  if (indiceTrabajadores[texto]) {
-    resultados = indiceTrabajadores[texto].map(indice => trabajadores[indice]);
+  if (texto) {
+    const palabrasClave = texto.split(' ');
+    palabrasClave.forEach(palabra => {
+      if (indiceTrabajadores[palabra]) {
+        indiceTrabajadores[palabra].forEach(index => {
+          resultados.add(trabajadores[index]);
+        });
+      }
+    });
   } else {
-    resultados = trabajadores;
+    trabajadores.forEach(trabajador => resultados.add(trabajador));
   }
 
-  resultados = resultados.filter(trabajador => {
-    const coincideFecha = !fechaVal || (trabajador.fechaIngreso === fechaVal);
+  let fechaInicioVal = elementos.fechaInicio.value;
+  let fechaFinVal = elementos.fechaFin.value;
+
+  resultados = Array.from(resultados).filter(trabajador => {
+    let fechaTrabajador = new Date(trabajador.fechaIngreso);
+    let coincideFecha = true;
+
+    if (fechaInicioVal) {
+      let fechaInicio = new Date(fechaInicioVal);
+      coincideFecha = coincideFecha && (fechaTrabajador >= fechaInicio);
+    }
+
+    if (fechaFinVal) {
+      let fechaFin = new Date(fechaFinVal);
+      coincideFecha = coincideFecha && (fechaTrabajador <= fechaFin);
+    }
+
     const coincideCategoria = categoriaVal === "todos" || (trabajador.estado === categoriaVal);
 
     return coincideFecha && coincideCategoria;
@@ -227,5 +264,5 @@ function buscar() {
 }
 
 crearIndice();
-
 generarTablaTrabajadores(trabajadores);
+
