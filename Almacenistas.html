@@ -1,26 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Usuarios y Administradores</title>
-  <link rel="stylesheet" href="css/estilousuarios.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacenistas</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/estilotrabajadores.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Usuarios y Administradores</h1>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Buscar por nombre, ID, rol, contraseña o correo">
-      <button id="searchButton">Buscar</button>
+    <header>
+        <!-- Barra de navegación aquí -->
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="form-container">
+                <form class="form-buscar">
+                    <div class="input-group">
+                        <label for="buscador">Buscar por texto:</label>
+                        <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                    </div>
+                    <div class="input-group">
+                        <label for="fechaInicio">Fecha de inicio:</label>
+                        <input type="date" id="fechaInicio" onchange="buscar()">
+                    </div>
+                    <div class="input-group">
+                        <label for="fechaFin">Fecha de fin:</label>
+                        <input type="date" id="fechaFin" onchange="buscar()">
+                    </div>
+                    <div class="input-group">
+                        <label for="categoria">Categoría:</label>
+                        <select id="categoria" onchange="buscar()">
+                            <option value="todos">Todos</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Baja">Baja</option>
+                            <!-- ... otras áreas ... -->
+                        </select>  
+                        <button type="button" onclick="resetearBusqueda()">Limpiar busqueda</button>
+                    </div>
+                </form>
+            </div>
+            <table id="tabla-almacenistas">
+              <thead>
+                  <tr>
+                      <th>Estado</th>
+                      <th>ID</th>
+                      <th>Nombre</th>
+                      <th>Teléfono</th>
+                      <th>Correo</th>
+                      <th>Fecha de ingreso</th>
+                      <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <!-- Aquí irían las filas de la tabla -->
+                  </tr>
+              </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="overlay"></div>
+    <div id="popupEditar">
+        <form id="editarAlmacenistaForm">
+            <h3>Editar datos</h3>
+    
+            <select id="editEstado">
+                <option value="Alta">Alta</option>
+                <option value="Baja">Baja</option>
+            </select>
+          
+            <input type="text" id="editID" placeholder="ID">
+            <input type="text" id="editNombre" placeholder="Nombre">
+            <input type="text" id="editTelefono" placeholder="Teléfono">
+            <input type="email" id="editCorreo" placeholder="Correo Electrónico">
+      
+            <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
+            <button type="submit">Guardar</button>
+            <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
+        </form>
     </div>
-    <div class="results-container" id="resultsContainer"></div>
-  </div>
+ 
 
-  <!-- Popup de edición -->
-  <div class="popup-overlay" id="popup"></div>
-
-  <script src="js/scriptusuario.js"></script>
+    <script src="js/scriptalmacenistas.js"></script>
 </body>
 </html>
-
-
