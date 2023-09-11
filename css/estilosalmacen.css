@@ -127,13 +127,86 @@ tr:nth-child(even) {
   background-color: #ddd;
 }
 
-/* Estilo responsive para dispositivos móviles */
+.form-buscar input, 
+.form-buscar select, 
+.form-buscar button {
+  box-sizing: border-box;
+}
+
+
 @media (max-width: 768px) {
   .form-buscar {
-      flex-direction: column;
+    flex-direction: column;
+    align-items: stretch; 
   }
 
-  .form-buscar input, .form-buscar select, .form-buscar button {
-      margin-bottom: 10px;
+  .form-buscar p { /* Añadimos estilos para reducir el margen de p */
+    margin-top: 1px;
+    margin-bottom: 5px;
+  }
+
+  .form-buscar input, 
+  .form-buscar select {
+    width: calc(106% - 20px); /* Ajustamos el ancho para compensar el padding y border */
+    padding: 10px; /* Puedes ajustar el padding si es necesario */
+    height: 40px; 
+    margin-bottom: 5px; /* Reducimos el margen en la parte inferior para estar más cerca del texto */
+  }
+
+  .form-buscar button {
+    height: 40px; 
+    margin-bottom: 0; 
+  }
+
+  #popupEditar {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  #popupEditar form input,
+  #popupEditar form select,
+  #popupEditar form button {
+    margin-bottom: 5px; 
+  }
+}
+@media (max-width: 600px) {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead {
+    display: none; 
+  }
+
+  tbody {
+    display: block;
+  }
+
+  tr {
+    margin-bottom: 0.625rem;
+    display: block;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+
+  td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0.25em 0.5em; /* Reduzco el padding para hacer las tarjetas más pequeñas */
+    border-bottom: 1px solid #eee;
+  }
+
+  td[data-label]:before {
+    content: attr(data-label);
+    font-weight: bold;
+  }
+
+  #popupEditar {
+    max-width: 85%;
   }
 }

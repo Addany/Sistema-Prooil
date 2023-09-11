@@ -9,6 +9,15 @@ body {
   padding: 20px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.input-group input,
+.input-group select {
+  height: 38px; 
+}
+
 .container {
   background-color: #ffffff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -93,10 +102,13 @@ h1 {
 .qr-button:hover {
   background-color: #218838;
 }
-
 @media (max-width: 768px) {
   .container {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+
+  .form-registro {
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente un poco */
   }
 
   .form-registro .input-section {
@@ -106,5 +118,17 @@ h1 {
   .input-section .left-section,
   .input-section .right-section {
     width: 100%;
+    padding: 0.5rem; /* Añade algo de padding aquí */
+    box-sizing: border-box; /* Asegura que el padding no afecta el ancho total */
+  }
+
+  .input-section .right-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button-group {
+    margin-top: auto;
+    margin-bottom: 0.5rem; /* Añade un pequeño margen en la parte inferior */
   }
 }

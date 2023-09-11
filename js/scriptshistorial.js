@@ -24,10 +24,11 @@ const historialPrestamo = [
 
 function generarTablaHistorial(data) {
   const tabla = document.getElementById('tabla-historial').getElementsByTagName('tbody')[0];
-  tabla.innerHTML = "";
+  const fragment = document.createDocumentFragment();  // Crear un fragmento de documento
+
   data.forEach(item => {
-      const newRow = tabla.insertRow();
-      newRow.innerHTML = `
+    const newRow = tabla.insertRow();
+    newRow.innerHTML = `
           <td>${item.estatus}</td>
           <td>${item.folio}</td>
           <td>${item.nombreTrabajador}</td>
@@ -41,8 +42,13 @@ function generarTablaHistorial(data) {
               <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Eliminar</button>
           </td>
       `;
+      fragment.appendChild(newRow); 
   });
+  tabla.innerHTML = "";  // Limpia la tabla
+  tabla.appendChild(fragment);  // Inserta todas las filas de una sola vez
 }
+
+
 
 function buscar() {
   const textoBuscar = document.getElementById('buscador').value.trim().toLowerCase();
@@ -72,6 +78,29 @@ function buscar() {
       );
   });
 
+  generarTablaHistorial(resultados);
+}
+
+let cacheBusqueda = new Map();
+
+function buscarHerramienta(texto) {
+  texto = texto.toLowerCase();
+  
+  if(cacheBusqueda.has(texto)) {
+    return generarTablaHistorial(cacheBusqueda.get(texto));
+  }
+  
+  const resultadosIndices = new Set();
+  
+  for(const campo in indiceTexto) {
+    if(indiceTexto[campo].has(texto)) {
+      indiceTexto[campo].get(texto).forEach(index => resultadosIndices.add(index));
+    }
+  }
+  
+  const resultados = [...resultadosIndices].map(index => historialPrestamo[index]);
+  cacheBusqueda.set(texto, resultados);
+  
   generarTablaHistorial(resultados);
 }
 
