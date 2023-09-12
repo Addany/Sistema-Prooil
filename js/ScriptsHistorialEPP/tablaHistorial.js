@@ -1,42 +1,48 @@
+
+
 function generarTablaHistorial(data) {
-  console.log('Data recibida en generarTablaHistorial:', JSON.stringify(data, null, 2));
   const elementos = obtenerElementos();
   const fragment = document.createDocumentFragment();
 
   data.forEach((item, index) => {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
-      <td data-label="ID">${item.id}</td>
-      <td data-label="Nombre">${item.nombre}</td>
-      <td data-label="Marca">${item.marca}</td>
-      <td data-label="Orden de compra">${item.ordenCompra}</td>
-      <td data-label="Tamaño">${item.tamaño}</td>
-      <td data-label="No. Serie">${item.noSerie}</td>
-      <td data-label="Estado">${item.estado}</td>
-      <td data-label="Color">${item.color}</td>
-      <td data-label="Tipo">${item.tipo}</td>
-      <td data-label="Fecha de Registro">${item.fechaRegistro}</td>
-      <td data-label="Descripción">${item.descripcion}</td>
-      <td data-label="Estatus">${item.estatus}</td>
-      <td data-label="Acciones">
-          <button class="accion-button" onclick="descargarQRHerramienta('${item.id}')">Descargar QR</button>
-          <button class="accion-button" onclick="editarHerramienta('${item.id}')">Editar</button>
-          <button class="accion-button" onclick="eliminarHerramienta('${item.id}')">Eliminar</button>
-      </td>
-    `;
-    fragment.appendChild(newRow);  // Esto es lo que faltaba.
+    <td data-label="Foto"><img src="${item.foto}" alt="Foto de EPP" class="imagen-epp" /></td>
+    <td data-label="ID">${item.id}</td>
+    <td data-label="Nombre">${item.nombre}</td>
+    <td data-label="Cantidad">${item.cantidad}</td>
+    <td data-label="Marca">${item.marca}</td>
+    <td data-label="Modelo">${item.modelo}</td>
+    <td data-label="Tipo">${item.tipo}</td>
+    <td data-label="Clase">${item.clase}</td>
+    <td data-label="Talla">${item.talla}</td>
+    <td data-label="Orden de compra">${item.ordenCompra}</td>
+    <td data-label="Fecha de Registro">${item.fechaRegistro}</td>
+    <td data-label="Acciones">
+        <button class="accion-button" onclick="generarReporte('${item.id}')">Generar reporte</button>
+        <button class="accion-button" onclick="editarEPP('${item.id}')">Editar</button>
+        <button class="accion-button" onclick="eliminarEPP('${item.id}')">Eliminar</button>
+    </td>
+  `;
+    fragment.appendChild(newRow);
   });
 
   elementos.tablaHistorial.innerHTML = "";
   elementos.tablaHistorial.appendChild(fragment);
 
-  historialAlmacenPrevio = JSON.parse(JSON.stringify(data)); 
+  historialEPPrevio = JSON.parse(JSON.stringify(data)); // Punto 6: considera la necesidad de esta línea
 }
 
 
 function buscarHerramienta(texto) {
+  // Punto 3: validación básica de la entrada
+  if (!texto || typeof texto !== 'string') {
+    console.error('Entrada no válida');
+    return;
+  }
+
   if (texto.trim() === "") {
-    generarTablaHistorial(historialAlmacen);
+    generarTablaHistorial(historialEPP);
     return;
   }
 
@@ -48,23 +54,33 @@ function buscarHerramienta(texto) {
     indicesPalabra.forEach(indice => indicesEncontrados.add(indice));
   });
 
-  const resultados = [...indicesEncontrados].map(indice => historialAlmacen[indice]);
+  const resultados = [...indicesEncontrados].map(indice => historialEPP[indice]);
   generarTablaHistorial(resultados);
 }
 
 function buscarPorCategoria() {
-  const categoria = obtenerElemento('categoria').value;
-  const resultados = historialAlmacen.filter(item => 
-    categoria === "todos" || item.estatus.toLowerCase() === categoria.toLowerCase()
+  const categoriaElement = obtenerElemento('categoria');
+  if (!categoriaElement) return;
+
+  const categoria = String(categoriaElement.value).toLowerCase();
+  const resultados = historialEPP.filter(item => 
+    categoria === "todos" || (item.nombre && item.nombre.toLowerCase() === categoria)
   );
+
   generarTablaHistorial(resultados);
 }
 
 function buscarPorFecha() {
-  const fechaInicio = obtenerElemento('fechaInicio').value ? new Date(obtenerElemento('fechaInicio').value) : null;
-  const fechaFin = obtenerElemento('fechaFin').value ? new Date(obtenerElemento('fechaFin').value) : null;
+  // Punto 4: Mejor manejo de fechas
+  const fechaInicioElement = obtenerElemento('fechaInicio');
+  const fechaFinElement = obtenerElemento('fechaFin');
+  
+  if (!fechaInicioElement || !fechaFinElement) return; // Punto 5: almacenamiento de resultados de consultas DOM
 
-  const resultados = historialAlmacen.filter(item => {
+  const fechaInicio = fechaInicioElement.value ? new Date(fechaInicioElement.value) : null;
+  const fechaFin = fechaFinElement.value ? new Date(fechaFinElement.value) : null;
+
+  const resultados = historialEPP.filter(item => {
     const fechaItem = new Date(item.fechaRegistro);
     return (!fechaInicio || fechaItem >= fechaInicio) && (!fechaFin || fechaItem <= fechaFin);
   });

@@ -1,6 +1,3 @@
-function verificarNIP(nip) {
-  return nip === "1234"; 
-}
 
 function getDatosEdicion() {
   const elementos = obtenerElementos();

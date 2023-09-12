@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historial del Almacén</title>
-  <link rel="stylesheet" href="css/estilosalmacen.css">
+  <title>Historial de EPP</title>
+  <link rel="stylesheet" href="css/estiloshistorialEPP.css">
 </head>
 <body>
 
@@ -17,27 +17,26 @@
     <input type="date" id="fechaFin">
     <p>Busqueda por categoria:</p>
     <select id="categoria">
-        <option value="todos">Todos</option>
-        <option value="Prestado">Prestado</option>
-        <option value="Devuelto">Devuelto</option>
-    </select>
+      <option value="todos">Todos</option>
+      <option value="casco contra impacto">Casco contra impacto</option>
+      <option value="capucha">Capucha</option>
+  </select>
     <button type="button" id="eliminarBusqueda">Eliminar busqueda</button>
   </form>
   <table id="tabla-historial">
     <thead>
       <tr>
+        <th>Foto</th>
         <th>ID</th>
         <th>Nombre</th>
+        <th>Cantidad</th>
         <th>Marca</th>
-        <th>Orden de compra</th>
-        <th>Tamaño</th>
-        <th>No. Serie</th>
-        <th>Estado</th>
-        <th>Color</th>
+        <th>Modelo</th>
         <th>Tipo</th>
-        <th>Fecha de Registro</th>
-        <th>Descripción</th>
-        <th>Estatus</th>
+        <th>Clase</th>
+        <th>Talla</th>
+        <th>Orden de compra</th>
+        <th>Fecha de registro</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -47,20 +46,19 @@
   </table>
 
   <div id="overlay"></div>
-  <div id="popup" >
+  <div id="popup">
       <form id="editarHerramientaForm">
-          <input type="hidden" id="editId">
-          <input type="text" id="editNombre" placeholder="Nombre">
-          <input type="text" id="editMarca" placeholder="Marca">
-          <input type="text" id="editTamano" placeholder="Tamaño">
-          <input type="text" id="editOrdenCompra" placeholder="Orden de compra">
-          <input type="text" id="editNoSerie" name="noSerie" />
-          <input type="text" id="editEstado" placeholder="Estado">
-          <input type="text" id="editColor" placeholder="Color">
-          <input type="text" id="editTipo" placeholder="Tipo">
-          <input type="date" id="editFecha">
-          <input type="text" id="editDescripcion" placeholder="Descripción">
-          <input type="text" id="editEstatus" placeholder="Estatus">
+          <input type="hidden" id="editId" placeholder="ID">
+          <input type="text" id="editFoto" placeholder="Foto" value="foto.png">
+          <input type="text" id="editNombre" placeholder="Nombre" value="Capucha">
+          <input type="text" id="editCantidad" placeholder="Cantidad" value="74">
+          <input type="text" id="editMarca" placeholder="Marca" value="MarcaX">
+          <input type="text" id="editModelo" placeholder="Modelo" value="Buenas">
+          <input type="text" id="editTipo" placeholder="Tipo" value="Cabezal1">
+          <input type="text" id="editClase" placeholder="Clase" value="Buenas">
+          <input type="text" id="editTalla" placeholder="Talla" value="35">
+          <input type="text" id="editOrdenCompra" placeholder="Orden de Compra" value="324234">
+          <input type="date" id="editFechaRegistro" placeholder="Fecha de Registro" value="2023-08-05">
           <button type="submit">Guardar</button>
           <button id="cancelarEdicion">Cancelar</button>
       </form>
