@@ -1,13 +1,10 @@
-function cancelDelivery() {
-    document.getElementById("deliveryForm").reset();
-}
+$(document).ready(function () {
+    $('.eppList').select2();
+    loadCache();
+});
 
-document.getElementById("deliveryForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    cancelDelivery();
-
-    Swal.fire('Éxito', 'Entrega solicitada con éxito.', 'success');
+document.getElementById('observations').addEventListener('input', function () {
+    localStorage.setItem('observations', this.value);
 });
 
 function onEPPSelected(eppInfo) {
@@ -15,6 +12,21 @@ function onEPPSelected(eppInfo) {
     if (eppInfo === "") return;
 
     var eppData = JSON.parse(eppInfo);
+    addEPPToCache(eppData);
+
+    // Resetear el valor del select
+    eppList.value = "";
+    $('.eppList').select2().trigger('change');
+}
+
+function addEPPToCache(eppData) {
+    var cachedEPPs = JSON.parse(localStorage.getItem('cachedEPPs') || '[]');
+    cachedEPPs.push(eppData);
+    localStorage.setItem('cachedEPPs', JSON.stringify(cachedEPPs));
+    addEPPToTable(eppData);
+}
+
+function addEPPToTable(eppData) {
     var selectedEPPTable = document.getElementById("selected-epp-table");
     var tbody = selectedEPPTable.getElementsByTagName("tbody")[0];
 
@@ -28,13 +40,47 @@ function onEPPSelected(eppInfo) {
     cell2.innerHTML = eppData.name;
     cell3.innerHTML = eppData.anatomicRegion;
     cell4.innerHTML = `<button class="buttonform" onclick="removeRow(this)">Eliminar</button>`;
-
-    // Resetear el valor del select
-    eppList.value = "";
-    $('.eppList').select2().trigger('change');
 }
 
 function removeRow(btn) {
     var row = btn.parentNode.parentNode;
+    var cell = row.getElementsByTagName('td')[0];
+    var eppIdToRemove = cell.textContent;
+
+    // Eliminar EPP del caché
+    var cachedEPPs = JSON.parse(localStorage.getItem('cachedEPPs') || '[]');
+    cachedEPPs = cachedEPPs.filter(epp => epp.id !== eppIdToRemove);
+    localStorage.setItem('cachedEPPs', JSON.stringify(cachedEPPs));
+
+    // Eliminar fila de la tabla
     row.parentNode.removeChild(row);
+}
+
+function cancelDelivery() {
+    document.getElementById("deliveryForm").reset();
+    localStorage.removeItem('observations');
+    localStorage.removeItem('cachedEPPs');
+    document.getElementById("selected-epp-tbody").innerHTML = ""; // Limpiar la tabla de EPP seleccionados
+}
+
+document.getElementById("deliveryForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    cancelDelivery();
+
+    Swal.fire('Éxito', 'Entrega solicitada con éxito.', 'success');
+});
+
+function loadCache() {
+    // Cargar las observaciones anteriores del caché
+    const observations = localStorage.getItem('observations');
+    if (observations) {
+        document.getElementById('observations').value = observations;
+    }
+
+    // Cargar los EPP seleccionados anteriores del caché
+    const cachedEPPs = JSON.parse(localStorage.getItem('cachedEPPs') || '[]');
+    cachedEPPs.forEach(eppData => {
+        addEPPToTable(eppData);
+    });
 }

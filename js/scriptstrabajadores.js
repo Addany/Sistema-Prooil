@@ -172,7 +172,7 @@ function actualizarFoto(event) {
   }
 }
 
-function resetearBusqueda() {
+function eliminarBusqueda() {
   document.getElementById('buscador').value = '';
   document.getElementById('fecha').value = '';
   document.getElementById('categoria').value = 'todos';

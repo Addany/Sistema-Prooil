@@ -57,54 +57,51 @@ const ELEMENT_IDS = [
 
 let elementosCache = {};
 
+
+
 function inicializarCache() {
-  ELEMENT_IDS.forEach(id => {
-    elementosCache[id] = document.getElementById(id);
-  });
-
-  // Inicializando la caché para tablaHistorialTBody aquí
-  const tablaHistorialElement = elementosCache['tabla-historial'];
-  if (tablaHistorialElement) {
-    elementosCache['tablaHistorialTBody'] = tablaHistorialElement.getElementsByTagName('tbody')[0];
-  } else {
-    console.error('El elemento tabla-historial no se pudo encontrar');
-    elementosCache['tablaHistorialTBody'] = null;
-  }
+  elementosCache = {
+    eliminarBusqueda: document.getElementById('eliminarBusqueda'),
+    buscador: document.getElementById('buscador'),
+    categoria: document.getElementById('categoria'), // Asegúrate de que esta línea está presente y es correcta
+    // ... otros elementos
+  };
 }
-
 
 function obtenerElemento(id) {
-  // Primero intentamos obtener el elemento del caché
-  if (elementosCache[id]) {
-    return elementosCache[id];
-  }
-  
-  // Si no está en el caché, lo buscamos en el DOM y lo añadimos al caché
-  const elemento = document.getElementById(id);
-  elementosCache[id] = elemento;
-  return elemento;
+  return document.getElementById(id);
 }
+
 function obtenerElementos() {
+  var tablaHistorialElement = obtenerElemento('tabla-historial');
+  var tablaHistorialTBody = null;
+
+  if (tablaHistorialElement) {
+    tablaHistorialTBody = tablaHistorialElement.getElementsByTagName('tbody')[0];
+  } else {
+    console.error('El elemento tabla-historial no se pudo encontrar');
+  }
+
   return {
-    buscador: elementosCache['buscador'],
-    categoriaSelect: elementosCache['categoria'],
-    fechaInicioInput: elementosCache['fechaInicio'],
-    fechaFinInput: elementosCache['fechaFin'],
-    popup: elementosCache['popup'],
-    tablaHistorial: elementosCache['tablaHistorialTBody'], // Utilizando la caché aquí
-    overlay: elementosCache['overlay'],
-    editId: elementosCache['editId'],
-    editNombre: elementosCache['editNombre'],
-    editMarca: elementosCache['editMarca'],
-    editOrdenCompra: elementosCache['editOrdenCompra'],
-    editTamano: elementosCache['editTamano'],
-    editNoSerie: elementosCache['editNoSerie'],
-    editEstado: elementosCache['editEstado'],
-    editColor: elementosCache['editColor'],
-    editTipo: elementosCache['editTipo'],
-    editFecha: elementosCache['editFecha'],
-    editDescripcion: elementosCache['editDescripcion'],
-    editEstatus: elementosCache['editEstatus'],
+    buscador: obtenerElemento('buscador'),
+    categoriaSelect: obtenerElemento('categoria'),
+    fechaInicioInput: obtenerElemento('fechaInicio'),
+    fechaFinInput: obtenerElemento('fechaFin'),
+    popup: obtenerElemento('popup'),
+    tablaHistorial: tablaHistorialTBody,
+    overlay: obtenerElemento('overlay'),
+    editId: obtenerElemento('editId'),
+    editNombre: obtenerElemento('editNombre'),
+    editMarca: obtenerElemento('editMarca'),
+    editOrdenCompra: obtenerElemento('editOrdenCompra'),
+    editTamano: obtenerElemento('editTamano'),
+    editNoSerie: obtenerElemento('editNoSerie'),
+    editEstado: obtenerElemento('editEstado'),
+    editColor: obtenerElemento('editColor'),
+    editTipo: obtenerElemento('editTipo'),
+    editFecha: obtenerElemento('editFecha'),
+    editDescripcion: obtenerElemento('editDescripcion'),
+    editEstatus: obtenerElemento('editEstatus'),
   };
 }
 function inicializar() {
@@ -129,20 +126,23 @@ function asignarEventos() {
     eliminarBusquedaElement.addEventListener('click', eliminarBusqueda);
   }
 
+
   if (buscadorElement) {
-    buscadorElement.oninput = buscar;
+    buscadorElement.oninput = () => buscarHerramienta(buscadorElement.value);
+  } else {
+    console.error('Elemento con ID "buscador" no encontrado');
   }
-  
+
   if (categoriaElement) {
-    categoriaElement.onchange = buscar;
+    categoriaElement.onchange = buscarPorCategoria;
   }
-  
+
   if (fechaInicioElement) {
-    fechaInicioElement.onchange = buscar;
+    fechaInicioElement.onchange = buscarPorFecha;
   }
-  
+
   if (fechaFinElement) {
-    fechaFinElement.onchange = buscar;
+    fechaFinElement.onchange = buscarPorFecha;
   }
 
   if (popupElement) {
@@ -172,9 +172,9 @@ function crearIndices() {
       const palabras = valor.toString().toLowerCase().split(' ');
       palabras.forEach(palabra => {
         if (!indiceTexto[palabra]) {
-          indiceTexto[palabra] = new Set();
+          indiceTexto[palabra] = [];
         }
-        indiceTexto[palabra].add(index);
+        indiceTexto[palabra].push(index);
       });
     });
   });
@@ -309,70 +309,83 @@ function eliminarHerramienta(id) {
   }
 }
 
-function generarTablaHistorial(data) {
-  const elementos = obtenerElementos();
-  elementos.tablaHistorial.innerHTML = ""; // Limpiar el contenido anterior de la tabla
-  
-  const fragment = document.createDocumentFragment();
+function crearFila(item) {
+  const row = document.createElement('tr');
 
-  data.forEach(item => {
-      const row = document.createElement('tr');
-      Object.keys(item).forEach(key => {
-          const cell = document.createElement('td');
-          cell.setAttribute('data-label', capitalizeFirstLetter(key));
-          cell.textContent = item[key];
-          row.appendChild(cell);
-      });
+  const campos = [
+    "id", "nombre", "marca", "ordenCompra", 
+    "tamaño", "noSerie", "estado", "color", 
+    "tipo", "fechaRegistro", "descripcion", "estatus"
+  ];
 
-      const actionCell = document.createElement('td');
-      actionCell.setAttribute('data-label', "Acciones");
-      actionCell.innerHTML = `
-          <button class="accion-button" onclick="descargarQRHerramienta('${item.id}')">Descargar QR</button>
-          <button class="accion-button" onclick="editarHerramienta('${item.id}')">Editar</button>
-          <button class="accion-button" onclick="eliminarHerramienta('${item.id}')">Eliminar</button>
-      `;
-      row.appendChild(actionCell);
-
-      fragment.appendChild(row);
+  campos.forEach(campo => {
+    const cell = document.createElement('td');
+    cell.setAttribute('data-label', campo.charAt(0).toUpperCase() + campo.slice(1));
+    cell.textContent = item[campo];
+    row.appendChild(cell);
   });
 
+  const acciones = document.createElement('td');
+  acciones.setAttribute('data-label', 'Acciones');
+  acciones.innerHTML = `
+    <button class="accion-button" onclick="descargarQRHerramienta('${item.id}')">Descargar QR</button>
+    <button class="accion-button" onclick="editarHerramienta('${item.id}')">Editar</button>
+    <button class="accion-button" onclick="eliminarHerramienta('${item.id}')">Eliminar</button>
+  `;
+  row.appendChild(acciones);
+
+  return row;
+}
+
+function generarTablaHistorial(data) {
+  const elementos = obtenerElementos();
+  const fragment = document.createDocumentFragment();
+
+  data.forEach((item) => {
+    const newRow = crearFila(item);
+    fragment.appendChild(newRow);
+  });
+
+  elementos.tablaHistorial.innerHTML = "";
   elementos.tablaHistorial.appendChild(fragment);
-  historialAlmacenPrevio = JSON.parse(JSON.stringify(data));
+
+  historialAlmacenPrevio = [...data];
 }
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function buscar() {
-  let resultados = historialAlmacen;
-
-  // Filtro de texto
-  const texto = elementosCache['buscador'].value.toLowerCase();
-  if (texto.trim() !== "") {
-    const indicesEncontrados = new Set();
-    texto.split(' ').forEach(palabra => {
-      const indicesPalabra = indiceTexto[palabra] || [];
-      indicesPalabra.forEach(indice => indicesEncontrados.add(indice));
-    });
-    resultados = [...indicesEncontrados].map(indice => historialAlmacen[indice]);
+function buscarHerramienta(texto) {
+  if (texto.trim() === "") {
+    generarTablaHistorial(historialAlmacen);
+    return;
   }
 
-  // Filtro de categoría
-  const categoria = elementosCache['categoria'].value;
-  resultados = resultados.filter(item => 
+  texto = texto.toLowerCase();
+  const indicesEncontrados = new Set();
+
+  texto.split(' ').forEach(palabra => {
+    const indicesPalabra = indiceTexto[palabra] || [];
+    indicesPalabra.forEach(indice => indicesEncontrados.add(indice));
+  });
+
+  const resultados = [...indicesEncontrados].map(indice => historialAlmacen[indice]);
+  generarTablaHistorial(resultados);
+}
+
+function buscarPorCategoria() {
+  const categoria = obtenerElemento('categoria').value;
+  const resultados = historialAlmacen.filter(item => 
     categoria === "todos" || item.estatus.toLowerCase() === categoria.toLowerCase()
   );
+  generarTablaHistorial(resultados);
+}
 
-  // Filtro de fecha
-  const fechaInicio = elementosCache['fechaInicio'].value ? new Date(elementosCache['fechaInicio'].value) : null;
-  const fechaFin = elementosCache['fechaFin'].value ? new Date(elementosCache['fechaFin'].value) : null;
-  resultados = resultados.filter(item => {
+function buscarPorFecha() {
+  const fechaInicio = obtenerElemento('fechaInicio').value ? new Date(obtenerElemento('fechaInicio').value) : null;
+  const fechaFin = obtenerElemento('fechaFin').value ? new Date(obtenerElemento('fechaFin').value) : null;
+
+  const resultados = historialAlmacen.filter(item => {
     const fechaItem = new Date(item.fechaRegistro);
     return (!fechaInicio || fechaItem >= fechaInicio) && (!fechaFin || fechaItem <= fechaFin);
   });
-
-  // Generar tabla final
   generarTablaHistorial(resultados);
 }
 

@@ -1,16 +1,29 @@
-const form = document.getElementById('registration-form');
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('form');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+  form.addEventListener('submit', async (event) => {
+      event.preventDefault();
 
-  const registrationContainer = document.querySelector('.registration-container');
-  registrationContainer.classList.add('fade-out');
+      const formData = new FormData(form);
 
-  setTimeout(() => {
-    // Aquí podrías realizar el registro real del usuario
-    // Por ahora, simplemente redireccionaremos a otra página (index.html)
-    window.location.href = '/index.html';
-  }, 500); // La animación tiene una duración de 0.5 segundos (500ms)
+      try {
+          const response = await fetch('tu_endpoint_url_aqui', {
+              method: 'POST',
+              body: formData
+          });
+
+          if (response.ok) {
+              const jsonResponse = await response.json();
+              console.log('Respuesta del servidor:', jsonResponse);
+              alert('Registro exitoso');
+          } else {
+              alert('Error en el registro: ' + response.statusText);
+          }
+      } catch (error) {
+          console.error('Error en el registro:', error);
+          alert('Error en el registro: ' + error.message);
+      }
+  });
 });
 
 function previewImage(event) {

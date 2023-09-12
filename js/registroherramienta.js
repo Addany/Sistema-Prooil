@@ -1,10 +1,36 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    document.querySelector('.qr-button').addEventListener('click', function() {
+    const form = document.querySelector('.form-registro');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('tu_endpoint_url_aqui', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const jsonResponse = await response.json();
+                console.log('Respuesta del servidor:', jsonResponse);
+                alert('Registro exitoso');
+            } else {
+                alert('Error en el registro: ' + response.statusText);
+            }
+        } catch (error) {
+            console.error('Error en el registro:', error);
+            alert('Error en el registro: ' + error.message);
+        }
+    });
+
+    document.querySelector('.qr-button').addEventListener('click', function () {
         let nombreHerramienta = document.getElementById('nombre').value;
         let noSerie = document.getElementById('noSerie').value;
         let estadoHerramienta = document.getElementById('estado').value;
 
-        if(nombreHerramienta && estadoHerramienta && noSerie) {
+        if (nombreHerramienta && estadoHerramienta && noSerie) {
             let toolInfo = {
                 "toolId": noSerie,
                 "toolName": nombreHerramienta,
@@ -41,8 +67,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 });
-
-function enviarABaseDeDatos(datos) {
-    // Aquí implementa la lógica para enviar los datos a tu base de datos
-    // ...
-}
