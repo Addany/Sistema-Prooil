@@ -27,6 +27,8 @@ function startScan() {
         .catch(function (error) {
             console.error("Error al acceder a la cámara:", error);
         });
+
+        loadLastSession();
 }
 
 // Función para detener el escaneo
@@ -38,10 +40,42 @@ function stopScan() {
     }
 }
 
-// Función para cancelar el préstamo
 function cancelLoan() {
     document.getElementById("loanForm").reset();
-    stopScan();
+    localStorage.removeItem('scannedTools');
+    localStorage.removeItem('observations');
+    localStorage.removeItem('workerName');  // Eliminar el trabajador seleccionado del localStorage
+    
+    // Limpiar la tabla de herramientas escaneadas
+    var scannedToolsTable = document.getElementById("scanned-tools-table");
+    var rows = scannedToolsTable.rows.length;
+    for (var i = rows - 1; i > 0; i--) {
+        scannedToolsTable.deleteRow(i);
+    }
+}
+
+function loadLastSession() {
+    // Cargar las observaciones anteriores
+    const observations = localStorage.getItem('observations');
+    if (observations) {
+        document.getElementById('observations').value = observations;
+    }
+
+    // Cargar el trabajador seleccionado anteriormente
+    const workerName = localStorage.getItem('workerName');
+    if (workerName) {
+        document.getElementById('workerName').value = workerName;
+    }
+
+    // Cargar las herramientas escaneadas anteriores
+    try {
+        const scannedTools = JSON.parse(localStorage.getItem('scannedTools') || '[]');
+        scannedTools.forEach(tool => {
+            addToolToTable(tool);
+        });
+    } catch (error) {
+        console.error("Error cargando las herramientas escaneadas:", error);
+    }
 }
 
 document.getElementById("loanForm").addEventListener("submit", function (event) {
@@ -63,30 +97,56 @@ window.onload = function () {
     startScan();
 };
 
-// Función que se llama cada vez que se escanea una herramienta
 function onToolScanned(toolInfo) {
-    // Supongamos que 'toolInfo' es una cadena JSON con la información de la herramienta
     var toolData = JSON.parse(toolInfo);
 
-    // Encuentra la tabla de herramientas escaneadas
-    var scannedToolsTable = document.getElementById("scanned-tools-table");
+    // Añadir la herramienta escaneada al localStorage
+    var scannedTools = JSON.parse(localStorage.getItem('scannedTools') || '[]');
+    scannedTools.push(toolData);
+    localStorage.setItem('scannedTools', JSON.stringify(scannedTools));
 
-    // Crea una nueva fila y celdas
-    var row = scannedToolsTable.insertRow(1); // Inserta la nueva fila en la segunda posición (índice 1)
+    addToolToTable(toolData);
+}
+
+function addToolToTable(toolData) {
+    var scannedToolsTable = document.getElementById("scanned-tools-table");
+    var row = scannedToolsTable.insertRow(1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
 
-    // Asigna los valores a las celdas
     cell1.innerHTML = toolData.toolId;
     cell2.innerHTML = toolData.toolName;
     cell3.innerHTML = toolData.toolStatus;
     cell4.innerHTML = "<button onclick='deleteRow(this)' class='buttonform'>Eliminar</button>";
 }
 
-// Función para eliminar una fila
+
 function deleteRow(btn) {
     var row = btn.parentNode.parentNode;
+    var toolId = row.cells[0].innerText;  // Obtener el ID de la herramienta de la fila que será eliminada
+
+    // Obtener las herramientas escaneadas del almacenamiento local
+    var scannedTools = JSON.parse(localStorage.getItem('scannedTools') || '[]');
+
+    // Encontrar el índice de la herramienta en el array scannedTools basado en el toolId
+    var toolIndex = scannedTools.findIndex(tool => tool.toolId === toolId);
+
+    // Eliminar la herramienta del array scannedTools y actualizar el almacenamiento local
+    if (toolIndex > -1) {
+        scannedTools.splice(toolIndex, 1);
+        localStorage.setItem('scannedTools', JSON.stringify(scannedTools));
+    }
+
+    // Eliminar la fila de la tabla
     row.parentNode.removeChild(row);
 }
+
+
+document.getElementById('observations').addEventListener('input', function() {
+localStorage.setItem('observations', this.value);
+});
+document.getElementById("workerName").addEventListener("change", function () {
+localStorage.setItem('workerName', this.value);
+});

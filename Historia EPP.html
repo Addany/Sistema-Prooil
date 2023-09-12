@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historial del Almacén</title>
+  <link rel="stylesheet" href="css/estilosalmacen.css">
+</head>
+<body>
+
+  <form class="form-buscar">
+    <p>Busqueda por texto:</p>
+    <input type="text" id="buscador" placeholder="Buscar por texto o ID">
+    <p>Fecha Inicio:</p>
+    <input type="date" id="fechaInicio">
+    <p>Fecha Fin:</p>
+    <input type="date" id="fechaFin">
+    <p>Busqueda por categoria:</p>
+    <select id="categoria">
+        <option value="todos">Todos</option>
+        <option value="Prestado">Prestado</option>
+        <option value="Devuelto">Devuelto</option>
+    </select>
+    <button type="button" id="eliminarBusqueda">Eliminar busqueda</button>
+  </form>
+  <table id="tabla-historial">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Marca</th>
+        <th>Orden de compra</th>
+        <th>Tamaño</th>
+        <th>No. Serie</th>
+        <th>Estado</th>
+        <th>Color</th>
+        <th>Tipo</th>
+        <th>Fecha de Registro</th>
+        <th>Descripción</th>
+        <th>Estatus</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí se insertarán las filas -->
+    </tbody>
+  </table>
+
+  <div id="overlay"></div>
+  <div id="popup" >
+      <form id="editarHerramientaForm">
+          <input type="hidden" id="editId">
+          <input type="text" id="editNombre" placeholder="Nombre">
+          <input type="text" id="editMarca" placeholder="Marca">
+          <input type="text" id="editTamano" placeholder="Tamaño">
+          <input type="text" id="editOrdenCompra" placeholder="Orden de compra">
+          <input type="text" id="editNoSerie" name="noSerie" />
+          <input type="text" id="editEstado" placeholder="Estado">
+          <input type="text" id="editColor" placeholder="Color">
+          <input type="text" id="editTipo" placeholder="Tipo">
+          <input type="date" id="editFecha">
+          <input type="text" id="editDescripcion" placeholder="Descripción">
+          <input type="text" id="editEstatus" placeholder="Estatus">
+          <button type="submit">Guardar</button>
+          <button id="cancelarEdicion">Cancelar</button>
+      </form>
+  </div>
+
+
+  <script src="js/ScriptsHistorialEPP/domHelpers.js"></script>
+  <script src="js/ScriptsHistorialEPP/helpers.js"></script>
+  <script src="js/ScriptsHistorialEPP/tablaHistorial.js"></script>
+  <script src="js/ScriptsHistorialEPP/popup.js"></script>
+  <script src="js/ScriptsHistorialEPP/data.js"></script>
+  <script src="js/ScriptsHistorialEPP/main.js"></script>
+</body>
+</html>
+
+
+
+

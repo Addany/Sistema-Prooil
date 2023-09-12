@@ -11,15 +11,17 @@
   <form class="form-buscar">
     <p>Busqueda por texto:</p>
     <input type="text" id="buscador" placeholder="Buscar por texto o ID">
-    <p>Busqueda por fecha:</p>
-    <input type="date" id="fecha" placeholder="Fecha">
+    <p>Fecha Inicio:</p>
+    <input type="date" id="fechaInicio">
+    <p>Fecha Fin:</p>
+    <input type="date" id="fechaFin">
     <p>Busqueda por categoria:</p>
     <select id="categoria">
         <option value="todos">Todos</option>
-        <option value="Herramienta Manual">Herramienta Manual</option>
-        <option value="Eléctrica">Eléctrica</option>
+        <option value="Prestado">Prestado</option>
+        <option value="Devuelto">Devuelto</option>
     </select>
-    <button type="submit">Buscar</button>
+    <button type="button" id="eliminarBusqueda">Eliminar busqueda</button>
   </form>
   <table id="tabla-historial">
     <thead>
@@ -44,7 +46,7 @@
     </tbody>
   </table>
 
-<div id="overlay"></div>
+  <div id="overlay"></div>
   <div id="popup" >
       <form id="editarHerramientaForm">
           <input type="hidden" id="editId">
@@ -52,7 +54,7 @@
           <input type="text" id="editMarca" placeholder="Marca">
           <input type="text" id="editTamano" placeholder="Tamaño">
           <input type="text" id="editOrdenCompra" placeholder="Orden de compra">
-          <input type="text" id="editSerie" placeholder="No. Serie">
+          <input type="text" id="editNoSerie" name="noSerie" />
           <input type="text" id="editEstado" placeholder="Estado">
           <input type="text" id="editColor" placeholder="Color">
           <input type="text" id="editTipo" placeholder="Tipo">
@@ -65,7 +67,12 @@
   </div>
 
 
-  <script src="js/scriptsalmacenadministracion.js"></script>
+  <script src="js/ScriptsHistorialHerramientas/domHelpers.js"></script>
+  <script src="js/ScriptsHisotiralHerramientas/helpers.js"></script>
+  <script src="js/ScriptsHistorialHerramientas/tablaHistorial.js"></script>
+  <script src="js/ScriptsHistorialHistorialHerramientas/popup.js"></script>
+  <script src="js/ScriptsHistorialHerramientas/data.js"></script>
+  <script src="js/ScriptsHistorialHerramientas/main.js"></script>
 </body>
 </html>
 

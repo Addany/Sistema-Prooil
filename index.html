@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/normalize.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -29,17 +29,17 @@
     <li class="submenu-parent">
       <a href="#"><i class="fa-solid fa-screwdriver-wrench"></i>Herramienta y EPP</a>
       <ul class="submenu">
-        <li><a href="#"><i class="fa-solid fa-toolbox"></i> Registrar herramienta</a></li>
-        <li><a href="#"><i class="fa-solid fa-rectangle-list"></i> Historial de herramientas</a></li>
-        <li><a href="#"><i class="fa-solid fa-helmet-safety"></i>Registrar EPP</a></li>
+        <li><a href="Registro Herramienta.html"><i class="fa-solid fa-toolbox"></i> Registrar herramienta</a></li>
+        <li><a href="Historial herramientas.html"><i class="fa-solid fa-rectangle-list"></i> Historial de herramientas</a></li>
+        <li><a href="Registro EPP.html"><i class="fa-solid fa-helmet-safety"></i>Registrar EPP</a></li>
         <li><a href="#"><i class="fa-solid fa-rectangle-list"></i> Historial de EPP</a></li>
       </ul>
     </li>
     <li class="submenu-parent">
       <a href="#"><i class="fa-solid fa-dolly"></i>Almacenista</a>
       <ul class="submenu">
-        <li><a href="#"><i class="fa-solid fa-address-card"></i> Registrar almacenista</a></li>
-        <li><a href="#"><i class="fa-solid fa-box"></i> Almacenistas</a></li>
+        <li><a href="registroAlmacenista.html"><i class="fa-solid fa-address-card"></i> Registrar almacenista</a></li>
+        <li><a href="Almacenistas.html"><i class="fa-solid fa-box"></i> Almacenistas</a></li>
       </ul>
     </li>
     <li class="submenu-parent">
@@ -87,13 +87,15 @@
   <div class="popup">
     <h2>¿Qué acción deseas realizar?</h2>
     <div class="popup-buttons">
-      <button><a href="Prestamo.html">Hacer un préstamo</a></button>
-      <button ><a href="Prestamo.html">Hacer una entrega</a></button>
-      <button onclick="closePopup()">Cerrar</button>
-    </div>
+      <a href="Prestamo herramienta.html" class="button">Hacer un préstamo</a>
+      <a href="Entrega EPP.html" class="button">Hacer una entrega</a>
+      <button onclick="closePopup()" class="button">Cerrar</button>
+  </div>
   </div>
 
-  <script src="js/scripts.js"></script>
+  <script src="js/ScriptsIndex/scripts.js"></script>
+  <script src="js/ScriptsIndex/popup.js"></script>
+  
 </body>
 </html>
 

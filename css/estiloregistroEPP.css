@@ -3,10 +3,16 @@ body, html {
   margin: 0;
 }
 
+
+
 body {
   font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
   background-color: #f0f4f8;
-  padding: 20px;
 }
 
 .container {
@@ -16,7 +22,6 @@ body {
   border-radius: 10px;
   max-width: 1000px;
   width: 100%;
-  margin: auto;
 }
 
 h1 {
@@ -47,11 +52,29 @@ h1 {
 
 .input-group input,
 .input-group select {
-  padding: 0.5rem;
+  padding: 0.5rem; /* Mantiene el padding consistente para inputs y selects */
+  border: 1px solid #ddd; /* Mantiene el borde consistente para inputs y selects */
+  border-radius: 5px; /* Mantiene el border-radius consistente para inputs y selects */
+  width: 100%; /* Asegura que ambos, inputs y selects, ocupen el 100% del ancho */
+  font-size: 16px; /* Mantiene el tamaño de la fuente consistente para inputs y selects */
+  box-sizing: border-box; /* Asegura que el padding y el borde están incluidos en el ancho del elemento */
+}
+.file-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+  text-align: center;
+}
+
+.file-input {
+  display: block;
+  margin: 0 auto 1rem; /* Añade un margen inferior para separar del botón */
   border: 1px solid #ddd;
   border-radius: 5px;
-  width: 100%;
+  padding: 0.5rem;
   font-size: 16px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .button-group {
@@ -80,36 +103,88 @@ h1 {
 }
 
 .select2-container--default .select2-selection--single {
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  width: 100%;
+  border: 1px solid #ddd; /* Hace que el borde del select coincida con el borde de los inputs */
+  border-radius: 5px; /* Hace que el border-radius del select coincida con el de los inputs */
+  padding: 0.5rem; /* Añade padding para coincidir con los inputs */
+  height: calc(1.3em + 1rem + 2px); /* Ajusta la altura para que coincida con los inputs */
+  font-size: 16px; /* Asegura que el tamaño de la fuente dentro del select coincida con el de los inputs */
+  width: 100%; /* Asegura que el select tenga un ancho del 100% */
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-  font-size: 16px;
+  font-size: 16px; /* Asegura que el tamaño de la fuente dentro del select coincida con el de los inputs */
+  line-height: 1.5; /* Añade una altura de línea para un mejor alineamiento vertical del texto */
 }
 
 .select2-dropdown {
+  max-height: 150px; /* ajusta según sea necesario */
+  overflow-y: auto; /* permite el desplazamiento dentro del dropdown */
   border: 1px solid #ddd;
   border-radius: 5px;
 }
 
+.select-open {
+  overflow: hidden;
+}
+
 @media (max-width: 768px) {
+  body {
+    padding: 0; /* Asegurarse de que no hay padding extra alrededor del body */
+  }
+
   .container {
     padding: 1.5rem;
+    margin: 20px; /* Añade un margen de 20px en todas las direcciones */
+    box-sizing: border-box; /* Asegura que el padding y el margen están incluidos en el ancho del contenedor */
+  }
+
+  h1 {
+    font-size: 1.5rem; 
+    margin-bottom: 1rem;
+    text-align: center; /* Centrar el texto del encabezado */
   }
 
   .form-registro .input-section {
     flex-direction: column;
+    align-items: center; /* Alinear los elementos al centro */
   }
 
   .input-section .left-section,
   .input-section .right-section {
     width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .input-group {
+    margin-bottom: 1.5rem; /* Aumentar el margen inferior para más espacio entre grupos de entrada */
+  }
+
+  .input-group label {
+    font-size: 1rem; /* Ajustar el tamaño de la fuente de las etiquetas para una mejor legibilidad */
+    margin-bottom: 0.5rem; /* Ajustar el margen inferior de las etiquetas */
+  }
+
+  .input-group input,
+  .input-group select {
+    font-size: 1rem; /* Ajustar el tamaño de la fuente de los inputs */
+    padding: 0.5rem; /* Ajustar el padding de los inputs */
+  }
+
+  .file-label {
+    font-size: 1rem; 
+  }
+
+  .file-input {
+    font-size: 1rem; 
+    padding: 0.5rem; 
+  }
+
+  .button-group {
+    margin-top: 0.5rem;
   }
 
   .registrar-button {
-    padding: 1rem;
-    width: 100%;
+    padding: 0.5rem 1rem; /* Ajustar el padding del botón */
+    width: 100%; 
   }
 }

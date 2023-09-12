@@ -4,7 +4,7 @@ const trabajadores = [
     estado: "Alta",
     tipoRegistro:"Invitado",
     id: "001324",
-    nombre: "Juan Perez",
+    nombre: "Adriancito Bonito",
     telefono: "+52 921 172 2326",
     correo: "juanperez@mail.com",
     areaTrabajo: "Almacen",
@@ -172,7 +172,7 @@ function actualizarFoto(event) {
   }
 }
 
-function resetearBusqueda() {
+function eliminarBusqueda() {
   document.getElementById('buscador').value = '';
   document.getElementById('fecha').value = '';
   document.getElementById('categoria').value = 'todos';
