@@ -6,14 +6,16 @@ function crearIndices() {
   historialEPP.forEach((item, index) => {
     indiceEPP.set(item.id, index);
 
-    Object.values(item).forEach(valor => {
-      const palabras = valor.toString().toLowerCase().split(' ');
-      palabras.forEach(palabra => {
-        if (!indiceTexto[palabra]) {
-          indiceTexto[palabra] = [];
-        }
-        indiceTexto[palabra].push(index);
-      });
+    Object.entries(item).forEach(([key, valor]) => {
+      if (key !== 'nombre') {
+        const palabras = valor.toString().toLowerCase().split(' ');
+        palabras.forEach(palabra => {
+          if (!indiceTexto[palabra]) {
+            indiceTexto[palabra] = [];
+          }
+          indiceTexto[palabra].push(index);
+        });
+      }
     });
   });
   console.timeEnd("miFuncion");
@@ -91,14 +93,14 @@ function setFormValues(EPP) {
   const elementos = obtenerElementos(); 
 
   elementos.editId.value = EPP.id || '';
-  elementos.editFoto.value = EPP.foto || '';
+  elementos.editFoto.src = EPP.foto || '';
   elementos.editNombre.value = EPP.nombre || '';
   elementos.editCantidad.value = EPP.cantidad || '';
   elementos.editMarca.value = EPP.marca || '';
   elementos.editModelo.value = EPP.modelo || '';
   elementos.editTipo.value = EPP.tipo || '';
   elementos.editClase.value = EPP.clase || '';
-  elementos.editTalla.value = EPP.Talla || '';
+  elementos.editTalla.value = EPP.talla || '';
   elementos.editOrdenCompra.value = EPP.ordenCompra || '';
   elementos.editFechaRegistro.value = EPP.fechaRegistro || ''; 
 }
@@ -164,7 +166,7 @@ function obtenerDatosActuales() {
       modelo: "Buenas",
       tipo: "Cabezal",
       clase: "Buenas",
-      Talla: "34",
+      talla: "34",
       ordenCompra: "324234",
       fechaRegistro: "2023-08-05",
     },
@@ -177,7 +179,7 @@ function obtenerDatosActuales() {
       modelo: "Buenas",
       tipo: "Cabezal",
       clase: "Buenas",
-      Talla: "34",
+      talla: "34",
       ordenCompra: "324234",
       fechaRegistro: "2023-08-05",
     },

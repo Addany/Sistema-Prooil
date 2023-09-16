@@ -13,6 +13,7 @@ function obtenerElementos() {
   }
 
   return {
+    editFoto: document.getElementById('editFoto'),
     buscador: obtenerElemento('buscador'),
     categoriaSelect: obtenerElemento('categoria'),
     fechaInicioInput: obtenerElemento('fechaInicio'),

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', inicializar);
 let historialEPPrevio = [
   {
-    foto:"foto.png",
+    foto:"Resources/imagen1.jpg",
     id: 124,
     nombre: "Capucha",
     cantidad: "74",
@@ -9,12 +9,12 @@ let historialEPPrevio = [
     modelo: "Buenas",
     tipo: "Cabezal1",
     clase: "Buenas",
-    Talla: "35",
+    talla: 16,
     ordenCompra: "324234",
     fechaRegistro: "2023-08-05",
   },
   {
-    foto:"foto.png",
+    foto:"Resources/imagen1.jpg",
     id: 128,
     nombre: "Casco contra impacto",
     cantidad: "14345",
@@ -22,12 +22,12 @@ let historialEPPrevio = [
     modelo: "Buenas",
     tipo: "Cabezal2",
     clase: "Buenas",
-    Talla: "32",
+    talla: "32",
     ordenCompra: "324234",
     fechaRegistro: "2023-08-05",
   },
   {
-    foto:"foto.png",
+    foto:"Resources/imagen1.jpg",
     id: 122,
     nombre: "Casco contra impacto",
     cantidad: "158",
@@ -35,7 +35,7 @@ let historialEPPrevio = [
     modelo: "Buenastardesnoches",
     tipo: "Cabezal3",
     clase: "Buenas",
-    Talla: "35",
+    talla: "35",
     ordenCompra: "324234",
     fechaRegistro: "2023-08-05",
   },
