@@ -1,36 +1,47 @@
 document.addEventListener('DOMContentLoaded', inicializar);
-let historialAlmacenPrevio = [
+let historialEPPrevio = [
   {
-    id: 12,
-    nombre: "Destornillador",
+    foto:"foto.png",
+    id: 124,
+    nombre: "Capucha",
+    cantidad: "74",
     marca: "MarcaX",
-    ordenCompra: "12",
-    tamaño: "5mm",
-    noSerie: "ABC123",
-    estado: "Nuevo",
-    color: "Verde",
-    tipo: "Tal",
+    modelo: "Buenas",
+    tipo: "Cabezal1",
+    clase: "Buenas",
+    Talla: "35",
+    ordenCompra: "324234",
     fechaRegistro: "2023-08-05",
-    descripcion: "Plano",
-    estatus: "Prestado",
   },
   {
-    id: 1,
-    nombre: "Taladrox",
-    marca: "asd",
-    ordenCompra: "12",
-    tamaño: "8mm",
-    noSerie: "A123123213123",
-    estado: "N123123vo",
-    color: "Rojo",
-    tipo: "Tal",
-    fechaRegistro: "2023-08-01",
-    descripcion: "Taladro feo",
-    estatus: "Devuelto",
-  }
+    foto:"foto.png",
+    id: 128,
+    nombre: "Casco contra impacto",
+    cantidad: "14345",
+    marca: "MarcaX",
+    modelo: "Buenas",
+    tipo: "Cabezal2",
+    clase: "Buenas",
+    Talla: "32",
+    ordenCompra: "324234",
+    fechaRegistro: "2023-08-05",
+  },
+  {
+    foto:"foto.png",
+    id: 122,
+    nombre: "Casco contra impacto",
+    cantidad: "158",
+    marca: "MarcaX",
+    modelo: "Buenastardesnoches",
+    tipo: "Cabezal3",
+    clase: "Buenas",
+    Talla: "35",
+    ordenCompra: "324234",
+    fechaRegistro: "2023-08-05",
+  },
 ];
-const historialAlmacen = [...historialAlmacenPrevio];
-const indiceAlmacen = new Map();
+const historialEPP = [...historialEPPrevio];
+const indiceEPP = new Map();
 const indiceTexto = {};
 
 const ELEMENT_IDS = [
@@ -41,25 +52,25 @@ const ELEMENT_IDS = [
   'popup',
   'tabla-historial',
   'overlay',
+  'editFoto',
   'editId',
   'editNombre',
+  'editCantidad',
   'editMarca',
-  'editOrdenCompra',
-  'editTamano',
-  'editNoSerie',
-  'editEstado',
-  'editColor',
+  'editModelo',
   'editTipo',
+  'editClase',
+  'editTalla',
   'editFecha',
-  'editDescripcion',
-  'editEstatus',
+  'editOrdenCompra',
+  'editfechaRegistro'
 ];
 
 function inicializar() {
   inicializarCache();
   asignarEventos();
   crearIndices();
-  generarTablaHistorial(historialAlmacen);
+  generarTablaHistorial(historialEPP);
 }
 
 let elementosCache = {};

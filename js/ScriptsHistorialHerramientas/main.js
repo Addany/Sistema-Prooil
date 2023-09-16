@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', inicializar);
 
+function verificarNIP(nip) {
+  return nip === "1234"; 
+}
 
 function crearIndices() {
   console.time("miFuncion");

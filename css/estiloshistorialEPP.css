@@ -1,0 +1,217 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.imagen-epp {
+  visibility: visible; /* Asegúrate de que la imagen es visible */
+  opacity: 0.8; /* Ajusta según sea necesario */
+}
+
+.form-buscar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.form-buscar input, .form-buscar select, .form-buscar button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.form-buscar button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.form-buscar button:hover {
+  background: #45a049;
+}
+
+/* Estilos de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Estilos para los botones de Acciones */
+.accion-button {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  margin-bottom: 0.1rem;
+}
+
+.accion-button:hover {
+  background-color: #45a049;
+}
+
+
+
+#popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  z-index: 1000; /* Asegúrate de que el popup esté por encima del overlay */
+}
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Asegúrate de que el overlay esté debajo del popup */
+}
+
+#popup form input {
+  width: 24rem;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+#popup form button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 0.3rem;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#popup form button:hover {
+  background-color: #45a049;
+}
+
+#popup #cancelarEdicion {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+#popup #cancelarEdicion:hover {
+  background-color: #ddd;
+}
+
+.form-buscar input, 
+.form-buscar select, 
+.form-buscar button {
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+  .form-buscar {
+    flex-direction: column;
+    align-items: stretch; 
+  }
+
+  .form-buscar p { /* Añadimos estilos para reducir el margen de p */
+    margin-top: 1px;
+    margin-bottom: 5px;
+  }
+
+  .form-buscar input, 
+  .form-buscar select {
+    width: calc(106% - 20px); /* Ajustamos el ancho para compensar el padding y border */
+    padding: 10px; /* Puedes ajustar el padding si es necesario */
+    height: 40px; 
+    margin-bottom: 5px; /* Reducimos el margen en la parte inferior para estar más cerca del texto */
+  }
+
+  .form-buscar button {
+    height: 40px; 
+    margin-bottom: 0; 
+  }
+
+  #popupEditar {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  #popupEditar form input,
+  #popupEditar form select,
+  #popupEditar form button {
+    margin-bottom: 5px; 
+  }
+}
+@media (max-width: 600px) {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead {
+    display: none; 
+  }
+
+  tbody {
+    display: block;
+  }
+
+  tr {
+    margin-bottom: 0.625rem;
+    display: block;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+
+  td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0.25em 0.5em; /* Reduzco el padding para hacer las tarjetas más pequeñas */
+    border-bottom: 1px solid #eee;
+  }
+
+  td[data-label]:before {
+    content: attr(data-label);
+    font-weight: bold;
+  }
+
+  #popupEditar {
+    max-width: 85%;
+  }
+}

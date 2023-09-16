@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', inicializar);
 
 function crearIndices() {
   console.time("miFuncion");
-  historialAlmacen.forEach((item, index) => {
-    indiceAlmacen.set(item.id, index);
+  historialEPP.forEach((item, index) => {
+    indiceEPP.set(item.id, index);
 
     Object.values(item).forEach(valor => {
       const palabras = valor.toString().toLowerCase().split(' ');
@@ -27,7 +27,7 @@ function asignarEventos() {
   const fechaFinElement = obtenerElemento('fechaFin');
   const popupElement = obtenerElemento('popup');
   const cancelarEdicionElement = obtenerElemento('cancelarEdicion');
-  const editarHerramientaFormElement = obtenerElemento('editarHerramientaForm');
+  const editarEPPFormElement = obtenerElemento('editarEPPForm');
 
   if (eliminarBusquedaElement) {
     eliminarBusquedaElement.addEventListener('click', eliminarBusqueda);
@@ -35,7 +35,7 @@ function asignarEventos() {
 
 
   if (buscadorElement) {
-    buscadorElement.oninput = () => buscarHerramienta(buscadorElement.value);
+    buscadorElement.oninput = () => buscarEPP(buscadorElement.value);
   } else {
     console.error('Elemento con ID "buscador" no encontrado');
   }
@@ -63,57 +63,56 @@ function asignarEventos() {
     });
   }
 
-  if (editarHerramientaFormElement) {
-    editarHerramientaFormElement.addEventListener("submit", event => {
+  if (editarEPPFormElement) {
+    editarEPPFormElement.addEventListener("submit", event => {
       event.preventDefault();
       manejarFormularioEdicion();
     });
   }
 }
 
-function editarHerramienta(id) {
+function editarEPP(id) {
   const nip = prompt('Introduce el NIP:');
   if (verificarNIP(nip)) {
-    const herramientaIndex = indiceAlmacen.get(Number(id)); // Convertir id a Number antes de buscar en el índice
-    if (herramientaIndex !== undefined) {
-      const herramienta = historialAlmacen[herramientaIndex];
-      setFormValues(herramienta);
+    const EPPIndex = indiceEPP.get(Number(id)); // Convertir id a Number antes de buscar en el índice
+    if (EPPIndex !== undefined) {
+      const EPP = historialEPP[EPPIndex];
+      setFormValues(EPP);
       abrirPopup();
     } else {
-      console.error(`Herramienta con ID ${id} no encontrada.`);
+      console.error(`EPP con ID ${id} no encontrada.`);
     }
   } else {
     alert('NIP incorrecto.');
   }
 }
 
-function setFormValues(herramienta) {
+function setFormValues(EPP) {
   const elementos = obtenerElementos(); 
 
-  elementos.editId.value = herramienta.id;
-  elementos.editNombre.value = herramienta.nombre;
-  elementos.editMarca.value = herramienta.marca;
-  elementos.editTamano.value = herramienta.tamaño;
-  elementos.editOrdenCompra.value = herramienta.ordenCompra;
-  elementos.editNoSerie.value = herramienta.noSerie;
-  elementos.editEstado.value = herramienta.estado;
-  elementos.editColor.value = herramienta.color;
-  elementos.editTipo.value = herramienta.tipo;
-  elementos.editFecha.value = herramienta.fechaRegistro;
-  elementos.editDescripcion.value = herramienta.descripcion;
-  elementos.editEstatus.value = herramienta.estatus;
+  elementos.editId.value = EPP.id || '';
+  elementos.editFoto.value = EPP.foto || '';
+  elementos.editNombre.value = EPP.nombre || '';
+  elementos.editCantidad.value = EPP.cantidad || '';
+  elementos.editMarca.value = EPP.marca || '';
+  elementos.editModelo.value = EPP.modelo || '';
+  elementos.editTipo.value = EPP.tipo || '';
+  elementos.editClase.value = EPP.clase || '';
+  elementos.editTalla.value = EPP.Talla || '';
+  elementos.editOrdenCompra.value = EPP.ordenCompra || '';
+  elementos.editFechaRegistro.value = EPP.fechaRegistro || ''; 
 }
-function eliminarHerramienta(id) {
+function eliminarEPP(id) {
   const nip = prompt('Introduce el NIP:');
   if (verificarNIP(nip)) {
-    const index = indiceAlmacen.get(id);
+    const index = indiceEPP.get(id);
     if (index !== undefined) {
-      historialAlmacen.splice(index, 1);
-      indiceAlmacen.delete(id); // Eliminamos el ítem del índice
-      generarTablaHistorial(historialAlmacen);
+      historialEPP.splice(index, 1);
+      indiceEPP.delete(id); // Eliminamos el ítem del índice
+      generarTablaHistorial(historialEPP);
       crearIndices(); // Actualizamos el índice después de eliminar
     } else {
-      console.error(`Herramienta con ID ${id} no encontrada.`);
+      console.error(`EPP con ID ${id} no encontrada.`);
     }
   } else {
     alert('NIP incorrecto.');
@@ -157,32 +156,30 @@ function obtenerDatosActuales() {
   // Por ahora, estoy devolviendo una lista de elementos de muestra.
   return [
     {
-      id: 101,
-      nombre: "Producto1",
-      marca: "MarcaA",
-      ordenCompra: "001",
-      tamaño: "5mm",
-      noSerie: "SER001",
-      estado: "Nuevo",
-      color: "Azul",
-      tipo: "TipoA",
-      fechaRegistro: "2023-09-01",
-      descripcion: "Descripción del producto 1",
-      estatus: "Disponible",
+      foto:"foto.png",
+      id: 12,
+      nombre: "Destornillador",
+      cantidad: "123",
+      marca: "MarcaX",
+      modelo: "Buenas",
+      tipo: "Cabezal",
+      clase: "Buenas",
+      Talla: "34",
+      ordenCompra: "324234",
+      fechaRegistro: "2023-08-05",
     },
     {
-      id: 102,
-      nombre: "Producto2",
-      marca: "MarcaB",
-      ordenCompra: "002",
-      tamaño: "10mm",
-      noSerie: "SER002",
-      estado: "Usado",
-      color: "Rojo",
-      tipo: "TipoB",
-      fechaRegistro: "2023-09-02",
-      descripcion: "Descripción del producto 2",
-      estatus: "Prestado",
+      foto:"foto.png",
+      id: 12,
+      nombre: "Destornillador",
+      cantidad: "123",
+      marca: "MarcaX",
+      modelo: "Buenas",
+      tipo: "Cabezal",
+      clase: "Buenas",
+      Talla: "34",
+      ordenCompra: "324234",
+      fechaRegistro: "2023-08-05",
     },
   ];
 }
