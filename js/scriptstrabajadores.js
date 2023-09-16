@@ -201,13 +201,13 @@ function crearIndice() {
       trabajador.telefono,
       trabajador.areaTrabajo,
       trabajador.correo,
-      trabajador.estado,
+      // trabajador.estado, // Hemos quitado esto para evitar la indexación del estado
       trabajador.fechaIngreso, // Añadir fecha de ingreso también al índice
     ];
 
     valores.forEach(valor => {
       if(valor) {
-        const clave = valor.toLowerCase();
+        const clave = valor.toString().toLowerCase(); // Asegúrate de que el valor sea una cadena antes de llamar a toLowerCase()
         if (!indiceTrabajadores[clave]) {
           indiceTrabajadores[clave] = [];
         }
@@ -226,14 +226,12 @@ function buscar() {
   let resultados = new Set();
 
   if (texto) {
-    const palabrasClave = texto.split(' ');
-    palabrasClave.forEach(palabra => {
-      if (indiceTrabajadores[palabra]) {
-        indiceTrabajadores[palabra].forEach(index => {
-          resultados.add(trabajadores[index]);
-        });
-      }
-    });
+    // Asumiendo que tu indiceTrabajadores no incluye el estado, entonces deberías ser capaz de buscar por texto de la misma manera
+    if (indiceTrabajadores[texto]) {
+      indiceTrabajadores[texto].forEach(index => {
+        resultados.add(trabajadores[index]);
+      });
+    }
   } else {
     trabajadores.forEach(trabajador => resultados.add(trabajador));
   }
@@ -255,7 +253,8 @@ function buscar() {
       coincideFecha = coincideFecha && (fechaTrabajador <= fechaFin);
     }
 
-    const coincideCategoria = categoriaVal === "todos" || (trabajador.estado === categoriaVal);
+    // Cambiado 'estado' a 'categoria' para filtrar por categoría en lugar de estado
+    const coincideCategoria = categoriaVal === "todos" || (trabajador.categoria === categoriaVal);
 
     return coincideFecha && coincideCategoria;
   });

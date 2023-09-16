@@ -7,7 +7,7 @@ function generarTablaHistorial(data) {
   data.forEach((item, index) => {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
-    <td data-label="Foto"><img src="${item.foto}" alt="Foto de EPP" class="imagen-epp" /></td>
+    <td data-label="Foto"><img src="${item.foto}" alt="Foto de ${item.nombre}" class="imagen-epp" /></td>
     <td data-label="ID">${item.id}</td>
     <td data-label="Nombre">${item.nombre}</td>
     <td data-label="Cantidad">${item.cantidad}</td>
@@ -33,15 +33,22 @@ function generarTablaHistorial(data) {
   historialEPPrevio = JSON.parse(JSON.stringify(data)); // Punto 6: considera la necesidad de esta línea
 }
 
+let nuevaFoto;  
 
-function buscarHerramienta(texto) {
-  // Punto 3: validación básica de la entrada
-  if (!texto || typeof texto !== 'string') {
-    console.error('Entrada no válida');
-    return;
+function actualizarFoto(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      nuevaFoto = e.target.result;  
+    };
+    reader.readAsDataURL(file);
   }
+}
 
-  if (texto.trim() === "") {
+
+function buscarEPP(texto) {
+  if (!texto || typeof texto !== 'string' || texto.trim() === "") {
     generarTablaHistorial(historialEPP);
     return;
   }

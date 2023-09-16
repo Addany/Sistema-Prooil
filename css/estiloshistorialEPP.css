@@ -4,11 +4,6 @@ body {
   padding: 0;
 }
 
-.imagen-epp {
-  visibility: visible; /* Asegúrate de que la imagen es visible */
-  opacity: 0.8; /* Ajusta según sea necesario */
-}
-
 .form-buscar {
   display: flex;
   justify-content: space-between;
@@ -31,6 +26,19 @@ body {
 .form-buscar button:hover {
   background: #45a049;
 }
+
+#editFoto {
+  width: 50px; /* Asegúrate de que estas dimensiones sean iguales */
+  height: 50px; /* para obtener una forma circular perfecta */
+  border-radius: 50%;
+  object-fit: cover; /* Esto hará que la imagen llene el contenedor sin deformarse */
+}
+.imagen-epp {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
 
 /* Estilos de la tabla */
 table {
@@ -80,12 +88,13 @@ tr:nth-child(even) {
   left: 50%;
   transform: translate(-50%, -50%);
   background: #fff;
-  padding: 20px;
+  padding: 10px 20px; /* Reducido padding vertical a 10px */
   border-radius: 5px;
   width: 100%;
   max-width: 400px;
-  z-index: 1000; /* Asegúrate de que el popup esté por encima del overlay */
+  z-index: 1000; 
 }
+
 #overlay {
   display: none;
   position: fixed;
@@ -100,7 +109,7 @@ tr:nth-child(even) {
 #popup form input {
   width: 24rem;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px; /* Reducido margen inferior a 5px */
   border-radius: 5px;
   border: 1px solid #ddd;
 }
@@ -214,4 +223,21 @@ tr:nth-child(even) {
   #popupEditar {
     max-width: 85%;
   }
+
+  #popup {
+    max-width: 90%; 
+    padding: 10px; 
+  }
+  
+  #popup form input {
+    width: calc(100% - 20px); /* Ajusta el ancho de los inputs para que se adapte bien */
+    padding: 8px; 
+    margin-bottom: 5px; 
+  }
+
+  #popup form button {
+    padding: 10px; 
+    font-size: 14px; /* Ajusta el tamaño de fuente para una mejor visualización */
+  }
+  
 }
