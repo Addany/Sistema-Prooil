@@ -26,7 +26,6 @@ body {
 .form-buscar button:hover {
   background: #45a049;
 }
-
 #editFoto {
   width: 50px; /* Asegúrate de que estas dimensiones sean iguales */
   height: 50px; /* para obtener una forma circular perfecta */
@@ -65,7 +64,6 @@ tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Estilos para los botones de Acciones */
 .accion-button {
   padding: 5px;
   border-radius: 5px;
@@ -78,7 +76,6 @@ tr:nth-child(even) {
 .accion-button:hover {
   background-color: #45a049;
 }
-
 
 
 #popup {
@@ -139,12 +136,6 @@ tr:nth-child(even) {
 
 #popup #cancelarEdicion:hover {
   background-color: #ddd;
-}
-
-.form-buscar input, 
-.form-buscar select, 
-.form-buscar button {
-  box-sizing: border-box;
 }
 
 

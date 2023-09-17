@@ -20,15 +20,19 @@
                         <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
                     </div>
                     <div class="input-group">
-                        <label for="fecha">Buscar por fecha:</label>
-                        <input type="date" id="fecha" onchange="buscar()">
+                        <label for="fechaInicio">Fecha inicio:</label>
+                        <input type="date" id="fechaInicio" onchange="buscar()">
+                    </div>
+                    <div class="input-group">
+                        <label for="fechaFin">Fecha final:</label>
+                        <input type="date" id="fechaFin" onchange="buscar()">
                     </div>
                     <div class="input-group">
                         <label for="categoria">Categoría:</label>
                         <select id="categoria" onchange="buscar()">
                             <option value="todos">Todos</option>
-                            <option value="Prestado">Prestado</option>
-                            <option value="Devuelto">Devuelto</option>
+                            <option value="Concretado">Concretado</option>
+                            <option value="No concretado">No concretado</option>
                         </select>
                         <button type="button" onclick="buscar()">Buscar</button>
                     </div>
@@ -37,13 +41,13 @@
             <table id="tabla-historial">
                 <thead>
                     <tr>
-                        <th>Estatus</th>
                         <th>Folio</th>
                         <th>Nombre del Trabajador</th>
                         <th>Fecha de Transacción</th>
                         <th>Fecha de Devolución</th>
                         <th>Quien Autorizó</th>
                         <th>Observaciones</th>
+                        <th>Estado del proceso del prestamo</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -58,8 +62,6 @@
     <div id="popupEditar">
         <form id="editarPrestamoForm"> 
             <h3>Editar datos</h3>
-            <input type="hidden" id="editId">
-            <input type="text" id="editEstatus" placeholder="Estatus">
             <input type="text" id="editFolio" placeholder="Folio">
             <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
             <input type="text" id="editNombreHerramienta" placeholder="Nombre de la Herramienta"> 
@@ -67,6 +69,7 @@
             <input type="text" id="editFechaDevolucion" placeholder="Fecha de Devolución"> 
             <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
             <input type="text" id="editObservaciones" placeholder="Observaciones">
+            <input type="text" id="editestado" placeholder="Estado del prestamo">
             <button type="submit">Guardar</button>
             <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
         </form>
@@ -81,10 +84,19 @@
             </ul>
             <label for="observaciones">Observaciones:</label>
             <textarea id="observaciones" placeholder="Ingrese observaciones aquí..."></textarea>
-            <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  
+            <div class="button-group">
+                <button type="button" onclick="cerrarPopup('popupVer')">Concretar prestamo</button> 
+                <button type="button" onclick="cerrarPopup('popupVer')">Cancelar</button> 
+            </div> 
         </form>
     </div>
 
-    <script src="js/scriptshistorial.js"></script>
+    <script src="js/ScriptsHistorialprestamo/domHelpers.js"></script>
+    <script src="js/ScriptsHistorialprestamo/helpers.js"></script>
+    <script src="js/ScriptsHistorialprestamo/data.js"></script>
+    <script src="js/ScriptsHistorialprestamo/tablaHistorial.js"></script>
+    <script src="js/ScriptsHistorialprestamo/popup.js"></script>
+    <script src="js/ScriptsHistorialprestamo/main.js"></script>
+
 </body>
 </html>

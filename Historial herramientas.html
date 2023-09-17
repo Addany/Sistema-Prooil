@@ -9,42 +9,59 @@
 <body>
 
   <form class="form-buscar">
-    <p>Busqueda por texto:</p>
-    <input type="text" id="buscador" placeholder="Buscar por texto o ID">
-    <p>Fecha Inicio:</p>
-    <input type="date" id="fechaInicio">
-    <p>Fecha Fin:</p>
-    <input type="date" id="fechaFin">
-    <p>Busqueda por categoria:</p>
-    <select id="categoria">
+    <div class="input-group">
+      <label for="buscador">Busqueda por texto:</label>
+      <input type="text" id="buscador" placeholder="Buscar por texto o ID">
+    </div>
+
+    <div class="input-group">
+      <label for="fechaInicio">Fecha Inicio:</label>
+      <input type="date" id="fechaInicio">
+    </div>
+
+    <div class="input-group">
+      <label for="fechaFin">Fecha Fin:</label>
+      <input type="date" id="fechaFin">
+    </div>
+
+    <div class="input-group">
+      <label for="categoria">Busqueda por categoria:</label>
+      <select id="categoria">
         <option value="todos">Todos</option>
         <option value="Prestado">Prestado</option>
         <option value="Devuelto">Devuelto</option>
-    </select>
-    <button type="button" id="eliminarBusqueda">Eliminar busqueda</button>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <button type="button" id="eliminarBusqueda">Eliminar busqueda</button>
+    </div>
   </form>
-  <table id="tabla-historial">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Marca</th>
-        <th>Orden de compra</th>
-        <th>Tamaño</th>
-        <th>No. Serie</th>
-        <th>Estado</th>
-        <th>Color</th>
-        <th>Tipo</th>
-        <th>Fecha de Registro</th>
-        <th>Descripción</th>
-        <th>Estatus</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Aquí se insertarán las filas -->
-    </tbody>
-  </table>
+
+  <section class="seccion-tabla">
+    <table id="tabla-historial">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Marca</th>
+          <th>Orden de compra</th>
+          <th>Tamaño</th>
+          <th>No. Serie</th>
+          <th>Estado</th>
+          <th>Color</th>
+          <th>Tipo</th>
+          <th>Fecha de Registro</th>
+          <th>Descripción</th>
+          <th>Estatus</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se insertarán las filas -->
+      </tbody>
+    </table>
+  </section>
 
   <div id="overlay"></div>
   <div id="popup" >
