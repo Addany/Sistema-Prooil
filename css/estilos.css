@@ -4,6 +4,9 @@ body {
   overflow-x: hidden;
 }
 
+#page-container {
+  display: none;
+}
 
 .welcome-text {
   text-align: center;

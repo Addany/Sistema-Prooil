@@ -20,61 +20,64 @@
     </header>
 
 
+    <div id="page-container">
+        <div id="navbar"></div>
+        <script>
+            $('#navbar').load('Navegacion/navbar.html', function() {
+              $.getScript("Navegacion/navbar.js", function() {
+                $('#page-container').fadeIn();
+              });
+            });
+          </script>
+        
+        <main>
+            <section class="container">
+                <div class="form-container">
+                    <h1>Formulario de Préstamo</h1>
+                    <form id="loanForm">
+                        <label for="workerName">Nombre del Trabajador:</label>
+                        <select id="workerName" class="workerName" required>
+                            <option value="">Selecciona un trabajador</option>
+                            <!-- Las opciones se llenarán desde la base de datos -->
+                        </select>
 
-    <div id="navbar"></div>
-    <script>
-        $('#navbar').load('Navegacion/navbar.html', function() {
-          $.getScript("Navegacion/navbar.js");
-        });
-    </script>
-    
-    <main>
-        <section class="container">
-            <div class="form-container">
-                <h1>Formulario de Préstamo</h1>
-                <form id="loanForm">
-                    <label for="workerName">Nombre del Trabajador:</label>
-                    <select id="workerName" class="workerName" required>
-                        <option value="">Selecciona un trabajador</option>
-                        <!-- Las opciones se llenarán desde la base de datos -->
-                    </select>
-
-                    <div class="scanned-tools">
-                        <br>
-                        <Label>Herramientas Escaneadas:</Label>
-                        <div id="tableContainer" class="table-container">
-                            <table id="scanned-tools-table">
-                                <thead>
-                                    <tr>
-                                        <th>ID de Herramienta</th>
-                                        <th>Nombre de Herramienta</th>
-                                        <th>Estado de Herramienta</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="scanned-tools-tbody">
-                                        <!-- Las herramientas escaneadas se mostrarán aquí -->
-                                </tbody>
-                            </table>
+                        <div class="scanned-tools">
+                            <br>
+                            <Label>Herramientas Escaneadas:</Label>
+                            <div id="tableContainer" class="table-container">
+                                <table id="scanned-tools-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID de Herramienta</th>
+                                            <th>Nombre de Herramienta</th>
+                                            <th>Estado de Herramienta</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="scanned-tools-tbody">
+                                            <!-- Las herramientas escaneadas se mostrarán aquí -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
 
-                    <label for="observations">Observaciones:</label>
-                    <textarea id="observations"></textarea>
+                        <label for="observations">Observaciones:</label>
+                        <textarea id="observations"></textarea>
 
-                    <div class="loan-buttons">
-                        <button type="submit">Solicitar Préstamo</button>
-                        <button type="button" onclick="cancelLoan()">Limpiar campo</button>
-                    </div>
-                </form>
-            </div>
+                        <div class="loan-buttons">
+                            <button type="submit">Solicitar Préstamo</button>
+                            <button type="button" onclick="cancelLoan()">Limpiar campo</button>
+                        </div>
+                    </form>
+                </div>
 
-            <div class="video-container">
-                <div id="cameraOff">Camara apagada</div>
-                <video id="preview"></video>
-            </div>
-        </section>
-    </main>
+                <div class="video-container">
+                    <div id="cameraOff">Camara apagada</div>
+                    <video id="preview"></video>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

@@ -7,6 +7,12 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#page-container {
+  display: none;
 }
 
 /* Estilos para el contenedor principal */
@@ -167,7 +173,7 @@ body {
 #scanned-tools-table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color: #f2f2f2;
   color: black;
   font-weight: normal; /* agrega esta línea */

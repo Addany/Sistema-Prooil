@@ -9,6 +9,10 @@ body {
   min-height: 100vh;
 }
 
+#page-container {
+  display: none;
+}
+
 .close-button {
   position: absolute;
   top: 10px;

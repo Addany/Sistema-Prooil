@@ -28,5 +28,3 @@ $(document).ready(function() {
   });
 });
 
-
-console.log("navbar.js cargado");
