@@ -14,85 +14,89 @@
     <header>
         <!-- Barra de navegación aquí -->
     </header>
+    <div id="page-container">
+        <main>
 
-    <main>
+            <div id="navbar"></div>
 
-        <div id="navbar"></div>
+            <script>
+                $('#navbar').load('Navegacion/navbar.html', function() {
+                  $.getScript("Navegacion/navbar.js", function() {
+                    $('#page-container').fadeIn();
+                  });
+                });
+              </script>
+              
+            <section class="container">
+                <div class="form-container">
+                    <form class="form-buscar">
+                        <div class="input-group">
+                            <label for="buscador">Buscar por texto:</label>
+                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                        </div>
+                        <div class="input-group">
+                            <label for="fechaInicio">Fecha inicio:</label>
+                            <input type="date" id="fechaInicio" onchange="buscar()">
+                        </div>
+                        <div class="input-group">
+                            <label for="fechaFin">Fecha final:</label>
+                            <input type="date" id="fechaFin" onchange="buscar()">
+                        </div>
+                        <div class="input-group">
+                            <label for="categoria">Categoría:</label>
+                            <select id="categoria" onchange="buscar()">
+                                <option value="todos">Todos</option>
+                                <option value="Concretado">Concretado</option>
+                                <option value="No concretado">No concretado</option>
+                            </select>
+                            <button type="button" onclick="buscar()">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+                <table id="tabla-historial">
+                    <thead>
+                        <tr>
+                            <th>Folio</th>
+                            <th>Fecha de Transacción</th>
+                            <th>Trabajador solicitante</th>
+                            <th>Quien Autorizó</th>
+                            <th>Observaciones</th>
+                            <th>Estado del proceso del prestamo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Las filas de la tabla se generarán aquí -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
 
-        <script>
-            $('#navbar').load('Navegacion/navbar.html', function() {
-            $.getScript("Navegacion/navbar.js");
-            });
-        </script>
-        <section class="container">
-            <div class="form-container">
-                <form class="form-buscar">
-                    <div class="input-group">
-                        <label for="buscador">Buscar por texto:</label>
-                        <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
-                    </div>
-                    <div class="input-group">
-                        <label for="fechaInicio">Fecha inicio:</label>
-                        <input type="date" id="fechaInicio" onchange="buscar()">
-                    </div>
-                    <div class="input-group">
-                        <label for="fechaFin">Fecha final:</label>
-                        <input type="date" id="fechaFin" onchange="buscar()">
-                    </div>
-                    <div class="input-group">
-                        <label for="categoria">Categoría:</label>
-                        <select id="categoria" onchange="buscar()">
-                            <option value="todos">Todos</option>
-                            <option value="Concretado">Concretado</option>
-                            <option value="No concretado">No concretado</option>
-                        </select>
-                        <button type="button" onclick="buscar()">Buscar</button>
-                    </div>
-                </form>
-            </div>
-            <table id="tabla-historial">
-                <thead>
-                    <tr>
-                        <th>Folio</th>
-                        <th>Fecha de Transacción</th>
-                        <th>Trabajador solicitante</th>
-                        <th>Quien Autorizó</th>
-                        <th>Observaciones</th>
-                        <th>Estado del proceso del prestamo</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Las filas de la tabla se generarán aquí -->
-                </tbody>
-            </table>
-        </section>
-    </main>
+        <div id="overlay"></div>
+        <div id="popupEditar">
+            <form id="editarPrestamoForm"> 
+                <h3>Editar datos</h3>
+                <input type="text" id="editFolio" placeholder="Folio">
+                <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
+                <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
+                <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
+                <input type="text" id="editObservaciones" placeholder="Observaciones">
+                <input type="text" id="editEstadoproceso" placeholder="Estado">
+                <button type="submit">Guardar</button>
+                <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
+            </form>
+        </div>
 
-    <div id="overlay"></div>
-    <div id="popupEditar">
-        <form id="editarPrestamoForm"> 
-            <h3>Editar datos</h3>
-            <input type="text" id="editFolio" placeholder="Folio">
-            <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
-            <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
-            <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
-            <input type="text" id="editObservaciones" placeholder="Observaciones">
-            <input type="text" id="editEstadoproceso" placeholder="Estado">
-            <button type="submit">Guardar</button>
-            <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
-        </form>
-    </div>
-
-    <div id="popupVer" class="popup">
-        <form id="verPrestamoForm"> 
-            <h3>Detalles de la entrega</h3>
-            <label>EPP entregado:</label>
-            <ul id="listaHerramientas">
-                <!-- Lista de herramientas con checkbox -->
-            </ul>
-            <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  
-        </form>
+        <div id="popupVer" class="popup">
+            <form id="verPrestamoForm"> 
+                <h3>Detalles de la entrega</h3>
+                <label>EPP entregado:</label>
+                <ul id="listaHerramientas">
+                    <!-- Lista de herramientas con checkbox -->
+                </ul>
+                <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  
+            </form>
+        </div>
     </div>
 
     <script src="js/ScriptsHistorialentregas/domHelpers.js"></script>

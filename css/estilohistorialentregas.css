@@ -5,6 +5,10 @@ body {
   padding-top: 58px;
 }
 
+#page-container {
+  display: none;
+}
+
 .form-buscar {
   display: flex;
   justify-content: space-between;

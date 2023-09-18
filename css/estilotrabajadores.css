@@ -5,12 +5,17 @@ body {
   padding-top: 58px;
 }
 
+#page-container {
+  display: none;
+}
+
 .form-buscar {
   display: flex;
   justify-content: space-between;
   padding: 20px;
   background: #f1f1f1;
 }
+
 
 .form-buscar input, .form-buscar select, .form-buscar button {
   padding: 10px;
@@ -57,16 +62,19 @@ tr:nth-child(even) {
 }
 
 .accion-button {
-  padding: 5px;
+  padding: 7px;
   border-radius: 5px;
   border: none;
-  background-color: #0F393B;
+  background-color: #0F393B; /* Color de fondo verde */
   color: white;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.2rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .accion-button:hover {
-  background-color: #194d50;
+  background-color: #194d50; /* Color de fondo un poco más oscuro cuando se pasa el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más profunda cuando se pasa el ratón */
 }
 
 #popupEditar {
