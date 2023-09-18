@@ -4,8 +4,8 @@ body, html {
 }
 
 
-
 body {
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
@@ -13,6 +13,8 @@ body {
   min-height: 100vh;
   margin: 0;
   background-color: #f0f4f8;
+  padding-top: 70px;
+  padding-bottom: 15px;
 }
 
 .container {
@@ -88,12 +90,12 @@ h1 {
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
-  background-color: #007BFF;
+  background-color: #0F393B;
   transition: background-color 0.3s ease;
 }
 
 .registrar-button:hover {
-  background-color: #0056b3;
+  background-color: #194d50;
 }
 
 /* Estilo para el select */
@@ -129,7 +131,7 @@ h1 {
 
 @media (max-width: 768px) {
   body {
-    padding: 0; /* Asegurarse de que no hay padding extra alrededor del body */
+    padding-top: 250px; /* Ajusta este valor según lo necesites */
   }
 
   .container {

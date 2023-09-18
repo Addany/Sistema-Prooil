@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de Préstamos y Devoluciones</title>
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/estilohistorial.css">
+    <link rel="stylesheet" href="css/estilohistorialentregas.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -13,6 +16,14 @@
     </header>
 
     <main>
+
+        <div id="navbar"></div>
+
+        <script>
+            $('#navbar').load('Navegacion/navbar.html', function() {
+            $.getScript("Navegacion/navbar.js");
+            });
+        </script>
         <section class="container">
             <div class="form-container">
                 <form class="form-buscar">
@@ -75,13 +86,11 @@
 
     <div id="popupVer" class="popup">
         <form id="verPrestamoForm"> 
-            <h3>Detalles del Préstamo</h3>
-            <label>Herramientas Prestadas:</label>
+            <h3>Detalles de la entrega</h3>
+            <label>EPP entregado:</label>
             <ul id="listaHerramientas">
                 <!-- Lista de herramientas con checkbox -->
             </ul>
-            <label for="observaciones">Observaciones:</label>
-            <textarea id="observaciones" placeholder="Ingrese observaciones aquí..."></textarea>
             <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  
         </form>
     </div>

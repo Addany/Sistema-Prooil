@@ -39,15 +39,14 @@ function generarTablaHistorial(data) {
   async function verHerramienta(folio) {
     try {
       await solicitarNIP();
-  
+
       const registro = historialPrestamo.find(item => item.folio === folio);
-  
+
       if (registro) {
         const listaHerramientas = document.getElementById('listaHerramientas');
-        listaHerramientas.innerHTML = registro.nombreHerramienta.map((herramienta, index) => `
+        listaHerramientas.innerHTML = registro.nombreHerramienta.map((herramienta) => `
             <li>
-                <input type="checkbox" id="herramienta-${registro.folio}-${index}">
-                <label for="herramienta-${registro.folio}-${index}">${herramienta}</label>
+                ${herramienta}
             </li>
         `).join('');
         abrirPopup('popupVer');
@@ -57,7 +56,7 @@ function generarTablaHistorial(data) {
     } catch (error) {
       console.error(error);
     }
-  }
+}
   
   async function editarPrestamoForm(folio) {
     try {
