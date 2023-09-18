@@ -2,6 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  padding-top: 58px;
 }
 
 .form-buscar {
@@ -18,14 +19,15 @@ body {
 }
 
 .form-buscar button {
-  background: #4CAF50;
+  background: #0F393B;
   color: white;
   border: none;
 }
 
 .form-buscar button:hover {
-  background: #45a049;
+  background: #194d50;
 }
+
 table {
   transition: all 0.3s;
   width: 100%;
@@ -35,18 +37,18 @@ table {
 }
 
 table tr:hover {
-  background-color: #f1f5f8;
+  background-color: #194d5011;
 }
 
 th, 
 td {
   padding: 8px;
-  text-align: left;
+  text-align: center;
   border: 1px solid #ddd;
 }
 
 th {
-  background-color: #4CAF50;
+  background-color: #0F393B;
   color: white;
 }
 
@@ -58,13 +60,13 @@ tr:nth-child(even) {
   padding: 5px;
   border-radius: 5px;
   border: none;
-  background-color: #4CAF50;
+  background-color: #0F393B;
   color: white;
   margin-bottom: 0.1rem;
 }
 
 .accion-button:hover {
-  background-color: #45a049;
+  background-color: #194d50;
 }
 
 #popupEditar {

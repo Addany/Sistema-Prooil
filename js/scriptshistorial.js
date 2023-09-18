@@ -1,6 +1,5 @@
 const historialPrestamo = [
   {
-      estatus: "Prestado",
       folio: "12345",
       nombreTrabajador: "Juan Perez",
       fechaTransaccion: "2023-08-03",
@@ -10,7 +9,6 @@ const historialPrestamo = [
       nombreHerramienta: ["Taladro", "Martillo"],
   },
   {
-    estatus: "Prestado",
     folio: "237584",
     nombreTrabajador: "Lopez Addan",
     fechaTransaccion: "2023-08-01",
@@ -29,7 +27,6 @@ function generarTablaHistorial(data) {
   data.forEach(item => {
     const newRow = tabla.insertRow();
     newRow.innerHTML = `
-          <td>${item.estatus}</td>
           <td>${item.folio}</td>
           <td>${item.nombreTrabajador}</td>
           <td>${item.fechaTransaccion}</td>
@@ -134,7 +131,6 @@ function editarPrestamoForm(folio) {
 
   if (registro) {
       document.getElementById("editId").value = registro.folio;
-      document.getElementById("editEstatus").value = registro.estatus;
       document.getElementById("editFolio").value = registro.folio;
       document.getElementById("editNombreDelTrabajador").value = registro.nombreTrabajador; // CORRECCIÓN: cambio en el nombre del id
       document.getElementById("editNombreHerramienta").value = registro.nombreHerramienta; // CORRECCIÓN: cambio en el nombre del id

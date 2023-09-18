@@ -3,6 +3,10 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 /* Estilos para el contenedor principal */
@@ -19,7 +23,7 @@ body {
   max-width: 400px;
   padding: 20px;
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 26px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -59,11 +63,11 @@ body {
 }
 
 .loan-buttons button:nth-child(1) {
-  background-color: #dc3545;
+  background-color: #C8A21A;
 }
 
 .loan-buttons button:nth-child(2) {
-  background-color: #28a745;
+  background-color: #0F393B;
 }
 
 /* Estilos para el contenedor de video */
@@ -109,30 +113,6 @@ body {
   cursor: pointer;
 }
 
-/* Estilos para los botones de escaneo */
-.scan-buttons {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 10px;
-}
-
-.scan-buttons button {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-}
-
-.scan-buttons button:nth-child(1) {
-  background-color: #007bff;
-}
-
-.scan-buttons button:nth-child(2) {
-  background-color: #dc3545;
-}
 
 /* Estilo para el mensaje de cámara apagada */
 .camera-off {

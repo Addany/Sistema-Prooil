@@ -2,6 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  padding-top: 58px;
 }
 
 .form-buscar {
@@ -18,13 +19,13 @@ body {
 }
 
 .form-buscar button {
-  background: #4CAF50;
+  background: #0F393B;
   color: white;
   border: none;
 }
 
 .form-buscar button:hover {
-  background: #45a049;
+  background: #194d50;
 }
 
 /* Estilos de la tabla */
@@ -43,8 +44,12 @@ th, td {
   text-align: left;
 }
 
+table tr:hover {
+  background-color: #194d5011;
+}
+
 th {
-  background-color: #4CAF50;
+  background-color: #0F393B;
   color: white;
 }
 
@@ -52,20 +57,18 @@ tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Estilos para los botones de Acciones */
 .accion-button {
   padding: 5px;
   border-radius: 5px;
   border: none;
-  background-color: #4CAF50;
+  background-color: #0F393B;
   color: white;
   margin-bottom: 0.1rem;
 }
 
 .accion-button:hover {
-  background-color: #45a049;
+  background-color: #194d50;
 }
-
 
 
 #popup {
@@ -106,12 +109,12 @@ tr:nth-child(even) {
   border-radius: 5px;
   border: none;
   margin-bottom: 0.3rem;
-  background-color: #4CAF50;
+  background-color: #0F393B;
   color: white;
 }
 
 #popup form button:hover {
-  background-color: #45a049;
+  background-color: #194d50;
 }
 
 #popup #cancelarEdicion {
@@ -125,12 +128,6 @@ tr:nth-child(even) {
 
 #popup #cancelarEdicion:hover {
   background-color: #ddd;
-}
-
-.form-buscar input, 
-.form-buscar select, 
-.form-buscar button {
-  box-sizing: border-box;
 }
 
 

@@ -12,7 +12,9 @@ body {
   background: #f1f1f1;
 }
 
-.form-buscar input, .form-buscar select, .form-buscar button {
+.form-buscar input,
+.form-buscar select,
+.form-buscar button {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ddd;
@@ -40,14 +42,14 @@ th,
 td {
   border: 1px solid #ddd;
 }
+table tr:hover {
+  background-color: #194d5011;
+}
 
 th,
 td {
   padding: 8px;
-  text-align: left;
-}
-table tr:hover {
-  background-color: #194d5011;
+  text-align: center;
 }
 
 th {
@@ -59,18 +61,20 @@ tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Estilos para los botones de Acciones */
 .accion-button {
-  padding: 5px;
+  padding: 7px;
   border-radius: 5px;
   border: none;
-  background-color: #0F393B;
+  background-color: #0F393B; /* Color de fondo verde */
   color: white;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.2rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .accion-button:hover {
-  background-color: #194d50;
+  background-color: #194d50; /* Color de fondo un poco más oscuro cuando se pasa el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más profunda cuando se pasa el ratón */
 }
 
 #popupEditar {
@@ -85,6 +89,13 @@ tr:nth-child(even) {
   width: 100%;
   max-width: 400px;
   z-index: 1000;
+  transform: translate(-50%, -60%);
+}
+
+#popupEditar, #popupVer {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
 #popupVer {
@@ -101,7 +112,6 @@ tr:nth-child(even) {
   z-index: 1000;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-
 
 #overlay {
   display: none;
@@ -154,55 +164,34 @@ tr:nth-child(even) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%; /* Asegurarse de que el formulario tenga un ancho del 100% para evitar que los elementos se salgan */
-  padding: 10px; /* Añade un poco de padding alrededor del contenido */
 }
 
 #popupVer h2 {
   margin-bottom: 10px;
-  width: 100%; /* Ajusta el ancho del elemento h2 */
-  text-align: center; /* Centra el texto del h2 */
 }
 
 #popupVer label {
   margin-bottom: 5px;
-  width: 100%; /* Ajusta el ancho del label */
 }
 
 #popupVer #listaHerramientas {
   margin-bottom: 10px;
-  padding-left: 0;
-  list-style-type: none;
-  width: 100%; /* Ajusta el ancho de la lista de herramientas */
+  padding-left: 20px; /* Añadí padding a la izquierda para las viñetas */
+  list-style-type: disc; /* Cambié a viñetas disc */
 }
 
-#popupVer textarea {
-  width: calc(100% - 20px); /* Resta el padding de ambos lados para evitar desbordamientos */
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  resize: vertical; /* Permite al usuario redimensionar el textarea solo verticalmente */
-}
-
-#popupVer .button-group {
-  display: flex;
-  justify-content: space-between;
+#popupVer button {
   width: 100%;
-  padding: 0 10px; /* Añade padding a los lados para evitar que los botones toquen los bordes */
-}
-
-#popupVer .button-group button {
-  width: 48%; /* Ajusta el ancho para permitir espacio entre los botones */
   padding: 10px;
+  margin-left: 0; /* Ajusté el margen izquierdo a 0 */
   border-radius: 5px;
   border: none;
+  margin-bottom: 0.3rem;
   background-color: #008CBA;
   color: white;
-  text-align: center; /* Alinea el texto al centro del botón */
 }
 
-#popupVer .button-group button:hover {
+#popupVer button:hover {
   background-color: #007B9E;
 }
 
