@@ -157,6 +157,12 @@ tr:nth-child(even) {
   background-color: #ddd;
 }
 
+#popupEditar, #popupVer {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
 #popupVer form {
   display: flex;
   flex-direction: column;

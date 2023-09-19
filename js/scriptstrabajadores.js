@@ -181,13 +181,17 @@ function eliminarBusqueda() {
 }
 
 function abrirPopup(id) {
-  elementos[id].style.display = 'block';
-  elementos.overlay.style.display = 'block';
+  elementos[id].style.visibility = 'visible';
+  elementos[id].style.opacity = '1';
+  elementos.overlay.style.visibility = 'visible';
+  elementos.overlay.style.opacity = '1';
 }
 
 function cerrarPopup(id) {
-  elementos[id].style.display = 'none';
-  elementos.overlay.style.display = 'none';
+  elementos[id].style.visibility = 'hidden';
+  elementos[id].style.opacity = '0';
+  elementos.overlay.style.visibility = 'hidden';
+  elementos.overlay.style.opacity = '0';
 }
 
 let indiceTrabajadores = {};
