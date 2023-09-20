@@ -40,13 +40,13 @@
                 <input type="date" id="fechaFin" onchange="buscar()">
               </div>
               <div class="input-group">
-                <label for="categoria">Busqueda por categoria:</label>
+                <label for="categoria">Categoria:</label>
                 <select id="categoria" onchange="buscar()">
                   <option value="todos">Todos</option>
                   <option value="casco contra impacto">Casco contra impacto</option>
                   <option value="capucha">Capucha</option>
                 </select>
-                <button type="button" id="eliminarBusqueda" onclick="buscar()">Eliminar busqueda</button>
+                <button type="button" id="eliminarBusqueda" onclick="buscar()">Limpiar busqueda</button>
               </div>
             </form>
           </div>
@@ -77,6 +77,7 @@
       <div id="overlay"></div>
       <div id="popup">
           <form id="editarHerramientaForm">
+            <h3>Editar datos</h3>
               <img id="editFoto" src="" alt="Foto del EPP" />
                 <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
               <input type="text" id="editId" placeholder="ID">

@@ -5,14 +5,14 @@ function generarTablaHistorial(data) {
     data.forEach(item => {
         const newRow = tabla.insertRow();
         newRow.innerHTML = `
-            <td>${item.folio}</td>
-            <td>${item.nombreTrabajador}</td>
-            <td>${item.fechaTransaccion}</td>
-            <td>${item.fechaDevolucion}</td>
-            <td>${item.quienAutorizo}</td>
-            <td>${item.observaciones}</td>
-            <td>${item.estado}</td>
-            <td>
+            <td data-label="Folio">${item.folio}</td>
+            <td data-label="Nombre del Trabajador">${item.nombreTrabajador}</td>
+            <td data-label="Fecha de Transacción">${item.fechaTransaccion}</td>
+            <td data-label="Fecha de Devolución">${item.fechaDevolucion}</td>
+            <td data-label="Quien Autorizó">${item.quienAutorizo}</td>
+            <td data-label="Observaciones">${item.observaciones}</td>
+            <td data-label="Estado">${item.estado}</td>
+            <td data-label="Acciones">
                 <button class="accion-button" onclick="verHerramienta('${item.folio}')">Ver</button>
                 <button class="accion-button" onclick="editarPrestamoForm('${item.folio}')">Editar</button>
                 <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Eliminar</button>

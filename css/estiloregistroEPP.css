@@ -134,62 +134,58 @@ h1 {
 
 @media (max-width: 768px) {
   body {
-    padding-top: 250px; /* Ajusta este valor según lo necesites */
+    margin: 0; /* Igual que tu código */
+    padding-top: 60px; /* Igual que tu código */
   }
 
   .container {
-    padding: 1.5rem;
-    margin: 20px; /* Añade un margen de 20px en todas las direcciones */
-    box-sizing: border-box; /* Asegura que el padding y el margen están incluidos en el ancho del contenedor */
+    padding: 1rem; /* Igual que tu código */
+    margin: 10px; /* Igual que tu código */
+    margin-bottom: 60px; /* Añadido un margen en la parte inferior, igual que tu código */
+    width: calc(100% - 20px); /* Igual que tu código */
+    box-sizing: border-box; /* Igual que tu código */
   }
 
   h1 {
-    font-size: 1.5rem; 
-    margin-bottom: 1rem;
-    text-align: center; /* Centrar el texto del encabezado */
+    font-size: 1.4rem; /* Igual que tu código */
+    margin-bottom: 1.5rem; /* Igual que tu código */
   }
 
   .form-registro .input-section {
-    flex-direction: column;
-    align-items: center; /* Alinear los elementos al centro */
+    flex-direction: column; /* Igual que tu código */
   }
 
   .input-section .left-section,
   .input-section .right-section {
-    width: 100%;
-    margin-bottom: 1rem;
+    width: 100%; /* Igual que tu código */
+    margin-bottom: 1rem; /* Igual que tu código */
   }
 
   .input-group {
-    margin-bottom: 1.5rem; /* Aumentar el margen inferior para más espacio entre grupos de entrada */
-  }
-
-  .input-group label {
-    font-size: 1rem; /* Ajustar el tamaño de la fuente de las etiquetas para una mejor legibilidad */
-    margin-bottom: 0.5rem; /* Ajustar el margen inferior de las etiquetas */
+    margin-bottom: 1rem; /* Igual que tu código */
   }
 
   .input-group input,
   .input-group select {
-    font-size: 1rem; /* Ajustar el tamaño de la fuente de los inputs */
-    padding: 0.5rem; /* Ajustar el padding de los inputs */
+    font-size: 1rem; /* Igual que tu código */
+    padding: 0.7rem; /* Igual que tu código */
   }
 
   .file-label {
-    font-size: 1rem; 
+    font-size: 1rem; /* Igual que tu código */
   }
 
   .file-input {
-    font-size: 1rem; 
-    padding: 0.5rem; 
+    font-size: 1rem; /* Igual que tu código */
+    padding: 0.7rem; /* Igual que tu código */
   }
 
   .button-group {
-    margin-top: 0.5rem;
+    margin-top: 1rem; /* Igual que tu código */
   }
 
   .registrar-button {
-    padding: 0.5rem 1rem; /* Ajustar el padding del botón */
-    width: 100%; 
+    padding: 0.8rem 2rem; /* Igual que tu código */
+    width: 100%; /* Igual que tu código */
   }
 }

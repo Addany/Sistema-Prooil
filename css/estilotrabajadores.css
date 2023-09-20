@@ -14,6 +14,7 @@ body {
   justify-content: space-between;
   padding: 20px;
   background: #f1f1f1;
+  font-weight: bold;
 }
 
 
@@ -27,6 +28,7 @@ body {
   background: #0F393B;
   color: white;
   border: none;
+  font-weight: bold;
 }
 
 .form-buscar button:hover {
@@ -70,6 +72,7 @@ tr:nth-child(even) {
   margin-bottom: 0.2rem;
   transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  font-weight: bold;
 }
 
 .accion-button:hover {
@@ -136,6 +139,7 @@ tr:nth-child(even) {
 #popupEditar form button {
   background-color: #0F393B;
   color: white;
+  font-weight: bold;
 }
 
 #popupEditar form button:hover {
@@ -179,8 +183,8 @@ tr:nth-child(even) {
   .form-buscar input, 
   .form-buscar select, 
   .form-buscar button {
-    width: calc(106% - 20px); /* Aquí ajustamos el ancho para compensar el padding y border */
-    height: 40px; 
+    width: 100%; /* Aquí ajustamos el ancho al 100% */
+    box-sizing: border-box; /* Esto hará que el padding y el borde se incluyan en el ancho */
     margin-bottom: 10px; 
   }
 
@@ -194,12 +198,17 @@ tr:nth-child(even) {
   }
 
   #popupEditar form input,
-  #popupEditar form select,
+  #popupEditar form select {
+    width: 100%; /* Esto asegura que tanto los inputs como los selects tienen el mismo ancho */
+    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+  }
+  
   #popupEditar form button {
-    margin-bottom: 5px; 
+    width: 100%; /* Esto ajusta el ancho del botón para que coincida con los inputs/selects */
+    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+    margin-bottom: 5px; /* Añadido margen en la parte inferior para espacio entre los botones */
   }
 }
-
 @media (max-width: 600px) {
   table {
     width: 100%;
