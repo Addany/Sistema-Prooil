@@ -58,19 +58,20 @@
 
 @media screen and (max-width: 768px) {
   .nav-list {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
     flex-direction: column;
     position: absolute;
-    top: 60px;
+    top: 53px; 
     left: 0;
     width: 100%;
     background-color: #0f393b;
     text-align: center;
-    transition: top 0.7s;
+    transition: max-height 0.5s ease-in-out; /* Aquí he cambiado la propiedad de la transición */
   }
 
   .nav-list.active {
-    display: flex;
+    max-height: 500px; /* Necesitarás ajustar este valor basándote en el contenido de tu nav-list */
   }
 
   .nav-list li {

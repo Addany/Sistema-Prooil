@@ -5,13 +5,13 @@ function generarTablaHistorial(data) {
     data.forEach(item => {
         const newRow = tabla.insertRow();
         newRow.innerHTML = `
-            <td>${item.folio}</td>
-            <td>${item.fechaTransaccion}</td>
-            <td>${item.trabajadorSolicitante}</td>
-            <td>${item.quienAutorizo}</td>
-            <td>${item.observaciones}</td>
-            <td>${item.estado}</td>
-            <td>
+            <td data-label="Folio">${item.folio}</td>
+            <td data-label="Fecha de Transacción">${item.fechaTransaccion}</td>
+            <td data-label="Trabajador solicitante">${item.trabajadorSolicitante}</td>
+            <td data-label="Quien Autorizó">${item.quienAutorizo}</td>
+            <td data-label="Observaciones">${item.observaciones}</td>
+            <td data-label="Estado del proceso del entrega">${item.estado}</td>
+            <td data-label="Acciones">
                 <button class="accion-button" onclick="verHerramienta('${item.folio}')">Ver</button>
                 <button class="accion-button" onclick="editarPrestamoForm('${item.folio}')">Editar</button>
                 <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Generar documento</button>
@@ -66,9 +66,9 @@ function generarTablaHistorial(data) {
   
       if (registro) {
         document.getElementById("editFolio").value = registro.folio;
-        document.getElementById("editNombreDelTrabajador").value = registro.nombreTrabajador; // CORRECCIÓN: cambio en el nombre del id
         document.getElementById("editFechaTransaccion").value = registro.fechaTransaccion; // CORRECCIÓN: cambio en el nombre del id
-        document.getElementById("editQuienAutorizo").value = registro.quienAutorizo; // CORRECCIÓN: cambio en el nombre del id
+        document.getElementById("editQuienAutorizo").value = registro.quienAutorizo;
+        document.getElementById("edittrabajadorSolicitante").value = registro.trabajadorSolicitante; 
         document.getElementById("editObservaciones").value = registro.observaciones;
         document.getElementById("editEstadoproceso").value = registro.estado;
   

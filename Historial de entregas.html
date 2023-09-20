@@ -49,7 +49,7 @@
                                 <option value="Concretado">Concretado</option>
                                 <option value="No concretado">No concretado</option>
                             </select>
-                            <button type="button" onclick="buscar()">Buscar</button>
+                            <button type="button" onclick="buscar()">Limpiar busqueda</button>
                         </div>
                     </form>
                 </div>
@@ -61,7 +61,7 @@
                             <th>Trabajador solicitante</th>
                             <th>Quien Autorizó</th>
                             <th>Observaciones</th>
-                            <th>Estado del proceso del prestamo</th>
+                            <th>Estado del proceso del entrega</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -77,8 +77,8 @@
             <form id="editarPrestamoForm"> 
                 <h3>Editar datos</h3>
                 <input type="text" id="editFolio" placeholder="Folio">
-                <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
                 <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
+                <input type="text" id="edittrabajadorSolicitante" placeholder="Nombre del Trabajador">
                 <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
                 <input type="text" id="editObservaciones" placeholder="Observaciones">
                 <input type="text" id="editEstadoproceso" placeholder="Estado">

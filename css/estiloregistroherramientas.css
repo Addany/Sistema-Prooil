@@ -112,15 +112,19 @@ h1 {
 }
 @media (max-width: 768px) {
   body {
-    padding-top: 250px; /* Ajusta este valor según lo necesites */
+    padding-top: 240px; /* Ajusta este valor según lo necesites */
   }
 
   .container {
-    padding: 1rem;
+    padding: 0.2rem;
   }
 
   .form-registro {
     font-size: 0.9rem; /* Reduce el tamaño de la fuente un poco */
+  }
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
   }
 
   .form-registro .input-section {

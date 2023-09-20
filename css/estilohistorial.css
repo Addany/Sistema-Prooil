@@ -14,6 +14,7 @@ body {
   justify-content: space-between;
   padding: 20px;
   background: #f1f1f1;
+  font-weight: bold;
 }
 
 .form-buscar input, .form-buscar select, .form-buscar button {
@@ -26,6 +27,7 @@ body {
   background: #0F393B;
   color: white;
   border: none;
+  font-weight: bold;
 }
 
 .form-buscar button:hover {
@@ -73,6 +75,7 @@ tr:nth-child(even) {
   margin-bottom: 0.2rem;
   transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  font-weight: bold;
 }
 
 .accion-button:hover {
@@ -136,12 +139,13 @@ tr:nth-child(even) {
   border-radius: 5px;
   border: none;
   margin-bottom: 0.3rem;
-  background-color: #4CAF50;
+  background-color: #0F393B;
   color: white;
+  font-weight: bold;
 }
 
 #popupEditar  form button:hover {
-  background-color: #45a049;
+  background-color: #194d50;
 }
 
 #popupEditar #cancelarEdicion {
@@ -166,68 +170,144 @@ tr:nth-child(even) {
 #popupVer form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%; /* Asegurarse de que el formulario tenga un ancho del 100% para evitar que los elementos se salgan */
-  padding: 10px; /* Añade un poco de padding alrededor del contenido */
+  align-items: left; /* Ajustado a centro para que todos los elementos estén centrados */
+  width: 100%; 
+  padding: 10px;
 }
 
-#popupVer h2 {
-  margin-bottom: 10px;
-  width: 100%; /* Ajusta el ancho del elemento h2 */
-  text-align: center; /* Centra el texto del h2 */
-}
 
 #popupVer label {
   margin-bottom: 5px;
-  width: 100%; /* Ajusta el ancho del label */
+  width: 100%;
 }
 
 #popupVer #listaHerramientas {
   margin-bottom: 10px;
   padding-left: 0;
   list-style-type: none;
-  width: 100%; /* Ajusta el ancho de la lista de herramientas */
+  width: 100%;
 }
 
 #popupVer textarea {
-  width: calc(100% - 20px); /* Resta el padding de ambos lados para evitar desbordamientos */
+  width: calc(100% - 24px);
   padding: 10px;
-  margin-bottom: 10px;
+  margin: 0 auto 10px auto; /* Ajustado el margen para que el textarea esté centrado */
   border-radius: 5px;
   border: 1px solid #ccc;
-  resize: vertical; /* Permite al usuario redimensionar el textarea solo verticalmente */
+  resize: vertical;
 }
 
 #popupVer .button-group {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 0 10px; /* Añade padding a los lados para evitar que los botones toquen los bordes */
+  width: calc(100% - 20px); /* Ajustado el ancho para que los botones no toquen los bordes */
+  padding: 0 10px;
 }
 
 #popupVer .button-group button {
-  width: 48%; /* Ajusta el ancho para permitir espacio entre los botones */
+  width: 48%;
   padding: 10px;
   border-radius: 5px;
   border: none;
-  background-color: #008CBA;
+  background-color: #0F393B;
   color: white;
-  text-align: center; /* Alinea el texto al centro del botón */
+  text-align: center;
+  font-weight: bold;
 }
 
 #popupVer .button-group button:hover {
-  background-color: #007B9E;
+  background-color: #194d50;
 }
 
-/* Estilo responsive para dispositivos móviles */
+
 @media (max-width: 768px) {
   .form-buscar {
-      flex-direction: column;
+    flex-direction: column;
+    align-items: stretch; 
   }
 
-  .form-buscar input,
-  .form-buscar select,
+  .form-buscar input, 
+  .form-buscar select, 
   .form-buscar button {
-      margin-bottom: 10px;
+    width: 100%; /* Aquí ajustamos el ancho al 100% */
+    box-sizing: border-box; /* Esto hará que el padding y el borde se incluyan en el ancho */
+    margin-bottom: 10px; 
+  }
+
+  .form-buscar button {
+    margin-bottom: 0; 
+  }
+
+  #popupEditar {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  #popupEditar form input,
+  #popupEditar form select {
+    width: 100%; /* Esto asegura que tanto los inputs como los selects tienen el mismo ancho */
+    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+  }
+  
+  #popupEditar form button {
+    width: 100%; /* Esto ajusta el ancho del botón para que coincida con los inputs/selects */
+    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+    margin-bottom: 5px; /* Añadido margen en la parte inferior para espacio entre los botones */
+  }
+  #popupVer {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  #popupVer form textarea{
+    width: 98%; /* Esto asegura que tanto los inputs como los selects tienen el mismo ancho */
+    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+  }
+  
+  #popupVer form button {
+    width: 100%; /* Esto ajusta el ancho del botón para que coincida con los inputs/selects */
+    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+    margin-bottom: 5px; /* Añadido margen en la parte inferior para espacio entre los botones */
+  }
+}
+@media (max-width: 600px) {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead {
+    display: none; 
+  }
+
+  tbody {
+    display: block;
+  }
+
+  tr {
+    margin-bottom: 0.625rem;
+    display: block;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+
+  td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0.25em 0.5em; /* Reduzco el padding para hacer las tarjetas más pequeñas */
+    border-bottom: 1px solid #eee;
+  }
+
+  td[data-label]:before {
+    content: attr(data-label);
+    font-weight: bold;
+  }
+
+  #popupEditar {
+    max-width: 85%;
   }
 }
