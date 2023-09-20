@@ -107,56 +107,65 @@ tr:nth-child(even) {
 }
 
 
-#popup {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  padding: 10px 20px; /* Reducido padding vertical a 10px */
-  border-radius: 5px;
-  width: 100%;
-  max-width: 400px;
-  z-index: 1000; 
-}
-
 #overlay {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 999; /* Asegúrate de que el overlay esté debajo del popup */
+  z-index: 999; 
+}
+
+#popup {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 10px 20px; /* Reducido el padding vertical de 20px a 10px */
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  z-index: 1000; 
 }
 
 #popup form input {
-  width: 24rem;
-  padding: 10px;
-  margin-bottom: 5px; /* Reducido margen inferior a 5px */
+  width: calc(100% - 20px); /* Ajustado para tener en cuenta el padding */
+  padding: 8px; /* Reducido el padding */
+  margin-bottom: 6px; /* Reducido el margen inferior */
   border-radius: 5px;
   border: 1px solid #ddd;
 }
 
-#popup form button {
+
+.guardar{
   width: 100%;
-  padding: 10px;
+  padding: 10px; 
+  margin-bottom: 3px;
   border-radius: 5px;
-  border: none;
-  margin-bottom: 0.3rem;
-  background-color: #4CAF50;
+  border: 1px solid #ddd;
+  background-color: #f1f1f1;
+  color: #333;
+}
+#popup form button {
+  background-color: #0F393B;
   color: white;
 }
 
 #popup form button:hover {
-  background-color: #45a049;
+  background-color: #194d50;
 }
 
 #popup #cancelarEdicion {
   width: 100%;
-  padding: 10px;
+  padding: 8px; /* Reducido el padding */
   border-radius: 5px;
   border: 1px solid #ddd;
   background-color: #f1f1f1;
