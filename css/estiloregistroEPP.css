@@ -1,0 +1,191 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f8;
+  padding-top: 60px;
+  padding-bottom: 70px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#page-container {
+  display: none;
+}
+
+.container {
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.form-registro .input-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-section .left-section,
+.input-section .right-section {
+  width: 48%;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.input-group input,
+.input-group select {
+  padding: 0.5rem; /* Mantiene el padding consistente para inputs y selects */
+  border: 1px solid #ddd; /* Mantiene el borde consistente para inputs y selects */
+  border-radius: 5px; /* Mantiene el border-radius consistente para inputs y selects */
+  width: 100%; /* Asegura que ambos, inputs y selects, ocupen el 100% del ancho */
+  font-size: 16px; /* Mantiene el tamaño de la fuente consistente para inputs y selects */
+  box-sizing: border-box; /* Asegura que el padding y el borde están incluidos en el ancho del elemento */
+}
+.file-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+  text-align: center;
+}
+
+.file-input {
+  display: block;
+  margin: 0 auto 1rem; /* Añade un margen inferior para separar del botón */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button-group {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.registrar-button {
+  padding: 0.5rem 10rem;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #0F393B;
+  transition: background-color 0.3s ease;
+}
+
+.registrar-button:hover {
+  background-color: #194d50;
+}
+
+/* Estilo para el select */
+
+.select2-container {
+  width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single {
+  border: 1px solid #ddd; /* Hace que el borde del select coincida con el borde de los inputs */
+  border-radius: 5px; /* Hace que el border-radius del select coincida con el de los inputs */
+  padding: 0.5rem; /* Añade padding para coincidir con los inputs */
+  height: calc(1.3em + 1rem + 2px); /* Ajusta la altura para que coincida con los inputs */
+  font-size: 16px; /* Asegura que el tamaño de la fuente dentro del select coincida con el de los inputs */
+  width: 100%; /* Asegura que el select tenga un ancho del 100% */
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  font-size: 16px; /* Asegura que el tamaño de la fuente dentro del select coincida con el de los inputs */
+  line-height: 1.5; /* Añade una altura de línea para un mejor alineamiento vertical del texto */
+}
+
+.select2-dropdown {
+  max-height: 150px; /* ajusta según sea necesario */
+  overflow-y: auto; /* permite el desplazamiento dentro del dropdown */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.select-open {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 0; /* Igual que tu código */
+    padding-top: 60px; /* Igual que tu código */
+  }
+
+  .container {
+    padding: 1rem; /* Igual que tu código */
+    margin: 10px; /* Igual que tu código */
+    margin-bottom: 60px; /* Añadido un margen en la parte inferior, igual que tu código */
+    width: calc(100% - 20px); /* Igual que tu código */
+    box-sizing: border-box; /* Igual que tu código */
+  }
+
+  h1 {
+    font-size: 1.4rem; /* Igual que tu código */
+    margin-bottom: 1.5rem; /* Igual que tu código */
+  }
+
+  .form-registro .input-section {
+    flex-direction: column; /* Igual que tu código */
+  }
+
+  .input-section .left-section,
+  .input-section .right-section {
+    width: 100%; /* Igual que tu código */
+    margin-bottom: 1rem; /* Igual que tu código */
+  }
+
+  .input-group {
+    margin-bottom: 1rem; /* Igual que tu código */
+  }
+
+  .input-group input,
+  .input-group select {
+    font-size: 1rem; /* Igual que tu código */
+    padding: 0.7rem; /* Igual que tu código */
+  }
+
+  .file-label {
+    font-size: 1rem; /* Igual que tu código */
+  }
+
+  .file-input {
+    font-size: 1rem; /* Igual que tu código */
+    padding: 0.7rem; /* Igual que tu código */
+  }
+
+  .button-group {
+    margin-top: 1rem; /* Igual que tu código */
+  }
+
+  .registrar-button {
+    padding: 0.8rem 2rem; /* Igual que tu código */
+    width: 100%; /* Igual que tu código */
+  }
+}

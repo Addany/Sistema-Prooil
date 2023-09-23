@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestamos de Herramientas</title>
+    <link rel="stylesheet" href="css/estilosprestamodevolucion.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- Barra de navegación aquí -->
+    </header>
+
+
+    <div id="page-container">
+        <div id="navbar"></div>
+        <script>
+            $('#navbar').load('Navegacion/navbar.html', function() {
+              $.getScript("Navegacion/navbar.js", function() {
+                $('#page-container').fadeIn();
+              });
+            });
+          </script>
+        
+        <main>
+            <section class="container">
+                <div class="form-container">
+                    <h3>Formulario de Préstamo</h3>
+                    <form id="loanForm">
+                        <label for="workerName">Nombre del Trabajador:</label>
+                        <select id="workerName" class="workerName" required>
+                            <option value="">Selecciona un trabajador</option>
+                            <!-- Las opciones se llenarán desde la base de datos -->
+                        </select>
+
+                        <div class="scanned-tools">
+                            <br>
+                            <Label>Herramientas Escaneadas:</Label>
+                            <div id="tableContainer" class="table-container">
+                                <table id="scanned-tools-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID de Herramienta</th>
+                                            <th>Nombre de Herramienta</th>
+                                            <th>Estado de Herramienta</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="scanned-tools-tbody">
+                                            <!-- Las herramientas escaneadas se mostrarán aquí -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <label for="observations">Observaciones:</label>
+                        <textarea id="observations"></textarea>
+
+                        <div class="loan-buttons">
+                            <button type="submit">Solicitar Préstamo</button>
+                            <button type="button" onclick="cancelLoan()">Limpiar campo</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="video-container">
+                    <div id="cameraOff">Camara apagada</div>
+                    <video id="preview"></video>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.workerName').select2();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="css/scriptsprestamodevolucion.js"></script>
+</body>
+
+</html>

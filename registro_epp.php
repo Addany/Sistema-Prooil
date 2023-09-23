@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de EPP</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/estiloregistroEPP.css">
+    <link rel="stylesheet" href="css/navbar.css">
+</head>
+<body>
+
+    <div id="page-container">
+        <div id="navbar"></div>
+        <script>
+            $('#navbar').load('Navegacion/navbar.html', function() {
+              $.getScript("Navegacion/navbar.js", function() {
+                $('#page-container').fadeIn();
+              });
+            });
+          </script>
+          
+        <div class="container">
+            <div class="form-container">
+                <h1>Registro de EPP</h1>
+                <form class="form-registro">
+                    <div class="input-section">
+                        <div class="left-section">
+                
+                            <div class="input-group">
+                                <label for="nombre">Nombre:</label>
+                                <select id="nombre" required data-placeholder="Agrega un EPP">
+                                    <option></option> <!-- Para el placeholder -->
+                                    <option value="EPP1">EPP1</option>
+                                    <option value="EPP2">EPP2</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="cantidad">Cantidad:</label>
+                                <input type="number" id="cantidad" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="marca">Marca:</label>
+                                <input type="text" id="marca" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="modelo">Modelo:</label>
+                                <input type="text" id="modelo" required>
+                            </div>
+                        </div>
+                        <div class="right-section">
+                            <div class="input-group">
+                                <label for="tipo">Tipo:</label>
+                                <input type="text" id="tipo" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="tipo">Talla:</label>
+                                <input type="text" id="tipo" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="clase">Clase:</label>
+                                <input type="text" id="clase" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="ordenCompra">Orden de Compra:</label>
+                                <input type="text" id="ordenCompra" required>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="file-label" for="worker_image">Foto EPP:</label>
+                    <input type="file" id="worker_image" name="worker_image" class="file-input" accept="image/*" onchange="previewImage(event)" required>
+                    <div class="button-group">
+                        <button type="submit" class="registrar-button">Registrar EPP</button>
+                    </div>  
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script src="js/registroepp.js"></script>
+
+
+</body>
+</html>

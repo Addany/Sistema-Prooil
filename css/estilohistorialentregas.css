@@ -1,0 +1,287 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  padding-top: 58px;
+}
+
+#page-container {
+  display: none;
+}
+
+.form-buscar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: #f1f1f1;
+  font-weight: bold;
+}
+
+.form-buscar input,
+.form-buscar select,
+.form-buscar button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.form-buscar button {
+  background: #0F393B;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.form-buscar button:hover {
+  background: #194d50;
+}
+
+/* Estilos de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+table tr:hover {
+  background-color: #194d5011;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #0F393B;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.accion-button {
+  padding: 7px;
+  border-radius: 5px;
+  border: none;
+  background-color: #0F393B; /* Color de fondo verde */
+  color: white;
+  margin-bottom: 0.2rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  font-weight: bold;
+}
+
+.accion-button:hover {
+  background-color: #194d50; /* Color de fondo un poco más oscuro cuando se pasa el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más profunda cuando se pasa el ratón */
+}
+
+#popupEditar {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  z-index: 1000;
+  transform: translate(-50%, -60%);
+}
+
+#popupEditar, #popupVer {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+#popupVer {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  /* Asegúrate de que el overlay esté debajo del popup */
+}
+
+#popupEditar form input {
+  width: 24rem;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+#popupEditar  form button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 0.3rem;
+  background-color: #0F393B;
+  color: white;
+  font-weight: bold;
+}
+
+#popupEditar  form button:hover {
+  background-color: #194d50;
+}
+
+#popupEditar #cancelarEdicion {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+#popupEditar  #cancelarEdicion:hover {
+  background-color: #ddd;
+}
+
+#popupVer form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#popupVer h2 {
+  margin-bottom: 10px;
+}
+
+#popupVer label {
+  margin-bottom: 5px;
+}
+
+#popupVer #listaHerramientas {
+  margin-bottom: 10px;
+  padding-left: 20px; /* Añadí padding a la izquierda para las viñetas */
+  list-style-type: disc; /* Cambié a viñetas disc */
+}
+
+#popupVer button {
+  width: 100%;
+  padding: 10px;
+  margin-left: 0; /* Ajusté el margen izquierdo a 0 */
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 0.3rem;
+  background-color: #0F393B;
+  color: white;
+  font-weight: bold;
+}
+
+#popupVer button:hover {
+  background-color: #194d50;
+}
+
+@media (max-width: 768px) {
+  .form-buscar {
+    flex-direction: column;
+    align-items: stretch; 
+  }
+
+  .form-buscar input, 
+  .form-buscar select, 
+  .form-buscar button {
+    width: 100%; /* Aquí ajustamos el ancho al 100% */
+    box-sizing: border-box; /* Esto hará que el padding y el borde se incluyan en el ancho */
+    margin-bottom: 10px; 
+  }
+
+  .form-buscar button {
+    margin-bottom: 0; 
+  }
+
+  #popupEditar {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  #popupEditar form input,
+  #popupEditar form select {
+    width: 100%; /* Esto asegura que tanto los inputs como los selects tienen el mismo ancho */
+    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+  }
+  
+  #popupEditar form button {
+    width: 100%; /* Esto ajusta el ancho del botón para que coincida con los inputs/selects */
+    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+    margin-bottom: 5px; /* Añadido margen en la parte inferior para espacio entre los botones */
+  }
+}
+@media (max-width: 600px) {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .accion-button {
+    padding: 6px; /* Reducimos el padding */
+    margin-left: 10px;
+    font-size: 0.8rem; /* Reducimos el tamaño de la fuente */
+  }
+
+  thead {
+    display: none; 
+  }
+
+  tbody {
+    display: block;
+  }
+
+  tr {
+    margin-bottom: 0.625rem;
+    display: block;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+
+  td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0.25em 0.5em; /* Reduzco el padding para hacer las tarjetas más pequeñas */
+    border-bottom: 1px solid #eee;
+  }
+
+  td[data-label]:before {
+    content: attr(data-label);
+    font-weight: bold;
+  }
+
+  #popupEditar {
+    max-width: 85%;
+  }
+}
