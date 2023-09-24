@@ -23,7 +23,7 @@
         <main>
             <div id="navbar"></div>
             <script>
-                $('#navbar').load('Navegacion/navbar.html', function() {
+                $('#navbar').load('Navegacion/navbar.php', function() {
                 $.getScript("Navegacion/navbar.js", function() {
                     $('#page-container').fadeIn();
                 });
@@ -37,7 +37,6 @@
                         <select id="eppList" class="eppList" required onchange="onEPPSelected(this.value)">
                             <option value="">Selecciona un EPP</option>
                             <option value='{"id": "123", "name": "Casco", "anatomicRegion": "Cabeza"}'>Casco</option>
-                            <option value='{"id": "124", "name": "Guantes", "anatomicRegion": "Manos"}'>Guantes</option>
                             <!-- Las opciones se llenarán desde la base de datos -->
                         </select>
 

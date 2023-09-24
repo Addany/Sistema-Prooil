@@ -46,7 +46,6 @@
                                 <option value="todos">Todos</option>
                                 <option value="Alta">Alta</option>
                                 <option value="Baja">Baja</option>
-                                <!-- ... otras áreas ... -->
                             </select>  
                             <button type="button" onclick="resetearBusqueda()">Limpiar busqueda</button>
                         </div>
