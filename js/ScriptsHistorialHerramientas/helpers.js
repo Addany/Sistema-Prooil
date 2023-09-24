@@ -2,14 +2,14 @@
 function getDatosEdicion() {
   const elementos = obtenerElementos();
   return {
-    nombre: elementos.editNombre.value,
+
     marca: elementos.editMarca.value,
     ordenCompra: elementos.editOrdenCompra.value,
     tamaño: elementos.editTamano.value,
     noSerie: elementos.editNoSerie.value,
     estado: elementos.editEstado.value,
     color: elementos.editColor.value,
-    tipo: elementos.editTipo.value,
+    tipoherramienta: elementos.editTipoherramienta.value,
     fechaRegistro: elementos.editFecha.value,
     descripcion: elementos.editDescripcion.value,
     estatus: elementos.editEstatus.value

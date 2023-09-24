@@ -47,7 +47,6 @@
                                 <option value="todos">Todos</option>
                                 <option value="Alta">Alta</option>
                                 <option value="Baja">Baja</option>
-                                <!-- ... otras áreas ... -->
                             </select>  
                         </div>
                         <div class="input-group">
@@ -103,10 +102,6 @@
                 
                 <select id="editAreaTrabajo">
                     <option value="Almacen">Almacen</option>
-                    <!-- Agrega más opciones de áreas como esta -->
-                    <option value="Administración">Administración</option>
-                    <option value="Logística">Logística</option>
-                    <option value="Recursos Humanos">Recursos Humanos</option>
                 </select>
                 
                 <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
@@ -117,8 +112,6 @@
     </div>
     
 
-
-        <script src="js/scriptstrabajadores.js"></script>
-
+    <script src="js/scriptstrabajadores.js"></script>
 </body>
 </html>

@@ -14,15 +14,6 @@
   <div id="page-container">
     <main>
       <div id="navbar"></div>
-      
-      <script>
-        $('#navbar').load('Navegacion/navbar.html', function() {
-          $.getScript("Navegacion/navbar.js", function() {
-            $('#page-container').fadeIn();
-          });
-        });
-      </script>
-
         <section class="container">
           <div class="form-container">
             <form class="form-buscar">
@@ -43,7 +34,6 @@
                 <select id="categoria" onchange="buscar()">
                   <option value="todos">Todos</option>
                   <option value="casco contra impacto">Casco contra impacto</option>
-                  <option value="capucha">Capucha</option>
                 </select>
                 <button type="button" id="eliminarBusqueda" onclick="buscar()">Limpiar busqueda</button>
               </div>
@@ -94,6 +84,15 @@
           </form>
       </div>
   </div>
+
+
+  <script>
+    $('#navbar').load('Navegacion/navbar.php', function() {
+      $.getScript("Navegacion/navbar.js", function() {
+      $('#page-container').fadeIn();
+      });
+    });
+  </script>
 
 
   <script src="js/ScriptsHistorialEPP/domHelpers.js"></script>

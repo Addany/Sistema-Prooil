@@ -14,13 +14,6 @@
     <div id="page-container">
       <div id="navbar"></div>
 
-      <script>
-        $('#navbar').load('Navegacion/navbar.html', function() {
-          $.getScript("Navegacion/navbar.js", function() {
-            $('#page-container').fadeIn();
-          });
-        });
-      </script>
 
       <div class="registration-container">
         <h2>Registro de almacenista</h2>
@@ -40,6 +33,15 @@
         <source src="Resources/Mi video-1.mp4" type="video/mp4">
       </video>
     </div>
-  <script src="js/registroinvitado.js"></script>
+
+
+    <script>
+        $('#navbar').load('Navegacion/navbar.php', function() {
+          $.getScript("Navegacion/navbar.js", function() {
+            $('#page-container').fadeIn();
+          });
+        });
+    </script>
+
 </body>
 </html>

@@ -57,12 +57,12 @@ h1 {
 
 .input-group input,
 .input-group select {
-  padding: 0.5rem; /* Mantiene el padding consistente para inputs y selects */
-  border: 1px solid #ddd; /* Mantiene el borde consistente para inputs y selects */
-  border-radius: 5px; /* Mantiene el border-radius consistente para inputs y selects */
-  width: 100%; /* Asegura que ambos, inputs y selects, ocupen el 100% del ancho */
-  font-size: 16px; /* Mantiene el tamaño de la fuente consistente para inputs y selects */
-  box-sizing: border-box; /* Asegura que el padding y el borde están incluidos en el ancho del elemento */
+  padding: 0.5rem; 
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
+  width: 100%;
+  font-size: 16px; 
+  box-sizing: border-box; 
 }
 .file-label {
   display: block;
@@ -73,7 +73,7 @@ h1 {
 
 .file-input {
   display: block;
-  margin: 0 auto 1rem; /* Añade un margen inferior para separar del botón */
+  margin: 0 auto 1rem; 
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 0.5rem;
@@ -101,29 +101,27 @@ h1 {
   background-color: #194d50;
 }
 
-/* Estilo para el select */
-
 .select2-container {
   width: 100% !important;
 }
 
 .select2-container--default .select2-selection--single {
-  border: 1px solid #ddd; /* Hace que el borde del select coincida con el borde de los inputs */
-  border-radius: 5px; /* Hace que el border-radius del select coincida con el de los inputs */
-  padding: 0.5rem; /* Añade padding para coincidir con los inputs */
-  height: calc(1.3em + 1rem + 2px); /* Ajusta la altura para que coincida con los inputs */
-  font-size: 16px; /* Asegura que el tamaño de la fuente dentro del select coincida con el de los inputs */
-  width: 100%; /* Asegura que el select tenga un ancho del 100% */
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
+  padding: 0.5rem; 
+  height: calc(1.3em + 1rem + 2px); 
+  font-size: 16px; 
+  width: 100%; 
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-  font-size: 16px; /* Asegura que el tamaño de la fuente dentro del select coincida con el de los inputs */
-  line-height: 1.5; /* Añade una altura de línea para un mejor alineamiento vertical del texto */
+  font-size: 16px; 
+  line-height: 1.5;
 }
 
 .select2-dropdown {
-  max-height: 150px; /* ajusta según sea necesario */
-  overflow-y: auto; /* permite el desplazamiento dentro del dropdown */
+  max-height: 150px; 
+  overflow-y: auto; 
   border: 1px solid #ddd;
   border-radius: 5px;
 }
@@ -134,58 +132,58 @@ h1 {
 
 @media (max-width: 768px) {
   body {
-    margin: 0; /* Igual que tu código */
-    padding-top: 60px; /* Igual que tu código */
+    margin: 0; 
+    padding-top: 60px; 
   }
 
   .container {
-    padding: 1rem; /* Igual que tu código */
-    margin: 10px; /* Igual que tu código */
-    margin-bottom: 60px; /* Añadido un margen en la parte inferior, igual que tu código */
-    width: calc(100% - 20px); /* Igual que tu código */
-    box-sizing: border-box; /* Igual que tu código */
+    padding: 1rem; 
+    margin: 10px; 
+    margin-bottom: 60px; 
+    width: calc(100% - 20px); 
+    box-sizing: border-box; 
   }
 
   h1 {
-    font-size: 1.4rem; /* Igual que tu código */
-    margin-bottom: 1.5rem; /* Igual que tu código */
+    font-size: 1.4rem; 
+    margin-bottom: 1.5rem; 
   }
 
   .form-registro .input-section {
-    flex-direction: column; /* Igual que tu código */
+    flex-direction: column; 
   }
 
   .input-section .left-section,
   .input-section .right-section {
-    width: 100%; /* Igual que tu código */
-    margin-bottom: 1rem; /* Igual que tu código */
+    width: 100%; 
+    margin-bottom: 1rem; 
   }
 
   .input-group {
-    margin-bottom: 1rem; /* Igual que tu código */
+    margin-bottom: 1rem;
   }
 
   .input-group input,
   .input-group select {
-    font-size: 1rem; /* Igual que tu código */
-    padding: 0.7rem; /* Igual que tu código */
+    font-size: 1rem; 
+    padding: 0.7rem; 
   }
 
   .file-label {
-    font-size: 1rem; /* Igual que tu código */
+    font-size: 1rem; 
   }
 
   .file-input {
-    font-size: 1rem; /* Igual que tu código */
-    padding: 0.7rem; /* Igual que tu código */
+    font-size: 1rem; 
+    padding: 0.7rem; 
   }
 
   .button-group {
-    margin-top: 1rem; /* Igual que tu código */
+    margin-top: 1rem; 
   }
 
   .registrar-button {
-    padding: 0.8rem 2rem; /* Igual que tu código */
-    width: 100%; /* Igual que tu código */
+    padding: 0.8rem 2rem;
+    width: 100%; 
   }
 }

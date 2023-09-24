@@ -16,7 +16,7 @@
     <div id="navbar"></div>
     
     <script>
-      $('#navbar').load('Navegacion/navbar.html', function() {
+      $('#navbar').load('Navegacion/navbar.php', function() {
         $.getScript("Navegacion/navbar.js", function() {
           $('#page-container').fadeIn();
         });
@@ -57,15 +57,15 @@
       <table id="tabla-historial">
         <thead>
           <tr>
+            <th>Foto</th>
             <th>ID</th>
-            <th>Nombre</th>
+            <th>Tipo de herramienta</th>
             <th>Marca</th>
             <th>Orden de compra</th>
             <th>Tamaño</th>
             <th>No. Serie</th>
             <th>Estado</th>
             <th>Color</th>
-            <th>Tipo</th>
             <th>Fecha de Registro</th>
             <th>Descripción</th>
             <th>Estatus</th>
@@ -82,15 +82,16 @@
       <div id="popup">
         <form id="editarHerramientaForm">
             <h3>Editar datos</h3>
+            <img id="editFoto" src="" alt="Foto del EPP" />
+                <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
             <input type="hidden" id="editId">
-            <input type="text" id="editNombre" placeholder="Nombre">
+            <input type="text" id="editTipoherramienta" placeholder="Tipo de">
             <input type="text" id="editMarca" placeholder="Marca">
             <input type="text" id="editTamano" placeholder="Tamaño">
             <input type="text" id="editOrdenCompra" placeholder="Orden de compra">
             <input type="text" id="editNoSerie" name="noSerie" />
             <input type="text" id="editEstado" placeholder="Estado">
             <input type="text" id="editColor" placeholder="Color">
-            <input type="text" id="editTipo" placeholder="Tipo">
             <input type="date" id="editFecha">
             <input type="text" id="editDescripcion" placeholder="Descripción">
             <input type="text" id="editEstatus" placeholder="Estatus">

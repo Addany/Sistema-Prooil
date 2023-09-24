@@ -16,7 +16,7 @@
     <div id="page-container">
         <div id="navbar"></div>
         <script>
-            $('#navbar').load('Navegacion/navbar.html', function() {
+            $('#navbar').load('Navegacion/navbar.php', function() {
               $.getScript("Navegacion/navbar.js", function() {
                 $('#page-container').fadeIn();
               });
@@ -33,7 +33,7 @@
                             <div class="input-group">
                                 <label for="nombre">Nombre:</label>
                                 <select id="nombre" required data-placeholder="Agrega un EPP">
-                                    <option></option> <!-- Para el placeholder -->
+                                    <option></option> 
                                     <option value="EPP1">EPP1</option>
                                     <option value="EPP2">EPP2</option>
                                 </select>
@@ -70,6 +70,8 @@
                             </div>
                         </div>
                     </div>
+
+                    
                     <label class="file-label" for="worker_image">Foto EPP:</label>
                     <input type="file" id="worker_image" name="worker_image" class="file-input" accept="image/*" onchange="previewImage(event)" required>
                     <div class="button-group">

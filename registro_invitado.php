@@ -14,7 +14,7 @@
     <div id="navbar"></div>
 
     <script>
-      $('#navbar').load('Navegacion/navbar.html', function() {
+      $('#navbar').load('Navegacion/navbar.php', function() {
       $.getScript("Navegacion/navbar.js", function() {
           $('#page-container').fadeIn();
       });

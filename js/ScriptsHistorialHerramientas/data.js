@@ -1,33 +1,19 @@
 document.addEventListener('DOMContentLoaded', inicializar);
 let historialAlmacenPrevio = [
   {
+    foto:"Resources/imagen1.jpg",
     id: 12,
-    nombre: "Destornillador",
+    tipoherramienta: "Destornillador",
     marca: "MarcaX",
     ordenCompra: "12",
     tamaño: "5mm",
     noSerie: "ABC123",
     estado: "Nuevo",
     color: "Verde",
-    tipo: "Tal",
     fechaRegistro: "2023-08-05",
     descripcion: "Plano",
     estatus: "Prestado",
   },
-  {
-    id: 1,
-    nombre: "Taladrox",
-    marca: "asd",
-    ordenCompra: "12",
-    tamaño: "8mm",
-    noSerie: "A123123213123",
-    estado: "N123123vo",
-    color: "Rojo",
-    tipo: "Tal",
-    fechaRegistro: "2023-08-01",
-    descripcion: "Taladro feo",
-    estatus: "Devuelto",
-  }
 ];
 const historialAlmacen = [...historialAlmacenPrevio];
 const indiceAlmacen = new Map();
@@ -41,15 +27,15 @@ const ELEMENT_IDS = [
   'popup',
   'tabla-historial',
   'overlay',
+  'editFoto',
   'editId',
-  'editNombre',
   'editMarca',
   'editOrdenCompra',
   'editTamano',
   'editNoSerie',
   'editEstado',
   'editColor',
-  'editTipo',
+  'editTipoherramienta',
   'editFecha',
   'editDescripcion',
   'editEstatus',
@@ -69,6 +55,5 @@ function inicializarCache() {
     eliminarBusqueda: document.getElementById('eliminarBusqueda'),
     buscador: document.getElementById('buscador'),
     categoria: document.getElementById('categoria'), // Asegúrate de que esta línea está presente y es correcta
-    // ... otros elementos
   };
 }

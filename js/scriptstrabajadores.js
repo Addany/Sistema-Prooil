@@ -10,39 +10,6 @@ const trabajadores = [
     areaTrabajo: "Almacen",
     fechaIngreso: "2023-07-03",
   },
-  {
-    foto: "Resources/imagen1.jpg",
-    estado: "Alta",
-    tipoRegistro:"Invitado",
-    id: "001324",
-    nombre: "Juan Perez",
-    telefono: "+52 921 172 2326",
-    correo: "juanperez@mail.com",
-    areaTrabajo: "Almacen",
-    fechaIngreso: "2023-08-03",
-  },
-  {
-    foto: "Resources/imagen1.jpg",
-    estado: "Baja",
-    tipoRegistro:"Invitado",
-    id: "001324",
-    nombre: "Juan Perez",
-    telefono: "+52 921 172 2326",
-    correo: "juanperez@mail.com",
-    areaTrabajo: "Almacen",
-    fechaIngreso: "2023-08-03",
-  },
-  {
-    foto: "Resources/imagen1.jpg",
-    estado: "Alta",
-    tipoRegistro:"Invitado",
-    id: "001324",
-    nombre: "Juan Perez",
-    telefono: "+52 921 172 2326",
-    correo: "juanperez@mail.com",
-    areaTrabajo: "Almacen",
-    fechaIngreso: "2023-09-03",
-  },
 ];
 
 const elementos = {
@@ -140,25 +107,6 @@ function guardarEdicion() {
   }
 }
 
-function validarFormulario() {
-  const { editCorreo, editNombre, editTelefono } = elementos;
-
-  if (!editCorreo.value.includes('@')) {
-    alert('Por favor, introduce un correo electrónico válido');
-    return false;
-  }
-  if (!editNombre.value) {
-    alert('El nombre no puede estar vacío');
-    return false;
-  }
-  if (!editTelefono.value.match(/^\+?\d+/)) {
-    alert('Por favor, introduce un número de teléfono válido');
-    return false;
-  }
-
-  return true;
-}
-
 let nuevaFoto;  
 
 function actualizarFoto(event) {
@@ -205,13 +153,12 @@ function crearIndice() {
       trabajador.telefono,
       trabajador.areaTrabajo,
       trabajador.correo,
-      // trabajador.estado, // Hemos quitado esto para evitar la indexación del estado
-      trabajador.fechaIngreso, // Añadir fecha de ingreso también al índice
+      trabajador.fechaIngreso, 
     ];
 
     valores.forEach(valor => {
       if(valor) {
-        const clave = valor.toString().toLowerCase(); // Asegúrate de que el valor sea una cadena antes de llamar a toLowerCase()
+        const clave = valor.toString().toLowerCase(); 
         if (!indiceTrabajadores[clave]) {
           indiceTrabajadores[clave] = [];
         }
@@ -230,7 +177,6 @@ function buscar() {
   let resultados = new Set();
 
   if (texto) {
-    // Asumiendo que tu indiceTrabajadores no incluye el estado, entonces deberías ser capaz de buscar por texto de la misma manera
     if (indiceTrabajadores[texto]) {
       indiceTrabajadores[texto].forEach(index => {
         resultados.add(trabajadores[index]);
@@ -257,7 +203,6 @@ function buscar() {
       coincideFecha = coincideFecha && (fechaTrabajador <= fechaFin);
     }
 
-    // Cambiado 'estado' a 'categoria' para filtrar por categoría en lugar de estado
     const coincideCategoria = categoriaVal === "todos" || (trabajador.categoria === categoriaVal);
 
     return coincideFecha && coincideCategoria;

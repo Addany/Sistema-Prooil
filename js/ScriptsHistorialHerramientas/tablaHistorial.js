@@ -6,15 +6,15 @@ function generarTablaHistorial(data) {
   data.forEach((item, index) => {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
+      <td data-label="Foto"><img src="${item.foto}" alt="Foto de ${item.nombre}" class="imagen-herramienta" /></td>
       <td data-label="ID">${item.id}</td>
-      <td data-label="Nombre">${item.nombre}</td>
+      <td data-label="Tipo de herramienta">${item.tipoherramienta}</td>
       <td data-label="Marca">${item.marca}</td>
       <td data-label="Orden de compra">${item.ordenCompra}</td>
       <td data-label="Tamaño">${item.tamaño}</td>
       <td data-label="No. Serie">${item.noSerie}</td>
       <td data-label="Estado">${item.estado}</td>
       <td data-label="Color">${item.color}</td>
-      <td data-label="Tipo">${item.tipo}</td>
       <td data-label="Fecha de Registro">${item.fechaRegistro}</td>
       <td data-label="Descripción">${item.descripcion}</td>
       <td data-label="Estatus">${item.estatus}</td>
@@ -31,6 +31,19 @@ function generarTablaHistorial(data) {
   elementos.tablaHistorial.appendChild(fragment);
 
   historialAlmacenPrevio = JSON.parse(JSON.stringify(data)); 
+}
+
+let nuevaFoto;  
+
+function actualizarFoto(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      nuevaFoto = e.target.result;  
+    };
+    reader.readAsDataURL(file);
+  }
 }
 
 

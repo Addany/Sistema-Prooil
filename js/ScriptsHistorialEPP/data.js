@@ -13,32 +13,6 @@ let historialEPPrevio = [
     ordenCompra: "324234",
     fechaRegistro: "2023-08-05",
   },
-  {
-    foto:"Resources/imagen1.jpg",
-    id: 128,
-    nombre: "Casco contra impacto",
-    cantidad: "14345",
-    marca: "MarcaX",
-    modelo: "Buenas",
-    tipo: "Cabezal2",
-    clase: "Buenas",
-    talla: "32",
-    ordenCompra: "324234",
-    fechaRegistro: "2023-08-05",
-  },
-  {
-    foto:"Resources/imagen1.jpg",
-    id: 122,
-    nombre: "Casco contra impacto",
-    cantidad: "158",
-    marca: "MarcaX",
-    modelo: "Buenastardesnoches",
-    tipo: "Cabezal3",
-    clase: "Buenas",
-    talla: "35",
-    ordenCompra: "324234",
-    fechaRegistro: "2023-08-05",
-  },
 ];
 const historialEPP = [...historialEPPrevio];
 const indiceEPP = new Map();
@@ -80,6 +54,5 @@ function inicializarCache() {
     eliminarBusqueda: document.getElementById('eliminarBusqueda'),
     buscador: document.getElementById('buscador'),
     categoria: document.getElementById('categoria'), // Asegúrate de que esta línea está presente y es correcta
-    // ... otros elementos
   };
 }

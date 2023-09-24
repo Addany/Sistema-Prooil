@@ -26,6 +26,7 @@ body {
   height: 38px; 
 }
 
+
 .container {
   background-color: #ffffff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -52,8 +53,7 @@ h1 {
   width: 48%;
 }
 
-.input-group,
-.button-group {
+.input-group{
   margin-bottom: 1rem;
 }
 
@@ -79,22 +79,44 @@ h1 {
 }
 
 .button-group {
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+  margin-top: 1rem;
 }
 
-.registrar-button,
-.qr-button {
+.file-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+  text-align: left;
+}
+
+.file-input {
+  display: block;
+  margin: 0 auto 1rem; 
+  border: 1px solid #ddd;
+  border-radius: 5px;
   padding: 0.5rem;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.registrar-button {
+  padding: 0.5rem 10rem;
   border: none;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
-  margin-bottom: 0.5rem;
-}
-
-.registrar-button {
   background-color: #0F393B;
+  transition: background-color 0.3s ease;
+}
+.qr-button {
+  padding: 0.5rem 10rem;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #31A84B;
   transition: background-color 0.3s ease;
 }
 

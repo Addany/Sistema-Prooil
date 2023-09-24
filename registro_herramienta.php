@@ -14,14 +14,6 @@
 <body>
     <div id="page-container">
         <div id="navbar"></div>
-        <script>
-            $('#navbar').load('Navegacion/navbar.html', function() {
-            $.getScript("Navegacion/navbar.js", function() {
-                $('#page-container').fadeIn();
-            });
-            });
-        </script>
-        
         <div class="container">
             <div class="form-container">
                 <h1>Registro de Herramienta</h1>
@@ -29,8 +21,8 @@
                     <div class="input-section">
                         <div class="left-section">
                             <div class="input-group">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" id="nombre" required>
+                                <label for="tipo de herramienta">Tipo de herramienta:</label>
+                                <input type="text" id="tipoHerramienta" required>
                             </div>
                             <div class="input-group">
                                 <label for="marca">Marca:</label>
@@ -68,22 +60,31 @@
                             <div class="input-group">
                                 <label for="estado">Estado de la Herramienta:</label>
                                 <select id="estado" required>
-                                    <option value="nuevo">Nuevo</option>
-                                    <option value="gastado">Gastado</option>
-                                    <option value="usado">Usado</option>
-                                    <option value="maltratado">Maltratado</option>
+                                    <option value="bueno">Bueno</option>
+                                    <option value="regular">Regular</option>
+                                    <option value="malo">Malo</option>
                                 </select>
                             </div>
-                            <div class="button-group"> 
-                                <button type="submit" class="registrar-button">Registrar Herramienta</button>
-                                <button type="button" class="qr-button">Descargar QR</button>
-                            </div>
+                            <label class="file-label" for="worker_image">Foto EPP:</label>
+                            <input type="file" id="worker_image" name="worker_image" class="file-input" accept="image/*" onchange="previewImage(event)" required>
                         </div>
                     </div>
                 </form>
             </div>
+            <div class="button-group"> 
+                <button type="submit" class="registrar-button">Registrar Herramienta</button>
+                <button type="button"  class="qr-button">Descargar QR</button>
+            </div>
         </div>
     </div>
+
+    <script>
+            $('#navbar').load('Navegacion/navbar.php', function() {
+            $.getScript("Navegacion/navbar.js", function() {
+                $('#page-container').fadeIn();
+            });
+            });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1/qrcode.min.js"></script>
     <script src="js/registroherramienta.js"></script>
 </body>

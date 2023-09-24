@@ -18,13 +18,6 @@
     <main>
         <div id="page-container">
             <div id="navbar"></div>
-            <script>
-                $('#navbar').load('Navegacion/navbar.html', function() {
-                $.getScript("Navegacion/navbar.js", function() {
-                    $('#page-container').fadeIn();
-                });
-                });
-            </script>
             <section class="container">
                 <div class="form-container">
                     <form class="form-buscar">
@@ -103,6 +96,14 @@
             </div> 
         </form>
     </div>
+
+    <script>
+        $('#navbar').load('Navegacion/navbar.php', function() {
+        $.getScript("Navegacion/navbar.js", function() {
+            $('#page-container').fadeIn();
+        });
+        });
+    </script>
 
     <script src="js/ScriptsHistorialprestamo/domHelpers.js"></script>
     <script src="js/ScriptsHistorialprestamo/helpers.js"></script>

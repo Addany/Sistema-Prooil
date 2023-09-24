@@ -96,5 +96,4 @@ function generarTablaHistorial(data) {
     }
   }
   
-  // Aquí está la llamada para generar la tabla al cargar la página
   generarTablaHistorial(historialPrestamo);

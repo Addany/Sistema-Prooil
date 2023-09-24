@@ -7,23 +7,6 @@ const almacenistas = [
     correo: "juanperez@mail.com",
     fechaIngreso: "2023-07-03",
   },
-  {
-    estado: "Alta",
-    id: "001324",
-    nombre: "Juan Perez Hernandez",
-    telefono: "+52 921 172 2329",
-    correo: "juanperez@mail.com",
-    fechaIngreso: "2023-07-03",
-  },
-  {
-    estado: "Baja",
-    id: "001324",
-    nombre: "Maria Fernanda Cuchis Laurreta",
-    telefono: "+52 921 172 2327",
-    correo: "juanperez@mail.com",
-    fechaIngreso: "2023-07-03",
-  },
-
 ];
 
 const elementos = {
