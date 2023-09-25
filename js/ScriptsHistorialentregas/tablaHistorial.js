@@ -43,11 +43,13 @@ function generarTablaHistorial(data) {
       const registro = historialPrestamo.find(item => item.folio === folio);
 
       if (registro) {
-        const listaHerramientas = document.getElementById('listaHerramientas');
-        listaHerramientas.innerHTML = registro.nombreHerramienta.map((herramienta) => `
-            <li>
-                ${herramienta}
-            </li>
+        const tbody = document.querySelector('#listaEPP tbody');
+        tbody.innerHTML = registro.nombreEPP.map((EPP) => `
+            <tr>
+                <td>${EPP.nombre}</td>
+                <td>${EPP.modelo}</td>
+                <td>${EPP.tipo}</td>
+            </tr>
         `).join('');
         abrirPopup('popupVer');
       } else {

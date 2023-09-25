@@ -68,7 +68,6 @@ function generarTablaHistorial(data) {
       if (registro) {
         document.getElementById("editFolio").value = registro.folio;
         document.getElementById("editNombreDelTrabajador").value = registro.nombreTrabajador; // CORRECCIÓN: cambio en el nombre del id
-        document.getElementById("editNombreHerramienta").value = registro.nombreHerramienta; // CORRECCIÓN: cambio en el nombre del id
         document.getElementById("editFechaTransaccion").value = registro.fechaTransaccion; // CORRECCIÓN: cambio en el nombre del id
         document.getElementById("editFechaDevolucion").value = registro.fechaDevolucion; // CORRECCIÓN: cambio en el nombre del id
         document.getElementById("editQuienAutorizo").value = registro.quienAutorizo; // CORRECCIÓN: cambio en el nombre del id

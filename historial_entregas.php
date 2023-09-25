@@ -19,7 +19,7 @@
             <div id="navbar"></div>
 
             <script>
-                $('#navbar').load('Navegacion/navbar.html', function() {
+                $('#navbar').load('Navegacion/navbar.php', function() {
                   $.getScript("Navegacion/navbar.js", function() {
                     $('#page-container').fadeIn();
                   });
@@ -73,16 +73,47 @@
 
         <div id="overlay"></div>
         <div id="popupEditar">
-            <form id="editarPrestamoForm"> 
+            <form id="editarPrestamoForm">
                 <h3>Editar datos</h3>
-                <input type="text" id="editFolio" placeholder="Folio">
-                <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
-                <input type="text" id="edittrabajadorSolicitante" placeholder="Nombre del Trabajador">
-                <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
-                <input type="text" id="editObservaciones" placeholder="Observaciones">
-                <input type="text" id="editEstadoproceso" placeholder="Estado">
-                <button type="submit">Guardar</button>
-                <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
+                
+                <div class="inputWrapper">
+                    <label for="editFolio">Folio:</label>
+                    <input type="text" class="hidden toggleInput" id="editFolio" placeholder="Folio">
+                    <button type="button" onclick="toggleInput('editFolio', this)">+</button>
+                </div>
+
+                <div class="inputWrapper">
+                    <label for="editFechaTransaccion">Fecha de Transacción:</label>
+                    <input type="text" class="hidden toggleInput" id="editFechaTransaccion" placeholder="Fecha de Transacción">
+                    <button type="button" onclick="toggleInput('editFechaTransaccion', this)">+</button>
+                </div>
+
+                <div class="inputWrapper">
+                    <label for="edittrabajadorSolicitante">Nombre del Trabajador:</label>
+                    <input type="text" class="hidden toggleInput" id="edittrabajadorSolicitante" placeholder="Nombre del Trabajador">
+                    <button type="button" onclick="toggleInput('edittrabajadorSolicitante', this)">+</button>
+                </div>
+
+                <div class="inputWrapper">
+                    <label for="editQuienAutorizo">Quien Autorizó:</label>
+                    <input type="text" class="hidden toggleInput" id="editQuienAutorizo" placeholder="Quien Autorizó">
+                    <button type="button" onclick="toggleInput('editQuienAutorizo', this)">+</button>
+                </div>
+
+                <div class="inputWrapper">
+                    <label for="editObservaciones">Observaciones:</label>
+                    <input type="text" class="hidden toggleInput" id="editObservaciones" placeholder="Observaciones" >
+                    <button type="button" onclick="toggleInput('editObservaciones', this)">+</button>
+                </div>
+
+                <div class="inputWrapper">
+                    <label for="editEstadoproceso">Estado:</label>
+                    <input type="text" class="hidden toggleInput" id="editEstadoproceso" placeholder="Estado">
+                    <button type="button" onclick="toggleInput('editEstadoproceso', this)">+</button>
+                </div>
+
+                <button type="submit" class="guardar">Guardar</button>
+                <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
             </form>
         </div>
 
@@ -90,9 +121,18 @@
             <form id="verPrestamoForm"> 
                 <h3>Detalles de la entrega</h3>
                 <label>EPP entregado:</label>
-                <ul id="listaHerramientas">
-                    <!-- Lista de herramientas con checkbox -->
-                </ul>
+                <table id="listaEPP">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Modelo</th>
+                            <th>Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Las filas de herramientas irán aquí -->
+                    </tbody>
+                </table>
                 <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  
             </form>
         </div>

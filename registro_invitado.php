@@ -22,7 +22,6 @@
     </script>
     
     <div class="registration-container">
-      <button class="close-button" onclick="goBackToIndex()">X</button>
       <div class="image-container">
         <img id="output" class="image-preview" width="100" alt="Imagen del trabajador" />
       </div>

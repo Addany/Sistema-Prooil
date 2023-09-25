@@ -34,6 +34,8 @@
                 <div class="form-container">
                     <h3>Formulario de Préstamo</h3>
                     <form id="loanForm">
+                        <label for="almacenName">Almacenista Solicitante: Juan Guillermo</label>
+                        <br>
                         <label for="workerName">Nombre del Trabajador:</label>
                         <select id="workerName" class="workerName" required>
                             <option value="">Selecciona un trabajador</option>
@@ -86,7 +88,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-    <script src="css/scriptsprestamodevolucion.js"></script>
+    <script src="js/scriptsprestamodevolucion.js"></script>
 </body>
 
 </html>

@@ -18,3 +18,35 @@ function cerrarPopup(idPopup) {
     document.getElementById('overlay').style.display = 'none';
   }, { once: true });
 }
+
+function toggleInput(id, btn) {
+  var input = document.getElementById(id);
+
+  // Si el botón actual tiene un "-", cerramos el input/select correspondiente.
+  if (btn.innerText === "-") {
+      input.classList.add('hidden');
+      btn.innerText = "+";
+      btn.classList.remove('expanded');
+      return;
+  }
+
+  // Si llegamos aquí, significa que se presionó un botón con "+"
+
+  // Cerrar todos los inputs/selects y cambiar todos los botones a "+".
+  var allInputs = document.querySelectorAll('.toggleInput');
+  var allButtons = document.querySelectorAll('.inputWrapper button');
+
+  allInputs.forEach(function(inputElement) {
+      inputElement.classList.add('hidden');
+  });
+
+  allButtons.forEach(function(buttonElement) {
+      buttonElement.innerText = "+";
+      buttonElement.classList.remove('expanded');
+  });
+
+  // Ahora, abrimos el input/select correspondiente y cambiamos el símbolo del botón a "-".
+  input.classList.remove('hidden');
+  btn.innerText = "-";
+  btn.classList.add('expanded');
+}

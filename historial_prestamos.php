@@ -67,17 +67,53 @@
 
     <div id="overlay"></div>
     <div id="popupEditar">
-        <form id="editarPrestamoForm"> 
+        <form id="editarPrestamoForm">
             <h3>Editar datos</h3>
-            <input type="text" id="editFolio" placeholder="Folio">
-            <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
-            <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
-            <input type="text" id="editFechaDevolucion" placeholder="Fecha de Devolución"> 
-            <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
-            <input type="text" id="editObservaciones" placeholder="Observaciones">
-            <input type="text" id="editestado" placeholder="Estado del prestamo">
-            <button type="submit">Guardar</button>
-            <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
+            
+            <div class="inputWrapper">
+                <label for="editFolio">Folio:</label>
+                <input type="text" class="hidden toggleInput " id="editFolio" placeholder="Folio">
+                <button type="button" onclick="toggleInput('editFolio', this)">+</button>
+            </div>
+
+            <div class="inputWrapper">
+                <label for="editNombreDelTrabajador">Nombre del Trabajador:</label>
+                <input type="text" class="hidden toggleInput" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
+                <button type="button" onclick="toggleInput('editNombreDelTrabajador', this)">+</button>
+            </div>
+
+            <div class="inputWrapper">
+                <label for="editFechaTransaccion">Fecha de Transacción:</label>
+                <input type="text" class="hidden toggleInput" id="editFechaTransaccion" placeholder="Fecha de Transacción">
+                <button type="button" onclick="toggleInput('editFechaTransaccion', this)">+</button>
+            </div>
+
+            <div class="inputWrapper">
+                <label for="editFechaDevolucion">Fecha de Devolución:</label>
+                <input type="text" class="hidden toggleInput" id="editFechaDevolucion" placeholder="Fecha de Devolución">
+                <button type="button" onclick="toggleInput('editFechaDevolucion', this)">+</button>
+            </div>
+
+            <div class="inputWrapper">
+                <label for="editQuienAutorizo">Quien Autorizó:</label>
+                <input type="text" class="hidden toggleInput" id="editQuienAutorizo" placeholder="Quien Autorizó">
+                <button type="button" onclick="toggleInput('editQuienAutorizo', this)">+</button>
+            </div>
+
+            <div class="inputWrapper">
+                <label for="editObservaciones">Observaciones:</label>
+                <input type="text" class="hidden toggleInput" id="editObservaciones" placeholder="Observaciones">
+                <button type="button" onclick="toggleInput('editObservaciones', this)">+</button>
+            </div>
+
+            <div class="inputWrapper">
+                <label for="editestado">Estado del prestamo:</label>
+                <input type="text" class="hidden toggleInput" id="editestado" placeholder="Estado del prestamo">
+                <button type="button" onclick="toggleInput('editestado', this)">+</button>
+            </div>
+
+            <button type="submit" class="guardar">Guardar</button>
+            <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
         </form>
     </div>
 
