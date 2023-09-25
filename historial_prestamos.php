@@ -121,9 +121,19 @@
         <form id="verPrestamoForm"> 
             <h3>Detalles del Préstamo</h3>
             <label>Herramientas Prestadas:</label>
-            <ul id="listaHerramientas">
-                <!-- Lista de herramientas con checkbox -->
-            </ul>
+            <table id="listaHerramientas">
+                <thead>
+                    <tr>
+                        <th>Seleccionar</th>
+                        <th>Nombre</th>
+                        <th>Número de Serie</th>
+                        <th>Marca</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas de herramientas irán aquí -->
+                </tbody>
+            </table>
             <label for="observaciones">Observaciones:</label>
             <textarea id="observaciones" placeholder="Ingrese observaciones aquí..."></textarea>
             <div class="button-group">

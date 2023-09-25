@@ -7,6 +7,9 @@ const historialPrestamo = [
       quienAutorizo: "Admin12343",
       observaciones: "Desgaste y perdida",
       estado: "Concretado",
-      nombreHerramienta: ["Taladro", "Martillo"],
+      nombreHerramienta: [
+        { nombre: "Taladro", serie: "TAL123", marca: "DeWalt" },
+        { nombre: "Martillo", serie: "MART456", marca: "Stanley" }
+      ],
   },
 ];
