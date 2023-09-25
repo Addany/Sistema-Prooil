@@ -142,8 +142,13 @@
             </form>
         </div>
     </div>
-    
 
-    <script src="js/scriptstrabajadores.js"></script>
+
+    <script src="js/ScriptsHistoriatrabajadores/domHelpers.js"></script>
+    <script src="js/ScriptsHistoriatrabajadores/helpers.js"></script>
+    <script src="js/ScriptsHistoriatrabajadores/data.js"></script>
+    <script src="js/ScriptsHistoriatrabajadores/tablaHistorial.js"></script>
+    <script src="js/ScriptsHistoriatrabajadores/popup.js"></script>
+    <script src="js/ScriptsHistoriatrabajadores/main.js"></script>
 </body>
 </html>
