@@ -8,7 +8,4 @@ const historialPrestamo = [
       estado: "Concretado",
       nombreHerramienta: ["Taladro", "Martillo"],
   },
-
-
-
 ];

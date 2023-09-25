@@ -1,11 +1,10 @@
 function generarTablaHistorial(data) {
-  console.log('Data recibida en generarTablaHistorial:', JSON.stringify(data, null, 2));
-  const elementos = obtenerElementos();
-  const fragment = document.createDocumentFragment();
+  const tabla = document.getElementById('tabla-historial').getElementsByTagName('tbody')[0];
+  const fragment = document.createDocumentFragment();  
 
-  data.forEach((item, index) => {
-    const newRow = document.createElement('tr');
-    newRow.innerHTML = `
+  data.forEach(item => {
+      const newRow = tabla.insertRow();
+      newRow.innerHTML = `
       <td data-label="Foto"><img src="${item.foto}" alt="Foto de ${item.nombre}" class="imagen-herramienta" /></td>
       <td data-label="ID">${item.id}</td>
       <td data-label="Tipo de herramienta">${item.tipoherramienta}</td>
@@ -24,13 +23,10 @@ function generarTablaHistorial(data) {
           <button class="accion-button" onclick="eliminarHerramienta('${item.id}')">Eliminar</button>
       </td>
     `;
-    fragment.appendChild(newRow);  // Esto es lo que faltaba.
+      fragment.appendChild(newRow); 
   });
-
-  elementos.tablaHistorial.innerHTML = "";
-  elementos.tablaHistorial.appendChild(fragment);
-
-  historialAlmacenPrevio = JSON.parse(JSON.stringify(data)); 
+  tabla.innerHTML = "";  
+  tabla.appendChild(fragment);  
 }
 
 let nuevaFoto;  
@@ -47,39 +43,61 @@ function actualizarFoto(event) {
 }
 
 
-function buscarHerramienta(texto) {
-  if (texto.trim() === "") {
-    generarTablaHistorial(historialAlmacen);
-    return;
+function solicitarNIP() {
+  return new Promise((resolve, reject) => {
+    const nip = prompt('Por favor, ingrese su NIP:');
+    if (nip === '1234') {  // Cambia '1234' por el NIP real que deseas verificar
+      resolve();
+    } else {
+      alert('NIP incorrecto');
+      reject(new Error('NIP incorrecto'));
+    }
+  });
+}
+
+
+async function editarHerramienta(id) {  
+  try {
+    await solicitarNIP();
+
+    const registro = historialHerramientas.find(item => {
+        return Number(item.id) === Number(id);
+    });
+
+    if (registro) {
+      document.getElementById("editFoto").value = registro.foto;
+      document.getElementById("editTipoherramienta").value = registro.tipoherramienta;
+      document.getElementById("editMarca").value = registro.marca; 
+      document.getElementById("editTamano").value = registro.tamaño;
+      document.getElementById("editOrdenCompra").value = registro.ordenCompra; 
+      document.getElementById("editNoSerie").value = registro.noSerie;
+      document.getElementById("editEstado").value = registro.estado;
+      document.getElementById("editColor").value = registro.color; 
+      document.getElementById("editFecha").value = registro.fechaRegistro;
+      document.getElementById("editDescripcion").value = registro.descripcion;
+      document.getElementById("editEstatus").value = registro.estatus;
+
+      abrirPopup('popup');
+    } else {
+      console.error('Registro no encontrado');
+    }
+  } catch (error) {
+    console.error("Error en editarEPP:", error);
   }
-
-  texto = texto.toLowerCase();
-  const indicesEncontrados = new Set();
-
-  texto.split(' ').forEach(palabra => {
-    const indicesPalabra = indiceTexto[palabra] || [];
-    indicesPalabra.forEach(indice => indicesEncontrados.add(indice));
-  });
-
-  const resultados = [...indicesEncontrados].map(indice => historialAlmacen[indice]);
-  generarTablaHistorial(resultados);
 }
 
-function buscarPorCategoria() {
-  const categoria = obtenerElemento('categoria').value;
-  const resultados = historialAlmacen.filter(item => 
-    categoria === "todos" || item.estatus.toLowerCase() === categoria.toLowerCase()
-  );
-  generarTablaHistorial(resultados);
+
+async function eliminarHerramienta(folio) {
+  try {
+    await solicitarNIP();
+
+    // Aquí deberías colocar tu código para eliminar el registro con el folio dado
+    // ...
+
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-function buscarPorFecha() {
-  const fechaInicio = obtenerElemento('fechaInicio').value ? new Date(obtenerElemento('fechaInicio').value) : null;
-  const fechaFin = obtenerElemento('fechaFin').value ? new Date(obtenerElemento('fechaFin').value) : null;
-
-  const resultados = historialAlmacen.filter(item => {
-    const fechaItem = new Date(item.fechaRegistro);
-    return (!fechaInicio || fechaItem >= fechaInicio) && (!fechaFin || fechaItem <= fechaFin);
-  });
-  generarTablaHistorial(resultados);
-}
+// Aquí está la llamada para generar la tabla al cargar la página
+generarTablaHistorial(historialEpp);

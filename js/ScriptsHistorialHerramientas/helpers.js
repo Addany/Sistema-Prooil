@@ -1,58 +1,15 @@
+function debounce(fn, delay) {
+  if (typeof fn !== 'function') {
+    throw new TypeError('El primer argumento debe ser una función');
+  }
+  
+  if (typeof delay !== 'number' || delay < 0) {
+    throw new TypeError('El segundo argumento debe ser un número no negativo');
+  }
 
-function getDatosEdicion() {
-  const elementos = obtenerElementos();
-  return {
-
-    marca: elementos.editMarca.value,
-    ordenCompra: elementos.editOrdenCompra.value,
-    tamaño: elementos.editTamano.value,
-    noSerie: elementos.editNoSerie.value,
-    estado: elementos.editEstado.value,
-    color: elementos.editColor.value,
-    tipoherramienta: elementos.editTipoherramienta.value,
-    fechaRegistro: elementos.editFecha.value,
-    descripcion: elementos.editDescripcion.value,
-    estatus: elementos.editEstatus.value
+  let timeoutID;
+  return function (...args) {
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(() => fn.apply(this, args), delay);
   };
 }
-
-function manejarFormularioEdicion() {
-  const elementos = obtenerElementos();
-  
-  let id = elementos.editId.value;
-  let datosEdicion = getDatosEdicion();
-  
-  if (validarFormulario(datosEdicion)) {
-    guardarEdicion(id, datosEdicion);
-    cerrarPopup(elementos.overlay, elementos.popup);
-  }
-}
-
-function guardarEdicion(id, datosEdicion) {
-  const index = indiceAlmacen.get(Number(id));
-  if (index !== undefined) {
-    historialAlmacen[index] = { ...historialAlmacen[index], ...datosEdicion };
-    generarTablaHistorial(historialAlmacen);
-    crearIndices(); 
-  } else {
-    console.error(`Herramienta con ID ${id} no encontrada.`);
-  }
-}
-
-function validarCampo(campo, mensaje) {
-  if (!campo || campo.trim() === '') {
-    alert(mensaje);
-    return false;
-  }
-  return true;
-}
-
-function validarFormulario(formulario) {
-  return validarCampo(formulario.nombre, 'El nombre no puede estar vacío.') &&
-         validarCampo(formulario.marca, 'La marca no puede estar vacía.');
-}
-
-
-
-
-

@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', inicializar);
-let historialAlmacenPrevio = [
+const historialHerramientas = [
   {
     foto:"Resources/imagen1.jpg",
     id: 12,
@@ -14,46 +13,5 @@ let historialAlmacenPrevio = [
     descripcion: "Plano",
     estatus: "Prestado",
   },
+  
 ];
-const historialAlmacen = [...historialAlmacenPrevio];
-const indiceAlmacen = new Map();
-const indiceTexto = {};
-
-const ELEMENT_IDS = [
-  'buscador',
-  'categoria',
-  'fechaInicio',
-  'fechaFin',
-  'popup',
-  'tabla-historial',
-  'overlay',
-  'editFoto',
-  'editId',
-  'editMarca',
-  'editOrdenCompra',
-  'editTamano',
-  'editNoSerie',
-  'editEstado',
-  'editColor',
-  'editTipoherramienta',
-  'editFecha',
-  'editDescripcion',
-  'editEstatus',
-];
-
-function inicializar() {
-  inicializarCache();
-  asignarEventos();
-  crearIndices();
-  generarTablaHistorial(historialAlmacen);
-}
-
-let elementosCache = {};
-
-function inicializarCache() {
-  elementosCache = {
-    eliminarBusqueda: document.getElementById('eliminarBusqueda'),
-    buscador: document.getElementById('buscador'),
-    categoria: document.getElementById('categoria'), // Asegúrate de que esta línea está presente y es correcta
-  };
-}

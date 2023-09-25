@@ -1,36 +1,39 @@
-function obtenerElemento(id) {
-  return document.getElementById(id);
+let elementCache = {};
+
+function clearTable(tableBody) {
+    tableBody.innerHTML = '';
 }
 
-function obtenerElementos() {
-  var tablaHistorialElement = obtenerElemento('tabla-historial');
-  var tablaHistorialTBody = null;
-
-  if (tablaHistorialElement) {
-    tablaHistorialTBody = tablaHistorialElement.getElementsByTagName('tbody')[0];
-  } else {
-    console.error('El elemento tabla-historial no se pudo encontrar');
-  }
-
-  return {
-    editFoto: document.getElementById('editFoto'),
-    buscador: obtenerElemento('buscador'),
-    categoriaSelect: obtenerElemento('categoria'),
-    fechaInicioInput: obtenerElemento('fechaInicio'),
-    fechaFinInput: obtenerElemento('fechaFin'),
-    popup: obtenerElemento('popup'),
-    tablaHistorial: tablaHistorialTBody,
-    overlay: obtenerElemento('overlay'),
-    editFoto: obtenerElemento('editFoto'),  
-    editId: obtenerElemento('editId'),
-    editNombre: obtenerElemento('editNombre'),
-    editCantidad: obtenerElemento('editCantidad'),  
-    editMarca: obtenerElemento('editMarca'),
-    editModelo: obtenerElemento('editModelo'),  
-    editTipo: obtenerElemento('editTipo'), 
-    editClase: obtenerElemento('editClase'), 
-    editTalla: obtenerElemento('editTalla'),  
-    editOrdenCompra: obtenerElemento('editOrdenCompra'),  
-    editFechaRegistro: obtenerElemento('editFechaRegistro'),  
-  };
+function createElement(tag, attributes = {}, textContent) {
+    const element = document.createElement(tag);
+    for (const [key, value] of Object.entries(attributes)) {
+        element.setAttribute(key, value);
+    }
+    if (textContent) {
+        element.textContent = textContent;
+    }
+    return element;
 }
+
+function getElementById(id) {
+    if (!elementCache[id]) {
+        elementCache[id] = document.getElementById(id);
+    }
+    return elementCache[id];
+}
+
+function querySelector(selector) {
+    if (!elementCache[selector]) {
+        elementCache[selector] = document.querySelector(selector);
+    }
+    return elementCache[selector];
+}
+
+function querySelectorAll(selector) {
+    if (!elementCache[selector]) {
+        elementCache[selector] = document.querySelectorAll(selector);
+    }
+    return elementCache[selector];
+}
+
+window.domHelpers = { clearTable, createElement, getElementById, querySelector, querySelectorAll };

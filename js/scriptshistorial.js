@@ -7,17 +7,7 @@ const historialPrestamo = [
       quienAutorizo: "Admin12343",
       observaciones: "Desgaste y perdida",
       nombreHerramienta: ["Taladro", "Martillo"],
-  },
-  {
-    folio: "237584",
-    nombreTrabajador: "Lopez Addan",
-    fechaTransaccion: "2023-08-01",
-    fechaDevolucion: "2023-08-05",
-    quienAutorizo: "Admin11",
-    observaciones: "Desgaste y mas desgaste",
-    nombreHerramienta: ["Taladro", "Martillo"],
-},
-
+  }
 ];
 
 function generarTablaHistorial(data) {
