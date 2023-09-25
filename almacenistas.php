@@ -65,51 +65,22 @@
                 </table>
             </section>
         </main>
-
         <div id="overlay"></div>
         <div id="popupEditar">
             <form id="editarAlmacenistaForm">
                 <h3>Editar datos</h3>
-                
-                <div class="inputWrapper">
-                    <label for="editEstado">Estado:</label>
-                    <select class="hidden toggleInput" id="editEstado">
-                        <option value="Alta">Alta</option>
-                        <option value="Baja">Baja</option>
-                    </select>
-                    <button type="button" onclick="toggleInput('editEstado', this)">+</button>
-                </div>
-
-                <div class="inputWrapper">
-                    <label for="editID">ID:</label>
-                    <input type="text" class="hidden toggleInput" id="editID" placeholder="ID">
-                    <button type="button" onclick="toggleInput('editID', this)">+</button>
-                </div>
-
-                <div class="inputWrapper">
-                    <label for="editNombre">Nombre:</label>
-                    <input type="text" class="hidden toggleInput" id="editNombre" placeholder="Nombre">
-                    <button type="button" onclick="toggleInput('editNombre', this)">+</button>
-                </div>
-
-                <div class="inputWrapper">
-                    <label for="editTelefono">Teléfono:</label>
-                    <input type="text" class="hidden toggleInput" id="editTelefono" placeholder="Teléfono">
-                    <button type="button" onclick="toggleInput('editTelefono', this)">+</button>
-                </div>
-
-                <div class="inputWrapper">
-                    <label for="editCorreo">Correo Electrónico:</label>
-                    <input type="email" class="hidden toggleInput" id="editCorreo" placeholder="Correo Electrónico">
-                    <button type="button" onclick="toggleInput('editCorreo', this)">+</button>
-                </div>
-
-                <div class="inputWrapper">
-                    <label for="editFechaIngreso">Fecha de Ingreso:</label>
-                    <input type="date" class="hidden toggleInput" id="editFechaIngreso" placeholder="Fecha de Ingreso">
-                    <button type="button" onclick="toggleInput('editFechaIngreso', this)">+</button>
-                </div>
-
+        
+                <select id="editEstado">
+                    <option value="Alta">Alta</option>
+                    <option value="Baja">Baja</option>
+                </select>
+            
+                <input type="text" id="editID" placeholder="ID">
+                <input type="text" id="editNombre" placeholder="Nombre">
+                <input type="text" id="editTelefono" placeholder="Teléfono">
+                <input type="email" id="editCorreo" placeholder="Correo Electrónico">
+        
+                <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
             </form>

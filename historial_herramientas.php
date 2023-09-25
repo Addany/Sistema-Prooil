@@ -69,82 +69,27 @@
         </tbody>
       </table>
     </section>
-    <div id="overlay"></div>
-    <div id="popup">
-        <form id="editarHerramientaForm">
-            <h3>Editar datos</h3>
-            
-            <div class="inputWrapper">
-                <label for="editFotoInput">Foto:</label>
-                <img id="editFoto" src="" alt="Foto del herramienta" />
-                <input type="file" class="hidden toggleInput" id="editFotoInput" onchange="actualizarFoto(event)">
-                <button type="button" onclick="toggleInput('editFotoInput', this)">+</button>
-            </div>
-
-
-            <div class="inputWrapper">
-                <label for="editTipoherramienta">Tipo de:</label>
-                <input type="text" class="hidden toggleInput" id="editTipoherramienta" placeholder="Tipo de">
-                <button type="button" onclick="toggleInput('editTipoherramienta', this)">+</button>
-            </div>
-
-            <div class="inputWrapper">
-                <label for="editMarca">Marca:</label>
-                <input type="text" class="hidden toggleInput" id="editMarca" placeholder="Marca">
-                <button type="button" onclick="toggleInput('editMarca', this)">+</button>
-            </div>
-
-            <div class="inputWrapper">
-                <label for="editTamano">Tamaño:</label>
-                <input type="text" class="hidden toggleInput" id="editTamano" placeholder="Tamaño">
-                <button type="button" onclick="toggleInput('editTamano', this)">+</button>
-            </div>
-
-            <div class="inputWrapper">
-                <label for="editOrdenCompra">Orden de compra:</label>
-                <input type="text" class="hidden toggleInput" id="editOrdenCompra" placeholder="Orden de compra">
-                <button type="button" onclick="toggleInput('editOrdenCompra', this)">+</button>
-            </div>
-
-            <div class="inputWrapper">
-                <label for="editNoSerie">Número de Serie:</label>
-                <input type="text" class="hidden toggleInput" id="editNoSerie" name="noSerie">
-                <button type="button" onclick="toggleInput('editNoSerie', this)">+</button>
-            </div>
-
-            <div class="inputWrapper">
-                <label for="editEstado">Estado:</label>
-                <input type="text" class="hidden toggleInput" id="editEstado" placeholder="Estado">
-                <button type="button" onclick="toggleInput('editEstado', this)">+</button>
-            </div>
-
-            <div class="inputWrapper">
-                <label for="editColor">Color:</label>
-                <input type="text" class="hidden toggleInput" id="editColor" placeholder="Color">
-                <button type="button" onclick="toggleInput('editColor', this)">+</button>
-            </div>
-
-            <div class="inputWrapper">
-                <label for="editFecha">Fecha:</label>
-                <input type="date" class="hidden toggleInput" id="editFecha">
-                <button type="button" onclick="toggleInput('editFecha', this)">+</button>
-            </div>
-
-            <div class="inputWrapper">
-                <label for="editDescripcion">Descripción:</label>
-                <input type="text" class="hidden toggleInput" id="editDescripcion" placeholder="Descripción" >
-                <button type="button" onclick="toggleInput('editDescripcion', this)">+</button>
-            </div>
-
-            <div class="inputWrapper">
-                <label for="editEstatus">Estatus:</label>
-                <input type="text" class="hidden toggleInput" id="editEstatus" placeholder="Estatus">
-                <button type="button" onclick="toggleInput('editEstatus', this)">+</button>
-            </div>
-
-            <button type="submit" class="guardar">Guardar</button>
-            <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popup')">Cancelar</button>
-        </form>
+      <div id="overlay"></div>
+        <div id="popup">
+          <form id="editarHerramientaForm">
+              <h3>Editar datos</h3>
+              <img id="editFoto" src="" alt="Foto del herramienta" />
+                  <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
+              <input type="hidden" id="editId">
+              <input type="text" id="editTipoherramienta" placeholder="Tipo de">
+              <input type="text" id="editMarca" placeholder="Marca">
+              <input type="text" id="editTamano" placeholder="Tamaño">
+              <input type="text" id="editOrdenCompra" placeholder="Orden de compra">
+              <input type="text" id="editNoSerie" name="noSerie" />
+              <input type="text" id="editEstado" placeholder="Estado">
+              <input type="text" id="editColor" placeholder="Color">
+              <input type="date" id="editFecha">
+              <input type="text" id="editDescripcion" placeholder="Descripción">
+              <input type="text" id="editEstatus" placeholder="Estatus">
+              <button type="submit" class="guardar">Guardar</button>
+              <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popup')">Cancelar</button>
+          </form>
+        </div>
     </div>
   </div>
 

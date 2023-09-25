@@ -70,66 +70,33 @@
             </table>
             </section>
         </main>
-
         <div id="overlay"></div>
-
         <div id="popupEditar">
             <form id="editarTrabajadorForm">
                 <h3>Editar datos</h3>
-                <div class="inputWrapper">
-                <label for="Foto">Foto</label>
-                <img id="editFoto" src="" alt="Foto del Trabajador">
-                    <button type="button" onclick="toggleInput('editFotoInput', this)">+</button>
-                    <input type="file" id="editFotoInput" class="hidden toggleInput" onchange="actualizarFoto(event)">
-                </div>
-                <div class="inputWrapper">
-                    <label for="editEstado">Estado</label>
-                    <button type="button" onclick="toggleInput('editEstado', this)">+</button>
-                    <select id="editEstado" class="hidden toggleInput">
-                        <option value="Alta">Alta</option>
-                        <option value="Baja">Baja</option>
-                    </select>
-                </div>
-                <div class="inputWrapper">
-                    <label for="editTipoRegistro">Tipo de Registro</label>
-                    <button type="button" onclick="toggleInput('editTipoRegistro', this)">+</button>
-                    <select id="editTipoRegistro" class="hidden toggleInput">
-                        <option value="Trabajador">Trabajador</option>
-                        <option value="Invitado">Invitado</option>
-                    </select>
-                </div>
-                <div class="inputWrapper">
-                    <label for="editID">ID</label>
-                    <button type="button" onclick="toggleInput('editID', this)">+</button>
-                    <input type="text" id="editID"  class="hidden toggleInput" placeholder="ID">
-                </div>
-                <div class="inputWrapper">
-                    <label for="editNombre">Nombre</label>
-                    <button type="button" onclick="toggleInput('editNombre', this)">+</button>
-                    <input type="text" id="editNombre"   class="hidden toggleInput" placeholder="Nombre">
-                </div>
-                <div class="inputWrapper">
-                    <label for="editTelefono">Teléfono</label>
-                    <button type="button" onclick="toggleInput('editTelefono', this)">+</button>
-                    <input type="text" id="editTelefono"   class="hidden toggleInput" placeholder="Teléfono">
-                </div>
-                <div class="inputWrapper">
-                    <label for="editCorreo">Correo Electrónico</label>
-                    <button type="button" onclick="toggleInput('editCorreo', this)">+</button>
-                    <input type="email" id="editCorreo"   class="hidden toggleInput" placeholder="Correo Electrónico">
-                </div>
-                <div class="inputWrapper">
-                    <label for="editAreaTrabajo">Área de Trabajo</label>
-                    <button type="button" onclick="toggleInput('editAreaTrabajo', this)">+</button>
-                    <select id="editAreaTrabajo" class="hidden toggleInput">
-                        <option value="Almacen">Almacen</option>
-                    </select>
-                </div>
-                <div class="inputWrapper">
-                    <label for="editFechaIngreso">Fecha de Ingreso</label>
-                    <button type="button" onclick="toggleInput('editFechaIngreso', this)">+</button>
-                    <input type="date" id="editFechaIngreso"  class="hidden toggleInput" placeholder="Fecha de Ingreso">
-                </div>
+                <img id="editFoto" src="" >
+                <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
+                
+                <select id="editEstado">
+                    <option value="Alta">Alta</option>
+                    <option value="Baja">Baja</option>
+                </select>
+                
+                <select id="editTipoRegistro">
+                    <option value="Trabajador">Trabajador</option>
+                    <option value="Invitado">Invitado</option>
+                </select>
+                
+                <input type="text" id="editID" placeholder="ID">
+                <input type="text" id="editNombre" placeholder="Nombre">
+                <input type="text" id="editTelefono" placeholder="Teléfono">
+                <input type="email" id="editCorreo" placeholder="Correo Electrónico">
+                
+                <select id="editAreaTrabajo">
+                    <option value="Almacen">Almacen</option>
+                </select>
+                
+                <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
             </form>

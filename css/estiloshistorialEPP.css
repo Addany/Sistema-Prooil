@@ -179,53 +179,7 @@ tr:nth-child(even) {
   display: none;
 }
 
-.inputWrapper {
-  display: flex;
-  flex-direction: column;  /* Hace que los hijos se apilen verticalmente */
-  position: relative;      /* Hace que pueda posicionar absolutamente el botón dentro de este contenedor */
-  margin-bottom: 12px;    /* Espacio entre diferentes .inputWrapper */
-}
 
-.inputWrapper label {
-  margin-bottom: 8px;     /* Espacio entre el label y el input/select */
-}
-
-#popup form input, #popupEditar form select {
-  width: 100%; 
-  z-index: 1;  /* Asegura que el input/select se muestre por encima del botón */
-  box-sizing: border-box; /* Asegura que el padding y el borde del input/select estén incluidos en su ancho total */
-}
-
-.inputWrapper button {
-  position: absolute; /* Posiciona el botón respecto al .inputWrapper */
-  right: 10px;        /* Espacio desde la derecha */
-  top: 50%;           /* Centra el botón verticalmente */
-  transform: translateY(-50%);  /* Ajusta para un centrado vertical perfecto */
-  z-index: 2;         /* Asegura que el botón se muestre por encima del input/select */
-  
-  /* Estilos para un botón circular */
-  width: 30px;        
-  height: 30px;       
-  border-radius: 50%; 
-  border: 1px solid #ddd;
-  background-color: #f1f1f1;
-  color: #333;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 28px;  /* Centra el símbolo + verticalmente */
-  text-align: center; /* Centra el símbolo + horizontalmente */
-
-  transition: top 0.3s ease;
-}
-
-.inputWrapper button.expanded {
-  top: 0; 
-  transform: translateY(0); 
-}
-
-.inputWrapper button:hover {
-  background-color: #ddd;
-}
 
 
 
