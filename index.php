@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="css/estiloslogin.css">
 </head>
 <body>
-
-
   <div class="login-container">
     <h2>Iniciar Sesión</h2>
     <form action="php/login.php" method="POST">

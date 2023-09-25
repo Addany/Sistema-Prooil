@@ -1,11 +1,14 @@
 <?php
+include 'conexion_bd.php';
 $usuario = $_POST['username'];
 $contrasena = $_POST['password'];
+$sql=$conexion->query("SELECT * FROM almacenista WHERE usuario='$usuario' AND contrasenia='$contrasena'");
 
-if($usuario == "jose" && $contrasena == "perez"){
+
+if($datos=$sql->fetch_object()){
 	header("location: ../home.php");
 }else{
-	echo "DATOS INCORRECTOS";
+	echo '<script language="javascript">alert("Usuario o Contraseña incorrecta");</script>';
 }
 
 ?>
