@@ -143,14 +143,7 @@
         </form>
     </div>
 
-    <script>
-        $('#navbar').load('Navegacion/navbar.php', function() {
-        $.getScript("Navegacion/navbar.js", function() {
-            $('#page-container').fadeIn();
-        });
-        });
-    </script>
-
+    <script src="js/scriptnavegacion.js"></script>
     <script src="js/ScriptsHistorialprestamo/domHelpers.js"></script>
     <script src="js/ScriptsHistorialprestamo/helpers.js"></script>
     <script src="js/ScriptsHistorialprestamo/data.js"></script>

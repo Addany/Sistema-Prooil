@@ -18,13 +18,6 @@
     <div id="page-container">
         <div id="navbar"></div>
 
-        <script>
-            $('#navbar').load('Navegacion/navbar.php', function() {
-            $.getScript("Navegacion/navbar.js", function() {
-                $('#page-container').fadeIn();
-            });
-            });
-        </script>
         <main>
             <section class="container">
                 <div class="form-container">
@@ -142,8 +135,7 @@
             </form>
         </div>
     </div>
-
-
+    <script src="js/scriptnavegacion.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/domHelpers.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/helpers.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/data.js"></script>

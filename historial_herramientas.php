@@ -15,14 +15,6 @@
   <div id="page-container">
     <div id="navbar"></div>
     
-    <script>
-      $('#navbar').load('Navegacion/navbar.php', function() {
-        $.getScript("Navegacion/navbar.js", function() {
-          $('#page-container').fadeIn();
-        });
-      });
-    </script>
-
     <form class="form-buscar">
       <div class="input-group">
         <label for="buscador">Busqueda por texto:</label>
@@ -156,6 +148,8 @@
     </div>
   </div>
 
+
+  <script src="js/scriptnavegacion.js"></script>
   <script src="js/ScriptsHistorialHerramientas/domHelpers.js"></script>
   <script src="js/ScriptsHistorialHerramientas/helpers.js"></script>
   <script src="js/ScriptsHistorialHerramientas/tablaHistorial.js"></script>

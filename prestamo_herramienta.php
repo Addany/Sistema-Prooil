@@ -21,13 +21,6 @@
 
     <div id="page-container">
         <div id="navbar"></div>
-        <script>
-            $('#navbar').load('Navegacion/navbar.php', function() {
-              $.getScript("Navegacion/navbar.js", function() {
-                $('#page-container').fadeIn();
-              });
-            });
-          </script>
         
         <main>
             <section class="container">
@@ -80,12 +73,15 @@
         </main>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <script>
         $(document).ready(function () {
             $('.workerName').select2();
         });
     </script>
+
+    <script src="js/scriptnavegacion.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script src="js/scriptsprestamodevolucion.js"></script>

@@ -15,13 +15,6 @@
 
     <div id="page-container">
         <div id="navbar"></div>
-        <script>
-            $('#navbar').load('Navegacion/navbar.php', function() {
-              $.getScript("Navegacion/navbar.js", function() {
-                $('#page-container').fadeIn();
-              });
-            });
-          </script>
           
         <div class="container">
             <div class="form-container">
@@ -81,8 +74,9 @@
             </div>
         </div>
     </div>
-
-<script src="js/registroepp.js"></script>
+    
+    <script src="js/scriptnavegacion.js"></script>
+    <script src="js/registroepp.js"></script>
 
 
 </body>

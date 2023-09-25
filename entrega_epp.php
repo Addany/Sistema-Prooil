@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Entrega de Equipo EPP</title>
-    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/estilosentregaEPP.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
@@ -22,13 +21,7 @@
     <div id="page-container">
         <main>
             <div id="navbar"></div>
-            <script>
-                $('#navbar').load('Navegacion/navbar.php', function() {
-                $.getScript("Navegacion/navbar.js", function() {
-                    $('#page-container').fadeIn();
-                });
-                });
-            </script>
+
             <section class="container">
                 <div class="form-container">
                     <h3>Formulario de Entrega de Equipo EPP</h3>
@@ -73,6 +66,7 @@
         </main>
     </div>
 
+    <script src="js/scriptnavegacion.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {

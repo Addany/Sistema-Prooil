@@ -33,15 +33,7 @@
         <source src="Resources/Mi video-1.mp4" type="video/mp4">
       </video>
     </div>
-
-
-    <script>
-        $('#navbar').load('Navegacion/navbar.php', function() {
-          $.getScript("Navegacion/navbar.js", function() {
-            $('#page-container').fadeIn();
-          });
-        });
-    </script>
-
+    
+    <script src="js/scriptnavegacion.js"></script>
 </body>
 </html>

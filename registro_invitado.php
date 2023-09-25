@@ -12,14 +12,6 @@
 <body>
   <div id="page-container">
     <div id="navbar"></div>
-
-    <script>
-      $('#navbar').load('Navegacion/navbar.php', function() {
-      $.getScript("Navegacion/navbar.js", function() {
-          $('#page-container').fadeIn();
-      });
-      });
-    </script>
     
     <div class="registration-container">
       <div class="image-container">
@@ -41,6 +33,7 @@
       <source src="Resources/Mi video-1.mp4" type="video/mp4">
     </video>
   </div>
+  <script src="js/scriptnavegacion.js"></script>
   <script src="js/registroinvitado.js"></script>
 </body>
 </html>
