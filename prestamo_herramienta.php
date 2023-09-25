@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prestamos de Herramientas</title>
+    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/estilosprestamodevolucion.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -21,7 +21,7 @@
 
     <div id="page-container">
         <div id="navbar"></div>
-        
+
         <main>
             <section class="container">
                 <div class="form-container">
@@ -73,15 +73,13 @@
         </main>
     </div>
 
-    
+    <script src="js/scriptnavegacion.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.workerName').select2();
         });
     </script>
-
-    <script src="js/scriptnavegacion.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script src="js/scriptsprestamodevolucion.js"></script>
