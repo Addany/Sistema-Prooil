@@ -65,7 +65,7 @@ async function editarHerramienta(id) {
     });
 
     if (registro) {
-      document.getElementById("editFoto").value = registro.foto;
+      document.getElementById("editFoto").src = registro.foto;
       document.getElementById("editId").value = registro.id;
       document.getElementById("editTipoherramienta").value = registro.tipoherramienta;
       document.getElementById("editMarca").value = registro.marca; 

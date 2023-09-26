@@ -68,7 +68,7 @@
                 </table>
             </section>
         </main>
-        <div id="overlay"></div>
+        <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
         <div id="popupEditar">
             <form id="editarAlmacenistaForm">
                 <h3>Editar datos</h3>

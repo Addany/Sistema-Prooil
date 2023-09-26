@@ -60,7 +60,7 @@ async function editarTrabajador(id) {
     });
 
     if (registro) {
-      document.getElementById("editFoto").value = registro.foto;
+      document.getElementById("editFoto").src = registro.foto;
       document.getElementById("editEstado").value = registro.estado;
       document.getElementById("editTipoRegistro").value = registro.tipoRegistro; 
       document.getElementById("editID").value = registro.id;
