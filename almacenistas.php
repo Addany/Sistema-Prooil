@@ -69,17 +69,20 @@
         <div id="popupEditar">
             <form id="editarAlmacenistaForm">
                 <h3>Editar datos</h3>
-        
+                <Label>Estado:</Label>
                 <select id="editEstado">
                     <option value="Alta">Alta</option>
                     <option value="Baja">Baja</option>
                 </select>
-            
+                <Label>ID:</Label>
                 <input type="text" id="editID" placeholder="ID">
+                <Label>Nombre:</Label>
                 <input type="text" id="editNombre" placeholder="Nombre">
+                <Label>Teléfono:</Label>
                 <input type="text" id="editTelefono" placeholder="Teléfono">
+                <Label>Correo electrónico:</Label>
                 <input type="email" id="editCorreo" placeholder="Correo Electrónico">
-        
+                <Label>Fecha de ingreso:</Label>
                 <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>

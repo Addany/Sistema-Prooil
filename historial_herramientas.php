@@ -75,7 +75,7 @@
               <h3>Editar datos</h3>
               <img id="editFoto" src="" alt="Foto del herramienta" />
                   <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
-              <input type="hidden" id="editId">
+              <input type="text" id="editId">
               <input type="text" id="editTipoherramienta" placeholder="Tipo de">
               <input type="text" id="editMarca" placeholder="Marca">
               <input type="text" id="editTamano" placeholder="Tamaño">

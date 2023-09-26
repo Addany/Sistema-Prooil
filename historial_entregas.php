@@ -67,11 +67,17 @@
         <div id="popupEditar">
             <form id="editarPrestamoForm"> 
                 <h3>Editar datos</h3>
+                <Label>ID:</Label>
                 <input type="text" id="editFolio" placeholder="Folio">
+                <Label>ID:</Label>
                 <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
+                <Label>ID:</Label>
                 <input type="text" id="edittrabajadorSolicitante" placeholder="Nombre del Trabajador">
+                <Label>ID:</Label>
                 <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
+                <Label>ID:</Label>
                 <input type="text" id="editObservaciones" placeholder="Observaciones">
+                <Label>ID:</Label>
                 <input type="text" id="editEstadoproceso" placeholder="Estado">
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
