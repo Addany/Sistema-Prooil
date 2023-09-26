@@ -109,24 +109,43 @@ tr:nth-child(even) {
   z-index: 1000; 
 }
 
-#popupEditar form input {
-  width: calc(100% - 20px);
-  padding: 8px;
-  margin-bottom: 6px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+#popupEditar form label,
+#popupEditar form input,
+#popupEditar form select {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 10px;
 }
 
+#popupEditar form label {
+  width: 100px; /* Ancho fijo para todos los labels */
+  text-align: right;
+  margin-right: 10px; /* Espacio reducido entre label e input/select */
+}
+
+#popupEditar form input,
 #popupEditar form select {
-  width: 100%; 
+  width: calc(100% - 115px); /* Descontando el ancho del label y el margen reducido */
   padding: 8px;
-  margin-bottom: 6px;
+  height: 36px; /* Altura fija para los input/select */
   border-radius: 5px;
   border: 1px solid #ddd;
   box-sizing: border-box;
 }
 
-.guardar{
+#popupEditar form button {
+  background-color: #0F393B;
+  color: white;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+}
+
+#popupEditar form button:hover {
+  background-color: #194d50;
+}
+
+.guardar {
   width: 100%;
   padding: 10px;
   margin-bottom: 3px;
@@ -134,16 +153,6 @@ tr:nth-child(even) {
   border: 1px solid #ddd;
   background-color: #f1f1f1;
   color: #333;
-}
-
-#popupEditar form button {
-  background-color: #0F393B;
-  color: white;
-  font-weight: bold;
-}
-
-#popupEditar form button:hover {
-  background-color: #194d50;
 }
 
 #popupEditar #cancelarEdicion {

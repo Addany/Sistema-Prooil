@@ -69,7 +69,7 @@
         </tbody>
       </table>
     </section>
-      <div id="overlay" onclick="cerrarSiEsFuera(event, 'popup')"></div>
+      <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
         <div id="popup">
           <form id="editarHerramientaForm">
               <h3>Editar datos</h3>

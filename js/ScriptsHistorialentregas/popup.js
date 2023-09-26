@@ -19,10 +19,13 @@ function cerrarPopup(idPopup) {
   }, { once: true });
 }
 
-function cerrarSiEsFuera(event, idPopup) {
-  const popupElement = document.getElementById(idPopup);
-  
-  if (event.target === event.currentTarget) {
+function cerrarSiEsFuera(event, ...idPopups) {
+  for (const idPopup of idPopups) {
+    const popupElement = document.getElementById(idPopup);
+
+    if (popupElement.style.display !== 'none' && event.target === event.currentTarget) {
       cerrarPopup(idPopup);
+      return; // Una vez que se encuentra el popup abierto y se cierra, no necesitamos verificar los demás
+    }
   }
 }
