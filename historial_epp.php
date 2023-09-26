@@ -62,7 +62,7 @@
           </table>
         </section>
       </main>
-      <div id="overlay"></div>
+      <div id="overlay" onclick="cerrarSiEsFuera(event, 'popup')"></div>
       <div id="popup">
           <form id="editarEPP">
             <h3>Editar datos</h3>

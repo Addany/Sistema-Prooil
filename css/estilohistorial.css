@@ -243,10 +243,50 @@ tr:nth-child(even) {
   background-color: #194d50;
 }
 
+@media (max-width: 768px) {
+  .form-buscar {
+    flex-direction: column;
+    align-items: stretch; 
+  }
+
+  .form-buscar input, 
+  .form-buscar select, 
+  .form-buscar button {
+    width: 100%; /* Aquí ajustamos el ancho al 100% */
+    box-sizing: border-box; /* Esto hará que el padding y el borde se incluyan en el ancho */
+    margin-bottom: 10px; 
+  }
+
+  .form-buscar button {
+    margin-bottom: 0; 
+  }
+
+  #popupEditar {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  #popupEditar form input,
+  #popupEditar form select {
+    width: 100%; /* Esto asegura que tanto los inputs como los selects tienen el mismo ancho */
+    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+  }
+  
+  #popupEditar form button {
+    width: 100%; /* Esto ajusta el ancho del botón para que coincida con los inputs/selects */
+    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+    margin-bottom: 5px; /* Añadido margen en la parte inferior para espacio entre los botones */
+  }
+}
 @media (max-width: 600px) {
   table {
     width: 100%;
     border-collapse: collapse;
+  }
+  .accion-button {
+    padding: 6px; /* Reducimos el padding */
+    margin-left: 10px;
+    font-size: 0.8rem; /* Reducimos el tamaño de la fuente */
   }
 
   thead {

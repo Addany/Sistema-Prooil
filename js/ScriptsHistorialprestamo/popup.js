@@ -18,3 +18,11 @@ function cerrarPopup(idPopup) {
     document.getElementById('overlay').style.display = 'none';
   }, { once: true });
 }
+
+function cerrarSiEsFuera(event, idPopup) {
+  const popupElement = document.getElementById(idPopup);
+  
+  if (event.target === event.currentTarget) {
+      cerrarPopup(idPopup);
+  }
+}

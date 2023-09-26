@@ -64,7 +64,7 @@ async function editarEPP(id) {
     });
 
     if (registro) {
-      document.getElementById("editFoto").value = registro.foto;
+      document.getElementById("editFoto").src = registro.foto;
       document.getElementById("editId").value = registro.id;
       document.getElementById("editNombre").value = registro.nombre; 
       document.getElementById("editCantidad").value = registro.cantidad;

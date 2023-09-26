@@ -19,3 +19,10 @@ function cerrarPopup(idPopup) {
   }, { once: true });
 }
 
+function cerrarSiEsFuera(event, idPopup) {
+  const popupElement = document.getElementById(idPopup);
+  
+  if (event.target === event.currentTarget) {
+      cerrarPopup(idPopup);
+  }
+}
