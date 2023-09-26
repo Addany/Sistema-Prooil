@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <?php
+    include 'php/session.php';
+    ?>
     <header>
         <!-- Barra de navegación aquí -->
     </header>

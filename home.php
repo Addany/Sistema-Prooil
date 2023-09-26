@@ -11,6 +11,9 @@
   <title>Navegación Responsive</title>
 </head>
 <body>
+  <?php 
+  include 'php/session.php';
+  ?>
 
   <div id="page-container">
     <div id="navbar"></div>
@@ -28,7 +31,7 @@
     </div>
 
     <div class="welcome-text">
-      <h1>Bienvenido al sistema</h1>
+      <h1>Bienvenido al sistema <?php echo "$almacenista"; ?></h1>
     </div>
 
     <div class="button-container">
@@ -42,8 +45,8 @@
     <div class="popup">
       <h2>¿Qué acción deseas realizar?</h2>
       <div class="popup-buttons">
-        <a href="Prestamo herramienta.php" class="button">Hacer un préstamo</a>
-        <a href="Entrega EPP.php" class="button">Hacer una entrega</a>
+        <a href="prestamo_herramienta.php" class="button">Hacer un préstamo</a>
+        <a href="entrega_epp.php" class="button">Hacer una entrega</a>
         <button onclick="closePopup()" class="button">Cerrar</button>
     </div>
     </div>

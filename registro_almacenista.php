@@ -11,19 +11,22 @@
     
 </head>
 <body>
+    <?php
+    include 'php/session.php';
+    ?>
     <div id="page-container">
-      <div id="navbar"></div>
+      <div id="navbar"></div> 
 
 
       <div class="registration-container">
         <h2>Registro de almacenista</h2>
-        <form>
-          <input type="text" placeholder="Usuario" required>
-          <input type="text" placeholder="Nombre" required>
-          <input type="text" placeholder="Teléfono" required>
-          <input type="email" placeholder="Correo Electrónico" required>
-          <input type="password" placeholder="Contraseña" required>
-          <input type="password" placeholder="Confirmar Contraseña" required>
+        <form action="php/registro.php" method="POST">
+          <input type="text" name="user" placeholder="Usuario" required>
+          <input type="text" name="name" placeholder="Nombre" required>
+          <input type="tel" name="phone" placeholder="Teléfono" required>
+          <input type="email" name="email" placeholder="Correo Electrónico" required>
+          <input type="password" name="password" placeholder="Contraseña" required>
+          <input type="password" name="repassword" placeholder="Confirmar Contraseña" required>
           <button type="submit">Registrarse</button>
         </form>
 

@@ -10,6 +10,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+    <?php
+    include 'php/session.php';
+    ?>
   <div id="page-container">
     <div id="navbar"></div>
     

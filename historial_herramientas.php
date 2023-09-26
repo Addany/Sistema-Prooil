@@ -11,6 +11,9 @@
 
 </head>
 <body>
+  <?php
+  include 'php/session.php';
+  ?>
 
   <div id="page-container">
     <div id="navbar"></div>
