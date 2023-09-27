@@ -2,7 +2,6 @@
 #Incluye la conexion hacia la BD
 include 'conexion_bd.php';
 #fun para crea una sesión o reanuda la actual basada en un identificador de sesión pasado mediante una petición GET o POST, o pasado mediante una cookie.
-session_start();
 #Login y verificacion de datos en la BD
 $usuario = $_POST['username'];
 $contrasena = $_POST['password'];

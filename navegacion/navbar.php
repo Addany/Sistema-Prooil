@@ -35,7 +35,7 @@
         <li><a href="trabajadores.php"><i class="fa-solid fa-box"></i> Trabajadores/ Invitados</a></li>
       </ul>
     </li>
-    <li><a href="/public/php/logout.php"><i class="fa-solid fa-circle-xmark"></i>Cerrar sesion</a></li>
+    <li><a href="./php/logout.php"><i class="fa-solid fa-circle-xmark"></i>Cerrar sesion</a></li>
 
     </ul>
     <div class="nav-toggle">

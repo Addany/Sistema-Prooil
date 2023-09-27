@@ -1,5 +1,4 @@
 <?php
-#----------------------------------Registro Almacenista----------------------------------------------------
 #Agregamos la fun para iniciar la conexion a la BD
 include 'conexion_bd.php';
 #Declaramos y obtenemos las variables del formulario

@@ -1,5 +1,4 @@
-<?php 
-session_start();
+<?php
 if (isset($_SESSION['tiempo'])) {
   $inactivo = 120;
   $vida_session = time() - $_SESSION['tiempo'];

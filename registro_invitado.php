@@ -21,12 +21,12 @@
         <img id="output" class="image-preview" width="100" alt="Imagen del trabajador" />
       </div>
       <h2>Registro de Invitado</h2>
-      <form id="registration-form">
-          <input type="text" name="worker_name" placeholder="Nombre del Invitado" required>
+      <form id="registration-form" action="php/registro2.php" method="POST" enctype="multipart/form-data">
+          <input type="text" name="name" placeholder="Nombre del Invitado" required>
           <input type="text" name="phone" placeholder="Teléfono" required>
           <input type="email" name="email" placeholder="Correo Electrónico" required>
           <label for=""> Introduce una foto:
-            <input type="file" name="worker_image" accept="image/*" onchange="previewImage(event)" required>
+          <input type="file" name="image" accept="image/*" onchange="previewImage(event)" required>
           </label>
         <button type="submit">Registrarse</button>
       </form>
