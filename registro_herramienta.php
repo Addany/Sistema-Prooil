@@ -68,7 +68,7 @@
                                     <option value="malo">Malo</option>
                                 </select>
                             </div>
-                            <label class="file-label" for="worker_image">Foto EPP:</label>
+                            <label class="file-label" for="worker_image">Foto Herramienta:</label>
                             <input type="file" id="worker_image" name="worker_image" class="file-input" accept="image/*" onchange="previewImage(event)" required>
                         </div>
                     </div>

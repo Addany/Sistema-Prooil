@@ -109,43 +109,24 @@ tr:nth-child(even) {
   z-index: 1000; 
 }
 
-#popupEditar form label,
-#popupEditar form input,
-#popupEditar form select {
-  display: inline-block;
-  vertical-align: middle;
-  margin-bottom: 10px;
-}
-
-#popupEditar form label {
-  width: 100px; /* Ancho fijo para todos los labels */
-  text-align: right;
-  margin-right: 10px; /* Espacio reducido entre label e input/select */
-}
-
-#popupEditar form input,
-#popupEditar form select {
-  width: calc(100% - 115px); /* Descontando el ancho del label y el margen reducido */
+#popupEditar form input {
+  width: calc(100% - 20px);
   padding: 8px;
-  height: 36px; /* Altura fija para los input/select */
+  margin-bottom: 6px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+#popupEditar form select {
+  width: 100%; /* Cambiado a 100% para que tenga el mismo ancho que el input */
+  padding: 8px;
+  margin-bottom: 6px;
   border-radius: 5px;
   border: 1px solid #ddd;
   box-sizing: border-box;
 }
 
-#popupEditar form button {
-  background-color: #0F393B;
-  color: white;
-  font-weight: bold;
-  display: block;
-  width: 100%;
-}
-
-#popupEditar form button:hover {
-  background-color: #194d50;
-}
-
-.guardar {
+.guardar{
   width: 100%;
   padding: 10px;
   margin-bottom: 3px;
@@ -153,6 +134,16 @@ tr:nth-child(even) {
   border: 1px solid #ddd;
   background-color: #f1f1f1;
   color: #333;
+}
+
+#popupEditar form button {
+  background-color: #0F393B;
+  color: white;
+  font-weight: bold;
+}
+
+#popupEditar form button:hover {
+  background-color: #194d50;
 }
 
 #popupEditar #cancelarEdicion {
@@ -167,6 +158,31 @@ tr:nth-child(even) {
 #popupEditar #cancelarEdicion:hover {
   background-color: #ddd;
 }
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.field label {
+  flex: 1;  
+  text-align: right;
+  margin-right: 10px;
+}
+
+.field span, 
+.field select, 
+.field input[type="text"], 
+.field input[type="email"], 
+.field input[type="date"] {
+  flex: 6;  
+  width: 80%; /* Establece un ancho específico para asegurar que todos sean del mismo tamaño */
+  max-width: 80%; /* Establece un ancho máximo para asegurar que no excedan este tamaño */
+  box-sizing: border-box; /* Esto asegura que el padding y el borde se incluyan en el tamaño total */
+}
+
+
 
 #editFoto {
   width: 50px; /* Asegúrate de que estas dimensiones sean iguales */

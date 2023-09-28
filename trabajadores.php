@@ -77,29 +77,58 @@
         <div id="popupEditar">
             <form id="editarTrabajadorForm">
                 <h3>Editar datos</h3>
-                <img id="editFoto" src="" >
-                <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
+                <div class="field">
+                    <Label>Foto:</Label>
+                    <img id="editFoto" src="" >
+                    <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
+                </div>
+                <div class="field">
+                    <Label>Estado:</Label>
+                    <select id="editEstado">
+                        <option value="Alta">Alta</option>
+                        <option value="Baja">Baja</option>
+                    </select>
+                </div>
                 
-                <select id="editEstado">
-                    <option value="Alta">Alta</option>
-                    <option value="Baja">Baja</option>
-                </select>
+                <div class="field">
+                    <Label>Tipo:</Label>
+                    <select id="editTipoRegistro">
+                        <option value="Trabajador">Trabajador</option>
+                        <option value="Invitado">Invitado</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <Label>ID:</Label>
+                    <input type="text" id="editID" placeholder="ID">
+                </div>
+
+                <div class="field">
+                    <Label>Nombre:</Label>
+                    <input type="text" id="editNombre" placeholder="Nombre">
+                </div>
+
+                <div class="field">
+                    <Label>Telefono:</Label>
+                    <input type="text" id="editTelefono" placeholder="Teléfono">
+                </div>
+
+                <div class="field">
+                    <Label>Correo:</Label>
+                    <input type="email" id="editCorreo" placeholder="Correo Electrónico">
+                </div>
+
+                <div class="field">
+                <Label>Area:</Label>
+                    <select id="editAreaTrabajo">
+                        <option value="Almacen">Almacen</option>
+                    </select>
+                </div>
                 
-                <select id="editTipoRegistro">
-                    <option value="Trabajador">Trabajador</option>
-                    <option value="Invitado">Invitado</option>
-                </select>
-                
-                <input type="text" id="editID" placeholder="ID">
-                <input type="text" id="editNombre" placeholder="Nombre">
-                <input type="text" id="editTelefono" placeholder="Teléfono">
-                <input type="email" id="editCorreo" placeholder="Correo Electrónico">
-                
-                <select id="editAreaTrabajo">
-                    <option value="Almacen">Almacen</option>
-                </select>
-                
-                <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
+                <div class="field">
+                    <Label>Fecha:</Label>
+                    <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
+                </div>
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
             </form>

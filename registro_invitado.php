@@ -18,14 +18,18 @@
     
     <div class="registration-container">
       <div class="image-container">
-        <img id="output" class="image-preview" width="100" alt="Imagen del trabajador" />
+        <img id="output" class="image-preview" width="100" alt="" />
       </div>
       <h2>Registro de Invitado</h2>
       <form id="registration-form" action="php/registro2.php" method="POST" enctype="multipart/form-data">
           <input type="text" name="name" placeholder="Nombre del Invitado" required>
           <input type="text" name="phone" placeholder="Teléfono" required>
           <input type="email" name="email" placeholder="Correo Electrónico" required>
-          <label for=""> Introduce una foto:
+          <select id="nombre" required data-placeholder="Tipo de ingreso"> 
+            <option value="Visitante">Visitante</option>
+            <option value="Becario">Becario</option>
+          </select>
+          <label for="">Foto:</label>
           <input type="file" name="image" accept="image/*" onchange="previewImage(event)" required>
           </label>
         <button type="submit">Registrarse</button>
