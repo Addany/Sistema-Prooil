@@ -29,7 +29,7 @@ function buscar() {
         return coincideTexto && coincideCategoria && coincideFechaTransaccion && coincideFechaDevolucion;
     });
 
-    generarTablaHistorial(resultados);
+    (resultados);
 }
 
 let debounceTimer;
@@ -37,8 +37,3 @@ function buscarConDebounce() {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(buscar, 300);
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    generarTablaHistorial(historialPrestamo);
-    document.getElementById('buscador').addEventListener('input', buscarConDebounce);
-});

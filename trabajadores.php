@@ -67,7 +67,17 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <!-- Contenido de las filas aquí -->
+                        <td data-label="Foto"><img src="Resources/Imagen1.webp" alt="Foto de daniel" class="foto-trabajador"></td>
+                        <td data-label="Estado">Alta</td>
+                        <td data-label="Tipo de Registro">Trabajador</td>
+                        <td data-label="ID">19939</td>
+                        <td data-label="Nombre">Juan</td>
+                        <td data-label="Teléfono">9211722326</td>
+                        <td data-label="Correo Electrónico">appdata.123@gmail.com</td>
+                        <td data-label="Área de Trabajo">Almacen</td>
+                        <td data-label="Fecha de Ingreso">08-12-2022</td>
+                        <td data-label="Acciones">
+                            <button class="accion-button" onclick="editarTrabajador(this)">Editar</button>
                     </tr>
                 </tbody>
             </table>
@@ -137,7 +147,6 @@
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/domHelpers.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/helpers.js"></script>
-    <script src="js/ScriptsHistoriatrabajadores/data.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/tablaHistorial.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/popup.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/main.js"></script>

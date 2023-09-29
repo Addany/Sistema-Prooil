@@ -34,9 +34,3 @@ function buscarConDebounce() {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(buscar, 300);
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  generarTablaHistorial(historialTrabajadores);
-  document.getElementById('buscador').addEventListener('input', buscarConDebounce);
-});
-

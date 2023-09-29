@@ -61,7 +61,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Las filas de la tabla se generarán aquí -->
+                        <td data-label="Folio">12345</td>
+                            <td data-label="Nombre del Trabajador">Juan</td>
+                            <td data-label="Fecha de Transacción">08-12-2022</td>
+                            <td data-label="Fecha de Devolución">08-12-2022</td>
+                            <td data-label="Quien Autorizó">Persona 1</td>
+                            <td data-label="Observaciones">Maltratado leve</td>
+                            <td data-label="Estado">Pendiente</td>
+                            <td data-label="Acciones">
+                                <button class="accion-button" onclick="verHerramienta()">Ver</button>
+                                <button class="accion-button" onclick="editarPrestamoForm(this)">Editar</button>
+                                <button class="accion-button" onclick="eliminarHerramienta">Eliminar</button>
+                        </td>
                     </tbody>
                 </table>
             </section>
@@ -74,11 +85,17 @@
             <h3>Editar datos</h3>
             <input type="text" id="editFolio" placeholder="Folio">
             <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
-            <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
-            <input type="text" id="editFechaDevolucion" placeholder="Fecha de Devolución"> 
-            <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
+            <input type="date" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
+            <input type="date" id="editFechaDevolucion" placeholder="Fecha de Devolución"> 
+            <select id="editQuienAutorizo">
+                <option value="Persona 1">Persona 1</option>
+                <option value="Persona 2">Persona 2</option>
+            </select>
             <input type="text" id="editObservaciones" placeholder="Observaciones">
-            <input type="text" id="editestado" placeholder="Estado del prestamo">
+            <select id="editestado">
+                <option value="pendiente">Pendiente</option>
+                <option value="completado">Completado</option>
+            </select>
             <button type="submit" class="guardar">Guardar</button>
             <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
         </form>
@@ -98,7 +115,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Las filas de herramientas irán aquí -->
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><label>Destornillador</label></td>
+                        <td>123123123</td>
+                        <td>Trupper</td>
+                    </tr>
                 </tbody>
             </table>
             <label for="observaciones">Observaciones:</label>
@@ -113,10 +135,9 @@
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/ScriptsHistorialprestamo/domHelpers.js"></script>
     <script src="js/ScriptsHistorialprestamo/helpers.js"></script>
-    <script src="js/ScriptsHistorialprestamo/data.js"></script>
-    <script src="js/ScriptsHistorialprestamo/tablaHistorial.js"></script>
     <script src="js/ScriptsHistorialprestamo/popup.js"></script>
     <script src="js/ScriptsHistorialprestamo/main.js"></script>
+    <script src="js/ScriptsHistorialprestamo/tablaHistorial.js"></script>
 
 </body>
 </html>
