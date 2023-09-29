@@ -70,7 +70,12 @@
                 <button type="button"  class="qr-button">Descargar QR</button>
             </div>
         </div>
+        
     </div>
+
+    <video class="video-background" autoplay loop muted>
+        <source src="Resources/Mi video.webm" type="video/webm">
+    </video>
     
     <script src="js/scriptnavegacion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1/qrcode.min.js"></script>
