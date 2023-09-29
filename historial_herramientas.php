@@ -89,36 +89,76 @@
       </table>
     </section>
     <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
-      <div id="popup">
-          <form id="editarHerramientaForm">
-              <h3>Editar datos</h3>
+    <div id="popup">
+      <form id="editarHerramientaForm">
+          <h3>Editar datos</h3>
+
+          <div class="field">
+             <Label>Foto</Label>
               <img id="editFoto" src="" alt="Foto de la herramienta" />
               <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
+          </div>
+
+          <div class="field">
+              <label for="editUsuario">Usuario:</label>
               <input type="text" id="editUsuario">
+          </div>
+
+          <div class="field">
+              <label for="editTipoherramienta">Tipo:</label>
               <input type="text" id="editTipoherramienta" placeholder="Tipo de">
+          </div>
+
+          <div class="field">
+              <label for="editMarca">Marca:</label>
               <input type="text" id="editMarca" placeholder="Marca">
+          </div>
+
+          <div class="field">
+              <label for="editTamano">Tamaño:</label>
               <input type="text" id="editTamano" placeholder="Tamaño">
+          </div>
+
+          <div class="field">
+              <label for="editOrdenCompra">Orden de compra:</label>
               <input type="text" id="editOrdenCompra" placeholder="Orden de compra">
+          </div>
+
+          <div class="field">
+              <label for="editNoSerie">Número de serie:</label>
               <input type="text" id="editNoSerie" name="noSerie" />
-              
+          </div>
+
+          <div class="field">
+              <label for="editEstado">Estado:</label>
               <select id="editEstado">
                   <option value="bueno">Bueno</option>
                   <option value="regular">Regular</option>
                   <option value="malo">Malo</option>
               </select>
-              
+          </div>
+
+          <div class="field">
+              <label for="editColor">Color:</label>
               <input type="text" id="editColor" placeholder="Color">
+          </div>
+
+          <div class="field">
+              <label for="editFecha">Fecha:</label>
               <input type="date" id="editFecha">
-              
+          </div>
+
+          <div class="field">
+              <label for="editEstatus">Estatus:</label>
               <select id="editEstatus">
                   <option value="prestado">Prestado</option>
                   <option value="devuelto">Devuelto</option>
               </select>
+          </div>
 
-              <button type="submit" class="guardar">Guardar</button>
-              <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popup')">Cancelar</button>
-          </form>
-      </div>
+          <button type="submit" class="guardar">Guardar</button>
+          <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popup')">Cancelar</button>
+      </form>
     </div>
   </div>
 

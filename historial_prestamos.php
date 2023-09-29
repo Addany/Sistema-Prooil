@@ -83,19 +83,48 @@
     <div id="popupEditar">
         <form id="editarPrestamoForm"> 
             <h3>Editar datos</h3>
-            <input type="text" id="editFolio" placeholder="Folio">
-            <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
-            <input type="date" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
-            <input type="date" id="editFechaDevolucion" placeholder="Fecha de Devolución"> 
-            <select id="editQuienAutorizo">
-                <option value="Persona 1">Persona 1</option>
-                <option value="Persona 2">Persona 2</option>
-            </select>
-            <input type="text" id="editObservaciones" placeholder="Observaciones">
-            <select id="editestado">
-                <option value="pendiente">Pendiente</option>
-                <option value="completado">Completado</option>
-            </select>
+            
+            <div class="field">
+                <label for="editFolio">Folio:</label>
+                <input type="text" id="editFolio" placeholder="Folio">
+            </div>
+
+            <div class="field">
+                <label for="editNombreDelTrabajador">Nombre del Trabajador:</label>
+                <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
+            </div>
+
+            <div class="field">
+                <label for="editFechaTransaccion">Fecha de Transacción:</label>
+                <input type="date" id="editFechaTransaccion" placeholder="Fecha de Transacción">
+            </div>
+
+            <div class="field">
+                <label for="editFechaDevolucion">Fecha de Devolución:</label>
+                <input type="date" id="editFechaDevolucion" placeholder="Fecha de Devolución">
+            </div>
+
+            <div class="field">
+                <label for="editQuienAutorizo">¿Quién Autorizó?:</label>
+                <select id="editQuienAutorizo">
+                    <option value="Persona 1">Persona 1</option>
+                    <option value="Persona 2">Persona 2</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="editObservaciones">Observaciones:</label>
+                <input type="text" id="editObservaciones" placeholder="Observaciones">
+            </div>
+
+            <div class="field">
+                <label for="editestado">Estado:</label>
+                <select id="editestado">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="completado">Completado</option>
+                </select>
+            </div>
+
             <button type="submit" class="guardar">Guardar</button>
             <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
         </form>

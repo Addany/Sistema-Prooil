@@ -83,18 +83,37 @@
         <div id="popupEditar">
             <form id="editarPrestamoForm"> 
                 <h3>Editar datos</h3>
-                <Label>ID:</Label>
-                <input type="text" id="editFolio" placeholder="Folio">
-                <Label>ID:</Label>
-                <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
-                <Label>ID:</Label>
-                <input type="text" id="edittrabajadorSolicitante" placeholder="Nombre del Trabajador">
-                <Label>ID:</Label>
-                <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
-                <Label>ID:</Label>
-                <input type="text" id="editObservaciones" placeholder="Observaciones">
-                <Label>ID:</Label>
-                <input type="text" id="editEstadoproceso" placeholder="Estado">
+                
+                <div class="field">
+                    <label for="editFolio">Folio:</label>
+                    <input type="text" id="editFolio" placeholder="Folio">
+                </div>
+
+                <div class="field">
+                    <label for="editFechaTransaccion">Fecha de Transacción:</label>
+                    <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción">
+                </div>
+
+                <div class="field">
+                    <label for="edittrabajadorSolicitante">Nombre del Trabajador:</label>
+                    <input type="text" id="edittrabajadorSolicitante" placeholder="Nombre del Trabajador">
+                </div>
+
+                <div class="field">
+                    <label for="editQuienAutorizo">¿Quién Autorizó?:</label>
+                    <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó">
+                </div>
+
+                <div class="field">
+                    <label for="editObservaciones">Observaciones:</label>
+                    <input type="text" id="editObservaciones" placeholder="Observaciones">
+                </div>
+
+                <div class="field">
+                    <label for="editEstadoproceso">Estado:</label>
+                    <input type="text" id="editEstadoproceso" placeholder="Estado">
+                </div>
+
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
             </form>

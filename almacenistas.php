@@ -78,23 +78,45 @@
         <div id="popupEditar">
             <form id="editarAlmacenistaForm">
                 <h3>Editar datos</h3>
-                <Label>Estado:</Label>
-                <select id="editEstado">
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
-                </select>
-                <Label>Usuario:</Label>
-                <input type="text" id="editID" placeholder="ID">
-                <Label>Nombre:</Label>
-                <input type="text" id="editNombre" placeholder="Nombre">
-                <Label>Contrasena:</Label>
-                <input type="text" id="editContrasena" placeholder="Contrasena">
-                <Label>Teléfono:</Label>
-                <input type="text" id="editTelefono" placeholder="Teléfono">
-                <Label>Correo electrónico:</Label>
-                <input type="email" id="editCorreo" placeholder="Correo Electrónico">
-                <Label>Fecha de ingreso:</Label>
-                <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
+                
+                <div class="field">
+                    <Label>Estado:</Label>
+                    <select id="editEstado">
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <Label>Usuario:</Label>
+                    <input type="text" id="editID" placeholder="ID">
+                </div>
+
+                <div class="field">
+                    <Label>Nombre:</Label>
+                    <input type="text" id="editNombre" placeholder="Nombre">
+                </div>
+
+                <div class="field">
+                    <Label>Contrasena:</Label>
+                    <input type="text" id="editContrasena" placeholder="Contrasena">
+                </div>
+
+                <div class="field">
+                    <Label>Teléfono:</Label>
+                    <input type="text" id="editTelefono" placeholder="Teléfono">
+                </div>
+
+                <div class="field">
+                    <Label>Correo:</Label>
+                    <input type="email" id="editCorreo" placeholder="Correo Electrónico">
+                </div>
+
+                <div class="field">
+                    <Label>Fecha:</Label>
+                    <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
+                </div>
+                
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
             </form>
@@ -103,11 +125,7 @@
 
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistorialalmacenistas/domHelpers.js"></script>
-    <script src="js/ScriptsHistorialalmacenistas/helpers.js"></script>
-    <script src="js/ScriptsHistorialalmacenistas/data.js"></script>
     <script src="js/ScriptsHistorialalmacenistas/tablaHistorial.js"></script>
     <script src="js/ScriptsHistorialalmacenistas/popup.js"></script>
-    <script src="js/ScriptsHistorialalmacenistas/main.js"></script>
 </body>
 </html>

@@ -177,8 +177,8 @@ tr:nth-child(even) {
 .field input[type="email"], 
 .field input[type="date"] {
   flex: 6;  
-  width: 80%; /* Establece un ancho específico para asegurar que todos sean del mismo tamaño */
-  max-width: 80%; /* Establece un ancho máximo para asegurar que no excedan este tamaño */
+  width: 75%; /* Establece un ancho específico para asegurar que todos sean del mismo tamaño */
+  max-width: 75%; /* Establece un ancho máximo para asegurar que no excedan este tamaño */
   box-sizing: border-box; /* Esto asegura que el padding y el borde se incluyan en el tamaño total */
 }
 

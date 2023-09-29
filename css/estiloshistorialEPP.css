@@ -179,9 +179,29 @@ tr:nth-child(even) {
   display: none;
 }
 
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
 
+.field label {
+  flex: 1;  
+  text-align: right;
+  margin-right: 10px;
+}
 
-
+.field span, 
+.field select, 
+.field input[type="text"], 
+.field input[type="email"], 
+.field input[type="date"] {
+  flex: 6;  
+  width: 80%; /* Establece un ancho específico para asegurar que todos sean del mismo tamaño */
+  max-width: 80%; /* Establece un ancho máximo para asegurar que no excedan este tamaño */
+  box-sizing: border-box; /* Esto asegura que el padding y el borde se incluyan en el tamaño total */
+}
 
 @media (max-width: 768px) {
   .form-buscar {
