@@ -28,7 +28,7 @@
                 
                             <div class="input-group">
                                 <label for="nombre">Nombre:</label>
-                                <select id="nombre" required data-placeholder="Agrega un EPP">
+                                <select id="nombre" required data-placeholder="Selecciona un EPP">
                                     <option></option> 
                                     <option value="EPP1">EPP1</option>
                                     <option value="EPP2">EPP2</option>
@@ -49,10 +49,6 @@
                         </div>
                         <div class="right-section">
                             <div class="input-group">
-                                <label for="tipo">Tipo:</label>
-                                <input type="text" id="tipo" required>
-                            </div>
-                            <div class="input-group">
                                 <label for="tipo">Talla:</label>
                                 <input type="text" id="tipo" required>
                             </div>
@@ -64,13 +60,12 @@
                                 <label for="ordenCompra">Orden de Compra:</label>
                                 <input type="text" id="ordenCompra" required>
                             </div>
+                            <div class="input-group">
+                                <label class="file-label" for="worker_image">Foto EPP:</label>
+                                <input type="file" id="worker_image" name="worker_image" class="file-input" accept="image/*" onchange="previewImage(event)" required>
+                            </div>
                         </div>
                     </div>
-
-                    
-                    <label class="file-label" for="worker_image">Foto EPP:</label>
-                    <input type="file" id="worker_image" name="worker_image" class="file-input" accept="image/*" onchange="previewImage(event)" required>
-                    <div class="button-group">
                         <button type="submit" class="registrar-button">Registrar EPP</button>
                     </div>  
                 </form>

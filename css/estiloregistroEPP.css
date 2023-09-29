@@ -7,7 +7,7 @@ body {
   overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
   background-color: #f0f4f8;
-  padding-top: 60px;
+  padding-top: 99px;
   padding-bottom: 70px;
 }
 
@@ -68,7 +68,7 @@ h1 {
   display: block;
   margin-bottom: 0.5rem;
   color: #555;
-  text-align: center;
+  text-align: left;
 }
 
 .file-input {
@@ -95,6 +95,9 @@ h1 {
   cursor: pointer;
   background-color: #0F393B;
   transition: background-color 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .registrar-button:hover {

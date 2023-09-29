@@ -32,29 +32,18 @@
                                 <input type="text" id="marca" required>
                             </div>
                             <div class="input-group">
-                                <label for="tamaño">Tamaño:</label>
-                                <input type="text" id="tamaño" required>
+                                <label for="color">Color:</label>
+                                <input type="text" id="color" required>
                             </div>
                             <div class="input-group">
                                 <label for="ordenCompra">Orden de Compra:</label>
                                 <input type="text" id="ordenCompra" required>
                             </div>
-                            <div class="descripcion-group">
-                                <label for="descripcion">Descripción:</label>
-                                <textarea id="descripcion" required></textarea>
-                            </div>
                         </div>
                         <div class="right-section">
                             <div class="input-group">
-                                <label for="tipo">Tipo de Herramienta:</label>
-                                <select id="tipo" required>
-                                    <option value="manual">Manual</option>
-                                    <option value="electrica">Eléctrica</option>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <label for="color">Color:</label>
-                                <input type="text" id="color" required>
+                                <label for="tamaño">Tamaño CM:</label>
+                                <input type="text" id="tamaño" required>
                             </div>
                             <div class="input-group">
                                 <label for="noSerie">Número de Serie:</label>
