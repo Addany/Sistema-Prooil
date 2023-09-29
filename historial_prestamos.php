@@ -117,7 +117,7 @@
                 <tbody>
                     <tr>
                         <td><input type="checkbox"></td>
-                        <td><label>Destornillador</label></td>
+                        <td>Destornillador</td>
                         <td>123123123</td>
                         <td>Trupper</td>
                     </tr>

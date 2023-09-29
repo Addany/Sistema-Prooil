@@ -25,7 +25,7 @@ function buscar() {
       return coincideTexto && coincideCategoria && coincideFechaTransaccion && coincideFechaDevolucion;
   });
 
-  generarTablaHistorial(resultados);
+ (resultados);
 }
 
 
@@ -35,8 +35,5 @@ function buscarConDebounce() {
   debounceTimer = setTimeout(buscar, 300);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  generarTablaHistorial(historialHerramientas);
-  document.getElementById('buscador').addEventListener('input', buscarConDebounce);
-});
+
 

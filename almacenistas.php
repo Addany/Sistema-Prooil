@@ -41,8 +41,8 @@
                             <label for="categoria">Categoría:</label>
                             <select id="categoria" onchange="buscar()">
                                 <option value="todos">Todos</option>
-                                <option value="Alta">Alta</option>
-                                <option value="Baja">Baja</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
                             </select>  
                             <button type="button" onclick="resetearBusqueda()">Limpiar busqueda</button>
                         </div>
@@ -52,7 +52,7 @@
                 <thead>
                     <tr>
                         <th>Estado</th>
-                        <th>ID</th>
+                        <th>Usuario</th>
                         <th>Nombre</th>
                         <th>Teléfono</th>
                         <th>Correo</th>
@@ -62,7 +62,13 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <!-- Aquí irían las filas de la tabla -->
+                        <td data-label="Estado">Activo</td>
+                        <td data-label="Usuario">Root</td>
+                        <td data-label="Nombre">Juan</td>
+                        <td data-label="Teléfono">9211722326</td>
+                        <td data-label="Correo">appdata.123@gmail.com</td>
+                        <td data-label="Fecha de Ingreso">21-12-2023</td>
+                        <td data-label="Acciones"><button class="accion-button" onclick="editarAlmacenista(this)">Editar</button></td>
                     </tr>
                 </tbody>
                 </table>
@@ -74,13 +80,15 @@
                 <h3>Editar datos</h3>
                 <Label>Estado:</Label>
                 <select id="editEstado">
-                    <option value="Alta">Alta</option>
-                    <option value="Baja">Baja</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
                 </select>
-                <Label>ID:</Label>
+                <Label>Usuario:</Label>
                 <input type="text" id="editID" placeholder="ID">
                 <Label>Nombre:</Label>
                 <input type="text" id="editNombre" placeholder="Nombre">
+                <Label>Contrasena:</Label>
+                <input type="text" id="editContrasena" placeholder="Contrasena">
                 <Label>Teléfono:</Label>
                 <input type="text" id="editTelefono" placeholder="Teléfono">
                 <Label>Correo electrónico:</Label>

@@ -60,7 +60,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Las filas de la tabla se generarán aquí -->
+                        <tr>
+                            <td data-label="Folio">12345</td>
+                            <td data-label="Fecha de Transacción">20-02-2020</td>
+                            <td data-label="Trabajador solicitante">Juan</td>
+                            <td data-label="Quien Autorizó">Adrian</td>
+                            <td data-label="Observaciones">Perdida de las herramientas</td>
+                            <td data-label="Estado del proceso del entrega">Concretado</td>
+                            <td data-label="Acciones">
+                                <button class="accion-button" onclick="verHerramienta('${item.folio}')">Ver</button>
+                                <button class="accion-button" onclick="editarPrestamoForm(this)">Editar</button>
+                                <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Generar documento</button>
+                                <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Generar reporte mensual</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -100,7 +113,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Las filas de herramientas irán aquí -->
+                        <td>Casco</td>
+                        <td>rj2343</td>
+                        <td>3M</td>
                     </tbody>
                 </table>
                 <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  
@@ -112,7 +127,6 @@
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/ScriptsHistorialentregas/domHelpers.js"></script>
     <script src="js/ScriptsHistorialentregas/helpers.js"></script>
-    <script src="js/ScriptsHistorialentregas/data.js"></script>
     <script src="js/ScriptsHistorialentregas/tablaHistorial.js"></script>
     <script src="js/ScriptsHistorialentregas/popup.js"></script>
     <script src="js/ScriptsHistorialentregas/main.js"></script>

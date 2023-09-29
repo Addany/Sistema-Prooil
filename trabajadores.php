@@ -60,7 +60,6 @@
                         <th>Nombre</th>
                         <th>Teléfono</th>
                         <th>Correo Electrónico</th>
-                        <th>Área de Trabajo</th>
                         <th>Fecha de Ingreso</th>
                         <th>Acciones</th>
                     </tr>
@@ -74,7 +73,6 @@
                         <td data-label="Nombre">Juan</td>
                         <td data-label="Teléfono">9211722326</td>
                         <td data-label="Correo Electrónico">appdata.123@gmail.com</td>
-                        <td data-label="Área de Trabajo">Almacen</td>
                         <td data-label="Fecha de Ingreso">08-12-2022</td>
                         <td data-label="Acciones">
                             <button class="accion-button" onclick="editarTrabajador(this)">Editar</button>
@@ -126,13 +124,6 @@
                 <div class="field">
                     <Label>Correo:</Label>
                     <input type="email" id="editCorreo" placeholder="Correo Electrónico">
-                </div>
-
-                <div class="field">
-                <Label>Area:</Label>
-                    <select id="editAreaTrabajo">
-                        <option value="Almacen">Almacen</option>
-                    </select>
                 </div>
                 
                 <div class="field">

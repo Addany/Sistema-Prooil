@@ -25,7 +25,7 @@ function buscar() {
       return coincideTexto && coincideCategoria && coincideFechaTransaccion && coincideFechaDevolucion;
   });
 
-  generarTablaHistorial(resultados);
+  (resultados);
 }
 
 

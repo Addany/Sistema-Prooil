@@ -1,24 +1,3 @@
-function generarTablaHistorial(data) {
-  const tabla = document.getElementById('tabla-almacenistas').getElementsByTagName('tbody')[0];
-  const fragment = document.createDocumentFragment();  
-
-  data.forEach(item => {
-      const newRow = tabla.insertRow();
-      newRow.innerHTML = `
-      <tr>
-        <td data-label="Estado">${item.estado}</td>
-        <td data-label="ID">${item.id}</td>
-        <td data-label="Nombre">${item.nombre}</td>
-        <td data-label="Teléfono">${item.telefono}</td>
-        <td data-label="Correo">${item.correo}</td>
-        <td data-label="Fecha de Ingreso">${item.fechaIngreso}</td>
-        <td data-label="Acciones"><button class="accion-button" onclick="editarAlmacenista('${item.id}')">Editar</button></td>
-      </tr>`;
-      fragment.appendChild(newRow); 
-  });
-  tabla.innerHTML = "";  
-  tabla.appendChild(fragment);  
-}
 
 let nuevaFoto;  
 
@@ -47,44 +26,24 @@ function solicitarNIP() {
 }
 
 
-async function editarAlmacenista(id) {  
+async function editarAlmacenista(button) {
   try {
-    await solicitarNIP();
+      await solicitarNIP();
 
-    const registro = historialAlmacenistas.find(item => {
-        return Number(item.id) === Number(id);
-    });
+      let row = button.closest('tr');
 
-    if (registro) {
-      document.getElementById("editEstado").value = registro.estado;
-      document.getElementById("editID").value = registro.id;
-      document.getElementById("editNombre").value = registro.nombre; 
-      document.getElementById("editTelefono").value = registro.telefono;
-      document.getElementById("editCorreo").value = registro.correo; 
-      document.getElementById("editFechaIngreso").value = registro.fechaIngreso;
+      document.getElementById("editEstado").value = row.querySelector('[data-label="Estado"]').innerText;
+      document.getElementById("editID").value = row.querySelector('[data-label="Usuario"]').innerText;
+      document.getElementById("editNombre").value = row.querySelector('[data-label="Nombre"]').innerText;
+      document.getElementById("editTelefono").value = row.querySelector('[data-label="Teléfono"]').innerText;
+      document.getElementById("editCorreo").value = row.querySelector('[data-label="Correo"]').innerText;
 
+      let fechaIngreso = row.querySelector('[data-label="Fecha de Ingreso"]').innerText.split("-").reverse().join("-");
+      document.getElementById("editFechaIngreso").value = fechaIngreso;
 
       abrirPopup('popupEditar');
-    } else {
-      console.error('Registro no encontrado');
-    }
   } catch (error) {
-    console.error("Error en editarEPP:", error);
+      console.error("Error al editar almacenista:", error);
   }
 }
 
-
-async function eliminarHerramienta(folio) {
-  try {
-    await solicitarNIP();
-
-    // Aquí deberías colocar tu código para eliminar el registro con el folio dado
-    // ...
-
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// Aquí está la llamada para generar la tabla al cargar la página
-generarTablaHistorial(historialAlmacenistas);

@@ -62,37 +62,63 @@
             <th>Estado</th>
             <th>Color</th>
             <th>Fecha de Registro</th>
-            <th>Descripción</th>
             <th>Estatus</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Aquí se insertarán las filas -->
+          <tr>
+            <td data-label="Foto"><img src="Resources/Imagen1.webp" alt="Foto de " class="imagen-herramienta" /></td>
+            <td data-label="ID">1</td>
+            <td data-label="Tipo de herramienta">Destornillador</td>
+            <td data-label="Marca">Trupper</td>
+            <td data-label="Orden de compra">12345</td>
+            <td data-label="Tamaño">5cm</td>
+            <td data-label="No. Serie">12345</td>
+            <td data-label="Estado">Regular</td>
+            <td data-label="Color">Rojo</td>
+            <td data-label="Fecha de Registro">20-01-2012</td>
+            <td data-label="Estatus">Prestado</td>
+            <td data-label="Acciones">
+                <button class="accion-button">Descargar QR</button>
+                <button class="accion-button" onclick="editarHerramienta(this)">Editar</button>
+                <button class="accion-button">Eliminar</button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </section>
-      <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
-        <div id="popup">
+    <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
+      <div id="popup">
           <form id="editarHerramientaForm">
               <h3>Editar datos</h3>
-              <img id="editFoto" src="" alt="Foto del herramienta" />
-                  <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
-              <input type="text" id="editId">
+              <img id="editFoto" src="" alt="Foto de la herramienta" />
+              <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
+              <input type="text" id="editUsuario">
               <input type="text" id="editTipoherramienta" placeholder="Tipo de">
               <input type="text" id="editMarca" placeholder="Marca">
               <input type="text" id="editTamano" placeholder="Tamaño">
               <input type="text" id="editOrdenCompra" placeholder="Orden de compra">
               <input type="text" id="editNoSerie" name="noSerie" />
-              <input type="text" id="editEstado" placeholder="Estado">
+              
+              <select id="editEstado">
+                  <option value="bueno">Bueno</option>
+                  <option value="regular">Regular</option>
+                  <option value="malo">Malo</option>
+              </select>
+              
               <input type="text" id="editColor" placeholder="Color">
               <input type="date" id="editFecha">
-              <input type="text" id="editDescripcion" placeholder="Descripción">
-              <input type="text" id="editEstatus" placeholder="Estatus">
+              
+              <select id="editEstatus">
+                  <option value="prestado">Prestado</option>
+                  <option value="devuelto">Devuelto</option>
+              </select>
+
               <button type="submit" class="guardar">Guardar</button>
               <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popup')">Cancelar</button>
           </form>
-        </div>
+      </div>
     </div>
   </div>
 
@@ -102,7 +128,6 @@
   <script src="js/ScriptsHistorialHerramientas/helpers.js"></script>
   <script src="js/ScriptsHistorialHerramientas/tablaHistorial.js"></script>
   <script src="js/ScriptsHistorialHerramientas/popup.js"></script>
-  <script src="js/ScriptsHistorialHerramientas/data.js"></script>
   <script src="js/ScriptsHistorialHerramientas/main.js"></script>
 </body>
 </html>

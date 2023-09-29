@@ -41,8 +41,7 @@ async function editarTrabajador(button) {
         document.getElementById("editNombre").value = row.querySelector('[data-label="Nombre"]').innerText;
         document.getElementById("editTelefono").value = row.querySelector('[data-label="Teléfono"]').innerText;
         document.getElementById("editCorreo").value = row.querySelector('[data-label="Correo Electrónico"]').innerText;
-        document.getElementById("editAreaTrabajo").value = row.querySelector('[data-label="Área de Trabajo"]').innerText;
-
+       
         // Convertir la fecha al formato adecuado para input de tipo 'date'
         let fechaIngreso = row.querySelector('[data-label="Fecha de Ingreso"]').innerText.split("-").reverse().join("-");
         document.getElementById("editFechaIngreso").value = fechaIngreso;
