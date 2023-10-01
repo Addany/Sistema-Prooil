@@ -135,18 +135,10 @@ tr:nth-child(even) {
   /* Asegúrate de que el overlay esté debajo del popup */
 }
 
-#popupEditar form input {
-  width: calc(100% - 20px);
-  padding: 8px;
-  margin-bottom: 6px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-}
-
-#popupEditar form select {
-  width: 100%; 
-  padding: 8px;
-  margin-bottom: 6px;
+#popupEditar form input, #popupEditar form select {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 4px;
   border-radius: 5px;
   border: 1px solid #ddd;
   box-sizing: border-box;

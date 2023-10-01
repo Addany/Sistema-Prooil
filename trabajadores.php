@@ -6,6 +6,7 @@
     <title>Historial de Préstamos y Devoluciones</title>
     <link rel="stylesheet" href="css/estilotrabajadores.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="icon" href="Resources/Icons/Work.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     

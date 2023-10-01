@@ -109,18 +109,10 @@ tr:nth-child(even) {
   z-index: 1000; 
 }
 
-#popupEditar form input {
-  width: calc(100% - 20px);
-  padding: 8px;
-  margin-bottom: 6px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-}
-
-#popupEditar form select {
-  width: 100%; /* Cambiado a 100% para que tenga el mismo ancho que el input */
-  padding: 8px;
-  margin-bottom: 6px;
+#popupEditar form input, #popupEditar form select {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 4px;
   border-radius: 5px;
   border: 1px solid #ddd;
   box-sizing: border-box;

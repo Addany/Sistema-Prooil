@@ -7,6 +7,7 @@
     <title>Formulario de Entrega de Equipo EPP</title>
     <link rel="stylesheet" href="css/estilosentregaEPP.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="icon" href="Resources/Icons/Manos.ico">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
