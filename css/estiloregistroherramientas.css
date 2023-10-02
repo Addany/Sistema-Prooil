@@ -90,7 +90,7 @@ h1 {
 
 .button-group {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 0.2rem;
 }
 
 .file-label {
@@ -176,7 +176,19 @@ h1 {
   }
 
   .button-group {
-    margin-top: auto;
-    margin-bottom: 0.5rem; /* Añade un pequeño margen en la parte inferior */
+    flex-direction: column; /* Acomoda los botones en una columna */
+    align-items: center; /* Centra los botones horizontalmente */
+    gap: 10px; /* Espacio entre botones */
   }
+
+  .registrar-button,
+  .qr-button {
+    padding: 0.5rem 2rem; /* Ajusta el padding para que sea más pequeño y proporcional */
+    width: 100%; /* Hace que los botones ocupen el ancho completo del contenedor */
+    margin-bottom: 10px;
+    max-width: 280px; /* Establece un ancho máximo para los botones */
+    font-size: 14px; /* Si es necesario, reduce el tamaño de la fuente un poco */
+    text-align: center; /* Asegura que el texto esté centrado */
+  }
+
 }
