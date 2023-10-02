@@ -1,6 +1,8 @@
-$(document).ready(function () {
-    $('.eppList').select2();
-    loadCache();
+$(document).ready(function() {
+    setTimeout(function() {
+        $('.eppList').select2();
+        loadCache();
+    }, 500);
 });
 
 document.getElementById('observations').addEventListener('input', function () {
