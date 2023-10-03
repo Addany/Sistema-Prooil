@@ -31,7 +31,7 @@
                 <div class="form-container">
                     <h3>Formulario de Préstamo</h3>
                     <form id="loanForm">
-                        <label for="almacenName">Almacenista Solicitante: Juan Guillermo</label>
+                        <label for="almacenName">Almacenista en Solicitud: Juan Guillermo</label>
                         <br>
                         <label for="workerName">Nombre del Trabajador:</label>
                         <select id="workerName" class="workerName" required>
@@ -78,6 +78,10 @@
             </section>
         </main>
     </div>
+    
+    <video class="video-background" autoplay loop muted>
+        <source src="Resources/Mi video.webm" type="video/webm">
+    </video>
 
     <script src="js/scriptnavegacion.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

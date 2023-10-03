@@ -30,12 +30,13 @@
                 <div class="form-container">
                     <h3>Formulario de Entrega de Equipo EPP</h3>
                     <form id="deliveryForm">
+                        <label for="almacenName">Almacenista en Solicitud: Juan Guillermo</label>
+                        <br>
                         <label for="eppList">Selecciona el EPP:</label>
                         <select id="eppList" class="eppList" required onchange="onEPPSelected(this.value)">
                             <option value="">Selecciona un EPP</option>
                             <option value='{"id": "123", "name": "Casco", "anatomicRegion": "Cabeza"}'>Casco</option>
                         </select>
-
                         <div class="selected-epp">
                             <br>
                             <Label>EPP Seleccionados:</Label>
@@ -69,6 +70,10 @@
         </main>
     </div>
 
+    <video class="video-background" autoplay loop muted>
+        <source src="Resources/Mi video.webm" type="video/webm">
+    </video>
+    
     <script src="js/scriptnavegacion.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
