@@ -38,7 +38,7 @@
     </div>
 
     <video class="video-background" autoplay loop muted>
-        <source src="Resources/Mi video.webm" type="video/webm">
+      <source src="Resources/Mi video-1.mp4" type="video/mp4">
     </video>
   </div>
   <script src="js/scriptnavegacion.js"></script>
