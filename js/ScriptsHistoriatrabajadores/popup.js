@@ -16,3 +16,14 @@ function cerrarPopup(idPopup) {
     document.getElementById('overlay').style.visibility = 'hidden';
   }, { once: true });
 }
+
+function cerrarSiEsFuera(event, ...idPopups) {
+  for (const idPopup of idPopups) {
+    const popupElement = document.getElementById(idPopup);
+
+    if (popupElement.style.display !== 'none' && event.target === event.currentTarget) {
+      cerrarPopup(idPopup);
+      return; 
+    }
+  }
+}

@@ -82,7 +82,7 @@
             </table>
             </section>
         </main>
-        <div id="overlay"></div>
+        <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
         <div id="popupEditar">
             <form id="editarTrabajadorForm">
                 <h3>Editar datos</h3>
@@ -137,10 +137,7 @@
         </div>
     </div>
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistoriatrabajadores/domHelpers.js"></script>
-    <script src="js/ScriptsHistoriatrabajadores/helpers.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/tablaHistorial.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/popup.js"></script>
-    <script src="js/ScriptsHistoriatrabajadores/main.js"></script>
 </body>
 </html>

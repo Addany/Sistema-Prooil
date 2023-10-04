@@ -145,11 +145,8 @@
 
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistorialentregas/domHelpers.js"></script>
-    <script src="js/ScriptsHistorialentregas/helpers.js"></script>
     <script src="js/ScriptsHistorialentregas/tablaHistorial.js"></script>
     <script src="js/ScriptsHistorialentregas/popup.js"></script>
-    <script src="js/ScriptsHistorialentregas/main.js"></script>
 
 </body>
 </html>

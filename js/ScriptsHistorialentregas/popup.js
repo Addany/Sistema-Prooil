@@ -25,7 +25,7 @@ function cerrarSiEsFuera(event, ...idPopups) {
 
     if (popupElement.style.display !== 'none' && event.target === event.currentTarget) {
       cerrarPopup(idPopup);
-      return; // Una vez que se encuentra el popup abierto y se cierra, no necesitamos verificar los demás
+      return; 
     }
   }
 }

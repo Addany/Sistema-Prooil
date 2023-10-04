@@ -89,7 +89,7 @@
         </tbody>
       </table>
     </section>
-    <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
+    <div id="overlay" onclick="cerrarSiEsFuera(event, 'popup')"></div>
     <div id="popup">
       <form id="editarHerramientaForm">
           <h3>Editar datos</h3>
@@ -165,11 +165,8 @@
 
 
   <script src="js/scriptnavegacion.js"></script>
-  <script src="js/ScriptsHistorialHerramientas/domHelpers.js"></script>
-  <script src="js/ScriptsHistorialHerramientas/helpers.js"></script>
   <script src="js/ScriptsHistorialHerramientas/tablaHistorial.js"></script>
   <script src="js/ScriptsHistorialHerramientas/popup.js"></script>
-  <script src="js/ScriptsHistorialHerramientas/main.js"></script>
 </body>
 </html>
 

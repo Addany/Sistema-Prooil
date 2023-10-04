@@ -164,10 +164,7 @@
     </div>
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistorialprestamo/domHelpers.js"></script>
-    <script src="js/ScriptsHistorialprestamo/helpers.js"></script>
     <script src="js/ScriptsHistorialprestamo/popup.js"></script>
-    <script src="js/ScriptsHistorialprestamo/main.js"></script>
     <script src="js/ScriptsHistorialprestamo/tablaHistorial.js"></script>
 
 </body>
