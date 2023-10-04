@@ -14,14 +14,12 @@ $(document).ready(function() {
     });
 });
 
-
 function previewImage(event) {
-    var reader = new FileReader();
-    reader.onload = function () {
-        var output = document.createElement('img');
-        output.src = reader.result;
-        document.body.appendChild(output);
+    const reader = new FileReader();
+    reader.onload = function() {
+      const output = document.getElementById('output');
+      output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
-}
-
+  }
+  

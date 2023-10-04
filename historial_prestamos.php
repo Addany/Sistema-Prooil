@@ -81,7 +81,7 @@
         </div>
     </main>
 
-    <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
+    <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar', 'popupVer')"></div>
     <div id="popupEditar">
         <form id="editarPrestamoForm"> 
             <h3>Editar datos</h3>

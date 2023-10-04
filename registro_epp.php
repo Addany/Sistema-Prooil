@@ -22,7 +22,12 @@
           
         <div class="container">
             <div class="form-container">
-                <h1>Registro de EPP</h1>
+                <div class="header-container">
+                    <h1>Registro de EPP</h1>
+                    <div class="image-container">
+                        <img id="output" class="image-preview" width="100" alt="" />
+                    </div>
+                </div>
                 <form class="form-registro">
                     <div class="input-section">
                         <div class="left-section">

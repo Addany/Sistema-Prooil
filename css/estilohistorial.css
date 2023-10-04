@@ -82,6 +82,15 @@ tr:nth-child(even) {
   background-color: #194d50; /* Color de fondo un poco más oscuro cuando se pasa el ratón */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más profunda cuando se pasa el ratón */
 }
+.guardar{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #f1f1f1;
+  color: #333;
+}
 
 #popupEditar {
   visibility: hidden;
@@ -113,15 +122,6 @@ tr:nth-child(even) {
   z-index: 1000;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
-.guardar{
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 3px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  background-color: #f1f1f1;
-  color: #333;
-}
 
 #overlay {
   display: none;
@@ -132,7 +132,6 @@ tr:nth-child(even) {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  /* Asegúrate de que el overlay esté debajo del popup */
 }
 
 #popupEditar form input, #popupEditar form select {

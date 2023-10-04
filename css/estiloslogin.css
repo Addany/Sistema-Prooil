@@ -20,8 +20,8 @@ body {
   max-width: 400px;
   width: 100%;
   margin: 2rem 0;
-  margin-top: 5rem;
-  border-radius: 26px; /* Unified border-radius */
+  margin-top: 70px;
+  border-radius: 26px; 
 }
 
 .registration-container {
@@ -52,7 +52,7 @@ button {
   border: none;
   border-radius: 7px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Adding transition for the hover effect */
+  transition: background-color 0.3s;
 }
 
 button:hover {
@@ -67,7 +67,7 @@ button:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* So that the video is behind the content */
+  z-index: -1; 
 }
 
 p {
@@ -78,26 +78,26 @@ p {
 
 .image-container {
   position: relative;
-  width: 100px; /* Ajusta como sea necesario */
-  height: 100px; /* Asegúrate de que sea igual a la anchura para un círculo perfecto */
-  margin: 0 auto 20px; /* Centrar y agregar margen inferior */
-  border-radius: 50%; /* Hace que la imagen sea circular */
-  overflow: hidden; /* Asegura que la imagen no sobresalga del contorno circular */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Agrega una sombra suave */
+  width: 100px; 
+  height: 100px; 
+  margin: 0 auto 20px; 
+  border-radius: 50%; 
+  overflow: hidden; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
 }
 
 .image-preview {
   display: block;
-  width: 100%; /* Asegura que la imagen llene completamente el contenedor */
-  height: 100%; /* Asegura que la imagen llene completamente el contenedor */
-  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin distorsionarse */
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
   transition: transform 0.3s;
 }
 
 .image-preview:hover {
   transform: scale(1.05);
 }
-/* Media Queries for Responsiveness */
+
 @media (max-width: 600px) {
   .login-container, .registration-container {
     padding: 1rem;

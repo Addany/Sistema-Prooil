@@ -142,6 +142,32 @@ h1 {
   overflow: hidden;
 }
 
+.header-container {
+  display: flex;
+  align-items: center;  
+  justify-content: space-between;  
+  gap: 200px;  
+}
+
+.image-container {
+  position: relative;
+  width: 70px; 
+  height: 70px; 
+  margin: 0 auto 20px; 
+  border-radius: 50%; 
+  overflow: hidden; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+.image-preview {
+  display: block;
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
+  transition: transform 0.3s;
+}
+
+
 @media (max-width: 768px) {
   body {
     margin: 0; 
@@ -150,8 +176,6 @@ h1 {
 
   .container {
     padding: 1rem; 
-    margin: 10px; 
-    margin-bottom: 60px; 
     width: calc(100% - 20px); 
     box-sizing: border-box; 
   }
@@ -197,5 +221,18 @@ h1 {
   .registrar-button {
     padding: 0.8rem 2rem;
     width: 100%; 
+  }
+  .header-container {
+    flex-direction: row; /* Mantener en fila */
+    justify-content: space-between; /* Espacio entre el título e imagen */
+    align-items: center; /* Centrar verticalmente */
+    gap: 10px; /* Espacio entre los elementos */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no hay suficiente espacio */
+  }
+
+  h1 {
+      flex: 1; /* Asegurarse de que el título ocupe todo el espacio disponible, empujando la imagen a la derecha */
+      text-align: left; /* Alinear el texto a la izquierda */
+      margin-right: 10px; /* Espacio a la derecha del título */
   }
 }
