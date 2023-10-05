@@ -262,7 +262,7 @@ tr:nth-child(even) {
     margin-bottom: 0; 
   }
 
-  #popupEditar {
+  #popupEditar,#popupVer {
     max-width: 90%;
     padding: 10px;
   }

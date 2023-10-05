@@ -16,7 +16,7 @@
     include 'php/session.php';
     ?>
     <header>
-        <!-- Barra de navegación aquí -->
+
     </header>
 
     <main>
@@ -27,24 +27,24 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc.">
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha inicio:</label>
-                            <input type="date" id="fechaInicio" onchange="buscar()">
+                            <input type="date" id="fechaInicio">
                         </div>
                         <div class="input-group">
                             <label for="fechaFin">Fecha final:</label>
-                            <input type="date" id="fechaFin" onchange="buscar()">
+                            <input type="date" id="fechaFin">
                         </div>
                         <div class="input-group">
                             <label for="categoria">Categoría:</label>
-                            <select id="categoria" onchange="buscar()">
+                            <select id="categoria">
                                 <option value="todos">Todos</option>
                                 <option value="Concretado">Concretado</option>
                                 <option value="No concretado">No concretado</option>
                             </select>
-                            <button type="button" onclick="buscar()">Limpiar busqueda</button>
+                            <button type="button">Limpiar busqueda</button>
                         </div>
                     </form>
                 </div>
@@ -72,8 +72,8 @@
                             <td data-label="Acciones">
                                 <button class="accion-button" onclick="verHerramienta()">Ver</button>
                                 <button class="accion-button" onclick="editarPrestamoForm(this)">Editar</button>
-                                <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Generar documento</button>
-                                <button class="accion-button" onclick="eliminarHerramienta">Eliminar</button>
+                                <button class="accion-button">Generar documento</button>
+                                <button class="accion-button">Eliminar</button>
                         </td>
                     </tbody>
                 </table>
@@ -147,17 +147,17 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="checkbox"></td>
-                        <td>Destornillador</td>
-                        <td>123123123</td>
-                        <td>Trupper</td>
+                        <td data-label="Seleccion de entrega"><input type="checkbox"></td>
+                        <td data-label="Tipo de herramienta">Destornillador</td>
+                        <td data-label="N. Serie">123123123</td>
+                        <td data-label="Marca">Trupper</td>
                     </tr>
                 </tbody>
             </table>
             <label for="observaciones">Observaciones:</label>
             <textarea id="observaciones" placeholder="Ingrese observaciones aquí..."></textarea>
             <div class="button-group">
-                <button type="button" onclick="cerrarPopup('popupVer')">Concretar prestamo</button> 
+                <button type="button">Concretar prestamo</button> 
                 <button type="button" onclick="cerrarPopup('popupVer')">Cancelar</button> 
             </div> 
         </form>

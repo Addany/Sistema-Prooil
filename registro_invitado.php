@@ -36,12 +36,11 @@
         <button type="submit">Registrarse</button>
       </form>
     </div>
-
-    <video class="video-background" autoplay loop muted>
-        <source src="Resources/Mi video.webm" type="video/webm">
-    </video>
-
   </div>
+
+  <video class="video-background" autoplay loop muted>
+    <source src="Resources/Mi video.webm" type="video/webm">
+  </video>
   <script src="js/scriptnavegacion.js"></script>
   <script src="js/registroinvitado.js"></script>
 </body>

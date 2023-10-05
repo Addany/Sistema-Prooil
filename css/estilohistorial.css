@@ -293,6 +293,48 @@ tr:nth-child(even) {
     box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
     margin-bottom: 5px; /* Añadido margen en la parte inferior para espacio entre los botones */
   }
+  #popupVer {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  #popupVer form, 
+  #popupVer textarea, 
+  #popupVer .button-group {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #popupVer .button-group button {
+    width: 48%; 
+    margin: 0;
+    margin-right: 1%; 
+    box-sizing: border-box;
+  }
+
+  #popupVer .button-group button:last-child {
+    margin-right: 0; 
+  }
+
+  #popupVer #listaHerramientas {
+    width: 100%;
+  }
+
+  #popupVer label,
+  #popupVer .field {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  #popupVer .field span, 
+  #popupVer .field select, 
+  #popupVer .field input[type="text"], 
+  #popupVer .field input[type="email"], 
+  #popupVer .field input[type="date"] {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 @media (max-width: 600px) {
   table {
@@ -337,6 +379,9 @@ tr:nth-child(even) {
   }
 
   #popupEditar {
+    max-width: 85%;
+  }
+  #popupVer {
     max-width: 85%;
   }
 }

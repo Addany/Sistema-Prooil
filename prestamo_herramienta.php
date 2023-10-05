@@ -19,7 +19,7 @@
     include 'php/session.php';
     ?>
     <header>
-        <!-- Barra de navegación aquí -->
+        
     </header>
 
 
@@ -55,7 +55,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="scanned-tools-tbody">
-                                            <!-- Las herramientas escaneadas se mostrarán aquí -->
+                                            
                                     </tbody>
                                 </table>
                             </div>

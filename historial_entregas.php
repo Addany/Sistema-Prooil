@@ -15,7 +15,7 @@
     include 'php/session.php';
     ?>
     <header>
-        <!-- Barra de navegación aquí -->
+
     </header>
     <div id="page-container">
         <main>
@@ -27,7 +27,7 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc.">
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha inicio:</label>
@@ -133,9 +133,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <td>Casco</td>
-                        <td>rj2343</td>
-                        <td>3M</td>
+                        <td data-label="Nombre">Casco</td>
+                        <td data-label="Modelo">rj2343</td>
+                        <td data-label="Tipo">3M</td>
                     </tbody>
                 </table>
                 <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  

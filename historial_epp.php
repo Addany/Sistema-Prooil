@@ -23,23 +23,23 @@
             <form class="form-buscar">
               <div class="input-group">
                 <label for="buscador">Busqueda por texto:</label>
-                <input type="text" id="buscador" placeholder="Buscar por texto o ID" oninput="buscar()">
+                <input type="text" id="buscador" placeholder="Buscar por texto o ID">
               </div>
               <div class="input-group">
                 <label for="fechaInicio">Fecha Inicio:</label>
-                <input type="date" id="fechaInicio" onchange="buscar()">
+                <input type="date" id="fechaInicio">
               </div>
               <div class="input-group">
                 <label for="fechaFin">Fecha Fin:</label>
-                <input type="date" id="fechaFin" onchange="buscar()">
+                <input type="date" id="fechaFin">
               </div>
               <div class="input-group">
                 <label for="categoria">Categoria:</label>
-                <select id="categoria" onchange="buscar()">
+                <select id="categoria">
                   <option value="todos">Todos</option>
                   <option value="casco contra impacto">Casco contra impacto</option>
                 </select>
-                <button type="button" id="eliminarBusqueda" onclick="buscar()">Limpiar busqueda</button>
+                <button type="button" id="eliminarBusqueda">Limpiar busqueda</button>
               </div>
             </form>
           </div>
@@ -72,9 +72,9 @@
                 <td data-label="Orden de compra">12388123</td>
                 <td data-label="Fecha de Registro">20-02-2021</td>
                 <td data-label="Acciones">
-                    <button class="accion-button" onclick="generarReporte('${item.id}')">Generar reporte</button>
+                    <button class="accion-button">Generar reporte</button>
                     <button class="accion-button" onclick="editarEPP(this)">Editar</button>
-                    <button class="accion-button" onclick="eliminarEPP('${item.id}')">Eliminar</button>
+                    <button class="accion-button">Eliminar</button>
                 </td>
               </tr>
             </tbody>

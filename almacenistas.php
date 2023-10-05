@@ -16,7 +16,7 @@
     include 'php/session.php';
     ?>
     <header>
-        <!-- Barra de navegación aquí -->
+        
     </header>
     
     <div id="page-container">
@@ -28,24 +28,24 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc.">
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha de inicio:</label>
-                            <input type="date" id="fechaInicio" onchange="buscar()">
+                            <input type="date" id="fechaInicio">
                         </div>
                         <div class="input-group">
                             <label for="fechaFin">Fecha de fin:</label>
-                            <input type="date" id="fechaFin" onchange="buscar()">
+                            <input type="date" id="fechaFin">
                         </div>
                         <div class="input-group">
                             <label for="categoria">Categoría:</label>
-                            <select id="categoria" onchange="buscar()">
+                            <select id="categoria">
                                 <option value="todos">Todos</option>
                                 <option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
                             </select>  
-                            <button type="button" onclick="resetearBusqueda()">Limpiar busqueda</button>
+                            <button type="button">Limpiar busqueda</button>
                         </div>
                     </form>
                 </div>

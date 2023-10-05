@@ -19,7 +19,7 @@
     include 'php/session.php';
     ?>
     <header>
-        <!-- Barra de navegación aquí -->
+        
     </header>
 
     <div id="page-container">
