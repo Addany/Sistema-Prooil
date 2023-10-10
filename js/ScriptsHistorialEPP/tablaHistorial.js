@@ -1,43 +1,14 @@
-function generarTablaHistorial(data) {
-  const tabla = document.getElementById('tabla-historial').getElementsByTagName('tbody')[0];
-  const fragment = document.createDocumentFragment();  
-
-  data.forEach(item => {
-      const newRow = tabla.insertRow();
-      newRow.innerHTML = `
-      <td data-label="Foto"><img src="${item.foto}" alt="Foto de ${item.nombre}" class="imagen-epp" /></td>
-      <td data-label="ID">${item.id}</td>
-      <td data-label="Nombre">${item.nombre}</td>
-      <td data-label="Cantidad">${item.cantidad}</td>
-      <td data-label="Marca">${item.marca}</td>
-      <td data-label="Modelo">${item.modelo}</td>
-      <td data-label="Tipo">${item.tipo}</td>
-      <td data-label="Clase">${item.clase}</td>
-      <td data-label="Talla">${item.talla}</td>
-      <td data-label="Orden de compra">${item.ordenCompra}</td>
-      <td data-label="Fecha de Registro">${item.fechaRegistro}</td>
-      <td data-label="Acciones">
-          <button class="accion-button" onclick="generarReporte('${item.id}')">Generar reporte</button>
-          <button class="accion-button" onclick="editarEPP('${item.id}')">Editar</button>
-          <button class="accion-button" onclick="eliminarEPP('${item.id}')">Eliminar</button>
-      </td>
-    `;
-      fragment.appendChild(newRow); 
-  });
-  tabla.innerHTML = "";  
-  tabla.appendChild(fragment);  
-}
-
 let nuevaFoto;  
 
 function actualizarFoto(event) {
   const file = event.target.files[0];
   if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      nuevaFoto = e.target.result;  
-    };
-    reader.readAsDataURL(file);
+      const reader = new FileReader();
+      reader.onload = function(e) {
+          nuevaFoto = e.target.result;
+          document.getElementById("editFoto").src = nuevaFoto;  
+      };
+      reader.readAsDataURL(file);
   }
 }
 
@@ -55,48 +26,25 @@ function solicitarNIP() {
 }
 
 
-async function editarEPP(id) {  
+async function editarEPP(button) {
   try {
-    await solicitarNIP();
+      await solicitarNIP();
 
-    const registro = historialEpp.find(item => {
-        return Number(item.id) === Number(id);
-    });
+      let row = button.closest('tr');
 
-    if (registro) {
-      document.getElementById("editFoto").src = registro.foto;
-      document.getElementById("editId").value = registro.id;
-      document.getElementById("editNombre").value = registro.nombre; 
-      document.getElementById("editCantidad").value = registro.cantidad;
-      document.getElementById("editMarca").value = registro.marca; 
-      document.getElementById("editModelo").value = registro.modelo;
-      document.getElementById("editTipo").value = registro.tipo;
-      document.getElementById("editClase").value = registro.clase; 
-      document.getElementById("editTalla").value = registro.talla;
-      document.getElementById("editOrdenCompra").value = registro.ordenCompra;
-      document.getElementById("editFechaRegistro").value = registro.fechaRegistro;
+      document.getElementById("editFoto").src = row.querySelector('[data-label="Foto"] img').src;
+      document.getElementById("editId").value = row.querySelector('[data-label="ID"]').innerText;
+      document.getElementById("editNombre").value = row.querySelector('[data-label="Nombre"]').innerText;
+      document.getElementById("editCantidad").value = row.querySelector('[data-label="Cantidad"]').innerText;
+      document.getElementById("editMarca").value = row.querySelector('[data-label="Marca"]').innerText;
+      document.getElementById("editModelo").value = row.querySelector('[data-label="Modelo"]').innerText;
+      document.getElementById("editClase").value = row.querySelector('[data-label="Clase"]').innerText;
+      document.getElementById("editTalla").value = row.querySelector('[data-label="Talla"]').innerText;
+      document.getElementById("editOrdenCompra").value = row.querySelector('[data-label="Orden de compra"]').innerText;
+      document.getElementById("editFechaRegistro").value = row.querySelector('[data-label="Fecha de Registro"]').innerText;
 
       abrirPopup('popup');
-    } else {
-      console.error('Registro no encontrado');
-    }
   } catch (error) {
-    console.error("Error en editarEPP:", error);
+      console.error("Error en editarEPP:", error);
   }
 }
-
-
-async function eliminarHerramienta(folio) {
-  try {
-    await solicitarNIP();
-
-    // Aquí deberías colocar tu código para eliminar el registro con el folio dado
-    // ...
-
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// Aquí está la llamada para generar la tabla al cargar la página
-generarTablaHistorial(historialEpp);

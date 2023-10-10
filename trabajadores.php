@@ -6,6 +6,7 @@
     <title>Historial de Préstamos y Devoluciones</title>
     <link rel="stylesheet" href="css/estilotrabajadores.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="icon" href="Resources/Icons/Work.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
@@ -15,7 +16,7 @@
     include 'php/session.php';
     ?>
     <header>
-        <!-- Barra de navegación aquí -->
+        
     </header>
 
     <div id="page-container">
@@ -27,26 +28,26 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." >
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha de inicio:</label>
-                            <input type="date" id="fechaInicio" onchange="buscar()">
+                            <input type="date" id="fechaInicio">
                         </div>
                         <div class="input-group">
                             <label for="fechaFin">Fecha de fin:</label>
-                            <input type="date" id="fechaFin" onchange="buscar()">
+                            <input type="date" id="fechaFin">
                         </div>
                         <div class="input-group">
                             <label for="categoria">Categoría:</label>
-                            <select id="categoria" onchange="buscar()">
+                            <select id="categoria">
                                 <option value="todos">Todos</option>
                                 <option value="Alta">Alta</option>
                                 <option value="Baja">Baja</option>
                             </select>  
                         </div>
                         <div class="input-group">
-                            <button type="button" onclick="resetearBusqueda()">Limpiar busqueda</button>
+                            <button type="button">Limpiar busqueda</button>
                         </div>
                     </form>
                 </div>
@@ -60,7 +61,6 @@
                         <th>Nombre</th>
                         <th>Teléfono</th>
                         <th>Correo Electrónico</th>
-                        <th>Área de Trabajo</th>
                         <th>Fecha de Ingreso</th>
                         <th>Acciones</th>
                     </tr>
@@ -74,7 +74,6 @@
                         <td data-label="Nombre">Juan</td>
                         <td data-label="Teléfono">9211722326</td>
                         <td data-label="Correo Electrónico">appdata.123@gmail.com</td>
-                        <td data-label="Área de Trabajo">Almacen</td>
                         <td data-label="Fecha de Ingreso">08-12-2022</td>
                         <td data-label="Acciones">
                             <button class="accion-button" onclick="editarTrabajador(this)">Editar</button>
@@ -83,7 +82,7 @@
             </table>
             </section>
         </main>
-        <div id="overlay"></div>
+        <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
         <div id="popupEditar">
             <form id="editarTrabajadorForm">
                 <h3>Editar datos</h3>
@@ -127,13 +126,6 @@
                     <Label>Correo:</Label>
                     <input type="email" id="editCorreo" placeholder="Correo Electrónico">
                 </div>
-
-                <div class="field">
-                <Label>Area:</Label>
-                    <select id="editAreaTrabajo">
-                        <option value="Almacen">Almacen</option>
-                    </select>
-                </div>
                 
                 <div class="field">
                     <Label>Fecha:</Label>
@@ -145,10 +137,7 @@
         </div>
     </div>
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistoriatrabajadores/domHelpers.js"></script>
-    <script src="js/ScriptsHistoriatrabajadores/helpers.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/tablaHistorial.js"></script>
     <script src="js/ScriptsHistoriatrabajadores/popup.js"></script>
-    <script src="js/ScriptsHistoriatrabajadores/main.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div class="logo">
-      <img src="Resources/logo.webp" alt="Logo de la empresa" style="max-height: 40px;">
+      <a href="home.php"><img src="Resources/logo.webp" alt="Logo de la empresa" style="max-height: 40px;"></a>
     </div>
     <ul class="nav-list">
       <li> <a href="home.php"> <i class="fa-solid fa-house"></i>Inicio</a></li>

@@ -6,6 +6,7 @@
     <title>Historial de Préstamos y Devoluciones</title>
     <link rel="stylesheet" href="css/estilohistorialentregas.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="icon" href="Resources/Icons/Manos.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -14,7 +15,7 @@
     include 'php/session.php';
     ?>
     <header>
-        <!-- Barra de navegación aquí -->
+
     </header>
     <div id="page-container">
         <main>
@@ -26,7 +27,7 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc.">
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha inicio:</label>
@@ -60,28 +61,60 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Las filas de la tabla se generarán aquí -->
+                        <tr>
+                            <td data-label="Folio">12345</td>
+                            <td data-label="Fecha de Transacción">20-02-2020</td>
+                            <td data-label="Trabajador solicitante">Juan</td>
+                            <td data-label="Quien Autorizó">Adrian</td>
+                            <td data-label="Observaciones">Perdida de las herramientas</td>
+                            <td data-label="Estado del proceso del entrega">Concretado</td>
+                            <td data-label="Acciones">
+                                <button class="accion-button" onclick="verHerramienta('${item.folio}')">Ver</button>
+                                <button class="accion-button" onclick="editarPrestamoForm(this)">Editar</button>
+                                <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Generar documento</button>
+                                <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Generar reporte mensual</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
         </main>
 
-        <div id="overlay"></div>
+        <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar', 'popupVer')"></div>
         <div id="popupEditar">
             <form id="editarPrestamoForm"> 
                 <h3>Editar datos</h3>
-                <Label>ID:</Label>
-                <input type="text" id="editFolio" placeholder="Folio">
-                <Label>ID:</Label>
-                <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
-                <Label>ID:</Label>
-                <input type="text" id="edittrabajadorSolicitante" placeholder="Nombre del Trabajador">
-                <Label>ID:</Label>
-                <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó"> 
-                <Label>ID:</Label>
-                <input type="text" id="editObservaciones" placeholder="Observaciones">
-                <Label>ID:</Label>
-                <input type="text" id="editEstadoproceso" placeholder="Estado">
+                
+                <div class="field">
+                    <label for="editFolio">Folio:</label>
+                    <input type="text" id="editFolio" placeholder="Folio">
+                </div>
+
+                <div class="field">
+                    <label for="editFechaTransaccion">Fecha de Transacción:</label>
+                    <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción">
+                </div>
+
+                <div class="field">
+                    <label for="edittrabajadorSolicitante">Nombre del Trabajador:</label>
+                    <input type="text" id="edittrabajadorSolicitante" placeholder="Nombre del Trabajador">
+                </div>
+
+                <div class="field">
+                    <label for="editQuienAutorizo">¿Quién Autorizó?:</label>
+                    <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó">
+                </div>
+
+                <div class="field">
+                    <label for="editObservaciones">Observaciones:</label>
+                    <input type="text" id="editObservaciones" placeholder="Observaciones">
+                </div>
+
+                <div class="field">
+                    <label for="editEstadoproceso">Estado:</label>
+                    <input type="text" id="editEstadoproceso" placeholder="Estado">
+                </div>
+
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
             </form>
@@ -100,7 +133,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Las filas de herramientas irán aquí -->
+                        <td data-label="Nombre">Casco</td>
+                        <td data-label="Modelo">rj2343</td>
+                        <td data-label="Tipo">3M</td>
                     </tbody>
                 </table>
                 <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  
@@ -110,12 +145,8 @@
 
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistorialentregas/domHelpers.js"></script>
-    <script src="js/ScriptsHistorialentregas/helpers.js"></script>
-    <script src="js/ScriptsHistorialentregas/data.js"></script>
     <script src="js/ScriptsHistorialentregas/tablaHistorial.js"></script>
     <script src="js/ScriptsHistorialentregas/popup.js"></script>
-    <script src="js/ScriptsHistorialentregas/main.js"></script>
 
 </body>
 </html>

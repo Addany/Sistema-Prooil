@@ -6,6 +6,7 @@
 <title>Almacenistas</title>
 <link rel="stylesheet" href="css/estilotrabajadores.css">
 <link rel="stylesheet" href="css/navbar.css">
+<link rel="icon" href="Resources/Icons/Work.ico">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
@@ -15,7 +16,7 @@
     include 'php/session.php';
     ?>
     <header>
-        <!-- Barra de navegación aquí -->
+        
     </header>
     
     <div id="page-container">
@@ -27,24 +28,24 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc.">
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha de inicio:</label>
-                            <input type="date" id="fechaInicio" onchange="buscar()">
+                            <input type="date" id="fechaInicio">
                         </div>
                         <div class="input-group">
                             <label for="fechaFin">Fecha de fin:</label>
-                            <input type="date" id="fechaFin" onchange="buscar()">
+                            <input type="date" id="fechaFin">
                         </div>
                         <div class="input-group">
                             <label for="categoria">Categoría:</label>
-                            <select id="categoria" onchange="buscar()">
+                            <select id="categoria">
                                 <option value="todos">Todos</option>
-                                <option value="Alta">Alta</option>
-                                <option value="Baja">Baja</option>
+                                <option value="Activo">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
                             </select>  
-                            <button type="button" onclick="resetearBusqueda()">Limpiar busqueda</button>
+                            <button type="button">Limpiar busqueda</button>
                         </div>
                     </form>
                 </div>
@@ -52,7 +53,7 @@
                 <thead>
                     <tr>
                         <th>Estado</th>
-                        <th>ID</th>
+                        <th>Usuario</th>
                         <th>Nombre</th>
                         <th>Teléfono</th>
                         <th>Correo</th>
@@ -62,7 +63,13 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <!-- Aquí irían las filas de la tabla -->
+                        <td data-label="Estado">Activo</td>
+                        <td data-label="Usuario">Root</td>
+                        <td data-label="Nombre">Juan</td>
+                        <td data-label="Teléfono">9211722326</td>
+                        <td data-label="Correo">appdata.123@gmail.com</td>
+                        <td data-label="Fecha de Ingreso">21-12-2023</td>
+                        <td data-label="Acciones"><button class="accion-button" onclick="editarAlmacenista(this)">Editar</button></td>
                     </tr>
                 </tbody>
                 </table>
@@ -72,21 +79,45 @@
         <div id="popupEditar">
             <form id="editarAlmacenistaForm">
                 <h3>Editar datos</h3>
-                <Label>Estado:</Label>
-                <select id="editEstado">
-                    <option value="Alta">Alta</option>
-                    <option value="Baja">Baja</option>
-                </select>
-                <Label>ID:</Label>
-                <input type="text" id="editID" placeholder="ID">
-                <Label>Nombre:</Label>
-                <input type="text" id="editNombre" placeholder="Nombre">
-                <Label>Teléfono:</Label>
-                <input type="text" id="editTelefono" placeholder="Teléfono">
-                <Label>Correo electrónico:</Label>
-                <input type="email" id="editCorreo" placeholder="Correo Electrónico">
-                <Label>Fecha de ingreso:</Label>
-                <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
+                
+                <div class="field">
+                    <Label>Estado:</Label>
+                    <select id="editEstado">
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <Label>Usuario:</Label>
+                    <input type="text" id="editID" placeholder="ID">
+                </div>
+
+                <div class="field">
+                    <Label>Nombre:</Label>
+                    <input type="text" id="editNombre" placeholder="Nombre">
+                </div>
+
+                <div class="field">
+                    <Label>Contrasena:</Label>
+                    <input type="text" id="editContrasena" placeholder="Contrasena">
+                </div>
+
+                <div class="field">
+                    <Label>Teléfono:</Label>
+                    <input type="text" id="editTelefono" placeholder="Teléfono">
+                </div>
+
+                <div class="field">
+                    <Label>Correo:</Label>
+                    <input type="email" id="editCorreo" placeholder="Correo Electrónico">
+                </div>
+
+                <div class="field">
+                    <Label>Fecha:</Label>
+                    <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
+                </div>
+                
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
             </form>
@@ -95,11 +126,7 @@
 
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistorialalmacenistas/domHelpers.js"></script>
-    <script src="js/ScriptsHistorialalmacenistas/helpers.js"></script>
-    <script src="js/ScriptsHistorialalmacenistas/data.js"></script>
     <script src="js/ScriptsHistorialalmacenistas/tablaHistorial.js"></script>
     <script src="js/ScriptsHistorialalmacenistas/popup.js"></script>
-    <script src="js/ScriptsHistorialalmacenistas/main.js"></script>
 </body>
 </html>

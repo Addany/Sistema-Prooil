@@ -6,6 +6,7 @@
   <title>Sistema de Entrada y Salida de Herramientas - Registro</title>
   <link rel="stylesheet" href="css/estiloslogin.css">
   <link rel="stylesheet" href="css/navbar.css">
+  <link rel="icon" href="Resources/Icons/Register.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
@@ -33,7 +34,7 @@
       </div>
 
       <video class="video-background" autoplay loop muted>
-        <source src="Resources/Mi video-1.mp4" type="video/mp4">
+        <source src="Resources/Mi video.webm" type="video/webm">
       </video>
     </div>
     

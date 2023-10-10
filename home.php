@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="icon" href="Resources/Icons/Home.ico">
   <title>Navegación Responsive</title>
 </head>
 <body>
@@ -20,13 +21,13 @@
 
     <div class="slideshow-container">
       <div class="slide fade">
-        <img src="Resources/Imagen1.jpg" alt="Imagen 1">
+        <img src="Resources/Imagen1.webp" alt="Imagen 1">
       </div>
       <div class="slide fade">
-        <img src="Resources/Imagen2.jpg" alt="Imagen 2">
+        <img src="Resources/Imagen2.webp" alt="Imagen 2">
       </div>
       <div class="slide fade">
-        <img src="Resources/Imagen4.jpg" alt="Imagen 3">
+        <img src="Resources/Imagen4.webp" alt="Imagen 3">
       </div>
     </div>
 

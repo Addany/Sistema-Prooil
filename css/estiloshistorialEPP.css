@@ -134,12 +134,13 @@ tr:nth-child(even) {
   z-index: 1000; 
 }
 
-#popup form input {
-  width: calc(100% - 20px); /* Ajustado para tener en cuenta el padding */
-  padding: 7px; /* Reducción moderada del padding vertical */
-  margin-bottom: 5px; /* Reducción moderada del margen inferior */
+#popup form input, #popup form select {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 4px;
   border-radius: 5px;
   border: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 .guardar {
@@ -179,9 +180,29 @@ tr:nth-child(even) {
   display: none;
 }
 
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
 
+.field label {
+  flex: 1;  
+  text-align: right;
+  margin-right: 8px;
+}
 
-
+.field span, 
+.field select, 
+.field input[type="text"], 
+.field input[type="email"], 
+.field input[type="date"] {
+  flex: 6;  
+  width: 80%; /* Establece un ancho específico para asegurar que todos sean del mismo tamaño */
+  max-width: 80%; /* Establece un ancho máximo para asegurar que no excedan este tamaño */
+  box-sizing: border-box; /* Esto asegura que el padding y el borde se incluyan en el tamaño total */
+}
 
 @media (max-width: 768px) {
   .form-buscar {

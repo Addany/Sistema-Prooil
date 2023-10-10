@@ -1,3 +1,18 @@
+$(document).ready(function () {
+    let $workerNameSelect = $('.workerName');
+    $workerNameSelect.select2();
+
+    // Escuchar el evento "select2:select" en lugar de "change"
+    $workerNameSelect.on('select2:select', function(e) {
+        let selectedValue = $(this).val();
+        localStorage.setItem('workerName', selectedValue);
+    });
+
+    // Continúa con la carga inicial de la página
+    loadLastSession();
+});
+
+
 // Variables para el escaneo
 let scanner = null;
 let isScanning = false;
@@ -27,8 +42,6 @@ function startScan() {
         .catch(function (error) {
             console.error("Error al acceder a la cámara:", error);
         });
-
-        loadLastSession();
 }
 
 // Función para detener el escaneo
@@ -44,7 +57,10 @@ function cancelLoan() {
     document.getElementById("loanForm").reset();
     localStorage.removeItem('scannedTools');
     localStorage.removeItem('observations');
-    localStorage.removeItem('workerName');  // Eliminar el trabajador seleccionado del localStorage
+    localStorage.removeItem('workerName');  // Esta línea elimina workerName del localStorage
+
+    // Resetear el valor del select usando Select2
+    $('.workerName').val(null).trigger('change'); 
     
     // Limpiar la tabla de herramientas escaneadas
     var scannedToolsTable = document.getElementById("scanned-tools-table");
@@ -61,10 +77,10 @@ function loadLastSession() {
         document.getElementById('observations').value = observations;
     }
 
-    // Cargar el trabajador seleccionado anteriormente
     const workerName = localStorage.getItem('workerName');
     if (workerName) {
         document.getElementById('workerName').value = workerName;
+        $('.workerName').val(workerName).trigger('change'); 
     }
 
     // Cargar las herramientas escaneadas anteriores
@@ -147,6 +163,7 @@ function deleteRow(btn) {
 document.getElementById('observations').addEventListener('input', function() {
 localStorage.setItem('observations', this.value);
 });
-document.getElementById("workerName").addEventListener("change", function () {
-localStorage.setItem('workerName', this.value);
+
+document.getElementById("workerName").addEventListener("change", function() {
+    localStorage.setItem('workerName', this.value);
 });

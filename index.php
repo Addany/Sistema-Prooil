@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sistema de Entrada y Salida de Herramientas - Iniciar Sesión</title>
   <link rel="stylesheet" href="css/estiloslogin.css">
+  <link rel="icon" href="Resources/Icons/Logout.ico">
 </head>
 <body>
   <div class="login-container">

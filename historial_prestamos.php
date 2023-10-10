@@ -6,6 +6,7 @@
     <title>Historial de Préstamos y Devoluciones</title>
     <link rel="stylesheet" href="css/estilohistorial.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="icon" href="Resources/Icons/Manos.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
@@ -15,7 +16,7 @@
     include 'php/session.php';
     ?>
     <header>
-        <!-- Barra de navegación aquí -->
+
     </header>
 
     <main>
@@ -26,24 +27,24 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." oninput="buscar()">
+                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc.">
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha inicio:</label>
-                            <input type="date" id="fechaInicio" onchange="buscar()">
+                            <input type="date" id="fechaInicio">
                         </div>
                         <div class="input-group">
                             <label for="fechaFin">Fecha final:</label>
-                            <input type="date" id="fechaFin" onchange="buscar()">
+                            <input type="date" id="fechaFin">
                         </div>
                         <div class="input-group">
                             <label for="categoria">Categoría:</label>
-                            <select id="categoria" onchange="buscar()">
+                            <select id="categoria">
                                 <option value="todos">Todos</option>
                                 <option value="Concretado">Concretado</option>
                                 <option value="No concretado">No concretado</option>
                             </select>
-                            <button type="button" onclick="buscar()">Limpiar busqueda</button>
+                            <button type="button">Limpiar busqueda</button>
                         </div>
                     </form>
                 </div>
@@ -71,7 +72,8 @@
                             <td data-label="Acciones">
                                 <button class="accion-button" onclick="verHerramienta()">Ver</button>
                                 <button class="accion-button" onclick="editarPrestamoForm(this)">Editar</button>
-                                <button class="accion-button" onclick="eliminarHerramienta">Eliminar</button>
+                                <button class="accion-button">Generar documento</button>
+                                <button class="accion-button">Eliminar</button>
                         </td>
                     </tbody>
                 </table>
@@ -79,23 +81,52 @@
         </div>
     </main>
 
-    <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
+    <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar', 'popupVer')"></div>
     <div id="popupEditar">
         <form id="editarPrestamoForm"> 
             <h3>Editar datos</h3>
-            <input type="text" id="editFolio" placeholder="Folio">
-            <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
-            <input type="date" id="editFechaTransaccion" placeholder="Fecha de Transacción"> 
-            <input type="date" id="editFechaDevolucion" placeholder="Fecha de Devolución"> 
-            <select id="editQuienAutorizo">
-                <option value="Persona 1">Persona 1</option>
-                <option value="Persona 2">Persona 2</option>
-            </select>
-            <input type="text" id="editObservaciones" placeholder="Observaciones">
-            <select id="editestado">
-                <option value="pendiente">Pendiente</option>
-                <option value="completado">Completado</option>
-            </select>
+            
+            <div class="field">
+                <label for="editFolio">Folio:</label>
+                <input type="text" id="editFolio" placeholder="Folio">
+            </div>
+
+            <div class="field">
+                <label for="editNombreDelTrabajador">Nombre del Trabajador:</label>
+                <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
+            </div>
+
+            <div class="field">
+                <label for="editFechaTransaccion">Fecha de Transacción:</label>
+                <input type="date" id="editFechaTransaccion" placeholder="Fecha de Transacción">
+            </div>
+
+            <div class="field">
+                <label for="editFechaDevolucion">Fecha de Devolución:</label>
+                <input type="date" id="editFechaDevolucion" placeholder="Fecha de Devolución">
+            </div>
+
+            <div class="field">
+                <label for="editQuienAutorizo">¿Quién Autorizó?:</label>
+                <select id="editQuienAutorizo">
+                    <option value="Persona 1">Persona 1</option>
+                    <option value="Persona 2">Persona 2</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="editObservaciones">Observaciones:</label>
+                <input type="text" id="editObservaciones" placeholder="Observaciones">
+            </div>
+
+            <div class="field">
+                <label for="editestado">Estado:</label>
+                <select id="editestado">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="completado">Completado</option>
+                </select>
+            </div>
+
             <button type="submit" class="guardar">Guardar</button>
             <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
         </form>
@@ -116,27 +147,24 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="checkbox"></td>
-                        <td><label>Destornillador</label></td>
-                        <td>123123123</td>
-                        <td>Trupper</td>
+                        <td data-label="Seleccion de entrega"><input type="checkbox"></td>
+                        <td data-label="Tipo de herramienta">Destornillador</td>
+                        <td data-label="N. Serie">123123123</td>
+                        <td data-label="Marca">Trupper</td>
                     </tr>
                 </tbody>
             </table>
             <label for="observaciones">Observaciones:</label>
             <textarea id="observaciones" placeholder="Ingrese observaciones aquí..."></textarea>
             <div class="button-group">
-                <button type="button" onclick="cerrarPopup('popupVer')">Concretar prestamo</button> 
+                <button type="button">Concretar prestamo</button> 
                 <button type="button" onclick="cerrarPopup('popupVer')">Cancelar</button> 
             </div> 
         </form>
     </div>
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistorialprestamo/domHelpers.js"></script>
-    <script src="js/ScriptsHistorialprestamo/helpers.js"></script>
     <script src="js/ScriptsHistorialprestamo/popup.js"></script>
-    <script src="js/ScriptsHistorialprestamo/main.js"></script>
     <script src="js/ScriptsHistorialprestamo/tablaHistorial.js"></script>
 
 </body>
