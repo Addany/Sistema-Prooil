@@ -5,11 +5,12 @@ include 'conexion_bd.php';
 #Login y verificacion de datos en la BD
 $usuario = $_POST['username'];
 $contrasena = $_POST['password'];
-$sql=$conexion->query("SELECT * FROM almacenista WHERE usuario='$usuario'");
+$sql=$conexion->query("SELECT usuario,contrasenia FROM almacenista WHERE usuario='$usuario'");
 $objeto = $sql->fetch_object();
+$usuario_bd = $objeto->usuario;
 $contra_hashed = $objeto->contrasenia;
 
-if (!password_verify($contrasena, $contra_hashed)) {
+if ($usuario !== $usuario_bd || !password_verify($contrasena, $contra_hashed)) {
 	echo '<script language="javascript">alert("Usuario o Contraseña incorrecta");</script>';
 	echo '<script>history.go(-1);</script>';
 	echo '<script type="text/javascript">window.location.href="../";</script>';

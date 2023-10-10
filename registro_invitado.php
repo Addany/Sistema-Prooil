@@ -25,10 +25,10 @@
           <input type="text" name="name" placeholder="Nombre del Invitado" required>
           <input type="text" name="phone" placeholder="Teléfono" required>
           <input type="email" name="email" placeholder="Correo Electrónico" required>
-          <select id="nombre" required data-placeholder="Tipo de ingreso"> 
-            <option value="Visitante">Visitante</option>
-            <option value="Becario">Becario</option>
-          </select>
+            <select id="nombre" name="ingreso" required data-placeholder="Tipo de ingreso"> 
+              <option value="Visitante">Visitante</option>
+              <option value="Becario">Becario</option>
+            </select>
           <label for="">Foto:</label>
           <input type="file" name="image" accept="image/*" onchange="previewImage(event)" required>
           </label>
