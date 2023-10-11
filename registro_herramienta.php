@@ -10,6 +10,7 @@
     <link rel="icon" href="Resources/Icons/Tool.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@latest/qrcode.min.js"></script>
 </head>
 
 <body>
@@ -26,38 +27,38 @@
                         <img id="output" class="image-preview" width="100" alt="" />
                     </div>
                 </div>
-                <form class="form-registro">
+                <form class="form-registro" action="php/registro3.php" method="POST" enctype="multipart/form-data">
                     <div class="input-section">
                         <div class="left-section">
                             <div class="input-group">
                                 <label for="tipo de herramienta">Tipo de herramienta:</label>
-                                <input type="text" id="tipoHerramienta" required>
+                                <input type="text" id="tipoHerramienta" name="tool" required>
                             </div>
                             <div class="input-group">
                                 <label for="marca">Marca:</label>
-                                <input type="text" id="marca" required>
+                                <input type="text" id="marca" name="brand" required>
                             </div>
                             <div class="input-group">
                                 <label for="color">Color:</label>
-                                <input type="text" id="color" required>
+                                <input type="text" id="color" name="color" required>
                             </div>
                             <div class="input-group">
                                 <label for="ordenCompra">Orden de Compra:</label>
-                                <input type="text" id="ordenCompra" required>
+                                <input type="text" id="ordenCompra" name="purchase_order" required>
                             </div>
                         </div>
                         <div class="right-section">
                             <div class="input-group">
-                                <label for="tamaño">Tamaño CM:</label>
-                                <input type="text" id="tamaño" required>
+                                <label for="tamaño">Tamaño (CM):</label>
+                                <input type="text" id="tamaño" name="size" required>
                             </div>
                             <div class="input-group">
                                 <label for="noSerie">Número de Serie:</label>
-                                <input type="text" id="noSerie" required>
+                                <input type="text" id="noSerie" name="serial_number">
                             </div>
                             <div class="input-group">
                                 <label for="estado">Estado de la Herramienta:</label>
-                                <select id="estado" required>
+                                <select id="estado" name="tool_status" required>
                                     <option value="bueno">Bueno</option>
                                     <option value="regular">Regular</option>
                                     <option value="malo">Malo</option>
@@ -65,16 +66,19 @@
                             </div>
                             <div class="input-group">
                                 <label class="file-label" for="worker_image">Foto Herramienta:</label>
-                                <input type="file" id="worker_image" name="worker_image" class="file-input" accept="image/*" onchange="previewImage(event)" required>
+                                <input type="file" id="worker_image" name="image" class="file-input" accept="image/*" onchange="previewImage(event)">
                             </div>
                         </div>
                     </div>
+                    <button type="submit" class="registrar-button">Registrar Herramienta</button>
                 </form>
             </div>
+            <!-- Seccion Comentada por que no funciona
             <div class="button-group"> 
                 <button type="submit" class="registrar-button">Registrar Herramienta</button>
                 <button type="button"  class="qr-button">Descargar QR</button>
             </div>
+            -->
         </div>
         
     </div>
@@ -82,7 +86,6 @@
     <video class="video-background" autoplay loop muted>
         <source src="Resources/Mi video.webm" type="video/webm">
     </video>
-    
     <script src="js/scriptnavegacion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1/qrcode.min.js"></script>
     <script src="js/registroherramienta.js"></script>

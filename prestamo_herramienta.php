@@ -17,6 +17,7 @@
 <body>
     <?php
     include 'php/session.php';
+    include 'php/conexion_bd.php'
     ?>
     <header>
         
@@ -30,17 +31,33 @@
             <section class="container">
                 <div class="form-container">
                     <h3>Formulario de Préstamo</h3>
+
+                    <?php
+                    $queryEmpleado = "SELECT id_trabajador, nombre FROM empleado";
+                    $resultEmpleado = mysqli_query($conexion, $queryEmpleado);
+
+                    $options = "<option value=''>Selecciona una persona</option>";
+                    while($row = mysqli_fetch_assoc($resultEmpleado)) {
+                        $id = $row['id_trabajador'];
+                        $nombre = $row['nombre'];
+                        $options .= "<option value='e_$id'>Empleado: $id - $nombre</option>";
+                    }
+                    $queryInvitado = "SELECT id_invitado, nombre FROM invitado";
+                    $resultInvitado = mysqli_query($conexion, $queryInvitado);
+                    while($row = mysqli_fetch_assoc($resultInvitado)) {
+                        $id = $row['id_invitado'];
+                        $nombre = $row['nombre'];
+                        $options .= "<option value='i_$id'>Invitado: $id - $nombre</option>";
+                    }
+                    ?>
+
                     <form id="loanForm">
-                        <label for="almacenName">Almacenista en Solicitud: Juan Guillermo</label>
+                        <label for="almacenName">Almacenista en Solicitud: <?php echo "$almacenista";?></label>
                         <br>
                         <label for="workerName">Nombre del Trabajador:</label>
-                        <select id="workerName" class="workerName" required>
-                            <option value="">Selecciona un trabajador</option>
-                            <option value="worker1">Trabajador 1</option>
-                            <option value="worker2">Trabajador 2</option>
-                            <option value="worker3">Trabajador 3</option>
+                        <select id="workerName" class="workerName" name="petitioner" required>
+                            <?php echo $options; ?>
                         </select>
-
                         <div class="scanned-tools">
                             <br>
                             <Label>Herramientas Escaneadas:</Label>
@@ -60,10 +77,8 @@
                                 </table>
                             </div>
                         </div>
-
                         <label for="observations">Observaciones:</label>
-                        <textarea id="observations"></textarea>
-
+                        <textarea id="observations" name="observations"></textarea>
                         <div class="loan-buttons">
                             <button type="submit">Solicitar Préstamo</button>
                             <button type="button" onclick="cancelLoan()">Limpiar campo</button>
