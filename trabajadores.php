@@ -59,6 +59,7 @@
                         <th>Tipo de registro</th>
                         <th>ID</th>
                         <th>Nombre</th>
+                        <th>Area</th>
                         <th>Teléfono</th>
                         <th>Correo Electrónico</th>
                         <th>Fecha de Ingreso</th>
@@ -72,6 +73,7 @@
                         <td data-label="Tipo de Registro">Trabajador</td>
                         <td data-label="ID">19939</td>
                         <td data-label="Nombre">Juan</td>
+                        <td data-label="Area">Refineria</td>
                         <td data-label="Teléfono">9211722326</td>
                         <td data-label="Correo Electrónico">appdata.123@gmail.com</td>
                         <td data-label="Fecha de Ingreso">08-12-2022</td>
@@ -118,6 +120,11 @@
                 </div>
 
                 <div class="field">
+                    <Label>Area:</Label>
+                    <input type="text" id="editArea" placeholder="Area">
+                </div>
+
+                <div class="field">
                     <Label>Telefono:</Label>
                     <input type="text" id="editTelefono" placeholder="Teléfono">
                 </div>
@@ -137,7 +144,7 @@
         </div>
     </div>
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistoriatrabajadores/tablaHistorial.js"></script>
-    <script src="js/ScriptsHistoriatrabajadores/popup.js"></script>
+    <script src="js/tablaHistorial.js"></script>
+    <script src="js/popup.js"></script>
 </body>
 </html>

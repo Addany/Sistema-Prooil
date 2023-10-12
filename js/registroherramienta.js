@@ -1,4 +1,4 @@
-
+/* FUNCIONALIDAD QR-COMENTADA POR SI SE LLEGA A UTILIZAR, SI NO, SERA BORRADA
 document.querySelector('.qr-button').addEventListener('click', function () {
     let tipoHerramienta = document.getElementById('tipoHerramienta').value;
     let noSerie = document.getElementById('noSerie').value;
@@ -40,7 +40,7 @@ document.querySelector('.qr-button').addEventListener('click', function () {
         alert('Por favor, rellene todos los campos requeridos antes de generar el QR.');
     }
 });
-
+ */
 function previewImage(event) {
     const reader = new FileReader();
     reader.onload = function() {

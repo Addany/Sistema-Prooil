@@ -165,8 +165,8 @@
 
 
   <script src="js/scriptnavegacion.js"></script>
-  <script src="js/ScriptsHistorialHerramientas/tablaHistorial.js"></script>
-  <script src="js/ScriptsHistorialHerramientas/popup.js"></script>
+  <script src="js/tablaHistorial.js"></script>
+  <script src="js/popup.js"></script>
 </body>
 </html>
 

@@ -70,7 +70,7 @@
                             <td data-label="Estado del proceso del entrega">Concretado</td>
                             <td data-label="Acciones">
                                 <button class="accion-button" onclick="verHerramienta('${item.folio}')">Ver</button>
-                                <button class="accion-button" onclick="editarPrestamoForm(this)">Editar</button>
+                                <button class="accion-button" onclick="editarEntregaForm(this)">Editar</button>
                                 <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Generar documento</button>
                                 <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Generar reporte mensual</button>
                             </td>
@@ -145,8 +145,8 @@
 
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistorialentregas/tablaHistorial.js"></script>
-    <script src="js/ScriptsHistorialentregas/popup.js"></script>
+    <script src="js/tablaHistorial.js"></script>
+    <script src="js/popup2.js"></script>
 
 </body>
 </html>

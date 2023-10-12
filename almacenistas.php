@@ -126,7 +126,7 @@
 
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/ScriptsHistorialalmacenistas/tablaHistorial.js"></script>
-    <script src="js/ScriptsHistorialalmacenistas/popup.js"></script>
+    <script src="js/tablaHistorial.js"></script>
+    <script src="js/popup.js"></script>
 </body>
 </html>

@@ -118,11 +118,6 @@
             </div>
 
             <div class="field">
-                <label for="editTipo">Tipo:</label>
-                <input type="text" id="editTipo" placeholder="Tipo">
-            </div>
-
-            <div class="field">
                 <label for="editClase">Clase:</label>
                 <input type="text" id="editClase" placeholder="Clase">
             </div>
@@ -150,8 +145,8 @@
 
 
   <script src="js/scriptnavegacion.js"></script>
-  <script src="js/ScriptsHistorialEPP/tablaHistorial.js"></script>
-  <script src="js/ScriptsHistorialEPP/popup.js"></script>
+  <script src="js/tablaHistorial.js"></script>
+  <script src="js/popup.js"></script>
 </body>
 </html>
 
