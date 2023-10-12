@@ -14,6 +14,7 @@
 <body>
   <?php
   include 'php/session.php';
+  include 'php/conexion_bd.php';
   ?>
 
   <div id="page-container">
@@ -63,29 +64,44 @@
             <th>Estado</th>
             <th>Color</th>
             <th>Fecha de Registro</th>
-            <th>Estatus</th>
+            <th>Status</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td data-label="Foto"><img src="Resources/Imagen1.webp" alt="Foto de " class="imagen-herramienta" /></td>
-            <td data-label="ID">1</td>
-            <td data-label="Tipo de herramienta">Destornillador</td>
-            <td data-label="Marca">Trupper</td>
-            <td data-label="Orden de compra">12345</td>
-            <td data-label="Tamaño">5cm</td>
-            <td data-label="No. Serie">12345</td>
-            <td data-label="Estado">Regular</td>
-            <td data-label="Color">Rojo</td>
-            <td data-label="Fecha de Registro">20-01-2012</td>
-            <td data-label="Estatus">Prestado</td>
-            <td data-label="Acciones">
-                <button class="accion-button">Descargar QR</button>
-                <button class="accion-button" onclick="editarHerramienta(this)">Editar</button>
-                <button class="accion-button">Eliminar</button>
-            </td>
-          </tr>
+          <?php
+          if ($conexion->connect_error) {
+            die();
+          }
+          $sql = "SELECT * FROM herramientas_cantidad";
+          $result = $conexion->query($sql);
+          $vacio = "pendiente";
+
+          if ($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()) {
+              echo "<tr>";
+              echo "<td data-label='Foto'><img src='Resources/Imagen1.webp' alt='Foto de ' class='imagen-herramienta' /></td>";
+              echo "<td data-label='ID'>" . $row["identificador"] . "</td>";
+              echo "<td data-label='Tipo de herramienta'>" . $vacio . "</td>";
+              echo "<td data-label='Marca'>" . $row["marca"] . "</td>";
+              echo "<td data-label='Orden de Compra'>" . $row["orden_compra"] . "</td>";
+              echo "<td data-label='Tamaño'>" . $row["tamaño"] . "cm</td>";
+              echo "<td data-label='No. Serie'>" . $row["no_serie"] . "</td>";
+              echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+              echo "<td data-label='Color'>" . $row["color"] . "</td>";
+              echo "<td data-label='Fecha de Registro'>" . $row["fecha_registro"] . "</td>";
+              echo "<td data-label='Status'>" . $vacio . "</td>";
+              // ... Repite para cada columna de tu base de datos
+              echo "<td data-label='Acciones'>";
+              echo "<button class='accion-button'>Descargar QR</button>";
+              echo "<button class='accion-button' onclick='editarHerramienta(this)'>Editar</button>";
+              echo "<button class='accion-button'>Eliminar</button>";
+              echo "</td>";
+              echo "</tr>";
+            }
+          }
+          $conexion->close();
+          ?>
         </tbody>
       </table>
     </section>

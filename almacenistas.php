@@ -14,6 +14,7 @@
 <body>
     <?php
     include 'php/session.php';
+    include 'php/conexion_bd.php';
     ?>
     <header>
         
@@ -62,6 +63,27 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                    if ($conexion->connect_error) {
+                        die();
+                    }
+                    $sql = "SELECT * FROM almacenista";
+                    $result = $conexion->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                            echo "<td data-label='Usuario'>" . $row["usuario"] . "</td>";
+                            echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
+                            echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";
+                            echo "<td data-label='Correo'>" . $row["correo"] . "</td>";
+                            echo "<td data-label='Fecha de Ingreso'>" . $row["fecha_ingreso"] . "</td>";
+                            echo "<td data-label='Acciones'><button class='accion-button' onclick='editarAlmacenista(this)'>Editar</button></td>";
+                            echo "<tr>";
+                        }
+                    }
+                    ?>
                     <tr>
                         <td data-label="Estado">Activo</td>
                         <td data-label="Usuario">Root</td>
