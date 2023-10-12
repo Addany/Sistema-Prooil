@@ -57,45 +57,55 @@ if ($conexion->query($sql2) === TRUE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Código QR <?php echo $last_id2; ?></title>
-    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@latest/qrcode.min.js"></script>
     <style>
-        /* Ocultamos el div del QR */
-        #qrcode {
+        /* Ocultamos el contenedor del QR */
+        #qrcode-container {
             display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Div oculto donde se generará el código QR -->
-    <div id="qrcode"></div>
-
+    <!-- Contenedor para la imagen del QR -->
+    <div id="qrcode-container">
+        <img id="qrimg" src="" style="display: none;">
+    </div>
+    
     <script>
+        // Obtener elementos
+        const qrimg = document.getElementById("qrimg");
+        const container = document.getElementById("qrcode-container");
+
+        // Función para generar y descargar QR
         function generarYDescargarQR(data) {
-            var qrcode = new QRCode("qrcode", {
-                text: data,
-                width: 164,
-                height: 164	
+            const qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${data}`;
+            qrimg.src = qrURL;
+
+            qrimg.addEventListener("load", () => {
+                container.style.display = "block";
+
+                const imgPath = qrimg.getAttribute("src");
+                const nombreArchivo = `herramienta${data}.png`;
+
+                fetch(imgPath)
+                .then((response) => response.blob())
+                .then((blob) => {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = nombreArchivo;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    setTimeout(() => {
+                        window.location.href = "../registro_herramienta.php";
+                    }, 1000);  // Redirecciona después de 1 segundo
+                });
             });
-
-            setTimeout(() => {
-                var canvas = document.querySelector('#qrcode canvas');
-                var img = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); 
-                var link = document.createElement('a');
-                link.download = 'herramienta<?php echo $last_id2; ?>.png';
-                link.href = img;
-                link.click();
-
-                setTimeout(() => {
-                	window.location.href = "../registro_herramienta.php";
-                }, 1000);  // Redirecciona después de 1 segundo para dar tiempo a que el QR se descargue
-
-            }, 500);
         }
 
-        // Ejecutamos la función con el valor de PHP.
+        // Ejecutamos la función con el valor de PHP
         generarYDescargarQR("<?php echo $last_id2; ?>");
-
     </script>
 </body>
 </html>
