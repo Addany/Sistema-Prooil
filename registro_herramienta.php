@@ -73,12 +73,6 @@
                     <button type="submit" class="registrar-button">Registrar Herramienta</button>
                 </form>
             </div>
-            <!-- Seccion Comentada por que no funciona
-            <div class="button-group"> 
-                <button type="submit" class="registrar-button">Registrar Herramienta</button>
-                <button type="button"  class="qr-button">Descargar QR</button>
-            </div>
-            -->
         </div>
         
     </div>
@@ -88,6 +82,6 @@
     </video>
     <script src="js/scriptnavegacion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1/qrcode.min.js"></script>
-    <script src="js/registroherramienta.js"></script>
+    <script src="js/scriptimagen.js"></script>
 </body>
 </html>

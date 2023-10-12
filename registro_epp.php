@@ -86,6 +86,7 @@
     
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/registroepp.js"></script>
+    <script src="js/scripttimagen.js"></script>
 
 
 </body>
