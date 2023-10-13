@@ -50,7 +50,7 @@
                         <div class="right-section">
                             <div class="input-group">
                                 <label for="tamaño">Tamaño (CM):</label>
-                                <input type="text" id="tamaño" name="size" required>
+                                <input type="number" id="tamaño" name="size" placeholder="Solo numero en centimetro" required>
                             </div>
                             <div class="input-group">
                                 <label for="noSerie">Número de Serie:</label>

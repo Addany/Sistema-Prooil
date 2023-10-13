@@ -104,6 +104,16 @@ tr:nth-child(even) {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más profunda cuando se pasa el ratón */
 }
 
+.guardar {
+  width: 100%;
+  padding: 8px; /* Reducción moderada del padding vertical */
+  margin-bottom: 3px; /* Reducción moderada del margen inferior */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #f1f1f1;
+  color: #333;
+}
+
 
 #overlay {
   visibility: hidden;
@@ -134,6 +144,24 @@ tr:nth-child(even) {
   z-index: 1000; 
 }
 
+#popupVer {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
 #popup form input, #popup form select {
   width: 100%;
   padding: 6px;
@@ -143,15 +171,7 @@ tr:nth-child(even) {
   box-sizing: border-box;
 }
 
-.guardar {
-  width: 100%;
-  padding: 8px; /* Reducción moderada del padding vertical */
-  margin-bottom: 3px; /* Reducción moderada del margen inferior */
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  background-color: #f1f1f1;
-  color: #333;
-}
+
 
 #popup form button {
   background-color: #0F393B;
@@ -174,6 +194,43 @@ tr:nth-child(even) {
 
 #popup #cancelarEdicion:hover {
   background-color: #ddd;
+}
+#popupVer form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#popupVer h2 {
+  margin-bottom: 10px;
+}
+
+#popupVer label {
+  margin-bottom: 5px;
+}
+
+#popupVer form input[type="month"] {
+  width: 95%; 
+  padding: 10px; 
+  border-radius: 5px; 
+  border: 1px solid #ddd; 
+  margin-bottom: 10px; 
+}
+
+#popupVer button {
+  width: 100%;
+  padding: 10px;
+  margin-left: 0; /* Ajusté el margen izquierdo a 0 */
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 0.3rem;
+  background-color: #0F393B;
+  color: white;
+  font-weight: bold;
+}
+
+#popupVer button:hover {
+  background-color: #194d50;
 }
 
 .hidden {
@@ -251,6 +308,16 @@ tr:nth-child(even) {
     margin-bottom: 5px; /* Añadido margen en la parte inferior para espacio entre los botones */
     margin: 5px 0; /* Añade márgenes superior e inferior */
     font-size: 16px; /* Asegura un tamaño de fuente legible */
+  }
+  #popupVer {
+    max-width: 90%; 
+    padding: 10px; 
+  }
+
+  #popupVer form input[type="month"],
+  #popupVer form button {
+    width: 100%; 
+    box-sizing: border-box; 
   }
 }
 @media (max-width: 600px) {

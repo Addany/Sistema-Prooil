@@ -39,6 +39,7 @@
                   <option value="todos">Todos</option>
                   <option value="casco contra impacto">Casco contra impacto</option>
                 </select>
+                <button type="button" id="generarReporte"  onclick="verHerramienta(this)">Generar reporte</button>
                 <button type="button" id="eliminarBusqueda">Limpiar busqueda</button>
               </div>
             </form>
@@ -72,7 +73,6 @@
                 <td data-label="Orden de compra">12388123</td>
                 <td data-label="Fecha de Registro">21-04-2021</td>
                 <td data-label="Acciones">
-                    <button class="accion-button">Generar reporte</button>
                     <button class="accion-button" onclick="editarEPP(this)">Editar</button>
                     <button class="accion-button">Eliminar</button>
                 </td>
@@ -81,7 +81,8 @@
           </table>
         </section>
       </main>
-      <div id="overlay" onclick="cerrarSiEsFuera(event, 'popup')"></div>
+
+      <div id="overlay" onclick="cerrarSiEsFuera(event, 'popup', 'popupVer')"></div>
       <div id="popup">
         <form id="editarEPP">
             <h3>Editar datos</h3>
@@ -94,7 +95,7 @@
 
             <div class="field">
                 <label for="editId">ID:</label>
-                <input type="text" id="editId" placeholder="ID">
+                <input type="text" id="editId" placeholder="ID" readonly>
             </div>
 
             <div class="field">
@@ -141,12 +142,23 @@
             <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popup')">Cancelar</button>
         </form>
     </div>
-  </div>
+    <div id="popupVer" class="popup">
+    <form id="generarReporteForm"> 
+        <h3>Generar Reporte Mensual</h3>
+        
+          <label for="mesReporte">Selecciona el mes:</label>
+          <input type="month" id="mesReporte"  name="mesReporte">
+        
+        <button type="button" onclick="generarReporte()">Generar Reporte</button>
+        <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>
+    </form>
+</div>
+
 
 
   <script src="js/scriptnavegacion.js"></script>
   <script src="js/tablaHistorial.js"></script>
-  <script src="js/popup.js"></script>
+  <script src="js/popup2.js"></script>
 </body>
 </html>
 

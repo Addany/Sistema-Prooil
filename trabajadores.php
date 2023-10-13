@@ -135,13 +135,13 @@
                     <Label>Tipo de registro:</Label>
                     <select id="editTipoRegistro">
                         <option value="Trabajador">Trabajador</option>
-                        <option value="Invitado">Invitado</option>
+                        <option value="Becario">Becario</option>
                     </select>
                 </div>
 
                 <div class="field">
                     <Label>ID:</Label>
-                    <input type="text" id="editID" placeholder="ID">
+                    <input type="text" id="editID" placeholder="ID" readonly>
                 </div>
 
                 <div class="field">

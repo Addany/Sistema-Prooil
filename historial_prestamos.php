@@ -88,7 +88,7 @@
             
             <div class="field">
                 <label for="editFolio">Folio:</label>
-                <input type="text" id="editFolio" placeholder="Folio">
+                <input type="text" id="editFolio" placeholder="Folio" readonly>
             </div>
 
             <div class="field">

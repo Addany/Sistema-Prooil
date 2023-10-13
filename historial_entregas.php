@@ -54,9 +54,9 @@
                             <th>Folio</th>
                             <th>Fecha de Transacción</th>
                             <th>Trabajador solicitante</th>
-                            <th>Quien Autorizó</th>
+                            <th>¿Quien Autorizó?</th>
                             <th>Observaciones</th>
-                            <th>Estado del proceso del entrega</th>
+                            <th>Status del proceso del entrega</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -65,13 +65,13 @@
                             <td data-label="Folio">12345</td>
                             <td data-label="Fecha de Transacción">20-02-2020</td>
                             <td data-label="Trabajador solicitante">Juan</td>
-                            <td data-label="Quien Autorizó">Adrian</td>
+                            <td data-label="¿Quien Autorizó?">Adrian</td>
                             <td data-label="Observaciones">Perdida de las herramientas</td>
-                            <td data-label="Estado del proceso del entrega">Pendiente</td>
+                            <td data-label="Status del proceso del entrega">Pendiente</td>
                             <td data-label="Acciones">
                                 <button class="accion-button" onclick="verHerramienta('${item.folio}')">Ver</button>
                                 <button class="accion-button" onclick="editarEntregaForm(this)">Editar</button>
-                                <button class="accion-button" >Generar documento</button>
+                                <button class="accion-button">Generar documento</button>
                             </td>
                         </tr>
                     </tbody>
@@ -86,16 +86,16 @@
                 
                 <div class="field">
                     <label for="editFolio">Folio:</label>
-                    <input type="text" id="editFolio" placeholder="Folio">
+                    <input type="text" id="editFolio" placeholder="Folio" readonly>
                 </div>
 
                 <div class="field">
                     <label for="editFechaTransaccion">Fecha de Transacción:</label>
-                    <input type="text" id="editFechaTransaccion" placeholder="Fecha de Transacción">
+                    <input type="date" id="editFechaTransaccion" placeholder="Fecha de Transacción">
                 </div>
 
                 <div class="field">
-                    <label for="edittrabajadorSolicitante">Nombre del Trabajador:</label>
+                    <label for="edittrabajadorSolicitante">Trabajador solicitante:</label>
                     <input type="text" id="edittrabajadorSolicitante" placeholder="Nombre del Trabajador">
                 </div>
 
@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="field">
-                    <label for="editEstadoproceso">Estado:</label>
+                    <label for="editEstadoproceso">Status del proceso del entrega:</label>
                     <select id="editEstadoproceso">
                         <option value="Pendiente">Pendiente</option>
                         <option value="Completado">Completado</option>

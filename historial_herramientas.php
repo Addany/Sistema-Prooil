@@ -118,7 +118,7 @@
 
           <div class="field">
               <label for="editUsuario">ID:</label>
-              <input type="text" id="editUsuario">
+              <input type="text" id="editUsuario" readonly>
           </div>
 
           <div class="field">
