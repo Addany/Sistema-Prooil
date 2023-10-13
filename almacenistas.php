@@ -84,15 +84,6 @@
                         }
                     }
                     ?>
-                    <tr>
-                        <td data-label="Estado">Activo</td>
-                        <td data-label="Usuario">Root</td>
-                        <td data-label="Nombre">Juan</td>
-                        <td data-label="Teléfono">9211722326</td>
-                        <td data-label="Correo">appdata.123@gmail.com</td>
-                        <td data-label="Fecha de Ingreso">21-12-2023</td>
-                        <td data-label="Acciones"><button class="accion-button" onclick="editarAlmacenista(this)">Editar</button></td>
-                    </tr>
                 </tbody>
                 </table>
             </section>
