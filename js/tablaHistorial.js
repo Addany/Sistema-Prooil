@@ -76,7 +76,9 @@ async function editarEPP(button) {
       document.getElementById("editClase").value = row.querySelector('[data-label="Clase"]').innerText;
       document.getElementById("editTalla").value = row.querySelector('[data-label="Talla"]').innerText;
       document.getElementById("editOrdenCompra").value = row.querySelector('[data-label="Orden de compra"]').innerText;
-      document.getElementById("editFechaRegistro").value = row.querySelector('[data-label="Fecha de Registro"]').innerText;
+      let fechaRegistro = row.querySelector('[data-label="Fecha de Registro"]').innerText.split("-").reverse().join("-");
+      document.getElementById("editFechaRegistro").value = fechaRegistro;
+
 
       abrirPopup('popup');
   } catch (error) {
@@ -114,10 +116,8 @@ async function editarPrestamoForm(button) {
   try {
       await solicitarNIP();
       
-      // Acceder a la fila del botón
       let row = button.closest('tr');
       
-
       document.getElementById("editFolio").value = row.querySelector('[data-label="Folio"]').innerText;
       document.getElementById("editNombreDelTrabajador").value = row.querySelector('[data-label="Nombre del Trabajador"]').innerText;
       let fechaTransaccion = row.querySelector('[data-label="Fecha de Transacción"]').innerText.split("-").reverse().join("-");
@@ -155,5 +155,20 @@ async function editarTrabajador(button) {
       abrirPopup('popupEditar');
   } catch (error) {
       console.error("Error al editar trabajador:", error);
+  }
+}
+
+function actualizarFoto(event) {
+  let inputFile = event.target;
+  let fotoElement = document.getElementById("editFoto");
+  
+  if (inputFile.files && inputFile.files[0]) {
+      let reader = new FileReader();
+      
+      reader.onload = function (e) {
+          fotoElement.src = e.target.result;
+      }
+      
+      reader.readAsDataURL(inputFile.files[0]);
   }
 }

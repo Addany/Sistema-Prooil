@@ -117,12 +117,12 @@
           </div>
 
           <div class="field">
-              <label for="editUsuario">Usuario:</label>
+              <label for="editUsuario">ID:</label>
               <input type="text" id="editUsuario">
           </div>
 
           <div class="field">
-              <label for="editTipoherramienta">Tipo:</label>
+              <label for="editTipoherramienta">Tipo de Herramienta:</label>
               <input type="text" id="editTipoherramienta" placeholder="Tipo de">
           </div>
 
@@ -132,17 +132,17 @@
           </div>
 
           <div class="field">
-              <label for="editTamano">Tamaño:</label>
-              <input type="text" id="editTamano" placeholder="Tamaño">
-          </div>
-
-          <div class="field">
               <label for="editOrdenCompra">Orden de compra:</label>
               <input type="text" id="editOrdenCompra" placeholder="Orden de compra">
           </div>
 
           <div class="field">
-              <label for="editNoSerie">Número de serie:</label>
+              <label for="editTamano">Tamaño:</label>
+              <input type="text" id="editTamano" placeholder="Tamaño">
+          </div>
+
+          <div class="field">
+              <label for="editNoSerie">No. serie:</label>
               <input type="text" id="editNoSerie" name="noSerie" />
           </div>
 
@@ -161,12 +161,12 @@
           </div>
 
           <div class="field">
-              <label for="editFecha">Fecha:</label>
+              <label for="editFecha">Fecha de Registro:</label>
               <input type="date" id="editFecha">
           </div>
 
           <div class="field">
-              <label for="editEstatus">Estatus:</label>
+              <label for="editEstatus">Status:</label>
               <select id="editEstatus">
                   <option value="prestado">Prestado</option>
                   <option value="devuelto">Devuelto</option>

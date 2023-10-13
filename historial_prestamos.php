@@ -55,9 +55,9 @@
                             <th>Nombre del Trabajador</th>
                             <th>Fecha de Transacción</th>
                             <th>Fecha de Devolución</th>
-                            <th>Quien Autorizó</th>
+                            <th>¿Quien Autorizó?</th>
                             <th>Observaciones</th>
-                            <th>Estado del proceso del prestamo</th>
+                            <th>Status del prestamo</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -120,7 +120,7 @@
             </div>
 
             <div class="field">
-                <label for="editestado">Estado:</label>
+                <label for="editestado">Status del prestamo:</label>
                 <select id="editestado">
                     <option value="pendiente">Pendiente</option>
                     <option value="completado">Completado</option>
@@ -164,8 +164,8 @@
     </div>
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/popup2.js"></script>
     <script src="js/tablaHistorial.js"></script>
+    <script src="js/popup2.js"></script>
 
 </body>
 </html>

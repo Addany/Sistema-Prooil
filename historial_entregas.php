@@ -67,12 +67,11 @@
                             <td data-label="Trabajador solicitante">Juan</td>
                             <td data-label="Quien Autorizó">Adrian</td>
                             <td data-label="Observaciones">Perdida de las herramientas</td>
-                            <td data-label="Estado del proceso del entrega">Concretado</td>
+                            <td data-label="Estado del proceso del entrega">Pendiente</td>
                             <td data-label="Acciones">
                                 <button class="accion-button" onclick="verHerramienta('${item.folio}')">Ver</button>
                                 <button class="accion-button" onclick="editarEntregaForm(this)">Editar</button>
                                 <button class="accion-button" >Generar documento</button>
-                                <button class="accion-button">Generar reporte mensual</button>
                             </td>
                         </tr>
                     </tbody>
@@ -112,7 +111,10 @@
 
                 <div class="field">
                     <label for="editEstadoproceso">Estado:</label>
-                    <input type="text" id="editEstadoproceso" placeholder="Estado">
+                    <select id="editEstadoproceso">
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Completado">Completado</option>
+                    </select>
                 </div>
 
                 <button type="submit" class="guardar">Guardar</button>

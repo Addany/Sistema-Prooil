@@ -96,13 +96,13 @@
                 <div class="field">
                     <Label>Estado:</Label>
                     <select id="editEstado">
-                        <option value="Alta">Activo</option>
-                        <option value="Baja">Inactivo</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
                     </select>
                 </div>
                 
                 <div class="field">
-                    <Label>Tipo:</Label>
+                    <Label>Tipo de registro:</Label>
                     <select id="editTipoRegistro">
                         <option value="Trabajador">Trabajador</option>
                         <option value="Invitado">Invitado</option>
@@ -125,17 +125,17 @@
                 </div>
 
                 <div class="field">
-                    <Label>Telefono:</Label>
+                    <Label>Teléfono:</Label>
                     <input type="text" id="editTelefono" placeholder="Teléfono">
                 </div>
 
                 <div class="field">
-                    <Label>Correo:</Label>
+                    <Label>Correo Electrónico:</Label>
                     <input type="email" id="editCorreo" placeholder="Correo Electrónico">
                 </div>
                 
                 <div class="field">
-                    <Label>Fecha:</Label>
+                    <Label>Fecha de Ingreso:</Label>
                     <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
                 </div>
                 <button type="submit" class="guardar">Guardar</button>

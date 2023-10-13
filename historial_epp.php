@@ -70,7 +70,7 @@
                 <td data-label="Clase">Clasex</td>
                 <td data-label="Talla">Unitalla</td>
                 <td data-label="Orden de compra">12388123</td>
-                <td data-label="Fecha de Registro">20-02-2021</td>
+                <td data-label="Fecha de Registro">21-04-2021</td>
                 <td data-label="Acciones">
                     <button class="accion-button">Generar reporte</button>
                     <button class="accion-button" onclick="editarEPP(this)">Editar</button>
