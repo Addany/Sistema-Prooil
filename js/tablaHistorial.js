@@ -1,15 +1,15 @@
 
-  function solicitarNIP() {
-    return new Promise((resolve, reject) => {
-      const nip = prompt('Por favor, ingrese su NIP:');
-      if (nip === '1234') {  // Cambia '1234' por el NIP real que deseas verificar
-        resolve();
-      } else {
-        alert('NIP incorrecto');
-        reject(new Error('NIP incorrecto'));
-      }
-    });
-  }
+function solicitarNIP() {
+  return new Promise((resolve, reject) => {
+    const nip = prompt('Por favor, ingrese su NIP:');
+    if (nip === '1234') {  // Cambia '1234' por el NIP real que deseas verificar
+      resolve();
+    } else {
+      alert('NIP incorrecto');
+      reject(new Error('NIP incorrecto'));
+    }
+   });
+}
   
 async function verHerramienta() {
     try {
@@ -176,4 +176,18 @@ function actualizarFoto(event) {
       
       reader.readAsDataURL(inputFile.files[0]);
   }
+}
+
+function intentarEliminar(buttonElement) {
+  solicitarNIP()
+      .then(() => {
+         
+          const fila = buttonElement.closest('tr');
+          fila.remove();
+          
+      })
+      .catch(error => {
+          console.error(error.message);
+          
+      });
 }

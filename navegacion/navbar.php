@@ -8,7 +8,7 @@
     <li class="submenu-parent">
       <a href="#"><i class="fa-solid fa-handshake"></i>Prestamos y Entregas</a>
       <ul class="submenu">
-        <li><a href="historial_prestamos.php"><i class="fa-solid fa-rectangle-list"></i> Historial de prestamos</a></li>
+        <li><a href="historial_prestamos.php"><i class="fa-solid fa-rectangle-list"></i> Historial de préstamos</a></li>
         <li><a href="historial_entregas.php"><i class="fa-solid fa-rectangle-list"></i> Historial de entregas de EPP</a></li>
       </ul>
     </li>
@@ -35,7 +35,7 @@
         <li><a href="trabajadores.php"><i class="fa-solid fa-box"></i> Trabajadores/ Invitados</a></li>
       </ul>
     </li>
-    <li><a href="./php/logout.php"><i class="fa-solid fa-circle-xmark"></i>Cerrar sesion</a></li>
+    <li><a href="./php/logout.php"><i class="fa-solid fa-circle-xmark"></i>Cerrar sesión</a></li>
 
     </ul>
     <div class="nav-toggle">

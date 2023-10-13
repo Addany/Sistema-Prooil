@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de EPP</title>
+    <title>Registrar EPP</title>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
@@ -67,7 +67,7 @@
                                 <input type="text" id="ordenCompra" name="purchase_order" required>
                             </div>
                             <div class="input-group">
-                                <label class="file-label" for="worker_image">Foto EPP:</label>
+                                <label class="file-label" for="worker_image">Foto del EPP:</label>
                                 <input type="file" id="worker_image" name="worker_image" class="file-input" accept="image/*" onchange="previewImage(event)" required>
                             </div>
                         </div>

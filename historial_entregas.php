@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial de Préstamos y Devoluciones</title>
+    <title>Historial de entregas de EPP</title>
     <link rel="stylesheet" href="css/estilohistorialentregas.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="icon" href="Resources/Icons/Manos.ico">
@@ -27,7 +27,7 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc.">
+                            <input type="text" id="buscador" placeholder="Trabajador Solicitante, Folio, etc.">
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha inicio:</label>
@@ -44,7 +44,7 @@
                                 <option value="Concretado">Concretado</option>
                                 <option value="No concretado">No concretado</option>
                             </select>
-                            <button type="button" onclick="buscar()">Limpiar busqueda</button>
+                            <button type="button" onclick="buscar()">Limpiar Búsqueda</button>
                         </div>
                     </form>
                 </div>
@@ -53,7 +53,7 @@
                         <tr>
                             <th>Folio</th>
                             <th>Fecha de Transacción</th>
-                            <th>Trabajador solicitante</th>
+                            <th>Trabajador Solicitante</th>
                             <th>¿Quien Autorizó?</th>
                             <th>Observaciones</th>
                             <th>Status del proceso del entrega</th>
@@ -135,9 +135,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <td data-label="Nombre">Casco</td>
-                        <td data-label="Modelo">rj2343</td>
-                        <td data-label="Tipo">3M</td>
+                        <tr>
+                            <td data-label="Nombre">Casco</td>
+                            <td data-label="Modelo">rj2343</td>
+                            <td data-label="Tipo">3M</td>
+                        </tr>
                     </tbody>
                 </table>
                 <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  

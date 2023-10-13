@@ -23,7 +23,7 @@
             <form class="form-buscar">
               <div class="input-group">
                 <label for="buscador">Busqueda por texto:</label>
-                <input type="text" id="buscador" placeholder="Buscar por texto o ID">
+                <input type="text" id="buscador" placeholder="Nombre, Cantidad, etc.">
               </div>
               <div class="input-group">
                 <label for="fechaInicio">Fecha Inicio:</label>
@@ -39,8 +39,8 @@
                   <option value="todos">Todos</option>
                   <option value="casco contra impacto">Casco contra impacto</option>
                 </select>
-                <button type="button" id="generarReporte"  onclick="verHerramienta(this)">Generar reporte</button>
-                <button type="button" id="eliminarBusqueda">Limpiar busqueda</button>
+                <button type="button" id="generarReporte"  onclick="verHerramienta(this)">Generar Reporte</button>
+                <button type="button" id="eliminarBusqueda">Limpiar Búsqueda</button>
               </div>
             </form>
           </div>
@@ -56,7 +56,7 @@
                 <th>Clase</th>
                 <th>Talla</th>
                 <th>Orden de compra</th>
-                <th>Fecha de registro</th>
+                <th>Fecha de Registro</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -74,7 +74,7 @@
                 <td data-label="Fecha de Registro">21-04-2021</td>
                 <td data-label="Acciones">
                     <button class="accion-button" onclick="editarEPP(this)">Editar</button>
-                    <button class="accion-button">Eliminar</button>
+                    <button class="accion-button" onclick="intentarEliminar(this)">Eliminar</button>
                 </td>
               </tr>
             </tbody>

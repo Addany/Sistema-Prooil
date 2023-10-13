@@ -81,7 +81,7 @@
                         <textarea id="observations" name="observations"></textarea>
                         <div class="loan-buttons">
                             <button type="submit">Solicitar Préstamo</button>
-                            <button type="button" onclick="cancelLoan()">Limpiar campo</button>
+                            <button type="button" onclick="cancelLoan()">Limpiar Campo</button>
                         </div>
                     </form>
                 </div>

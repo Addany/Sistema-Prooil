@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial de Préstamos y Devoluciones</title>
+    <title>Trabajadores/Invitados</title>
     <link rel="stylesheet" href="css/estilotrabajadores.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="icon" href="Resources/Icons/Work.ico">
@@ -29,7 +29,7 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc." >
+                            <input type="text" id="buscador" placeholder="Nombre,teléfono,etc." >
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha de inicio:</label>
@@ -48,7 +48,7 @@
                             </select>  
                         </div>
                         <div class="input-group">
-                            <button type="button">Limpiar busqueda</button>
+                            <button type="button">Limpiar Búsqueda</button>
                         </div>
                     </form>
                 </div>
@@ -57,10 +57,10 @@
                     <tr>
                         <th>Foto</th>
                         <th>Estado</th>
-                        <th>Tipo de registro</th>
+                        <th>Tipo de Registro</th>
                         <th>ID</th>
                         <th>Nombre</th>
-                        <th>Area</th>
+                        <th>Área</th>
                         <th>Teléfono</th>
                         <th>Correo Electrónico</th>
                         <th>Fecha de Ingreso</th>
@@ -132,7 +132,7 @@
                 </div>
                 
                 <div class="field">
-                    <Label>Tipo de registro:</Label>
+                    <Label>Tipo de Registro:</Label>
                     <select id="editTipoRegistro">
                         <option value="Trabajador">Trabajador</option>
                         <option value="Becario">Becario</option>

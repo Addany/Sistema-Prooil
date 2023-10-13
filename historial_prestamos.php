@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial de Préstamos y Devoluciones</title>
+    <title>Historial de préstamos</title>
     <link rel="stylesheet" href="css/estilohistorial.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="icon" href="Resources/Icons/Manos.ico">
@@ -27,7 +27,7 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc.">
+                            <input type="text" id="buscador" placeholder="Nombre del Trabajador, Folio, etc.">
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha inicio:</label>
@@ -44,7 +44,7 @@
                                 <option value="Concretado">Concretado</option>
                                 <option value="No concretado">No concretado</option>
                             </select>
-                            <button type="button">Limpiar busqueda</button>
+                            <button type="button">Limpiar Búsqueda</button>
                         </div>
                     </form>
                 </div>
@@ -62,7 +62,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <td data-label="Folio">12345</td>
+                        <tr>
+                            <td data-label="Folio">12345</td>
                             <td data-label="Nombre del Trabajador">Juan</td>
                             <td data-label="Fecha de Transacción">08-12-2022</td>
                             <td data-label="Fecha de Devolución">08-12-2022</td>
@@ -73,8 +74,9 @@
                                 <button class="accion-button" onclick="verHerramienta()">Ver</button>
                                 <button class="accion-button" onclick="editarPrestamoForm(this)">Editar</button>
                                 <button class="accion-button">Generar documento</button>
-                                <button class="accion-button">Eliminar</button>
-                        </td>
+                                <button class="accion-button" onclick="intentarEliminar(this)">Eliminar</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -152,12 +154,18 @@
                         <td data-label="N. Serie">123123123</td>
                         <td data-label="Marca">Trupper</td>
                     </tr>
+                    <tr>
+                        <td data-label="Seleccion de entrega"><input type="checkbox"></td>
+                        <td data-label="Tipo de herramienta">Destornillador</td>
+                        <td data-label="N. Serie">123123123</td>
+                        <td data-label="Marca">Trupper</td>
+                    </tr>
                 </tbody>
             </table>
             <label for="observaciones">Observaciones:</label>
             <textarea id="observaciones" placeholder="Ingrese observaciones aquí..."></textarea>
             <div class="button-group">
-                <button type="button">Concretar prestamo</button> 
+                <button type="button">Guardar</button> 
                 <button type="button" onclick="cerrarPopup('popupVer')">Cancelar</button> 
             </div> 
         </form>

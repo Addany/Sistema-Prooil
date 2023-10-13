@@ -29,7 +29,7 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre de la herramienta, marca, etc.">
+                            <input type="text" id="buscador" placeholder="Nombre, Usuario, etc.">
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha de inicio:</label>
@@ -46,45 +46,45 @@
                                 <option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
                             </select>  
-                            <button type="button">Limpiar busqueda</button>
+                            <button type="button">Limpiar Búsqueda</button>
                         </div>
                     </form>
                 </div>
                 <table id="tabla-almacenistas">
-                <thead>
-                    <tr>
-                        <th>Estado</th>
-                        <th>Usuario</th>
-                        <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
-                        <th>Fecha de ingreso</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if ($conexion->connect_error) {
-                        die();
-                    }
-                    $sql = "SELECT * FROM almacenista";
-                    $result = $conexion->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
-                            echo "<td data-label='Usuario'>" . $row["usuario"] . "</td>";
-                            echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
-                            echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";
-                            echo "<td data-label='Correo'>" . $row["correo"] . "</td>";
-                            echo "<td data-label='Fecha de Ingreso'>" . $row["fecha_ingreso"] . "</td>";
-                            echo "<td data-label='Acciones'><button class='accion-button' onclick='editarAlmacenista(this)'>Editar</button></td>";
-                            echo "<tr>";
+                    <thead>
+                        <tr>
+                            <th>Estado</th>
+                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Correo</th>
+                            <th>Fecha de Ingreso</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($conexion->connect_error) {
+                            die();
                         }
-                    }
-                    ?>
-                </tbody>
+                        $sql = "SELECT * FROM almacenista";
+                        $result = $conexion->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                                echo "<td data-label='Usuario'>" . $row["usuario"] . "</td>";
+                                echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
+                                echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";
+                                echo "<td data-label='Correo'>" . $row["correo"] . "</td>";
+                                echo "<td data-label='Fecha de Ingreso'>" . $row["fecha_ingreso"] . "</td>";
+                                echo "<td data-label='Acciones'><button class='accion-button' onclick='editarAlmacenista(this)'>Editar</button></td>";
+                                echo "<tr>";
+                            }
+                        }
+                        ?>
+                    </tbody>
                 </table>
             </section>
         </main>
@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="field">
-                    <Label>Fecha:</Label>
+                    <Label>Fecha de Ingreso:</Label>
                     <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
                 </div>
                 

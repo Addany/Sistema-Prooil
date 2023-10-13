@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historial del Almacén</title>
+  <title>Historial de herramientas</title>
   <link rel="stylesheet" href="css/estilosalmacen.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="icon" href="Resources/Icons/Tool.ico">
@@ -23,7 +23,7 @@
     <form class="form-buscar">
       <div class="input-group">
         <label for="buscador">Busqueda por texto:</label>
-        <input type="text" id="buscador" placeholder="Buscar por texto o ID">
+        <input type="text" id="buscador" placeholder="Tipo de herramienta, Marca, etc.">
       </div>
 
       <div class="input-group">
@@ -46,7 +46,7 @@
       </div>
 
       <div class="input-group">
-        <button type="button" id="eliminarBusqueda">Limpiar busqueda</button>
+        <button type="button" id="eliminarBusqueda">Limpiar Búsqueda</button>
       </div>
     </form>
 
@@ -95,7 +95,7 @@
               echo "<td data-label='Acciones'>";
               echo "<button class='accion-button'>Descargar QR</button>";
               echo "<button class='accion-button' onclick='editarHerramienta(this)'>Editar</button>";
-              echo "<button class='accion-button'>Eliminar</button>";
+              echo "<button class='accion-button' onclick='intentarEliminar(this)'>Eliminar</button>";
               echo "</td>";
               echo "</tr>";
             }

@@ -65,7 +65,7 @@
                                 </select>
                             </div>
                             <div class="input-group">
-                                <label class="file-label" for="worker_image">Foto Herramienta:</label>
+                                <label class="file-label" for="tool_image">Foto de la Herramienta:</label>
                                 <input type="file" id="worker_image" name="image" class="file-input" accept="image/*" onchange="previewImage(event)">
                             </div>
                         </div>
