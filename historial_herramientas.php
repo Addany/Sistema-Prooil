@@ -84,13 +84,13 @@
               echo "<td data-label='ID'>" . $row["identificador"] . "</td>";
               echo "<td data-label='Tipo de herramienta'>" . $vacio . "</td>";
               echo "<td data-label='Marca'>" . $row["marca"] . "</td>";
-              echo "<td data-label='Orden de Compra'>" . $row["orden_compra"] . "</td>";
+              echo "<td data-label='Orden de compra'>" . $row["orden_compra"] . "</td>";
               echo "<td data-label='Tamaño'>" . $row["tamaño"] . "cm</td>";
               echo "<td data-label='No. Serie'>" . $row["no_serie"] . "</td>";
               echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
               echo "<td data-label='Color'>" . $row["color"] . "</td>";
               echo "<td data-label='Fecha de Registro'>" . $row["fecha_registro"] . "</td>";
-              echo "<td data-label='Status'>" . $vacio . "</td>";
+              echo "<td data-label='Estatus'>" . $vacio . "</td>";
               // ... Repite para cada columna de tu base de datos
               echo "<td data-label='Acciones'>";
               echo "<button class='accion-button'>Descargar QR</button>";

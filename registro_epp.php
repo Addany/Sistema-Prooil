@@ -28,13 +28,13 @@
                         <img id="output" class="image-preview" width="100" alt="" />
                     </div>
                 </div>
-                <form class="form-registro">
+
+                <form class="form-registro" action="php/registro4.php" method="POST" enctype="multipart/form-data">
                     <div class="input-section">
                         <div class="left-section">
-                
                             <div class="input-group">
                                 <label for="nombre">Nombre:</label>
-                                <select id="nombre" required data-placeholder="Selecciona un EPP">
+                                <select id="nombre" name="name" required data-placeholder="Selecciona un EPP">
                                     <option></option> 
                                     <option value="EPP1">EPP1</option>
                                     <option value="EPP2">EPP2</option>
@@ -42,29 +42,29 @@
                             </div>
                             <div class="input-group">
                                 <label for="cantidad">Cantidad:</label>
-                                <input type="number" id="cantidad" required>
+                                <input type="number" id="cantidad" name="amount" required>
                             </div>
                             <div class="input-group">
                                 <label for="marca">Marca:</label>
-                                <input type="text" id="marca" required>
+                                <input type="text" id="marca" name="brand" required>
                             </div>
                             <div class="input-group">
                                 <label for="modelo">Modelo:</label>
-                                <input type="text" id="modelo" required>
+                                <input type="text" id="modelo" name="model" required>
                             </div>
                         </div>
                         <div class="right-section">
                             <div class="input-group">
                                 <label for="tipo">Talla:</label>
-                                <input type="text" id="tipo" required>
+                                <input type="text" id="tipo" name="size" required>
                             </div>
                             <div class="input-group">
                                 <label for="clase">Clase:</label>
-                                <input type="text" id="clase" required>
+                                <input type="text" id="clase" name="class" required>
                             </div>
                             <div class="input-group">
                                 <label for="ordenCompra">Orden de Compra:</label>
-                                <input type="text" id="ordenCompra" required>
+                                <input type="text" id="ordenCompra" name="purchase_order" required>
                             </div>
                             <div class="input-group">
                                 <label class="file-label" for="worker_image">Foto EPP:</label>

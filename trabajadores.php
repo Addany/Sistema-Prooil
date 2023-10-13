@@ -14,6 +14,7 @@
 <body>
     <?php
     include 'php/session.php';
+    include 'php/conexion_bd.php';
     ?>
     <header>
         
@@ -67,19 +68,48 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td data-label="Foto"><img src="Resources/Imagen1.webp" alt="Foto de daniel" class="foto-trabajador"></td>
-                        <td data-label="Estado">Alta</td>
-                        <td data-label="Tipo de Registro">Trabajador</td>
-                        <td data-label="ID">19939</td>
-                        <td data-label="Nombre">Juan</td>
-                        <td data-label="Area">Refineria</td>
-                        <td data-label="Teléfono">9211722326</td>
-                        <td data-label="Correo Electrónico">appdata.123@gmail.com</td>
-                        <td data-label="Fecha de Ingreso">08-12-2022</td>
-                        <td data-label="Acciones">
-                            <button class="accion-button" onclick="editarTrabajador(this)">Editar</button>
-                    </tr>
+                    <?php
+                    if ($conexion->connect_error) {
+                        die();
+                    }
+                    $sql = "SELECT * FROM empleado";
+                    $sql2 = "SELECT * FROM invitado";
+                    $result2 = $conexion->query($sql2);
+                    $result = $conexion->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td data-label='Foto'><img src='Resources/Imagen1.webp' alt='Foto de daniel' class='foto-trabajador'></td>";
+                            echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                            echo "<td data-label='Tipo de Registro'>" . $row["tipo_ingreso"] . "</td>";
+                            echo "<td data-label='ID'>" . $row["id_trabajador"] . "</td>";
+                            echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
+                            echo "<td data-label='Area'>" . $row["area_trabajo"] . "</td>";
+                            echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";
+                            echo "<td data-label='Correo Electrónico'>" . $row["correo"] . "</td>";
+                            echo "<td data-label='Fecha de Ingreso'>" . $row["fecha_ingreso"] . "</td>";
+                            echo "<td data-label='Acciones'><button class='accion-button' onclick='editarTrabajador(this)'>Editar</button></td>";
+                            echo "<tr>";
+                        }
+                    }
+                    if ($result2->num_rows > 0) {
+                        while ($row = $result2->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td data-label='Foto'><img src='Resources/Imagen1.webp' alt='Foto de daniel' class='foto-trabajador'></td>";
+                            echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                            echo "<td data-label='Tipo de Registro'>" . $row["tipo_ingreso"] . "</td>";
+                            echo "<td data-label='ID'>" . $row["id_invitado"] . "</td>";
+                            echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
+                            echo "<td data-label='Area'>N/A</td>";
+                            echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";
+                            echo "<td data-label='Correo Electrónico'>" . $row["correo"] . "</td>";
+                            echo "<td data-label='Fecha de Ingreso'>" . $row["fecha_ingreso"] . "</td>";
+                            echo "<td data-label='Acciones'><button class='accion-button' onclick='editarTrabajador(this)'>Editar</button></td>";
+                            echo "<tr>";
+                        }
+                    }
+                    ?>
                 </tbody>
             </table>
             </section>
