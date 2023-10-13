@@ -42,8 +42,8 @@
                             <label for="categoria">Categoría:</label>
                             <select id="categoria">
                                 <option value="todos">Todos</option>
-                                <option value="Alta">Alta</option>
-                                <option value="Baja">Baja</option>
+                                <option value="Alta">Activo </option>
+                                <option value="Baja">Inactivo</option>
                             </select>  
                         </div>
                         <div class="input-group">
@@ -69,7 +69,7 @@
                 <tbody>
                     <tr>
                         <td data-label="Foto"><img src="Resources/Imagen1.webp" alt="Foto de daniel" class="foto-trabajador"></td>
-                        <td data-label="Estado">Alta</td>
+                        <td data-label="Estado">Activo</td>
                         <td data-label="Tipo de Registro">Trabajador</td>
                         <td data-label="ID">19939</td>
                         <td data-label="Nombre">Juan</td>
@@ -96,8 +96,8 @@
                 <div class="field">
                     <Label>Estado:</Label>
                     <select id="editEstado">
-                        <option value="Alta">Alta</option>
-                        <option value="Baja">Baja</option>
+                        <option value="Alta">Activo</option>
+                        <option value="Baja">Inactivo</option>
                     </select>
                 </div>
                 
