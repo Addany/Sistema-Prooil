@@ -42,6 +42,6 @@
     <source src="Resources/Mi video.webm" type="video/webm">
   </video>
   <script src="js/scriptnavegacion.js"></script>
-  <script src="js/registroinvitado.js"></script>
+  <script src="js/scriptimagen.js"></script>
 </body>
 </html>

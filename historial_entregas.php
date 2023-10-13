@@ -71,8 +71,8 @@
                             <td data-label="Acciones">
                                 <button class="accion-button" onclick="verHerramienta('${item.folio}')">Ver</button>
                                 <button class="accion-button" onclick="editarEntregaForm(this)">Editar</button>
-                                <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Generar documento</button>
-                                <button class="accion-button" onclick="eliminarHerramienta('${item.folio}')">Generar reporte mensual</button>
+                                <button class="accion-button" >Generar documento</button>
+                                <button class="accion-button">Generar reporte mensual</button>
                             </td>
                         </tr>
                     </tbody>

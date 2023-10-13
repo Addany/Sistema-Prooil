@@ -43,8 +43,8 @@
                             <label for="categoria">Categoría:</label>
                             <select id="categoria">
                                 <option value="todos">Todos</option>
-                                <option value="Alta">Alta</option>
-                                <option value="Baja">Baja</option>
+                                <option value="Alta">Activo </option>
+                                <option value="Baja">Inactivo</option>
                             </select>  
                         </div>
                         <div class="input-group">
@@ -126,8 +126,8 @@
                 <div class="field">
                     <Label>Estado:</Label>
                     <select id="editEstado">
-                        <option value="Alta">Alta</option>
-                        <option value="Baja">Baja</option>
+                        <option value="Alta">Activo</option>
+                        <option value="Baja">Inactivo</option>
                     </select>
                 </div>
                 
