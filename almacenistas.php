@@ -46,7 +46,7 @@
                                 <option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
                             </select>  
-                            <button type="button">Limpiar Búsqueda</button>
+                            <button type="button" id="limpiarBusqueda">Limpiar Búsqueda</button>
                         </div>
                     </form>
                 </div>
@@ -80,7 +80,7 @@
                                 echo "<td data-label='Correo'>" . $row["correo"] . "</td>";
                                 echo "<td data-label='Fecha de Ingreso'>" . $row["fecha_ingreso"] . "</td>";
                                 echo "<td data-label='Acciones'><button class='accion-button' onclick='editarAlmacenista(this)'>Editar</button></td>";
-                                echo "<tr>";
+                                echo "</tr>";
                             }
                         }
                         ?>
@@ -141,5 +141,6 @@
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/tablaHistorial.js"></script>
     <script src="js/popup.js"></script>
+    <script src="js/prueba.js"></script>
 </body>
 </html>
