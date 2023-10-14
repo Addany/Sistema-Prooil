@@ -17,7 +17,7 @@
 <body>
     <?php
     include 'php/session.php';
-    include 'php/conexion_bd.php'
+    include 'php/conexion_bd.php';
     ?>
     <header>
         

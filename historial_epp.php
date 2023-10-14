@@ -13,6 +13,7 @@
 <body>
   <?php
   include 'php/session.php';
+  include 'php/conexion_bd.php';
   ?>
 
   <div id="page-container">
@@ -61,22 +62,37 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td data-label="Foto"><img src="Resources/Imagen1.webp" alt="Foto de " class="imagen-epp" /></td>
-                <td data-label="ID">1234</td>
-                <td data-label="Nombre">Casco</td>
-                <td data-label="Cantidad">3</td>
-                <td data-label="Marca">3M</td>
-                <td data-label="Modelo">3M-HALMET2123</td>
-                <td data-label="Clase">Clasex</td>
-                <td data-label="Talla">Unitalla</td>
-                <td data-label="Orden de compra">12388123</td>
-                <td data-label="Fecha de Registro">21-04-2021</td>
-                <td data-label="Acciones">
-                    <button class="accion-button" onclick="editarEPP(this)">Editar</button>
-                    <button class="accion-button" onclick="intentarEliminar(this)">Eliminar</button>
-                </td>
-              </tr>
+              <?php
+              if ($conexion->connect_error) {
+                die();
+              }
+              $sql = "SELECT * FROM cantidad_epp";
+              $result = $conexion->query($sql);
+              $vacio = "pendiente";
+
+              if ($result->num_rows > 0){
+                while ($row = $result->fetch_assoc()) {
+                  echo "<tr>";
+                  echo "<td data-label='Foto'><img src='Resources/Imagen1.webp' alt='Foto de ' class='imagen-epp' /></td>";
+                  echo "<td data-label='ID'>" . $row["identificador"] . "</td>";
+                  echo "<td data-label='Nombre'>" . $vacio . "</td>";
+                  echo "<td data-label='Cantidad'>" . $row["cantidad"] . "</td>";
+                  echo "<td data-label='Marca'>" . $row["marca"] . "</td>";
+                  echo "<td data-label='Modelo'>" . $row["modelo"] . "cm</td>";
+                  echo "<td data-label='Clase'>" . $row["clase"] . "</td>";
+                  echo "<td data-label='Talla'>" . $row["talla"] . "</td>";
+                  echo "<td data-label='Orden de compra'>" . $row["orden_compra"] . "</td>";
+                  echo "<td data-label='Fecha de Registro'>" . $row["fecha_registro"] . "</td>";
+                  
+                  echo "<td data-label='Acciones'>";
+                  echo "<button class='accion-button' onclick='editarEPP(this)'>Editar</button>";
+                  echo "<button class='accion-button' onclick='intentarEliminar(this)'>Eliminar</button>";
+                  echo "</td>";
+                  echo "</tr>";
+                }
+              }
+              $conexion->close();
+              ?>
             </tbody>
           </table>
         </section>

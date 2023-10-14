@@ -15,6 +15,7 @@
 <body>
     <?php
     include 'php/session.php';
+    include 'php/conexion_bd.php';
     ?>
 
     <div id="page-container">
@@ -28,16 +29,23 @@
                         <img id="output" class="image-preview" width="100" alt="" />
                     </div>
                 </div>
-
+                <?php
+                $queryepp = "SELECT * FROM epp";
+                $resultepp = mysqli_query($conexion, $queryepp);
+                $options = "<option></option>";
+                while($row = mysqli_fetch_assoc($resultepp)) {
+                    $id = $row['id_epp'];
+                    $nombre = $row['nombre_epp'];
+                    $options .= "<option value='$id'>$nombre</option>";
+                }
+                ?>
                 <form class="form-registro" action="php/registro4.php" method="POST" enctype="multipart/form-data">
                     <div class="input-section">
                         <div class="left-section">
                             <div class="input-group">
                                 <label for="nombre">Nombre:</label>
                                 <select id="nombre" name="name" required data-placeholder="Selecciona un EPP">
-                                    <option></option> 
-                                    <option value="EPP1">EPP1</option>
-                                    <option value="EPP2">EPP2</option>
+                                    <?php echo $options; ?>
                                 </select>
                             </div>
                             <div class="input-group">
@@ -68,7 +76,7 @@
                             </div>
                             <div class="input-group">
                                 <label class="file-label" for="worker_image">Foto del EPP:</label>
-                                <input type="file" id="worker_image" name="worker_image" class="file-input" accept="image/*" onchange="previewImage(event)" required>
+                                <input type="file" id="worker_image" name="image" class="file-input" accept="image/*" onchange="previewImage(event)">
                             </div>
                         </div>
                     </div>
