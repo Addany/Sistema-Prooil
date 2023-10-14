@@ -134,8 +134,9 @@
                 <div class="field">
                     <Label>Tipo de Registro:</Label>
                     <select id="editTipoRegistro">
-                        <option value="Trabajador">Trabajador</option>
+                        <option value="Visitante">Visitante</option>
                         <option value="Becario">Becario</option>
+                        <option value="Trabajador">Trabajador</option>
                     </select>
                 </div>
 
