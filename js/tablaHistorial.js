@@ -157,11 +157,18 @@ async function editarTrabajador(button) {
       let fechaIngreso = row.querySelector('[data-label="Fecha de Ingreso"]').innerText.split("-").reverse().join("-");
       document.getElementById("editFechaIngreso").value = fechaIngreso;
 
+      if (row.querySelector('[data-label="Tipo de Registro"]').innerText.trim() === "Trabajador") {
+          document.getElementById("editTipoRegistro").disabled = true;
+      } else {
+          document.getElementById("editTipoRegistro").disabled = false;
+      }
+
       abrirPopup('popupEditar');
   } catch (error) {
       console.error("Error al editar trabajador:", error);
   }
 }
+
 
 function actualizarFoto(event) {
   let inputFile = event.target;
