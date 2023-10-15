@@ -20,7 +20,6 @@ function buscar() {
           estado: fila.querySelector("td[data-label='Estado']"),
           usuario: fila.querySelector("td[data-label='Usuario']"),
           nombre: fila.querySelector("td[data-label='Nombre']"),
-          telefono: fila.querySelector("td[data-label='Teléfono']"),
           correo: fila.querySelector("td[data-label='Correo']"),
           fechaIngreso: fila.querySelector("td[data-label='Fecha de Ingreso']"),
       };
@@ -32,10 +31,10 @@ function buscar() {
           }
       }
       
-      const { estado, usuario, nombre, telefono, correo, fechaIngreso } = celdas;
+      const { estado, usuario, nombre, correo, fechaIngreso } = celdas;
 
       const coincideTexto = textoBuscar ? 
-          [estado, usuario, nombre, telefono, correo].some(celda => celda.textContent.toLowerCase().includes(textoBuscar)) : 
+          [estado, usuario, nombre, correo].some(celda => celda.textContent.toLowerCase().includes(textoBuscar)) : 
           true;
 
       const coincideCategoria = categoriaBuscar !== 'todos' ? estado.textContent.toLowerCase() === categoriaBuscar.toLowerCase() : true;

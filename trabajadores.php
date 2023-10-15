@@ -43,8 +43,8 @@
                             <label for="categoria">Categoría:</label>
                             <select id="categoria">
                                 <option value="todos">Todos</option>
-                                <option value="Alta">Activo </option>
-                                <option value="Baja">Inactivo</option>
+                                <option value="Activo">Activo </option>
+                                <option value="Inactivo">Inactivo</option>
                             </select>  
                         </div>
                         <div class="input-group">
@@ -90,7 +90,7 @@
                             echo "<td data-label='Correo Electrónico'>" . $row["correo"] . "</td>";
                             echo "<td data-label='Fecha de Ingreso'>" . $row["fecha_ingreso"] . "</td>";
                             echo "<td data-label='Acciones'><button class='accion-button' onclick='editarTrabajador(this)'>Editar</button></td>";
-                            echo "<tr>";
+                            echo "</tr>";
                         }
                     }
                     if ($result2->num_rows > 0) {
@@ -106,7 +106,7 @@
                             echo "<td data-label='Correo Electrónico'>" . $row["correo"] . "</td>";
                             echo "<td data-label='Fecha de Ingreso'>" . $row["fecha_ingreso"] . "</td>";
                             echo "<td data-label='Acciones'><button class='accion-button' onclick='editarTrabajador(this)'>Editar</button></td>";
-                            echo "<tr>";
+                            echo "</tr>";
                         }
                     }
                     ?>
@@ -177,5 +177,6 @@
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/tablaHistorial.js"></script>
     <script src="js/popup.js"></script>
+    <script src="js/prueba2.js"></script>
 </body>
 </html>
