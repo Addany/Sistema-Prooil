@@ -112,8 +112,8 @@
                 </div>
 
                 <div class="field">
-                    <Label>Contrasena:</Label>
-                    <input type="text" id="editContrasena" placeholder="Contrasena">
+                    <Label>Contraseña:</Label>
+                    <input type="text" id="editContrasena" placeholder="Contraseña">
                 </div>
 
                 <div class="field">

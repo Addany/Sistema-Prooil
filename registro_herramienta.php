@@ -66,7 +66,7 @@
                             </div>
                             <div class="input-group">
                                 <label class="file-label" for="tool_image">Foto de la Herramienta:</label>
-                                <input type="file" id="worker_image" name="image" class="file-input" accept="image/*" onchange="previewImage(event)">
+                                <input type="file" id="tool_image" name="image" class="file-input" accept="image/*" onchange="previewImage(event)">
                             </div>
                         </div>
                     </div>

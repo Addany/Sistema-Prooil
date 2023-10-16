@@ -40,7 +40,7 @@
                   <option value="todos">Todos</option>
                   <option value="casco contra impacto">Casco contra impacto</option>
                 </select>
-                <button type="button" id="generarReporte"  onclick="verHerramienta(this)">Generar Reporte</button>
+                <button type="button" id="generarReporte"  onclick="verDatos(this)">Generar Reporte</button>
                 <button type="button" id="eliminarBusqueda">Limpiar Búsqueda</button>
               </div>
             </form>
@@ -174,7 +174,7 @@
 
   <script src="js/scriptnavegacion.js"></script>
   <script src="js/tablaHistorial.js"></script>
-  <script src="js/popup2.js"></script>
+  <script src="js/popup.js"></script>
 </body>
 </html>
 

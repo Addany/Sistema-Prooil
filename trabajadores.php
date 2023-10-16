@@ -16,9 +16,6 @@
     include 'php/session.php';
     include 'php/conexion_bd.php';
     ?>
-    <header>
-        
-    </header>
 
     <div id="page-container">
         <div id="navbar"></div>
@@ -119,12 +116,12 @@
             <form id="editarTrabajadorForm">
                 <h3>Editar datos</h3>
                 <div class="field">
-                    <Label>Foto:</Label>
+                    <label>Foto:</label>
                     <img id="editFoto" src="" >
                     <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
                 </div>
                 <div class="field">
-                    <Label>Estado:</Label>
+                    <label>Estado:</label>
                     <select id="editEstado">
                         <option value="Activo">Activo</option>
                         <option value="Inactivo">Inactivo</option>
@@ -132,7 +129,7 @@
                 </div>
                 
                 <div class="field">
-                    <Label>Tipo de Registro:</Label>
+                    <label>Tipo de Registro:</label>
                     <select id="editTipoRegistro">
                         <option value="Visitante">Visitante</option>
                         <option value="Becario">Becario</option>
@@ -141,32 +138,32 @@
                 </div>
 
                 <div class="field">
-                    <Label>ID:</Label>
+                    <label>ID:</label>
                     <input type="text" id="editID" placeholder="ID" readonly>
                 </div>
 
                 <div class="field">
-                    <Label>Nombre:</Label>
+                    <label>Nombre:</label>
                     <input type="text" id="editNombre" placeholder="Nombre">
                 </div>
 
                 <div class="field">
-                    <Label>Area:</Label>
+                    <label>Area:</label>
                     <input type="text" id="editArea" placeholder="Area">
                 </div>
 
                 <div class="field">
-                    <Label>Teléfono:</Label>
+                    <label>Teléfono:</label>
                     <input type="text" id="editTelefono" placeholder="Teléfono">
                 </div>
 
                 <div class="field">
-                    <Label>Correo Electrónico:</Label>
+                    <label>Correo Electrónico:</label>
                     <input type="email" id="editCorreo" placeholder="Correo Electrónico">
                 </div>
                 
                 <div class="field">
-                    <Label>Fecha de Ingreso:</Label>
+                    <label>Fecha de Ingreso:</label>
                     <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
                 </div>
                 <button type="submit" class="guardar">Guardar</button>

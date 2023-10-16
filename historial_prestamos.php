@@ -15,9 +15,6 @@
     <?php
     include 'php/session.php';
     ?>
-    <header>
-
-    </header>
 
     <main>
         <div id="page-container">
@@ -71,7 +68,7 @@
                             <td data-label="Observaciones">Maltratado leve</td>
                             <td data-label="Estado">Pendiente</td>
                             <td data-label="Acciones">
-                                <button class="accion-button" onclick="verHerramienta()">Ver</button>
+                                <button class="accion-button" onclick="verDatos()">Ver</button>
                                 <button class="accion-button" onclick="editarPrestamoForm(this)">Editar</button>
                                 <button class="accion-button">Generar documento</button>
                                 <button class="accion-button" onclick="intentarEliminar(this)">Eliminar</button>
@@ -100,7 +97,7 @@
 
             <div class="field">
                 <label for="editFechaTransaccion">Fecha de Transacción:</label>
-                <input type="date" id="editFechaTransaccion" placeholder="Fecha de Transacción">
+                <input type="date" id="editFechaTransaccion">
             </div>
 
             <div class="field">
@@ -141,7 +138,7 @@
             <table id="listaHerramientas">
                 <thead>
                     <tr>
-                        <th>Seleccionar</th>
+                        <th>Marcar como entregado</th>
                         <th>Nombre</th>
                         <th>Número de Serie</th>
                         <th>Marca</th>
@@ -173,7 +170,7 @@
 
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/tablaHistorial.js"></script>
-    <script src="js/popup2.js"></script>
+    <script src="js/popup.js"></script>
 
 </body>
 </html>

@@ -11,7 +11,7 @@ function solicitarNIP() {
    });
 }
   
-async function verHerramienta() {
+async function verDatos() {
     try {
         await solicitarNIP();
         abrirPopup('popupVer');

@@ -30,10 +30,10 @@
                     </div>
                 </div>
                 <?php
-                $queryepp = "SELECT * FROM epp";
-                $resultepp = mysqli_query($conexion, $queryepp);
+                $query = "SELECT * FROM epp";
+                $result = mysqli_query($conexion, $query);
                 $options = "<option></option>";
-                while($row = mysqli_fetch_assoc($resultepp)) {
+                while($row = mysqli_fetch_assoc($result)) {
                     $id = $row['id_epp'];
                     $nombre = $row['nombre_epp'];
                     $options .= "<option value='$id'>$nombre</option>";
@@ -63,8 +63,8 @@
                         </div>
                         <div class="right-section">
                             <div class="input-group">
-                                <label for="tipo">Talla:</label>
-                                <input type="text" id="tipo" name="size" required>
+                                <label for="talla">Talla:</label>
+                                <input type="text" id="talla" name="size" required>
                             </div>
                             <div class="input-group">
                                 <label for="clase">Clase:</label>
@@ -75,13 +75,12 @@
                                 <input type="text" id="ordenCompra" name="purchase_order" required>
                             </div>
                             <div class="input-group">
-                                <label class="file-label" for="worker_image">Foto del EPP:</label>
-                                <input type="file" id="worker_image" name="image" class="file-input" accept="image/*" onchange="previewImage(event)">
+                                <label class="file-label" for="image">Foto del EPP:</label>
+                                <input type="file" id="image" name="image" class="file-input" accept="image/*" onchange="previewImage(event)">
                             </div>
                         </div>
                     </div>
-                        <button type="submit" class="registrar-button">Registrar EPP</button>
-                    </div>  
+                    <button type="submit" class="registrar-button">Registrar EPP</button>
                 </form>
             </div>
         </div>
@@ -91,11 +90,9 @@
         <source src="Resources/Mi video.webm" type="video/webm">
     </video>
     
-    
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/registroepp.js"></script>
-    <script src="js/scripttimagen.js"></script>
-
+    <script src="js/scriptimagen.js"></script>
 
 </body>
 </html>

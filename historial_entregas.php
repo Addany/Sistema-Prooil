@@ -69,7 +69,7 @@
                             <td data-label="Observaciones">Perdida de las herramientas</td>
                             <td data-label="Status del proceso del entrega">Pendiente</td>
                             <td data-label="Acciones">
-                                <button class="accion-button" onclick="verHerramienta('${item.folio}')">Ver</button>
+                                <button class="accion-button" onclick="verDatos()">Ver</button>
                                 <button class="accion-button" onclick="editarEntregaForm(this)">Editar</button>
                                 <button class="accion-button">Generar documento</button>
                             </td>
@@ -123,7 +123,7 @@
         </div>
 
         <div id="popupVer" class="popup">
-            <form id="verPrestamoForm"> 
+            <form id="verEntregaForm"> 
                 <h3>Detalles de la entrega</h3>
                 <label>EPP entregado:</label>
                 <table id="listaEPP">
@@ -150,7 +150,7 @@
 
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/tablaHistorial.js"></script>
-    <script src="js/popup2.js"></script>
+    <script src="js/popup.js"></script>
 
 </body>
 </html>
