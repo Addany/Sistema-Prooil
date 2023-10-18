@@ -10,65 +10,26 @@ $(document).ready(function () {
 
     // Continúa con la carga inicial de la página
     loadLastSession();
-});
+}); //No me interesa 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Variables para el escaneo
-let scanner = null;
-let isScanning = false;
+// function cancelLoan() {
+//     document.getElementById("loanForm").reset();
+//     localStorage.removeItem('scannedTools');
+//     localStorage.removeItem('observations');
+//     localStorage.removeItem('workerName');  // Esta línea elimina workerName del localStorage
 
-// Función para iniciar el escaneo
-function startScan() {
-    document.getElementById("cameraOff").style.display = "none";
-    if (!scanner) {
-        const videoElem = document.getElementById("preview");
-        scanner = new Instascan.Scanner({ video: videoElem });
-        scanner.addListener("scan", function (content) {
-            if (isScanning) {
-                onToolScanned(content);
-            }
-        });
-    }
-
-    Instascan.Camera.getCameras()
-        .then(function (cameras) {
-            if (cameras.length > 0) {
-                scanner.start(cameras[0]);
-                isScanning = true;
-            } else {
-                console.error("No se encontraron cámaras en el dispositivo.");
-            }
-        })
-        .catch(function (error) {
-            console.error("Error al acceder a la cámara:", error);
-        });
-}
-
-// Función para detener el escaneo
-function stopScan() {
-    document.getElementById("cameraOff").style.display = "block";
-    if (scanner && isScanning) {
-        scanner.stop();
-        isScanning = false;
-    }
-}
-
-function cancelLoan() {
-    document.getElementById("loanForm").reset();
-    localStorage.removeItem('scannedTools');
-    localStorage.removeItem('observations');
-    localStorage.removeItem('workerName');  // Esta línea elimina workerName del localStorage
-
-    // Resetear el valor del select usando Select2
-    $('.workerName').val(null).trigger('change'); 
+//     // Resetear el valor del select usando Select2
+//     $('.workerName').val(null).trigger('change'); 
     
-    // Limpiar la tabla de herramientas escaneadas
-    var scannedToolsTable = document.getElementById("scanned-tools-table");
-    var rows = scannedToolsTable.rows.length;
-    for (var i = rows - 1; i > 0; i--) {
-        scannedToolsTable.deleteRow(i);
-    }
-}
+//     // Limpiar la tabla de herramientas escaneadas
+//     var scannedToolsTable = document.getElementById("scanned-tools-table");
+//     var rows = scannedToolsTable.rows.length;
+//     for (var i = rows - 1; i > 0; i--) {
+//         scannedToolsTable.deleteRow(i);
+//     }
+// }
 
 function loadLastSession() {
     // Cargar las observaciones anteriores
@@ -94,24 +55,24 @@ function loadLastSession() {
     }
 }
 
-document.getElementById("loanForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    // Lógica para manejar el préstamo aquí
+// document.getElementById("loanForm").addEventListener("submit", function (event) {
+//     event.preventDefault();
+//     // Lógica para manejar el préstamo aquí
 
-    // Después de manejar el préstamo, puedes resetear el formulario
-    cancelLoan();
+//     // Después de manejar el préstamo, puedes resetear el formulario
+//     cancelLoan();
 
-    // Aquí es donde podrías mostrar el mensaje de éxito
-    var folioNumber = 1234; // Supongamos que este es el número de folio generado
-    Swal.fire('Éxito', 'Folio generado con éxito: ' + folioNumber, 'success');
-});
+//     // Aquí es donde podrías mostrar el mensaje de éxito
+//     var folioNumber = 1234; // Supongamos que este es el número de folio generado
+//     Swal.fire('Éxito', 'Folio generado con éxito: ' + folioNumber, 'success');
+// });
 
 // Cuando la página se carga, muestra el mensaje de "Cámara Apagada" y 
 // inicia la cámara automáticamente
-window.onload = function () {
-    document.getElementById("cameraOff").style.display = "block";
-    startScan();
-};
+// window.onload = function () {
+//     document.getElementById("cameraOff").style.display = "block";
+//     startScan();
+// };
 
 function onToolScanned(toolInfo) {
     var toolData = JSON.parse(toolInfo);

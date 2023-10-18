@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/componentsStyle/deleteElement.css"/>
 </head>
 
 <body>
@@ -30,18 +31,21 @@
         <main>
             <section class="container">
                 <div class="form-container">
+                    <!-- Esta es la venta emergente que muestra la informacion del solicitante -->
                     <h3>Formulario de Préstamo</h3>
 
                     <?php
                     $queryEmpleado = "SELECT id_trabajador, nombre FROM empleado";
                     $resultEmpleado = mysqli_query($conexion, $queryEmpleado);
 
+                    //Muestra una lista desplegable con los nombres de los empleados
                     $options = "<option value=''>Selecciona una persona</option>";
                     while($row = mysqli_fetch_assoc($resultEmpleado)) {
                         $id = $row['id_trabajador'];
                         $nombre = $row['nombre'];
                         $options .= "<option value='e_$id'>Empleado: $id - $nombre</option>";
                     }
+                    //Muestra una lista desplegable con los nombres de los invitados
                     $queryInvitado = "SELECT id_invitado, nombre FROM invitado";
                     $resultInvitado = mysqli_query($conexion, $queryInvitado);
                     while($row = mysqli_fetch_assoc($resultInvitado)) {
@@ -52,42 +56,49 @@
                     ?>
 
                     <form id="loanForm">
+                        <!-- Es el nombre de la persona que autoriza el prestamo -->
                         <label for="almacenName">Almacenista en Solicitud: <?php echo "$almacenista";?></label>
-                        <br>
+                        <br> <!-- Colocar br para saltos de linea es mala practica, para eso tienes css -->
                         <label for="workerName">Nombre del Trabajador:</label>
                         <select id="workerName" class="workerName" name="petitioner" required>
                             <?php echo $options; ?>
                         </select>
-                        <div class="scanned-tools">
-                            <br>
-                            <Label>Herramientas Escaneadas:</Label>
-                            <div id="tableContainer" class="table-container">
-                                <table id="scanned-tools-table">
-                                    <thead>
-                                        <tr>
-                                            <th>ID de Herramienta</th>
-                                            <th>Nombre de Herramienta</th>
-                                            <th>Estado de Herramienta</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="scanned-tools-tbody">
-                                            
-                                    </tbody>
-                                </table>
-                            </div>
+                        <!-- Contenedor de las herramientas escaneadas -->
+
+                        <div class="container-renderTable">
+                            <table>
+                                <tr>
+                                    <th>
+                                        ID de la herramienta
+                                    </th>
+                                    <th>
+                                        Nombre de la herramienta
+                                    </th>
+                                    <th>
+                                        Estado de la herramienta
+                                    </th>
+                                    <th>
+                                        Acciones
+                                </th>
+                                </tr>
+                            </table>
+                            <table id="renderTable">    
+                                <div id="container-elementTR">
+                                    
+                                </div>
+                            </table>
                         </div>
+
                         <label for="observations">Observaciones:</label>
                         <textarea id="observations" name="observations"></textarea>
                         <div class="loan-buttons">
                             <button type="submit">Solicitar Préstamo</button>
-                            <button type="button" onclick="cancelLoan()">Limpiar Campo</button>
+                            <button type="button" id="clearField">Limpiar campo</button>
                         </div>
                     </form>
                 </div>
 
                 <div class="video-container">
-                    <div id="cameraOff">Camara apagada</div>
                     <video id="preview"></video>
                 </div>
             </section>
@@ -99,10 +110,12 @@
     </video>
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-    <script src="js/scriptsprestamodevolucion.js"></script>
+    <script src="js/libraries/instascan.min.js"></script>
+    <script src="js/libraries/jquery.min.js"></script>
+    <script type="module" src="js/renderModule/scanCamera.js"></script>
+    <script type ="module" src="js/scriptsprestamodevolucion.js" defer></script>
+    <script type="module" src="js/renderModule/renderTable.js" defer></script>
+    <script type="module" src="js/renderModule/renderDelete.js"></script>
 </body>
-
 </html>
