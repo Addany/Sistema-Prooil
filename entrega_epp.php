@@ -17,6 +17,7 @@
 <body>
     <?php
     include 'php/session.php';
+    include 'php/conexion_bd.php';
     ?>
     <header>
         
@@ -29,13 +30,23 @@
             <section class="container">
                 <div class="form-container">
                     <h3>Formulario de Entrega de Equipo EPP</h3>
+                    <?php
+                    $queryepp = "SELECT id_epp, nombre_epp FROM epp";
+                    $resultepp = mysqli_query($conexion, $queryepp);
+                    $options = "<option value=''>Selecciona un EPP</option>";
+                    while($row = mysqli_fetch_assoc($resultepp)) {
+                        $id = $row['id_epp'];
+                        $nombre = $row['nombre_epp'];
+                        $options .= "<option value='$id'>$id - $nombre</option>";
+                    }
+                    ?>
                     <form id="deliveryForm">
-                        <label for="almacenName">Almacenista en Solicitud: Juan Guillermo</label>
+                        <label for="almacenName">Almacenista en Solicitud: <?php echo "$almacenista";?></label>
                         <br>
                         <label for="eppList">Selecciona el EPP:</label>
                         <select id="eppList" class="eppList" required onchange="onEPPSelected(this.value)">
                             <option value="">Selecciona un EPP</option>
-                            <option value='{"id": "123", "name": "Casco", "anatomicRegion": "Cabeza"}'>Casco</option>
+                            <?php echo $options; ?>
                         </select>
                         <div class="selected-epp">
                             <br>

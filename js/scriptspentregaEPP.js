@@ -72,17 +72,3 @@ document.getElementById("deliveryForm").addEventListener("submit", function (eve
 
     Swal.fire('Éxito', 'Entrega solicitada con éxito.', 'success');
 });
-
-function loadCache() {
-    // Cargar las observaciones anteriores del caché
-    const observations = localStorage.getItem('observations');
-    if (observations) {
-        document.getElementById('observations').value = observations;
-    }
-
-    // Cargar los EPP seleccionados anteriores del caché
-    const cachedEPPs = JSON.parse(localStorage.getItem('cachedEPPs') || '[]');
-    cachedEPPs.forEach(eppData => {
-        addEPPToTable(eppData);
-    });
-}
