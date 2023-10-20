@@ -32,22 +32,27 @@ export const readerCode = (()=> { //Hecho por Jesus Rosml
     });
 
     scanner.addListener("scan", (content)=> {
-
         if(!firstCode.includes(content)) {
-            firstCode.push(content); //Agrega el codigo QR al array
             
             $.ajax({
                 type: "POST",
                 url: "php/getData.php",
                 data: { code: content },
                 success: function(data){
-                    let toolInfo = JSON.parse(data); //console.log("Respuesta del servidor:", data);
-                   
+                    //console.log("Respuesta del servidor:", data);
+                    let toolInfo = JSON.parse(data);
+                    
                     if(toolInfo.error){  // Verifica si la respuesta contiene un error
                         console.error(toolInfo.error);
                         return;
                     }
                     
+                    if(toolInfo.alerta){  // Verifica si hay una alerta
+                        console.warn(toolInfo.alerta);
+                        return;
+                    }
+                    
+                    firstCode.push(content); //Agrega el codigo QR al array
                     nameTools.push(toolInfo.marca);
                     stateTools.push(toolInfo.estado);
             

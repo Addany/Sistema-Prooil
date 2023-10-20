@@ -12,7 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/componentsStyle/deleteElement.css"/>
 </head>
 
 <body>
@@ -55,11 +54,11 @@
                     }
                     ?>
 
-                    <form id="loanForm">
+                    <div id="loanForm">
                         <!-- Es el nombre de la persona que autoriza el prestamo -->
-                        <label for="almacenName">Almacenista en Solicitud: <?php echo "$almacenista";?></label>
+                        <label for="almacenName">Almacenista en Solicitud: <strong id="nameAlmacenista"><?php echo "$almacenista";?></strong></label>
                         <br> <!-- Colocar br para saltos de linea es mala practica, para eso tienes css -->
-                        <label for="workerName">Nombre del Trabajador:</label>
+                        <label id="selectWorkerName" for="workerName">Nombre del Trabajador:</label>
                         <select id="workerName" class="workerName" name="petitioner" required>
                             <?php echo $options; ?>
                         </select>
@@ -92,10 +91,10 @@
                         <label for="observations">Observaciones:</label>
                         <textarea id="observations" name="observations"></textarea>
                         <div class="loan-buttons">
-                            <button type="submit">Solicitar Préstamo</button>
+                            <button id='confirmData'>Solicitar Préstamo</button>
                             <button type="button" id="clearField">Limpiar campo</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
                 <div class="video-container">
@@ -114,8 +113,18 @@
     <script src="js/libraries/instascan.min.js"></script>
     <script src="js/libraries/jquery.min.js"></script>
     <script type="module" src="js/renderModule/scanCamera.js"></script>
-    <script type ="module" src="js/scriptsprestamodevolucion.js" defer></script>
+    <!-- <script type ="module" src="js/scriptsprestamodevolucion.js" defer></script> -->
     <script type="module" src="js/renderModule/renderTable.js" defer></script>
     <script type="module" src="js/renderModule/renderDelete.js"></script>
+    <script type="module" src="js/renderModule/deliver.information.js"></script>
+
+    <?php
+        //Aquí estoy recibiendo los datos en formato JSON desde la solicitud 
+        $data_JSON = file_get_contents('php://input');
+
+        $new_data = json_decode($data_JSON, true);
+
+        print_r($new_data)
+    ?>
 </body>
 </html>

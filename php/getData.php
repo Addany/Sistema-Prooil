@@ -2,7 +2,17 @@
 include 'conexion_bd.php';
 if(isset($_POST['code'])) {
     $code = $_POST['code'];
-    // Aquí tu conexión a la base de datos
+    #Comprobamos que el codigo QR no esté ocupado por un folio de prestamo
+    $sql_check = "SELECT folio_prestamo.estado 
+              FROM historial_herramienta 
+              INNER JOIN folio_prestamo ON historial_herramienta.no_folio = folio_prestamo.no_folio
+              WHERE historial_herramienta.identificador = '$code' AND folio_prestamo.estado = 'activo'";
+    $result = $conexion->query($sql_check);
+    if($result->num_rows > 0){
+        echo json_encode(['alerta' => 'La herramienta ya ha sido escaneada y está en préstamo.']);
+        exit();
+    }
+    
     $sql = "SELECT * FROM herramientas_cantidad WHERE identificador = '$code'"; 
     // ATENCIÓN: Esta línea es vulnerable a inyección SQL. Usa prepared statements para más seguridad.
     $result = $conexion->query($sql);
