@@ -52,13 +52,9 @@ async function editarAlmacenista(button) {
       let row = button.closest('tr');
 
       document.getElementById("editEstado").value = row.querySelector('[data-label="Estado"]').innerText;
-      document.getElementById("editID").value = row.querySelector('[data-label="Usuario"]').innerText;
       document.getElementById("editNombre").value = row.querySelector('[data-label="Nombre"]').innerText;
       document.getElementById("editTelefono").value = row.querySelector('[data-label="Teléfono"]').innerText;
       document.getElementById("editCorreo").value = row.querySelector('[data-label="Correo"]').innerText;
-
-      let fechaIngreso = row.querySelector('[data-label="Fecha de Ingreso"]').innerText.split("-").reverse().join("-");
-      document.getElementById("editFechaIngreso").value = fechaIngreso;
 
       abrirPopup('popupEditar');
   } catch (error) {
@@ -98,8 +94,6 @@ async function editarHerramienta(button) {
 
     let row = button.closest('tr');
     
-    document.getElementById("editFoto").src = row.querySelector('[data-label="Foto"] img').src;
-    document.getElementById("editUsuario").value = row.querySelector('[data-label="ID"]').innerText;
     document.getElementById("editTipoherramienta").value = row.querySelector('[data-label="Tipo de herramienta"]').innerText;
     document.getElementById("editMarca").value = row.querySelector('[data-label="Marca"]').innerText;
     document.getElementById("editTamano").value = row.querySelector('[data-label="Tamaño"]').innerText;
@@ -109,7 +103,6 @@ async function editarHerramienta(button) {
     document.getElementById("editColor").value = row.querySelector('[data-label="Color"]').innerText;
     let fecha = row.querySelector('[data-label="Fecha de Registro"]').innerText.split("-").reverse().join("-");
     document.getElementById("editFecha").value = fecha;
-    document.getElementById("editEstatus").value = row.querySelector('[data-label="Estatus"]').innerText.toLowerCase();
 
     abrirPopup('popup');
   } catch (error) {
@@ -130,7 +123,6 @@ async function editarPrestamoForm(button) {
       let fechaDevolucion = row.querySelector('[data-label="Fecha de Devolución"]').innerText.split("-").reverse().join("-");
       document.getElementById("editFechaDevolucion").value = fechaDevolucion;
       document.getElementById("editQuienAutorizo").value = row.querySelector('[data-label="Quien Autorizó"]').innerText;
-      document.getElementById("editObservaciones").value = row.querySelector('[data-label="Observaciones"]').innerText;
       document.getElementById("editestado").value = row.querySelector('[data-label="Estado"]').innerText.toLowerCase();
 
       abrirPopup('popupEditar');
@@ -144,19 +136,13 @@ async function editarTrabajador(button) {
       await solicitarNIP();
 
       let row = button.closest('tr');
-
-      document.getElementById("editFoto").src = row.querySelector('[data-label="Foto"] img').src;
       document.getElementById("editEstado").value = row.querySelector('[data-label="Estado"]').innerText;
       document.getElementById("editTipoRegistro").value = row.querySelector('[data-label="Tipo de Registro"]').innerText;
-      document.getElementById("editID").value = row.querySelector('[data-label="ID"]').innerText;
       document.getElementById("editNombre").value = row.querySelector('[data-label="Nombre"]').innerText;
       document.getElementById("editArea").value = row.querySelector('[data-label="Area"]').innerText;
       document.getElementById("editTelefono").value = row.querySelector('[data-label="Teléfono"]').innerText;
       document.getElementById("editCorreo").value = row.querySelector('[data-label="Correo Electrónico"]').innerText;
      
-      let fechaIngreso = row.querySelector('[data-label="Fecha de Ingreso"]').innerText.split("-").reverse().join("-");
-      document.getElementById("editFechaIngreso").value = fechaIngreso;
-
       if (row.querySelector('[data-label="Tipo de Registro"]').innerText.trim() === "Trabajador") {
           document.getElementById("editTipoRegistro").disabled = true;
       } else {

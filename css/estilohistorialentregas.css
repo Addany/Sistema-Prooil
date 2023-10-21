@@ -219,6 +219,38 @@ tr:nth-child(even) {
 #popupVer button:hover {
   background-color: #194d50;
 }
+.table-container {
+  display: block;
+  max-height: 210px;  /* Altura máxima del contenedor. Puedes ajustar según lo que necesites */
+  overflow-y: auto;   /* Esto permitirá el desplazamiento vertical */
+}
+
+#popupVer table {
+  font-size: 0.9em;
+  width: 95%;       
+  margin: 10px auto;
+  border-collapse: collapse;
+}
+
+#popupVer thead, 
+#popupVer tbody,  
+#popupVer tbody tr {
+  display: table; 
+  width: 100%; 
+  table-layout: fixed;
+}
+
+#popupVer th, #popupVer td {
+  padding: 6px;    
+  border: 1px solid #ccc;
+}
+
+#popupVer td[data-label]:before {
+  font-size: 0.8em;
+  content: attr(data-label);
+  display: none;
+  font-weight: bold;
+}
 
 .field {
   display: flex;

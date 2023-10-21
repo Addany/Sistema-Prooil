@@ -112,17 +112,6 @@
           <h3>Editar datos</h3>
 
           <div class="field">
-             <Label>Foto</Label>
-              <img id="editFoto" src="" alt="Foto de la herramienta" />
-              <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
-          </div>
-
-          <div class="field">
-              <label for="editUsuario">ID:</label>
-              <input type="text" id="editUsuario" readonly>
-          </div>
-
-          <div class="field">
               <label for="editTipoherramienta">Tipo de Herramienta:</label>
               <input type="text" id="editTipoherramienta" placeholder="Tipo de">
           </div>
@@ -164,14 +153,6 @@
           <div class="field">
               <label for="editFecha">Fecha de Registro:</label>
               <input type="date" id="editFecha">
-          </div>
-
-          <div class="field">
-              <label for="editEstatus">Status:</label>
-              <select id="editEstatus">
-                  <option value="prestado">Prestado</option>
-                  <option value="devuelto">Devuelto</option>
-              </select>
           </div>
 
           <button type="submit" class="guardar">Guardar</button>

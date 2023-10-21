@@ -126,22 +126,24 @@
             <form id="verEntregaForm"> 
                 <h3>Detalles de la entrega</h3>
                 <label>EPP entregado:</label>
-                <table id="listaEPP">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Modelo</th>
-                            <th>Tipo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Nombre">Casco</td>
-                            <td data-label="Modelo">rj2343</td>
-                            <td data-label="Tipo">3M</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-container">
+                    <table id="listaEPP">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Modelo</th>
+                                <th>Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Nombre">Casco</td>
+                                <td data-label="Modelo">rj2343</td>
+                                <td data-label="Tipo">3M</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  
             </form>
         </div>

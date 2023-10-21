@@ -114,11 +114,6 @@
             </div>
 
             <div class="field">
-                <label for="editObservaciones">Observaciones:</label>
-                <input type="text" id="editObservaciones" placeholder="Observaciones">
-            </div>
-
-            <div class="field">
                 <label for="editestado">Status del prestamo:</label>
                 <select id="editestado">
                     <option value="pendiente">Pendiente</option>
@@ -135,30 +130,31 @@
         <form id="verPrestamoForm"> 
             <h3>Detalles del Préstamo</h3>
             <label>Herramientas Prestadas:</label>
-            <table id="listaHerramientas">
-                <thead>
-                    <tr>
-                        <th>Marcar como entregado</th>
-                        <th>Nombre</th>
-                        <th>Número de Serie</th>
-                        <th>Marca</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="Seleccion de entrega"><input type="checkbox"></td>
-                        <td data-label="Tipo de herramienta">Destornillador</td>
-                        <td data-label="N. Serie">123123123</td>
-                        <td data-label="Marca">Trupper</td>
-                    </tr>
-                    <tr>
-                        <td data-label="Seleccion de entrega"><input type="checkbox"></td>
-                        <td data-label="Tipo de herramienta">Destornillador</td>
-                        <td data-label="N. Serie">123123123</td>
-                        <td data-label="Marca">Trupper</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table id="listaHerramientas">
+                    <thead>
+                        <tr>
+                            <th>Marcar como entregado</th>
+                            <th>Nombre</th>
+                            <th>ID</th>
+                            <th>Número de Serie</th>
+                            <th>Marca</th>
+                            <th>Fecha de devolución</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Seleccion de entrega"><input type="checkbox"></td>
+                            <td data-label="ID de herramienta">1234123</td>
+                            <td data-label="Tipo de herramienta">Destornillador</td>
+                            <td data-label="N. Serie">123123123</td>
+                            <td data-label="Marca">Trupper</td>
+                            <td data-label="Fecha de devolución">12/21/2023</td>
+                        </tr>
+     
+                    </tbody>
+                </table>
+            </div>
             <label for="observaciones">Observaciones:</label>
             <textarea id="observaciones" placeholder="Ingrese observaciones aquí..."></textarea>
             <div class="button-group">

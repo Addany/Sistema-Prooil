@@ -118,11 +118,6 @@
             <form id="editarTrabajadorForm">
                 <h3>Editar datos</h3>
                 <div class="field">
-                    <label>Foto:</label>
-                    <img id="editFoto" src="" >
-                    <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
-                </div>
-                <div class="field">
                     <label>Estado:</label>
                     <select id="editEstado">
                         <option value="Activo">Activo</option>
@@ -137,11 +132,6 @@
                         <option value="Becario">Becario</option>
                         <option value="Trabajador">Trabajador</option>
                     </select>
-                </div>
-
-                <div class="field">
-                    <label>ID:</label>
-                    <input type="text" id="editID" placeholder="ID" readonly>
                 </div>
 
                 <div class="field">
@@ -164,10 +154,6 @@
                     <input type="email" id="editCorreo" placeholder="Correo Electrónico">
                 </div>
                 
-                <div class="field">
-                    <label>Fecha de Ingreso:</label>
-                    <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
-                </div>
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
             </form>

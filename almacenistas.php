@@ -102,11 +102,6 @@
                 </div>
 
                 <div class="field">
-                    <Label>Usuario:</Label>
-                    <input type="text" id="editID" placeholder="ID">
-                </div>
-
-                <div class="field">
                     <Label>Nombre:</Label>
                     <input type="text" id="editNombre" placeholder="Nombre">
                 </div>
@@ -125,12 +120,7 @@
                     <Label>Correo:</Label>
                     <input type="email" id="editCorreo" placeholder="Correo Electrónico">
                 </div>
-
-                <div class="field">
-                    <Label>Fecha de Ingreso:</Label>
-                    <input type="date" id="editFechaIngreso" placeholder="Fecha de Ingreso">
-                </div>
-                
+    
                 <button type="submit" class="guardar">Guardar</button>
                 <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
             </form>

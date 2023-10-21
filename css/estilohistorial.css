@@ -119,7 +119,7 @@ tr:nth-child(even) {
   padding-left: 5px;
   border-radius: 5px;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   z-index: 1000;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -133,6 +133,7 @@ tr:nth-child(even) {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
 #popupEditar form input, #popupEditar form select {
@@ -233,6 +234,42 @@ tr:nth-child(even) {
 
 #popupVer .button-group button:hover {
   background-color: #194d50;
+}
+
+.table-container {
+  display: block;
+  max-height: 210px;
+  overflow-y: auto;
+  width: 100%;  /* Asegurarse de que ocupa todo el ancho disponible */
+}
+
+#popupVer table {
+  font-size: 0.9em;
+  width: 100%;       
+  margin: 10px auto;
+  border-collapse: collapse;
+}
+
+#popupVer thead {
+  display: table; 
+  width: 100%; 
+  position: sticky;  /* Hacer que el encabezado se mantenga en su lugar al desplazarse */
+  top: 0;  /* Posición superior del encabezado pegajoso */
+  background-color: #fff;  /* Asegurar que el fondo no sea transparente */
+}
+
+#popupVer tbody,  
+#popupVer tbody tr {
+  display: table; 
+  width: 100%; 
+  table-layout: fixed;
+}
+
+#popupVer th, #popupVer td {
+  padding: 6px;    
+  border: 1px solid #ccc;
+  overflow: hidden;        /* Evitar el desbordamiento de texto */
+  text-overflow: ellipsis; /* Mostrar puntos suspensivos si el texto es demasiado largo */
 }
 
 .field {
@@ -383,5 +420,8 @@ tr:nth-child(even) {
   }
   #popupVer {
     max-width: 85%;
+  }
+  #popupVer td[data-label]:before {
+    display: block;
   }
 }
