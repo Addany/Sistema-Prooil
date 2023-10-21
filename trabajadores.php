@@ -76,8 +76,9 @@
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
+                            $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
                             echo "<tr>";
-                            echo "<td data-label='Foto'><img src='Resources/Imagen1.webp' alt='Foto de daniel' class='foto-trabajador'></td>";
+                            echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto del empleado' class='foto-trabajador'></td>";
                             echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
                             echo "<td data-label='Tipo de Registro'>" . $row["tipo_ingreso"] . "</td>";
                             echo "<td data-label='ID'>" . $row["id_trabajador"] . "</td>";
@@ -92,8 +93,9 @@
                     }
                     if ($result2->num_rows > 0) {
                         while ($row = $result2->fetch_assoc()) {
+                            $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
                             echo "<tr>";
-                            echo "<td data-label='Foto'><img src='Resources/Imagen1.webp' alt='Foto de daniel' class='foto-trabajador'></td>";
+                            echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto del invitado' class='foto-trabajador'></td>";
                             echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
                             echo "<td data-label='Tipo de Registro'>" . $row["tipo_ingreso"] . "</td>";
                             echo "<td data-label='ID'>" . $row["id_invitado"] . "</td>";

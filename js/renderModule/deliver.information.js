@@ -38,7 +38,7 @@ buttomConfirm.addEventListener('click', ()=> {
     const xhr = new XMLHttpRequest();
 
     //Aqui estoy configurando la solicitud 
-    xhr.open('POST', '../php/getData2.php', true);
+    xhr.open('POST', './php/getData2.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     //Aqui estoy convirtiendo los datos en formato JSON antes de enviarlos 

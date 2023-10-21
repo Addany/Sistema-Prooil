@@ -73,16 +73,17 @@
           if ($conexion->connect_error) {
             die();
           }
-          $sql = "SELECT * FROM herramientas_cantidad";
+          $sql = "SELECT herramientas_cantidad.*, herramientas.tipo_herramienta, herramientas.foto FROM herramientas_cantidad JOIN herramientas_tipo ON herramientas_cantidad.identificador = herramientas_tipo.identificador JOIN herramientas ON herramientas_tipo.id_herramienta = herramientas.id_herramienta;";
           $result = $conexion->query($sql);
           $vacio = "pendiente";
 
           if ($result->num_rows > 0){
             while ($row = $result->fetch_assoc()) {
+              $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
               echo "<tr>";
-              echo "<td data-label='Foto'><img src='Resources/Imagen1.webp' alt='Foto de ' class='imagen-herramienta' /></td>";
+              echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto de' class='imagen-herramienta'></td>";
               echo "<td data-label='ID'>" . $row["identificador"] . "</td>";
-              echo "<td data-label='Tipo de herramienta'>" . $vacio . "</td>";
+              echo "<td data-label='Tipo de herramienta'>" . $row["tipo_herramienta"] . "</td>";
               echo "<td data-label='Marca'>" . $row["marca"] . "</td>";
               echo "<td data-label='Orden de compra'>" . $row["orden_compra"] . "</td>";
               echo "<td data-label='Tamaño'>" . $row["tamaño"] . "cm</td>";
@@ -90,7 +91,7 @@
               echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
               echo "<td data-label='Color'>" . $row["color"] . "</td>";
               echo "<td data-label='Fecha de Registro'>" . $row["fecha_registro"] . "</td>";
-              echo "<td data-label='Estatus'>" . $vacio . "</td>";
+              echo "<td data-label='Estatus'>" . $row["disponibilidad"] . "</td>";
               // ... Repite para cada columna de tu base de datos
               echo "<td data-label='Acciones'>";
               echo "<button class='accion-button'>Descargar QR</button>";

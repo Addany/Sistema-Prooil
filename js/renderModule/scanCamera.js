@@ -39,7 +39,7 @@ export const readerCode = (()=> { //Hecho por Jesus Rosml
                 url: "php/getData.php",
                 data: { code: content },
                 success: function(data){
-                    //console.log("Respuesta del servidor:", data);
+                    console.log("Respuesta del servidor:", data);
                     let toolInfo = JSON.parse(data);
                     
                     if(toolInfo.error){  // Verifica si la respuesta contiene un error

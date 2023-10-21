@@ -10,8 +10,15 @@ $orden_compra = $_POST['purchase_order'];
 $tamanio = $_POST['size'];
 $numero_serie = $_POST['serial_number'];
 $estado_herramienta = $_POST['tool_status'];
-$foto_herramienta = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 $fecha = date("Y-m-d");
+
+if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
+    $foto_herramienta = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+} else if ($_FILES['image']['error'] === UPLOAD_ERR_NO_FILE) {
+    $foto_herramienta = NULL;
+} else {
+    die("Error al cargar la imagen.");
+}
 
 #Verificamos si el tipo de herramienta ya existe en la base de datos
 $consulta = "SELECT id_herramienta FROM herramientas WHERE tipo_herramienta='$tipo_herramienta'";
@@ -34,7 +41,7 @@ if ($resultado->num_rows > 0) {
 	}
 }
 # Ahora insertamos en la tabla hija
-$sql2 = "INSERT INTO herramientas_cantidad (marca, color, tamaño, no_serie, orden_compra, fecha_registro, estado) VALUES ('$marca', '$color', '$tamanio', '$numero_serie', '$orden_compra', '$fecha', '$estado_herramienta')";
+$sql2 = "INSERT INTO herramientas_cantidad (marca, color, tamaño, no_serie, orden_compra, fecha_registro, estado, disponibilidad) VALUES ('$marca', '$color', '$tamanio', '$numero_serie', '$orden_compra', '$fecha', '$estado_herramienta','Disponible')";
 if ($conexion->query($sql2) === TRUE) {
 	$last_id2 = $conexion->insert_id;
 
