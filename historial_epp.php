@@ -72,6 +72,8 @@
 
               if ($result->num_rows > 0){
                 while ($row = $result->fetch_assoc()) {
+                  $fechaObj = date_create_from_format('Y-m-d', $row["fecha_registro"]);
+                  $fechaFormateada = $fechaObj->format('d/m/Y');
                   echo "<tr>";
                   echo "<td data-label='Foto'><img src='Resources/Imagen1.webp' alt='Foto de ' class='imagen-epp' /></td>";
                   echo "<td data-label='ID'>" . $row["identificador"] . "</td>";
@@ -82,7 +84,7 @@
                   echo "<td data-label='Clase'>" . $row["clase"] . "</td>";
                   echo "<td data-label='Talla'>" . $row["talla"] . "</td>";
                   echo "<td data-label='Orden de compra'>" . $row["orden_compra"] . "</td>";
-                  echo "<td data-label='Fecha de Registro'>" . $row["fecha_registro"] . "</td>";
+                  echo "<td data-label='Fecha de Registro'>" . $fechaFormateada . "</td>";
                   
                   echo "<td data-label='Acciones'>";
                   echo "<button class='accion-button' onclick='editarEPP(this)'>Editar</button>";
