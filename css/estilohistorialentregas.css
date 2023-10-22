@@ -71,17 +71,17 @@ tr:nth-child(even) {
   padding: 7px;
   border-radius: 5px;
   border: none;
-  background-color: #0F393B; /* Color de fondo verde */
+  background-color: #0F393B;
   color: white;
   margin-bottom: 0.2rem;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-weight: bold;
 }
 
 .accion-button:hover {
-  background-color: #194d50; /* Color de fondo un poco más oscuro cuando se pasa el ratón */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más profunda cuando se pasa el ratón */
+  background-color: #194d50;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #popupEditar {
@@ -140,7 +140,7 @@ tr:nth-child(even) {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  /* Asegúrate de que el overlay esté debajo del popup */
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
 #popupEditar form input, #popupEditar form select {
@@ -168,6 +168,10 @@ tr:nth-child(even) {
   font-weight: bold;
 }
 
+#popupEditar form H3 {
+  text-align: center;
+}
+
 #popupEditar form button:hover {
   background-color: #194d50;
 }
@@ -184,10 +188,9 @@ tr:nth-child(even) {
 #popupEditar #cancelarEdicion:hover {
   background-color: #ddd;
 }
-#popupVer form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+
+#popupVer form H3 {
+  text-align: center;
 }
 
 #popupVer h2 {
@@ -200,14 +203,14 @@ tr:nth-child(even) {
 
 #popupVer #listaHerramientas {
   margin-bottom: 10px;
-  padding-left: 20px; /* Añadí padding a la izquierda para las viñetas */
-  list-style-type: disc; /* Cambié a viñetas disc */
+  padding-left: 20px;
+  list-style-type: disc;
 }
 
 #popupVer button {
   width: 100%;
   padding: 10px;
-  margin-left: 0; /* Ajusté el margen izquierdo a 0 */
+  margin-left: 0;
   border-radius: 5px;
   border: none;
   margin-bottom: 0.3rem;
@@ -219,10 +222,11 @@ tr:nth-child(even) {
 #popupVer button:hover {
   background-color: #194d50;
 }
+
 .table-container {
   display: block;
-  max-height: 210px;  /* Altura máxima del contenedor. Puedes ajustar según lo que necesites */
-  overflow-y: auto;   /* Esto permitirá el desplazamiento vertical */
+  max-height: 210px;
+  overflow-y: auto;
 }
 
 #popupVer table {
@@ -235,8 +239,8 @@ tr:nth-child(even) {
 #popupVer thead, 
 #popupVer tbody,  
 #popupVer tbody tr {
-  display: table; 
-  width: 100%; 
+  display: table;
+  width: 100%;
   table-layout: fixed;
 }
 
@@ -271,9 +275,9 @@ tr:nth-child(even) {
 .field input[type="email"], 
 .field input[type="date"] {
   flex: 6;  
-  width: 70%; /* Establece un ancho específico para asegurar que todos sean del mismo tamaño */
-  max-width: 70%; /* Establece un ancho máximo para asegurar que no excedan este tamaño */
-  box-sizing: border-box; /* Esto asegura que el padding y el borde se incluyan en el tamaño total */
+  width: 70%;
+  max-width: 70%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
@@ -285,8 +289,8 @@ tr:nth-child(even) {
   .form-buscar input, 
   .form-buscar select, 
   .form-buscar button {
-    width: 100%; /* Aquí ajustamos el ancho al 100% */
-    box-sizing: border-box; /* Esto hará que el padding y el borde se incluyan en el ancho */
+    width: 100%;
+    box-sizing: border-box;
     margin-bottom: 10px; 
   }
 
@@ -301,58 +305,64 @@ tr:nth-child(even) {
 
   #popupEditar form input,
   #popupEditar form select {
-    width: 100%; /* Esto asegura que tanto los inputs como los selects tienen el mismo ancho */
-    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+    width: 100%;
+    box-sizing: border-box;
   }
   
   #popupEditar form button {
-    width: 100%; /* Esto ajusta el ancho del botón para que coincida con los inputs/selects */
-    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
-    margin-bottom: 5px; /* Añadido margen en la parte inferior para espacio entre los botones */
-  }
-}
-@media (max-width: 600px) {
-  table {
     width: 100%;
-    border-collapse: collapse;
+    box-sizing: border-box;
+    margin-bottom: 5px;
   }
-  .accion-button {
-    padding: 6px; /* Reducimos el padding */
-    margin-left: 10px;
-    font-size: 0.8rem; /* Reducimos el tamaño de la fuente */
-  }
-
-  thead {
-    display: none; 
+  
+  #popupVer table {
+    width: 100%;
+    border: 0;
   }
 
-  tbody {
-    display: block;
+  #popupVer thead {
+    display: none;
   }
 
-  tr {
+  #popupVer tbody tr {
     margin-bottom: 0.625rem;
     display: block;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid #ccc;
   }
 
-  td {
-    border: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    padding: 0.25em 0.5em; /* Reduzco el padding para hacer las tarjetas más pequeñas */
-    border-bottom: 1px solid #eee;
+  #popupVer td {
+    display: block;
+    text-align: right;
+    position: relative;
+    padding: 4px 10px 4px 60%;
   }
 
-  td[data-label]:before {
-    content: attr(data-label);
-    font-weight: bold;
+  #popupVer td[data-label]:before {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    display: block;
   }
 
-  #popupEditar {
-    max-width: 85%;
+  .field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .field label {
+    text-align: left;
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  .field span, 
+  .field select, 
+  .field input[type="text"], 
+  .field input[type="email"], 
+  .field input[type="date"] {
+    width: 100%;
   }
 }

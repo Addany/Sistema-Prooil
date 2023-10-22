@@ -34,7 +34,6 @@ body {
   background: #194d50;
 }
 
-/* Estilos de la tabla */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -65,22 +64,22 @@ tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Estilos para los botones de Acciones */
+
 .accion-button {
   padding: 7px;
   border-radius: 5px;
   border: none;
-  background-color: #0F393B; /* Color de fondo verde */
+  background-color: #0F393B; 
   color: white;
   margin-bottom: 0.2rem;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-weight: bold;
 }
 
 .accion-button:hover {
-  background-color: #194d50; /* Color de fondo un poco más oscuro cuando se pasa el ratón */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más profunda cuando se pasa el ratón */
+  background-color: #194d50; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 .guardar{
   width: 100%;
@@ -155,6 +154,11 @@ tr:nth-child(even) {
   color: #333;
 }
 
+#popupEditar form H3 {
+  text-align: center;
+}
+
+
 #popupEditar form button {
   background-color: #0F393B;
   color: white;
@@ -187,7 +191,7 @@ tr:nth-child(even) {
 #popupVer form {
   display: flex;
   flex-direction: column;
-  align-items: left; /* Ajustado a centro para que todos los elementos estén centrados */
+  align-items: left; 
   width: 100%; 
   padding: 10px;
 }
@@ -197,6 +201,11 @@ tr:nth-child(even) {
   margin-bottom: 5px;
   width: 100%;
 }
+
+#popupVer form H3 {
+  text-align: center;
+}
+
 
 #popupVer #listaHerramientas {
   margin-bottom: 10px;
@@ -208,7 +217,7 @@ tr:nth-child(even) {
 #popupVer textarea {
   width: calc(100% - 24px);
   padding: 10px;
-  margin: 0 auto 10px auto; /* Ajustado el margen para que el textarea esté centrado */
+  margin: 0 auto 10px auto; 
   border-radius: 5px;
   border: 1px solid #ccc;
   resize: vertical;
@@ -217,7 +226,7 @@ tr:nth-child(even) {
 #popupVer .button-group {
   display: flex;
   justify-content: space-between;
-  width: calc(100% - 20px); /* Ajustado el ancho para que los botones no toquen los bordes */
+  width: calc(100% - 20px); 
   padding: 0 10px;
 }
 
@@ -238,26 +247,18 @@ tr:nth-child(even) {
 
 .table-container {
   display: block;
-  max-height: 210px;
-  overflow-y: auto;
-  width: 100%;  /* Asegurarse de que ocupa todo el ancho disponible */
+  max-height: 210px;  
+  overflow-y: auto;   
 }
 
 #popupVer table {
   font-size: 0.9em;
-  width: 100%;       
+  width: 95%;       
   margin: 10px auto;
   border-collapse: collapse;
 }
 
-#popupVer thead {
-  display: table; 
-  width: 100%; 
-  position: sticky;  /* Hacer que el encabezado se mantenga en su lugar al desplazarse */
-  top: 0;  /* Posición superior del encabezado pegajoso */
-  background-color: #fff;  /* Asegurar que el fondo no sea transparente */
-}
-
+#popupVer thead, 
 #popupVer tbody,  
 #popupVer tbody tr {
   display: table; 
@@ -268,8 +269,13 @@ tr:nth-child(even) {
 #popupVer th, #popupVer td {
   padding: 6px;    
   border: 1px solid #ccc;
-  overflow: hidden;        /* Evitar el desbordamiento de texto */
-  text-overflow: ellipsis; /* Mostrar puntos suspensivos si el texto es demasiado largo */
+}
+
+#popupVer td[data-label]:before {
+  font-size: 0.8em;
+  content: attr(data-label);
+  display: none;
+  font-weight: bold;
 }
 
 .field {
@@ -291,9 +297,9 @@ tr:nth-child(even) {
 .field input[type="email"], 
 .field input[type="date"] {
   flex: 6;  
-  width: 70%; /* Establece un ancho específico para asegurar que todos sean del mismo tamaño */
-  max-width: 70%; /* Establece un ancho máximo para asegurar que no excedan este tamaño */
-  box-sizing: border-box; /* Esto asegura que el padding y el borde se incluyan en el tamaño total */
+  width: 70%; 
+  max-width: 70%; 
+  box-sizing: border-box; 
 }
 
 
@@ -306,8 +312,8 @@ tr:nth-child(even) {
   .form-buscar input, 
   .form-buscar select, 
   .form-buscar button {
-    width: 100%; /* Aquí ajustamos el ancho al 100% */
-    box-sizing: border-box; /* Esto hará que el padding y el borde se incluyan en el ancho */
+    width: 100%; 
+    box-sizing: border-box; 
     margin-bottom: 10px; 
   }
 
@@ -322,14 +328,14 @@ tr:nth-child(even) {
 
   #popupEditar form input,
   #popupEditar form select {
-    width: 100%; /* Esto asegura que tanto los inputs como los selects tienen el mismo ancho */
-    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
+    width: 100%; 
+    box-sizing: border-box; 
   }
   
   #popupEditar form button {
-    width: 100%; /* Esto ajusta el ancho del botón para que coincida con los inputs/selects */
-    box-sizing: border-box; /* Esto incluye padding y border dentro del ancho */
-    margin-bottom: 5px; /* Añadido margen en la parte inferior para espacio entre los botones */
+    width: 100%; 
+    box-sizing: border-box; 
+    margin-bottom: 5px; 
   }
   #popupVer {
     max-width: 90%;
@@ -373,6 +379,39 @@ tr:nth-child(even) {
     width: 100%;
     max-width: 100%;
   }
+  #popupVer table {
+    width: 100%;
+    border: 0;
+  }
+
+  #popupVer thead {
+    display: none; 
+  }
+
+  #popupVer tbody tr {
+    margin-bottom: 0.625rem;
+    display: block;
+    border: 1px solid #ccc;
+  }
+
+  #popupVer td {
+    display: block; 
+    text-align: right; 
+    position: relative;
+    padding-left: 50%; 
+  }
+
+  #popupVer td[data-label]:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    display: block; 
+    text-align: left; 
+  }
+
 }
 @media (max-width: 600px) {
   table {
@@ -380,9 +419,9 @@ tr:nth-child(even) {
     border-collapse: collapse;
   }
   .accion-button {
-    padding: 6px; /* Reducimos el padding */
+    padding: 6px; 
     margin-left: 10px;
-    font-size: 0.8rem; /* Reducimos el tamaño de la fuente */
+    font-size: 0.8rem; 
   }
 
   thead {
@@ -406,7 +445,7 @@ tr:nth-child(even) {
     display: flex;
     justify-content: space-between;
     align-items: start;
-    padding: 0.25em 0.5em; /* Reduzco el padding para hacer las tarjetas más pequeñas */
+    padding: 0.25em 0.5em; 
     border-bottom: 1px solid #eee;
   }
 

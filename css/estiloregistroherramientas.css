@@ -232,16 +232,16 @@ h1 {
   }
 
   .header-container {
-    flex-direction: row; /* Mantener en fila */
-    justify-content: space-between; /* Espacio entre el título e imagen */
-    align-items: center; /* Centrar verticalmente */
-    gap: 10px; /* Espacio entre los elementos */
-    flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no hay suficiente espacio */
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 10px; 
+    flex-wrap: wrap; 
   }
 
   h1 {
-      flex: 1; /* Asegurarse de que el título ocupe todo el espacio disponible, empujando la imagen a la derecha */
-      text-align: left; /* Alinear el texto a la izquierda */
-      margin-right: 10px; /* Espacio a la derecha del título */
+      flex: 1; 
+      text-align: left; 
+      margin-right: 10px; 
   }
 }

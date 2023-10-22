@@ -1,4 +1,3 @@
-/* Estilo básico para centrar el formulario */
 body, html {
   height: 100%;
   margin: 0;
@@ -18,7 +17,6 @@ body {
   display: none;
 }
 
-/* Estilos para el formulario */
 .form-container {
   width: 100%;
   max-width: 400px;
@@ -37,7 +35,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* So that the video is behind the content */
+  z-index: -1; 
 }
 
 .form-container h1 {
@@ -65,7 +63,6 @@ body {
   border-radius: 5px;
 }
 
-/* Estilos para los botones */
 .delivery-buttons {
   display: flex;
   justify-content: space-between;
@@ -90,7 +87,6 @@ body {
   background-color: #C8A21A;
 }
 
-/* Estilo para la tabla */
 .table-container {
   max-height: 200px;
   overflow-y: auto;

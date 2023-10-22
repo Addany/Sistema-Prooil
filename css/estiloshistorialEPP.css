@@ -183,6 +183,10 @@ tr:nth-child(even) {
   background-color: #194d50;
 }
 
+#popup form H3 {
+  text-align: center;
+}
+
 #popup #cancelarEdicion {
   width: 100%;
   padding: 8px; /* Reducción moderada del padding vertical */
