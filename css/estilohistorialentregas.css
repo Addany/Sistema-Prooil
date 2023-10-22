@@ -366,3 +366,43 @@ tr:nth-child(even) {
     width: 100%;
   }
 }
+@media (max-width: 600px) {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead {
+    display: none; 
+  }
+
+  tbody {
+    display: block;
+  }
+
+  tr {
+    margin-bottom: 0.625rem;
+    display: block;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }
+
+  td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0.25em 0.5em;
+    border-bottom: 1px solid #eee;
+  }
+
+  td[data-label]:before {
+    content: attr(data-label);
+    font-weight: bold;
+  }
+
+  #popup {
+    max-width: 85%;
+  }
+}

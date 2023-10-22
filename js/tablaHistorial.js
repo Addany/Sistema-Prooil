@@ -185,3 +185,14 @@ function intentarEliminar(buttonElement) {
       });
 }
 
+function resetearFiltros() {
+  document.getElementById('fechaInicio').value = '';
+  document.getElementsByName('tipo_herramienta')[0].value = '';
+  document.getElementsByName('marca')[0].value = '';
+  document.getElementsByName('orden')[0].value = 'fecha_registro DESC';
+  document.getElementsByName('status')[0].value = '';
+  
+  location.href = window.location.pathname;
+}
+
+

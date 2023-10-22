@@ -97,9 +97,9 @@
           <option value="En prestamo" <?php if ($status == 'En prestamo') echo 'selected'; ?>>En préstamo</option>
         </select>
       </div>
-      <div class="input-group">
-        <button type="button" id="eliminarBusqueda">Limpiar Búsqueda</button>
-        <input type="submit" value="Filtrar">
+      <div class="input-group" id="filter">
+          <button type="button" id="resetear" onclick="resetearFiltros()">Resetear Filtro</button>
+          <button type="submit" value="Filtrar">Filtrar</button>
       </div>
     </form>
     <section class="seccion-tabla">
@@ -204,14 +204,31 @@
           ?>
         </tbody>
       </table>
-
+      
       <div class="pagination">
-        <?php if($pagina > 1): ?>  <!-- Si la página actual no es la primera, muestra el enlace "Anterior" -->
-          <a href="?pagina=<?php echo $pagina-1; ?>&<?php echo $parametros_filtro; ?>">Anterior</a>
+        <?php
+        $range = 5; // Define el rango de páginas a mostrar
+        $start = max(1, $pagina - floor($range / 2)); // Calcula la página inicial del rango
+        $end = min($totalPaginas, $start + $range - 1); // Calcula la página final del rango
+
+        // Ajusta el inicio si estamos cerca del final
+        $start = max(1, $end - $range + 1);
+        ?>
+
+        <?php if($pagina > 1): ?>  
+            <a class="prev" href="?pagina=<?php echo $pagina-1; ?>&<?php echo $parametros_filtro; ?>">&lt; Anterior</a>
         <?php endif; ?>
-        
-        <?php if($pagina < $totalPaginas): ?>  <!-- Si la página actual no es la última, muestra el enlace "Siguiente" -->
-          <a href="?pagina=<?php echo $pagina+1; ?>&<?php echo $parametros_filtro; ?>">Siguiente</a>
+
+        <?php for($i = $start; $i <= $end; $i++): ?>
+            <?php if($i == $pagina): ?>
+                <span class="current-page"><?php echo $i; ?></span> 
+            <?php else: ?>
+                <a href="?pagina=<?php echo $i; ?>&<?php echo $parametros_filtro; ?>"><?php echo $i; ?></a>
+            <?php endif; ?>
+        <?php endfor; ?>
+
+        <?php if($pagina < $totalPaginas): ?> 
+            <a class="next" href="?pagina=<?php echo $pagina+1; ?>&<?php echo $parametros_filtro; ?>">Siguiente &gt;</a>
         <?php endif; ?>
       </div>
 

@@ -15,6 +15,17 @@
     <?php
     include 'php/session.php';
     include 'php/conexion_bd.php';
+
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $cantidadPorPagina = 20;
+    $inicio = ($pagina > 1) ? ($pagina * $cantidadPorPagina) - $cantidadPorPagina : 0;
+
+    $sql_total_almacenista = "SELECT COUNT(*) as total FROM almacenista";
+    $resultado_total_almacenista = $conexion->query($sql_total_almacenista);
+    $fila_total_almacenista = $resultado_total_almacenista->fetch_assoc();
+    $totalRegistros = $fila_total_almacenista['total'];
+
+    $totalPaginas = ceil($totalRegistros / $cantidadPorPagina);
     ?>
     <header>
         
@@ -67,9 +78,9 @@
                         if ($conexion->connect_error) {
                             die();
                         }
-                        $sql = "SELECT * FROM almacenista";
+                        $sql = "SELECT * FROM almacenista LIMIT $inicio, $cantidadPorPagina";
                         $result = $conexion->query($sql);
-
+    
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 $fechaObj = date_create_from_format('Y-m-d', $row["fecha_ingreso"]);
@@ -90,6 +101,34 @@
                 </table>
             </section>
         </main>
+
+        <div class="pagination">
+            <?php
+            $range = 5; // Define el rango de páginas a mostrar
+            $start = max(1, $pagina - floor($range / 2)); // Calcula la página inicial del rango
+            $end = min($totalPaginas, $start + $range - 1); // Calcula la página final del rango
+
+            // Ajusta el inicio si estamos cerca del final
+            $start = max(1, $end - $range + 1);
+            ?>
+
+            <?php if($pagina > 1): ?>  
+                <a class="prev" href="?pagina=<?php echo $pagina-1; ?>">Anterior</a>
+            <?php endif; ?>
+
+            <?php for($i = $start; $i <= $end; $i++): ?>
+                <?php if($i == $pagina): ?>
+                    <span class="current-page"><?php echo $i; ?></span> <!-- Resalta la página actual -->
+                <?php else: ?>
+                    <a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                <?php endif; ?>
+            <?php endfor; ?>
+
+            <?php if($pagina < $totalPaginas): ?>  
+                <a class="next" href="?pagina=<?php echo $pagina+1; ?>">Siguiente</a>
+            <?php endif; ?>
+        </div>
+
         <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
         <div id="popupEditar">
             <form id="editarAlmacenistaForm">
@@ -128,7 +167,6 @@
             </form>
         </div>
     </div>
-
 
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/tablaHistorial.js"></script>

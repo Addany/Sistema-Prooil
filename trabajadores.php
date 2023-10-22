@@ -15,6 +15,24 @@
     <?php
     include 'php/session.php';
     include 'php/conexion_bd.php';
+
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $cantidadPorPagina = 25;
+    $inicio = ($pagina > 1) ? ($pagina * $cantidadPorPagina) - $cantidadPorPagina : 0;
+
+    $sql_total_empleado = "SELECT COUNT(*) as total FROM empleado";
+    $resultado_total_empleado = $conexion->query($sql_total_empleado);
+    $fila_total_empleado = $resultado_total_empleado->fetch_assoc();
+    $totalRegistrosEmpleado = $fila_total_empleado['total'];
+    
+    $sql_total_invitado = "SELECT COUNT(*) as total FROM invitado";
+    $resultado_total_invitado = $conexion->query($sql_total_invitado);
+    $fila_total_invitado = $resultado_total_invitado->fetch_assoc();
+    $totalRegistrosInvitado = $fila_total_invitado['total'];
+    
+    $totalRegistros = $totalRegistrosEmpleado + $totalRegistrosInvitado;
+    $totalPaginas = ceil($totalRegistros / $cantidadPorPagina);
+    
     ?>
 
     <div id="page-container">
@@ -26,7 +44,7 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre,teléfono,etc." >
+                            <input type="text" id="buscador" placeholder="Nombre,ID,etc." >
                         </div>
                         <div class="input-group">
                             <label for="fechaInicio">Fecha de inicio:</label>
@@ -69,12 +87,27 @@
                     if ($conexion->connect_error) {
                         die();
                     }
-                    $sql = "SELECT * FROM empleado";
-                    $sql2 = "SELECT * FROM invitado";
-                    $result2 = $conexion->query($sql2);
-                    $result = $conexion->query($sql);
+                    if ($inicio < $totalRegistrosEmpleado) {
+                        // Aún hay registros de empleado para mostrar
+                        $limitEmpleado = min($cantidadPorPagina, $totalRegistrosEmpleado - $inicio);
+                        $sql = "SELECT * FROM empleado LIMIT $inicio, $limitEmpleado";
+                        $result = $conexion->query($sql);
+                    } else {
+                        $result = new ArrayObject();  // un conjunto vacío
+                    }
+                    
+                    // Si todavía necesitamos más registros para llenar la página
+                    $validResultRows = !($result instanceof ArrayObject) ? $result->num_rows : 0;
+                    if ($validResultRows < $cantidadPorPagina) {
+                        $restantes = $cantidadPorPagina - $validResultRows;
+                        $inicioInvitado = max(0, $inicio - $totalRegistrosEmpleado);
+                        $sql2 = "SELECT * FROM invitado LIMIT $inicioInvitado, $restantes";
+                        $result2 = $conexion->query($sql2);
+                    } else {
+                        $result2 = new ArrayObject();  // un conjunto vacío
+                    }
 
-                    if ($result->num_rows > 0) {
+                    if (!$result instanceof ArrayObject && $result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
                             $fechaObj = date_create_from_format('Y-m-d', $row["fecha_ingreso"]);
@@ -93,7 +126,7 @@
                             echo "</tr>";
                         }
                     }
-                    if ($result2->num_rows > 0) {
+                    if (!$result2 instanceof ArrayObject && $result2->num_rows > 0) {
                         while ($row = $result2->fetch_assoc()) {
                             $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
                             $fechaObj = date_create_from_format('Y-m-d', $row["fecha_ingreso"]);
@@ -117,6 +150,34 @@
             </table>
             </section>
         </main>
+
+        <div class="pagination">
+            <?php
+            $range = 5; // Define el rango de páginas a mostrar
+            $start = max(1, $pagina - floor($range / 2)); // Calcula la página inicial del rango
+            $end = min($totalPaginas, $start + $range - 1); // Calcula la página final del rango
+
+            // Ajusta el inicio si estamos cerca del final
+            $start = max(1, $end - $range + 1);
+            ?>
+
+            <?php if($pagina > 1): ?>  
+                <a class="prev" href="?pagina=<?php echo $pagina-1; ?>">Anterior</a>
+            <?php endif; ?>
+
+            <?php for($i = $start; $i <= $end; $i++): ?>
+                <?php if($i == $pagina): ?>
+                    <span class="current-page"><?php echo $i; ?></span> <!-- Resalta la página actual -->
+                <?php else: ?>
+                    <a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                <?php endif; ?>
+            <?php endfor; ?>
+
+            <?php if($pagina < $totalPaginas): ?>  
+                <a class="next" href="?pagina=<?php echo $pagina+1; ?>">Siguiente</a>
+            <?php endif; ?>
+        </div>
+
         <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar')"></div>
         <div id="popupEditar">
             <form id="editarTrabajadorForm">
@@ -163,6 +224,7 @@
             </form>
         </div>
     </div>
+
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/tablaHistorial.js"></script>
     <script src="js/popup.js"></script>
