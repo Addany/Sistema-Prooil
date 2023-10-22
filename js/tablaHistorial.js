@@ -101,8 +101,8 @@ async function editarHerramienta(button) {
     document.getElementById("editNoSerie").value = row.querySelector('[data-label="No. Serie"]').innerText;
     document.getElementById("editEstado").value = row.querySelector('[data-label="Estado"]').innerText.toLowerCase();
     document.getElementById("editColor").value = row.querySelector('[data-label="Color"]').innerText;
-    let fecha = row.querySelector('[data-label="Fecha de Registro"]').innerText.split("-").reverse().join("-");
-    document.getElementById("editFecha").value = fecha;
+    let fecha = row.querySelector('[data-label="Fecha de Registro"]').innerText.split("/").reverse().join("-");
+    document.getElementById("editFecha").value = fecha;    
 
     abrirPopup('popup');
   } catch (error) {
@@ -148,12 +148,6 @@ async function editarTrabajador(button) {
       } else {
           document.getElementById("editTipoRegistro").disabled = false;
       }
-
-      if (row.querySelector('[data-label="Tipo de Registro"]').innerText.trim() !== "Trabajador") {
-        document.querySelector('#editTipoRegistro option[value="Trabajador"]').style.display = 'none';
-    } else {
-        document.querySelector('#editTipoRegistro option[value="Trabajador"]').style.display = 'block';
-    }
 
       abrirPopup('popupEditar');
   } catch (error) {
