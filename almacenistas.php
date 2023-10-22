@@ -72,13 +72,15 @@
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
+                                $fechaObj = date_create_from_format('Y-m-d', $row["fecha_ingreso"]);
+                                $fechaFormateada = $fechaObj->format('d/m/Y');
                                 echo "<tr>";
                                 echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
                                 echo "<td data-label='Usuario'>" . $row["usuario"] . "</td>";
                                 echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
                                 echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";
                                 echo "<td data-label='Correo'>" . $row["correo"] . "</td>";
-                                echo "<td data-label='Fecha de Ingreso'>" . $row["fecha_ingreso"] . "</td>";
+                                echo "<td data-label='Fecha de Ingreso'>" . $fechaFormateada . "</td>";
                                 echo "<td data-label='Acciones'><button class='accion-button' onclick='editarAlmacenista(this)'>Editar</button></td>";
                                 echo "</tr>";
                             }

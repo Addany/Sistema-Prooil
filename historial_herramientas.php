@@ -75,11 +75,12 @@
           }
           $sql = "SELECT herramientas_cantidad.*, herramientas.tipo_herramienta, herramientas.foto FROM herramientas_cantidad JOIN herramientas_tipo ON herramientas_cantidad.identificador = herramientas_tipo.identificador JOIN herramientas ON herramientas_tipo.id_herramienta = herramientas.id_herramienta;";
           $result = $conexion->query($sql);
-          $vacio = "pendiente";
 
           if ($result->num_rows > 0){
             while ($row = $result->fetch_assoc()) {
               $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
+              $fechaObj = date_create_from_format('Y-m-d', $row["fecha_registro"]);
+              $fechaFormateada = $fechaObj->format('d/m/Y');
               echo "<tr>";
               echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto de' class='imagen-herramienta'></td>";
               echo "<td data-label='ID'>" . $row["identificador"] . "</td>";
@@ -90,9 +91,8 @@
               echo "<td data-label='No. Serie'>" . $row["no_serie"] . "</td>";
               echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
               echo "<td data-label='Color'>" . $row["color"] . "</td>";
-              echo "<td data-label='Fecha de Registro'>" . $row["fecha_registro"] . "</td>";
+              echo "<td data-label='Fecha de Registro'>" . $fechaFormateada . "</td>";
               echo "<td data-label='Estatus'>" . $row["disponibilidad"] . "</td>";
-              // ... Repite para cada columna de tu base de datos
               echo "<td data-label='Acciones'>";
               echo "<button class='accion-button'>Descargar QR</button>";
               echo "<button class='accion-button' onclick='editarHerramienta(this)'>Editar</button>";
