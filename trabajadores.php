@@ -13,26 +13,26 @@
 </head>
 <body>
     <?php
-    include 'php/session.php';
-    include 'php/conexion_bd.php';
+        include 'php/session.php';
+        include 'php/conexion_bd.php';
 
-    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-    $cantidadPorPagina = 25;
-    $inicio = ($pagina > 1) ? ($pagina * $cantidadPorPagina) - $cantidadPorPagina : 0;
+        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+        $cantidadPorPagina = 25;
+        $inicio = ($pagina > 1) ? ($pagina * $cantidadPorPagina) - $cantidadPorPagina : 0;
 
-    $sql_total_empleado = "SELECT COUNT(*) as total FROM empleado";
-    $resultado_total_empleado = $conexion->query($sql_total_empleado);
-    $fila_total_empleado = $resultado_total_empleado->fetch_assoc();
-    $totalRegistrosEmpleado = $fila_total_empleado['total'];
-    
-    $sql_total_invitado = "SELECT COUNT(*) as total FROM invitado";
-    $resultado_total_invitado = $conexion->query($sql_total_invitado);
-    $fila_total_invitado = $resultado_total_invitado->fetch_assoc();
-    $totalRegistrosInvitado = $fila_total_invitado['total'];
-    
-    $totalRegistros = $totalRegistrosEmpleado + $totalRegistrosInvitado;
-    $totalPaginas = ceil($totalRegistros / $cantidadPorPagina);
-    
+        $sql_total_empleado = "SELECT COUNT(*) as total FROM empleado";
+        $resultado_total_empleado = $conexion->query($sql_total_empleado);
+        $fila_total_empleado = $resultado_total_empleado->fetch_assoc();
+        $totalRegistrosEmpleado = $fila_total_empleado['total'];
+        
+        $sql_total_invitado = "SELECT COUNT(*) as total FROM invitado";
+        $resultado_total_invitado = $conexion->query($sql_total_invitado);
+        $fila_total_invitado = $resultado_total_invitado->fetch_assoc();
+        $totalRegistrosInvitado = $fila_total_invitado['total'];
+        
+        $totalRegistros = $totalRegistrosEmpleado + $totalRegistrosInvitado;
+        $totalPaginas = ceil($totalRegistros / $cantidadPorPagina);
+        
     ?>
 
     <div id="page-container">
@@ -153,12 +153,11 @@
 
         <div class="pagination">
             <?php
-            $range = 5; // Define el rango de páginas a mostrar
-            $start = max(1, $pagina - floor($range / 2)); // Calcula la página inicial del rango
-            $end = min($totalPaginas, $start + $range - 1); // Calcula la página final del rango
+                $range = 5; 
+                $start = max(1, $pagina - floor($range / 2)); 
+                $end = min($totalPaginas, $start + $range - 1); 
 
-            // Ajusta el inicio si estamos cerca del final
-            $start = max(1, $end - $range + 1);
+                $start = max(1, $end - $range + 1);
             ?>
 
             <?php if($pagina > 1): ?>  
@@ -167,7 +166,7 @@
 
             <?php for($i = $start; $i <= $end; $i++): ?>
                 <?php if($i == $pagina): ?>
-                    <span class="current-page"><?php echo $i; ?></span> <!-- Resalta la página actual -->
+                    <span class="current-page"><?php echo $i; ?></span> 
                 <?php else: ?>
                     <a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
                 <?php endif; ?>

@@ -207,12 +207,11 @@
       
       <div class="pagination">
         <?php
-        $range = 5; // Define el rango de páginas a mostrar
-        $start = max(1, $pagina - floor($range / 2)); // Calcula la página inicial del rango
-        $end = min($totalPaginas, $start + $range - 1); // Calcula la página final del rango
+          $range = 5; 
+          $start = max(1, $pagina - floor($range / 2));
+          $end = min($totalPaginas, $start + $range - 1);
 
-        // Ajusta el inicio si estamos cerca del final
-        $start = max(1, $end - $range + 1);
+          $start = max(1, $end - $range + 1);
         ?>
 
         <?php if($pagina > 1): ?>  
