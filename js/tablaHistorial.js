@@ -149,6 +149,12 @@ async function editarTrabajador(button) {
           document.getElementById("editTipoRegistro").disabled = false;
       }
 
+      if (row.querySelector('[data-label="Tipo de Registro"]').innerText.trim() !== "Trabajador") {
+        document.querySelector('#editTipoRegistro option[value="Trabajador"]').style.display = 'none';
+      } else {
+          document.querySelector('#editTipoRegistro option[value="Trabajador"]').style.display = 'block';
+      }
+
       abrirPopup('popupEditar');
   } catch (error) {
       console.error("Error al editar trabajador:", error);

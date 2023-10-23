@@ -203,39 +203,44 @@ tr:nth-child(even) {
 }
 
 .pagination {
-  position: fixed; /* Fija la posición de la paginación */
-  bottom: 0; /* Alinea la paginación a la parte inferior de la ventana */
-  left: 0; /* Alinea la paginación a la izquierda de la ventana */
-  width: 100%; /* Asegura que la paginación se extienda a lo ancho de la ventana */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   text-align: center;
   padding: 5px 0;
-  background-color: #0F393B;
-  border-top: 1px solid #ffffff; /* Agrega un borde en la parte superior para separarlo del contenido */
-  z-index: 1000; /* Asegura que la paginación esté en la capa superior */
+  background-color: #0f393bea;
+  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Sombra sutil para agregar profundidad */
 }
 
 .pagination a,
 .pagination span {
-  color: #ffffff; /* Texto blanco */
+  color: #ffffff;
   padding: 3px 12px;
   margin: 0 4px;
   text-decoration: none;
   font: bold 16px Arial, sans-serif;
-  transition: background-color 0.3s; /* Agrega transición suave */
+  transition: background-color 0.3s, transform 0.2s; /* Agrega transición de transform también */
 }
 
 .pagination a {
-  background-color: #1b797e; /* Fondo oscuro para los enlaces */
-  border-radius: 5px; /* Bordes redondeados */
+  background-color: #1b797e;
+  border-radius: 5px;
+  border: 1px solid transparent; /* Border transparente para mantener el mismo tamaño al hacer hover */
 }
 
 .pagination a:hover {
-  background-color: #ffffff; /* Fondo blanco al pasar el ratón */
-  color: #0F393B; /* Texto oscuro al pasar el ratón */
+  background-color: #ffffff;
+  color: #0F393B;
+  transform: scale(1.05); /* Efecto de ampliación suave al pasar el ratón */
+  border: 1px solid #1b797e; /* Border del color de fondo original al hacer hover */
 }
 
 .pagination span.current-page {
-  pointer-events: none; /* Desactiva clics y hover */
+  pointer-events: none;
+  background-color: #2ba3a5; /* Color de fondo distintivo para la página actual */
+  border-radius: 5px; /* Bordes redondeados también para la página actual */
 }
 
 
