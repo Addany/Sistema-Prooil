@@ -59,9 +59,9 @@
                             <div class="input-group">
                                 <label for="estado">Estado de la Herramienta:</label>
                                 <select id="estado" name="tool_status" required>
-                                    <option value="bueno">Bueno</option>
-                                    <option value="regular">Regular</option>
-                                    <option value="malo">Malo</option>
+                                    <option value="Bueno">Bueno</option>
+                                    <option value="Regular">Regular</option>
+                                    <option value="Malo">Malo</option>
                                 </select>
                             </div>
                             <div class="input-group">
