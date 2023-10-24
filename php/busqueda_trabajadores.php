@@ -85,5 +85,3 @@ if ($result2->num_rows > 0) {
         echo "</tr>";
     }
 } 
-
-?>

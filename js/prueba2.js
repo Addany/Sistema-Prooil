@@ -15,7 +15,7 @@ function buscar(){
     var categoria = $('#categoria').val();
     
     $.ajax({
-        url: 'php/busqueda_trabajadores',
+        url: 'php/busqueda_trabajadores.php',
         type: 'POST',
         data: {texto: texto, fechaInicio: fechaInicio, fechaFin: fechaFin, categoria: categoria},
         success: function(response){
