@@ -63,7 +63,7 @@
                             </select>  
                         </div>
                         <div class="input-group">
-                            <button type="button">Limpiar Búsqueda</button>
+                            <button type="button" id="limpiarBtn">Limpiar Búsqueda</button>
                         </div>
                     </form>
                 </div>

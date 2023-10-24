@@ -57,7 +57,7 @@
                                 <option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
                             </select>  
-                            <button type="button" id="limpiarBusqueda">Limpiar Búsqueda</button>
+                        <button type="button" id="limpiarBtn">Limpiar Búsqueda</button>
                         </div>
                     </form>
                 </div>

@@ -1,59 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('buscador').addEventListener('input', buscar);
-  document.getElementById('fechaInicio').addEventListener('change', buscar);
-  document.getElementById('fechaFin').addEventListener('change', buscar);
-  document.getElementById('categoria').addEventListener('change', buscar);
-  document.getElementById('limpiarBusqueda').addEventListener('click', limpiarBusqueda);
+$(document).ready(function(){
+    $('#buscador, #fechaInicio, #fechaFin, #categoria').on('input', function(){
+        buscar();
+    });
+    
+    $('#limpiarBtn').click(function(){
+        limpiarBusqueda();
+    });
 });
 
-function buscar() {
-  const textoBuscar = document.getElementById('buscador').value.trim().toLowerCase();
-  const fechaInicio = document.getElementById('fechaInicio').value ? new Date(document.getElementById('fechaInicio').value) : null;
-  const fechaFin = document.getElementById('fechaFin').value ? new Date(document.getElementById('fechaFin').value) : null;
-  const categoriaBuscar = document.getElementById('categoria').value;
-
-  const tabla = document.getElementById('tabla-almacenistas');
-  const filas = tabla.querySelectorAll('tbody tr');
-
-  filas.forEach((fila, index) => {
-      const celdas = {
-          estado: fila.querySelector("td[data-label='Estado']"),
-          usuario: fila.querySelector("td[data-label='Usuario']"),
-          nombre: fila.querySelector("td[data-label='Nombre']"),
-          correo: fila.querySelector("td[data-label='Correo']"),
-          fechaIngreso: fila.querySelector("td[data-label='Fecha de Ingreso']"),
-      };
-
-      for (const [key, celda] of Object.entries(celdas)) {
-          if (!celda) {
-              console.error(`Fila ${index + 1} con ${key} faltante.`, fila);  // Mantengo este log para alertar de posibles errores
-              return;
-          }
-      }
-      
-      const { estado, usuario, nombre, correo, fechaIngreso } = celdas;
-
-      const coincideTexto = textoBuscar ? 
-          [estado, usuario, nombre, correo].some(celda => celda.textContent.toLowerCase().includes(textoBuscar)) : 
-          true;
-
-      const coincideCategoria = categoriaBuscar !== 'todos' ? estado.textContent.toLowerCase() === categoriaBuscar.toLowerCase() : true;
-
-      const fechaIngresoDate = new Date(fechaIngreso.textContent);
-      const coincideFecha = (fechaInicio ? fechaIngresoDate >= fechaInicio : true) && (fechaFin ? fechaIngresoDate <= fechaFin : true);
-
-      if (coincideTexto && coincideCategoria && coincideFecha) {
-          fila.style.display = '';
-      } else {
-          fila.style.display = 'none';
-      }
-  });
+function buscar(){
+    var texto = $('#buscador').val();
+    var fechaInicio = $('#fechaInicio').val();
+    var fechaFin = $('#fechaFin').val();
+    var categoria = $('#categoria').val();
+    
+    $.ajax({
+        url: 'php/busqueda_almacenistas.php',  // Asegúrate de que esta URL apunte al archivo PHP correcto
+        type: 'POST',
+        data: {texto: texto, fechaInicio: fechaInicio, fechaFin: fechaFin, categoria: categoria},
+        success: function(response){
+            $('#tabla-almacenistas tbody').html(response);
+        }
+    });
 }
 
-function limpiarBusqueda() {
-  document.getElementById('buscador').value = '';
-  document.getElementById('fechaInicio').value = '';
-  document.getElementById('fechaFin').value = '';
-  document.getElementById('categoria').value = 'todos';
-  buscar();
+function limpiarBusqueda(){
+    $('#buscador').val('');
+    $('#fechaInicio').val('');
+    $('#fechaFin').val('');
+    $('#categoria').val('todos');  
+    
+    buscar();  
 }
