@@ -1,4 +1,3 @@
-// Abrir el popup
 function abrirPopup(idPopup) {
   const overlay = document.getElementById('overlay');
   const popup = document.getElementById(idPopup);
@@ -7,7 +6,6 @@ function abrirPopup(idPopup) {
   popup.style.display = 'block';
   popup.classList.add('active');
 
-  // Si tienes transiciones CSS, el siguiente setTimeout puede ser opcional
   setTimeout(() => {
       overlay.style.opacity = '1';
       overlay.style.visibility = 'visible';
@@ -17,7 +15,6 @@ function abrirPopup(idPopup) {
   }, 100);
 }
 
-// Cerrar el popup
 function cerrarPopup(idPopup) {
   const overlay = document.getElementById('overlay');
   const popup = document.getElementById(idPopup);
@@ -35,7 +32,7 @@ function cerrarPopup(idPopup) {
   }, { once: true });
 }
 
-// Cerrar el popup si se hace clic fuera
+
 function cerrarSiEsFuera(event, ...idPopups) {
   for (const idPopup of idPopups) {
       const popupElement = document.getElementById(idPopup);
@@ -47,12 +44,12 @@ function cerrarSiEsFuera(event, ...idPopups) {
   }
 }
 
-// Event listener para el overlay
+
 document.getElementById('overlay').addEventListener('click', (event) => {
   cerrarSiEsFuera(event, 'popupEditar', 'popupVer');
 });
 
-// Event listener para los popups (Evitar que se cierren al hacer clic dentro del popup)
+
 const popups = document.querySelectorAll('#popupEditar, #popupVer');
 popups.forEach(popup => {
   popup.addEventListener('click', (event) => {

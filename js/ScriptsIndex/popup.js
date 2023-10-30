@@ -7,7 +7,6 @@ function openPopup() {
   popup.style.opacity = '1';
   popupOverlay.style.opacity = '1';
   
-  // Cierra el popup si se clickea en .nav-list o .nav-toggle
   document.querySelector(".nav-list").addEventListener('click', closePopup);
   document.querySelector(".nav-toggle").addEventListener('click', closePopup);
 

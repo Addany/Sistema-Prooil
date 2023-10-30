@@ -144,8 +144,6 @@ h1 {
   font-weight: bold;
 }
 
-
-
 @media (max-width: 600px) {
   .popup {
     padding: 10px; 

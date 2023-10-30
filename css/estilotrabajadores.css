@@ -232,8 +232,6 @@ tr:nth-child(even) {
   border-radius: 5px; /* Bordes redondeados también para la página actual */
 }
 
-
-
 @media (max-width: 768px) {
   .form-buscar {
     flex-direction: column;
@@ -309,11 +307,9 @@ tr:nth-child(even) {
   #popupEditar {
     max-width: 85%;
   }
-}
-
-@media (max-width: 600px) {  /* Ajusta el valor de 600px según sea necesario */
   .pagination a:not(.prev):not(.next):not(.current-page),
   .pagination span:not(.current-page) {
-    display: none;  /* Oculta todos los números de página excepto el actual, el anterior y el siguiente */
+    display: none;  
   }
 }
+

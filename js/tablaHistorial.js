@@ -1,4 +1,3 @@
-
 function solicitarNIP() {
   return new Promise((resolve, reject) => {
     const nip = prompt('Por favor, ingrese su NIP:');
@@ -13,7 +12,6 @@ function solicitarNIP() {
   
 async function verDatos() {
     try {
-        await solicitarNIP();
         abrirPopup('popupVer');
     } catch (error) {
         console.error(error);
@@ -21,8 +19,6 @@ async function verDatos() {
 }
   
 async function editarEntregaForm(button) {
-  try {
-      await solicitarNIP();
 
       let row = button.closest('tr');
 
@@ -39,9 +35,6 @@ async function editarEntregaForm(button) {
       document.getElementById("editEstadoproceso").value = row.querySelector('[data-label="Status del proceso del entrega"]').innerText;
 
       abrirPopup('popupEditar');
-  } catch (error) {
-      console.error(error);
-  }
 }
 
 
@@ -63,8 +56,6 @@ async function editarAlmacenista(button) {
 }
 
 async function editarEPP(button) {
-  try {
-      await solicitarNIP();
 
       let row = button.closest('tr');
 
@@ -82,15 +73,9 @@ async function editarEPP(button) {
 
 
       abrirPopup('popup');
-  } catch (error) {
-      console.error("Error en editarEPP:", error);
-  }
 }
 
 async function editarHerramienta(button) {  
-  try {
-
-    await solicitarNIP();
 
     let row = button.closest('tr');
     
@@ -105,14 +90,10 @@ async function editarHerramienta(button) {
     document.getElementById("editFecha").value = fecha;    
 
     abrirPopup('popup');
-  } catch (error) {
-    console.error("Error al editar herramienta:", error);
-  }
+
 }
 
 async function editarPrestamoForm(button) {
-  try {
-      await solicitarNIP();
       
       let row = button.closest('tr');
       
@@ -126,9 +107,7 @@ async function editarPrestamoForm(button) {
       document.getElementById("editestado").value = row.querySelector('[data-label="Estado"]').innerText.toLowerCase();
 
       abrirPopup('popupEditar');
-  } catch (error) {
-      console.error(error);
-  }
+
 }
 
 async function editarTrabajador(button) {
