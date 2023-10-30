@@ -210,7 +210,6 @@
           $range = 5; 
           $start = max(1, $pagina - floor($range / 2));
           $end = min($totalPaginas, $start + $range - 1);
-
           $start = max(1, $end - $range + 1);
         ?>
 

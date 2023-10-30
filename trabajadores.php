@@ -44,22 +44,33 @@
                     <form class="form-buscar">
                         <div class="input-group">
                             <label for="buscador">Buscar por texto:</label>
-                            <input type="text" id="buscador" placeholder="Nombre,ID,etc." >
+                            <input type="text" id="buscador" placeholder="Nombre,ID y Correo" >
                         </div>
                         <div class="input-group">
-                            <label for="fechaInicio">Fecha de inicio:</label>
+                            <label for="fechaInicio">Fecha :</label>
                             <input type="date" id="fechaInicio">
                         </div>
                         <div class="input-group">
-                            <label for="fechaFin">Fecha de fin:</label>
-                            <input type="date" id="fechaFin">
-                        </div>
-                        <div class="input-group">
-                            <label for="categoria">Categoría:</label>
+                            <label for="categoria">Estado:</label>
                             <select id="categoria">
                                 <option value="todos">Todos</option>
                                 <option value="Activo">Activo </option>
                                 <option value="Inactivo">Inactivo</option>
+                            </select>  
+                        </div>
+                        <div class="input-group">
+                            <label for="tipoRegistro">Tipo de registro:</label>
+                            <select id="tipoRegistro" name="tipoRegistro">  
+                                <option value="todos">Todos</option>
+                                <option value="Trabajador">Trabajador</option>
+                                <option value="Visitante">Visitante</option>
+                                <option value="Becario">Becario</option>
+                            </select>  
+                        </div>
+                        <div class="input-group">
+                            <label for="Area">Area:</label>
+                            <select id="Area">
+                                <option value="todos">Todos</option>
                             </select>  
                         </div>
                         <div class="input-group">
@@ -88,15 +99,13 @@
                         die();
                     }
                     if ($inicio < $totalRegistrosEmpleado) {
-                        // Aún hay registros de empleado para mostrar
                         $limitEmpleado = min($cantidadPorPagina, $totalRegistrosEmpleado - $inicio);
                         $sql = "SELECT * FROM empleado LIMIT $inicio, $limitEmpleado";
                         $result = $conexion->query($sql);
                     } else {
-                        $result = new ArrayObject();  // un conjunto vacío
+                        $result = new ArrayObject();  
                     }
                     
-                    // Si todavía necesitamos más registros para llenar la página
                     $validResultRows = !($result instanceof ArrayObject) ? $result->num_rows : 0;
                     if ($validResultRows < $cantidadPorPagina) {
                         $restantes = $cantidadPorPagina - $validResultRows;
@@ -104,7 +113,7 @@
                         $sql2 = "SELECT * FROM invitado LIMIT $inicioInvitado, $restantes";
                         $result2 = $conexion->query($sql2);
                     } else {
-                        $result2 = new ArrayObject();  // un conjunto vacío
+                        $result2 = new ArrayObject();  
                     }
 
                     if (!$result instanceof ArrayObject && $result->num_rows > 0) {
@@ -156,7 +165,6 @@
                 $range = 5; 
                 $start = max(1, $pagina - floor($range / 2)); 
                 $end = min($totalPaginas, $start + $range - 1); 
-
                 $start = max(1, $end - $range + 1);
             ?>
 

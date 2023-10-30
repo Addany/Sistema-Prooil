@@ -3,15 +3,16 @@ include 'conexion_bd.php';
 
 $texto = $_POST['texto'];
 $fechaInicio = $_POST['fechaInicio'];
-$fechaFin = $_POST['fechaFin'];
 $categoria = $_POST['categoria'];
+$tipoRegistro = $_POST['tipoRegistro'];
+$area = mysqli_real_escape_string($conexion, $_POST['Area']); 
 
 $condicionesEmpleado = [];
 $condicionesInvitado = [];
 
 if($texto){
-    $condicionesEmpleado[] = "(nombre LIKE '%$texto%' OR id_trabajador LIKE '%$texto%' OR tipo_ingreso LIKE '%$texto%' OR area_trabajo LIKE '%$texto%' OR correo LIKE '%$texto%')";
-    $condicionesInvitado[] = "(nombre LIKE '%$texto%' OR id_invitado LIKE '%$texto%' OR tipo_ingreso LIKE '%$texto%' OR correo LIKE '%$texto%')";  
+    $condicionesEmpleado[] = "(nombre LIKE '%$texto%' OR id_trabajador LIKE '%$texto%' OR correo LIKE '%$texto%')";
+    $condicionesInvitado[] = "(nombre LIKE '%$texto%' OR id_invitado LIKE '%$texto%' OR correo LIKE '%$texto%')";  
 }
 
 if($fechaInicio){
@@ -19,14 +20,18 @@ if($fechaInicio){
     $condicionesInvitado[] = "(fecha_ingreso >= '$fechaInicio')";
 }
 
-if($fechaFin){
-    $condicionesEmpleado[] = "(fecha_ingreso <= '$fechaFin')";
-    $condicionesInvitado[] = "(fecha_ingreso <= '$fechaFin')";
-}
-
 if($categoria && $categoria != 'todos'){
     $condicionesEmpleado[] = "(estado = '$categoria')";
     $condicionesInvitado[] = "(estado = '$categoria')";
+}
+
+if($tipoRegistro && $tipoRegistro != 'todos'){  
+    $condicionesEmpleado[] = "(tipo_ingreso = '$tipoRegistro')";
+    $condicionesInvitado[] = "(tipo_ingreso = '$tipoRegistro')";
+}
+
+if($area && $area != 'todos'){  
+    $condicionesEmpleado[] = "(area_trabajo = '$area')";
 }
 
 $condicionSqlEmpleado = implode(' AND ', $condicionesEmpleado);
@@ -66,7 +71,7 @@ if ($result->num_rows > 0) {
     }
 } 
 
-if ($result2->num_rows > 0) {
+if ($area == 'todos' && $result2->num_rows > 0) {
     while($row2 = $result2->fetch_assoc()) {
         $foto = isset($row2['foto']) && $row2['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row2['foto']) : 'Resources/Imagen1.webp';
         $fechaObj = date_create_from_format('Y-m-d', $row2["fecha_ingreso"]);
@@ -85,3 +90,4 @@ if ($result2->num_rows > 0) {
         echo "</tr>";
     }
 } 
+

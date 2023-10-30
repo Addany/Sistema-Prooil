@@ -28,6 +28,7 @@ body {
   background: #0F393B;
   color: white;
   border: none;
+  margin-left: 10px;
   font-weight: bold;
 }
 
@@ -39,11 +40,12 @@ body {
 .input-group {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espacio entre el label y el input/select */
+  justify-content: flex-start;
+  margin-bottom: 10px;  /* Ajusta el margen según sea necesario */
+  margin-left: 5px;
 }
-
 .input-group label {
-  white-space: nowrap; /* Evita que el texto del label se rompa en múltiples líneas */
+  margin-left: 5px;  /* Ajusta el margen según sea necesario */
 }
 
 #editFoto {

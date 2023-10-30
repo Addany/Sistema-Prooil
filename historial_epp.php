@@ -27,18 +27,32 @@
                 <input type="text" id="buscador" placeholder="Nombre, Cantidad, etc.">
               </div>
               <div class="input-group">
-                <label for="fechaInicio">Fecha Inicio:</label>
+                <label for="fechaInicio">Fecha:</label>
                 <input type="date" id="fechaInicio">
               </div>
               <div class="input-group">
-                <label for="fechaFin">Fecha Fin:</label>
-                <input type="date" id="fechaFin">
+                <label for="fechaorden">Ordenar por fecha:</label>
+                <select id="fechaorden">
+                  <option value="reciente">Más Reciente</option>
+                  <option value="viejo">Más Viejo</option>
+                </select>
               </div>
               <div class="input-group">
-                <label for="categoria">Categoria:</label>
-                <select id="categoria">
+                <label for="clase">Clase:</label>
+                <select id="clase">
                   <option value="todos">Todos</option>
-                  <option value="casco contra impacto">Casco contra impacto</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="talla">Talla:</label>
+                <select id="talla">
+                  <option value="todos">Todos</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="marca">Marca:</label>
+                <select id="marca">
+                  <option value="todos">Todos</option>
                 </select>
                 <button type="button" id="generarReporte"  onclick="verDatos(this)">Generar Reporte</button>
                 <button type="button" id="eliminarBusqueda">Limpiar Búsqueda</button>
@@ -177,6 +191,7 @@
   <script src="js/scriptnavegacion.js"></script>
   <script src="js/tablaHistorial.js"></script>
   <script src="js/popup.js"></script>
+  <script src="js/prueba3.js"></script>
 </body>
 </html>
 

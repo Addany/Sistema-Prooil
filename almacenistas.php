@@ -43,15 +43,18 @@
                             <input type="text" id="buscador" placeholder="Nombre, Usuario, etc.">
                         </div>
                         <div class="input-group">
-                            <label for="fechaInicio">Fecha de inicio:</label>
+                            <label for="fechaInicio">Fecha:</label>
                             <input type="date" id="fechaInicio">
                         </div>
                         <div class="input-group">
-                            <label for="fechaFin">Fecha de fin:</label>
-                            <input type="date" id="fechaFin">
+                            <label for="Orden">Ordenar por fecha:</label>
+                            <select id="Orden">
+                                <option value="reciente">Más Reciente</option>
+                                <option value="viejo">Más Viejo</option>
+                            </select>  
                         </div>
                         <div class="input-group">
-                            <label for="categoria">Categoría:</label>
+                            <label for="categoria">Estado:</label>
                             <select id="categoria">
                                 <option value="todos">Todos</option>
                                 <option value="Activo">Activo</option>
@@ -104,11 +107,10 @@
 
         <div class="pagination">
             <?php
-            $range = 5; // Define el rango de páginas a mostrar
-            $start = max(1, $pagina - floor($range / 2)); // Calcula la página inicial del rango
-            $end = min($totalPaginas, $start + $range - 1); // Calcula la página final del rango
+            $range = 5; 
+            $start = max(1, $pagina - floor($range / 2)); 
+            $end = min($totalPaginas, $start + $range - 1); 
 
-            // Ajusta el inicio si estamos cerca del final
             $start = max(1, $end - $range + 1);
             ?>
 
@@ -118,7 +120,7 @@
 
             <?php for($i = $start; $i <= $end; $i++): ?>
                 <?php if($i == $pagina): ?>
-                    <span class="current-page"><?php echo $i; ?></span> <!-- Resalta la página actual -->
+                    <span class="current-page"><?php echo $i; ?></span> 
                 <?php else: ?>
                     <a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
                 <?php endif; ?>

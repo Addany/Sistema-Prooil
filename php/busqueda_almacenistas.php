@@ -3,8 +3,8 @@ include 'conexion_bd.php';
 
 $texto = $_POST['texto'];
 $fechaInicio = $_POST['fechaInicio'];
-$fechaFin = $_POST['fechaFin'];
 $categoria = $_POST['categoria'];
+$orden = $_POST['orden'];  
 
 $condiciones = [];
 
@@ -16,10 +16,6 @@ if ($fechaInicio) {
     $condiciones[] = "(fecha_ingreso >= '$fechaInicio')";
 }
 
-if ($fechaFin) {
-    $condiciones[] = "(fecha_ingreso <= '$fechaFin')";
-}
-
 if ($categoria && $categoria != 'todos') {
     $condiciones[] = "(estado = '$categoria')";
 }
@@ -29,7 +25,9 @@ if ($condicionSql) {
     $condicionSql = "WHERE $condicionSql";
 }
 
-$sql = "SELECT * FROM almacenista $condicionSql";
+$ordenSql = $orden == 'viejo' ? 'ASC' : 'DESC';
+
+$sql = "SELECT * FROM almacenista $condicionSql ORDER BY fecha_ingreso $ordenSql";  
 $result = $conexion->query($sql);
 
 if ($result->num_rows > 0) {
