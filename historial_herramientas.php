@@ -97,7 +97,7 @@
           <option value="En prestamo" <?php if ($status == 'En prestamo') echo 'selected'; ?>>En préstamo</option>
         </select>
       </div>
-      <div class="input-group" id="filter">
+      <div class="button-group" id="filter">
           <button type="button" id="resetear" onclick="resetearFiltros()">Resetear Filtro</button>
           <button type="submit" value="Filtrar">Filtrar</button>
       </div>

@@ -54,6 +54,8 @@
                 <select id="marca">
                   <option value="todos">Todos</option>
                 </select>
+              </div>
+              <div>
                 <button type="button" id="generarReporte"  onclick="verDatos(this)">Generar Reporte</button>
                 <button type="button" id="eliminarBusqueda">Limpiar Búsqueda</button>
               </div>

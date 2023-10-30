@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 function cargarFiltros(){
     $.ajax({
-        url: 'php/obtener_filtros.php',
+        url: 'php/filtros_epp.php',
         type: 'GET',
         success: function(response){
             var filtros = JSON.parse(response);
@@ -31,7 +31,7 @@ function buscar(){
     var marca = $('#marca').val();
 
     $.ajax({
-        url: 'php/busqueda_items.php',
+        url: 'php/busqueda_epp.php',
         type: 'POST',
         data: {
             texto: texto,
