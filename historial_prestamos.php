@@ -14,6 +14,7 @@
 <body>
     <?php
     include 'php/session.php';
+    include 'php/conexion_bd.php';
     ?>
 
     <main>
@@ -59,21 +60,58 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-label="Folio">12345</td>
-                            <td data-label="Nombre del Trabajador">Juan</td>
-                            <td data-label="Fecha de Transacción">08-12-2022</td>
-                            <td data-label="Fecha de Devolución">08-12-2022</td>
-                            <td data-label="Quien Autorizó">Persona 1</td>
-                            <td data-label="Observaciones">Maltratado leve</td>
-                            <td data-label="Estado">Pendiente</td>
-                            <td data-label="Acciones">
-                                <button class="accion-button" onclick="verDatos()">Ver</button>
-                                <button class="accion-button" onclick="editarPrestamoForm(this)">Editar</button>
-                                <button class="accion-button">Generar documento</button>
-                                <button class="accion-button" onclick="intentarEliminar(this)">Eliminar</button>
-                            </td>
-                        </tr>
+                        <?php
+                        if ($conexion->connect_error) {
+                            die();
+                        }
+
+                        $sql = "SELECT historial_herramienta.*, folio_prestamo.*,GROUP_CONCAT(historial_herramienta.identificador) AS identificadores,
+                        CASE
+                        WHEN historial_herramienta.id_trabajador IS NOT NULL THEN empleado.nombre
+                        WHEN historial_herramienta.id_invitado IS NOT NULL THEN invitado.nombre
+                        END AS nombre_persona,
+                        almacenista.nombre AS nombre_almacenista
+                        FROM historial_herramienta
+                        JOIN folio_prestamo
+                        ON historial_herramienta.no_folio = folio_prestamo.no_folio
+                        LEFT JOIN empleado
+                        ON historial_herramienta.id_trabajador = empleado.id_trabajador
+                        LEFT JOIN invitado
+                        ON historial_herramienta.id_invitado = invitado.id_invitado
+                        JOIN almacenista
+                        ON historial_herramienta.usuario = almacenista.usuario
+                        GROUP BY 
+                        folio_prestamo.no_folio;
+                        ";
+                        $result = $conexion->query($sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $fechaObj = date_create_from_format('Y-m-d', $row["fecha_transaccion"]);
+                                $transaccion = $fechaObj->format('d/m/Y');
+                                $fechaObj1 = null;
+                                $devolucion = '';
+                                if(isset($row["fecha_devolucion"]) && !is_null($row["fecha_devolucion"]) && $row["fecha_devolucion"] != '') {
+                                    $fechaObj1 = date_create_from_format('Y-m-d', $row["fecha_devolucion"]);
+                                    $devolucion = $fechaObj1->format('d/m/Y');
+                                }
+                                echo "<tr>";
+                                echo "<td data-label='Folio'>" . $row["no_folio"] . "</td>";
+                                echo "<td data-label='Nombre del Trabajador'>" . $row["nombre_persona"] . "</td>";
+                                echo "<td data-label='Fecha de Transacción'>" . $transaccion . "</td>";
+                                echo "<td data-label='Fecha de Devolución'>" . $devolucion . "</td>";
+                                echo "<td data-label='Quien Autorizó'>" . $row["nombre_almacenista"] . "</td>";
+                                echo "<td data-label='Observaciones'>" . $row["observacion"] . "</td>";
+                                echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                                echo "<td data-label='Acciones'>";
+                                echo "<button class='accion-button' onclick='verDetalles(" . $row["no_folio"] . ")'>Ver</button>";
+                                echo "<button class='accion-button' onclick='editarPrestamoForm(this)'>Editar</button>";
+                                echo "<button class='accion-button'>Generar documento</button>";
+                                echo "<button class='accion-button' onclick='intentarEliminar(this)'>Eliminar</button>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </section>
@@ -129,6 +167,7 @@
     <div id="popupVer" class="popup">
         <form id="verPrestamoForm"> 
             <h3>Detalles del Préstamo</h3>
+            <label id="folio_numero"></label>
             <label>Herramientas Prestadas:</label>
             <div class="table-container">
                 <table id="listaHerramientas">
@@ -145,18 +184,18 @@
                     <tbody>
                         <tr>
                             <td data-label="Seleccion de entrega"><input type="checkbox"></td>
-                            <td data-label="ID de herramienta">1234123</td>
-                            <td data-label="Tipo de herramienta">Destornillador</td>
-                            <td data-label="N. Serie">123123123</td>
-                            <td data-label="Marca">Trupper</td>
-                            <td data-label="Fecha de devolución">12/21/2023</td>
+                            <td data-label="ID de herramienta"></td>
+                            <td data-label="Tipo de herramienta"></td>
+                            <td data-label="N. Serie"></td>
+                            <td data-label="Marca"></td>
+                            <td data-label="Fecha de devolución"></td>
                         </tr>
      
                     </tbody>
                 </table>
             </div>
             <label for="observaciones">Observaciones:</label>
-            <textarea id="observaciones" placeholder="Ingrese observaciones aquí..."></textarea>
+            <textarea id="observaciones" disabled></textarea>
             <div class="button-group">
                 <button type="button">Guardar</button> 
                 <button type="button" onclick="cerrarPopup('popupVer')">Cancelar</button> 
@@ -167,6 +206,7 @@
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/tablaHistorial.js"></script>
     <script src="js/popup.js"></script>
+    <script src="js/renderModule/detallesPrestamo.js"></script>
 
 </body>
 </html>

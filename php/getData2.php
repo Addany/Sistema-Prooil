@@ -15,7 +15,7 @@ if(isset($data['arrayIDs'])) {
 
 
 
-    // Aquí tu conexión a la base de datos
+    // Aquí la conexión a la base de datos
 
     $tipoTrabajador = "";
 
