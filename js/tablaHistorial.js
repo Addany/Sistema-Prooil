@@ -156,19 +156,6 @@ function actualizarFoto(event) {
   }
 }
 
-function intentarEliminar(buttonElement) {
-  solicitarNIP()
-      .then(() => {
-         
-          const fila = buttonElement.closest('tr');
-          fila.remove();
-          
-      })
-      .catch(error => {
-          console.error(error.message);
-          
-      });
-}
 
 function resetearFiltros() {
   document.getElementById('fechaInicio').value = '';

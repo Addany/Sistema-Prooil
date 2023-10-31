@@ -195,7 +195,6 @@
               echo "<td data-label='Acciones'>";
               echo "<button class='accion-button' onclick='descargarQR(\"" . $row["identificador"] . "\")'>Descargar QR</button>";
               echo "<button class='accion-button' onclick='editarHerramienta(this)'>Editar</button>";
-              echo "<button class='accion-button' onclick='intentarEliminar(this)'>Eliminar</button>";
               echo "</td>";
               echo "</tr>";
             }

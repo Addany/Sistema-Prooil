@@ -106,7 +106,6 @@
                                 echo "<button class='accion-button' onclick='verDetalles(" . $row["no_folio"] . ")'>Ver</button>";
                                 echo "<button class='accion-button' onclick='editarPrestamoForm(this)'>Editar</button>";
                                 echo "<button class='accion-button'>Generar documento</button>";
-                                echo "<button class='accion-button' onclick='intentarEliminar(this)'>Eliminar</button>";
                                 echo "</td>";
                                 echo "</tr>";
                             }

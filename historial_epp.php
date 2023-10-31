@@ -104,7 +104,6 @@
                   
                   echo "<td data-label='Acciones'>";
                   echo "<button class='accion-button' onclick='editarEPP(this)'>Editar</button>";
-                  echo "<button class='accion-button' onclick='intentarEliminar(this)'>Eliminar</button>";
                   echo "</td>";
                   echo "</tr>";
                 }
