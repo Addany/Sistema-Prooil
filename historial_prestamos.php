@@ -104,7 +104,6 @@
                                 echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
                                 echo "<td data-label='Acciones'>";
                                 echo "<button class='accion-button' onclick='verDetalles(" . $row["no_folio"] . ")'>Ver</button>";
-                                echo "<button class='accion-button' onclick='editarPrestamoForm(this)'>Editar</button>";
                                 echo "<button class='accion-button'>Generar documento</button>";
                                 echo "</td>";
                                 echo "</tr>";

@@ -70,7 +70,6 @@
                             <td data-label="Status del proceso del entrega">Pendiente</td>
                             <td data-label="Acciones">
                                 <button class="accion-button" onclick="verDatos()">Ver</button>
-                                <button class="accion-button" onclick="editarEntregaForm(this)">Editar</button>
                                 <button class="accion-button">Generar documento</button>
                             </td>
                         </tr>

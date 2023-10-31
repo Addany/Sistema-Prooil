@@ -18,7 +18,6 @@
     <div id="page-container">
       <div id="navbar"></div> 
 
-
       <div class="registration-container">
         <h2>Registro de almacenista</h2>
         <form action="php/registro.php" method="POST">

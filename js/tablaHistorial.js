@@ -17,26 +17,6 @@ async function verDatos() {
         console.error(error);
     }
 }
-  
-async function editarEntregaForm(button) {
-
-      let row = button.closest('tr');
-
-      document.getElementById("editFolio").value = row.querySelector('[data-label="Folio"]').innerText;
-
-      let fechaTransaccionStr = row.querySelector('[data-label="Fecha de Transacción"]').innerText;
-      let partesFecha = fechaTransaccionStr.split("-");
-      let fechaReformateada = `${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`;
-      document.getElementById("editFechaTransaccion").value = fechaReformateada;
-
-      document.getElementById("edittrabajadorSolicitante").value = row.querySelector('[data-label="Trabajador solicitante"]').innerText;
-      document.getElementById("editQuienAutorizo").value = row.querySelector('[data-label="¿Quien Autorizó?"]').innerText;
-      document.getElementById("editObservaciones").value = row.querySelector('[data-label="Observaciones"]').innerText;
-      document.getElementById("editEstadoproceso").value = row.querySelector('[data-label="Status del proceso del entrega"]').innerText;
-
-      abrirPopup('popupEditar');
-}
-
 
 async function editarAlmacenista(button) {
   try {
@@ -93,22 +73,6 @@ async function editarHerramienta(button) {
 
 }
 
-async function editarPrestamoForm(button) {
-      
-      let row = button.closest('tr');
-      
-      document.getElementById("editFolio").value = row.querySelector('[data-label="Folio"]').innerText;
-      document.getElementById("editNombreDelTrabajador").value = row.querySelector('[data-label="Nombre del Trabajador"]').innerText;
-      let fechaTransaccion = row.querySelector('[data-label="Fecha de Transacción"]').innerText.split("-").reverse().join("-");
-      document.getElementById("editFechaTransaccion").value = fechaTransaccion;
-      let fechaDevolucion = row.querySelector('[data-label="Fecha de Devolución"]').innerText.split("-").reverse().join("-");
-      document.getElementById("editFechaDevolucion").value = fechaDevolucion;
-      document.getElementById("editQuienAutorizo").value = row.querySelector('[data-label="Quien Autorizó"]').innerText;
-      document.getElementById("editestado").value = row.querySelector('[data-label="Estado"]').innerText.toLowerCase();
-
-      abrirPopup('popupEditar');
-
-}
 
 async function editarTrabajador(button) {
   try {
