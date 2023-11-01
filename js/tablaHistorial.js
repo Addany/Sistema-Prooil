@@ -24,7 +24,7 @@ async function editarAlmacenista(button) {
 
       let row = button.closest('tr');
 
-      document.getElementById("editEstado").value = row.querySelector('[data-label="Estado"]').innerText;
+      document.getElementById("editEstado").value = row.querySelector('[data-label="Estado"] span').innerText;
       document.getElementById("editNombre").value = row.querySelector('[data-label="Nombre"]').innerText;
       document.getElementById("editTelefono").value = row.querySelector('[data-label="Teléfono"]').innerText;
       document.getElementById("editCorreo").value = row.querySelector('[data-label="Correo"]').innerText;
@@ -79,7 +79,7 @@ async function editarTrabajador(button) {
       await solicitarNIP();
 
       let row = button.closest('tr');
-      document.getElementById("editEstado").value = row.querySelector('[data-label="Estado"]').innerText;
+      document.getElementById("editEstado").value = row.querySelector('[data-label="Estado"] span').innerText;
       document.getElementById("editTipoRegistro").value = row.querySelector('[data-label="Tipo de Registro"]').innerText;
       document.getElementById("editNombre").value = row.querySelector('[data-label="Nombre"]').innerText;
       document.getElementById("editArea").value = row.querySelector('[data-label="Area"]').innerText;

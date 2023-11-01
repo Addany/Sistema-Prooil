@@ -95,65 +95,65 @@
                 </thead>
                 <tbody>
                     <?php
-                    if ($conexion->connect_error) {
-                        die();
-                    }
-                    if ($inicio < $totalRegistrosEmpleado) {
-                        $limitEmpleado = min($cantidadPorPagina, $totalRegistrosEmpleado - $inicio);
-                        $sql = "SELECT * FROM empleado LIMIT $inicio, $limitEmpleado";
-                        $result = $conexion->query($sql);
-                    } else {
-                        $result = new ArrayObject();  
-                    }
-                    
-                    $validResultRows = !($result instanceof ArrayObject) ? $result->num_rows : 0;
-                    if ($validResultRows < $cantidadPorPagina) {
-                        $restantes = $cantidadPorPagina - $validResultRows;
-                        $inicioInvitado = max(0, $inicio - $totalRegistrosEmpleado);
-                        $sql2 = "SELECT * FROM invitado LIMIT $inicioInvitado, $restantes";
-                        $result2 = $conexion->query($sql2);
-                    } else {
-                        $result2 = new ArrayObject();  
-                    }
+                        if ($conexion->connect_error) {
+                            die();
+                        }
+                        
 
-                    if (!$result instanceof ArrayObject && $result->num_rows > 0) {
+                        $limitEmpleado = min($cantidadPorPagina, $totalRegistrosEmpleado - $inicio);
+                        $sql = "SELECT *, 'empleado' as tipo FROM empleado ORDER BY fecha_ingreso DESC LIMIT $inicio, $limitEmpleado";
+                        $result = $conexion->query($sql);
+                        
+                        $records = [];
                         while ($row = $result->fetch_assoc()) {
+                            $row['fechaObj'] = date_create_from_format('Y-m-d', $row["fecha_ingreso"]);
+                            $records[] = $row;
+                        }
+                    
+                        $validResultRows = count($records);
+                        if ($validResultRows < $cantidadPorPagina) {
+                            $restantes = $cantidadPorPagina - $validResultRows;
+                            $inicioInvitado = max(0, $inicio - $totalRegistrosEmpleado);
+                            $sql2 = "SELECT *, 'invitado' as tipo FROM invitado ORDER BY fecha_ingreso DESC LIMIT $inicioInvitado, $restantes";
+                            $result2 = $conexion->query($sql2);
+                        
+                            while ($row = $result2->fetch_assoc()) {
+                                $row['fechaObj'] = date_create_from_format('Y-m-d', $row["fecha_ingreso"]);
+                                $records[] = $row;
+                            }
+                        }
+                        
+                        usort($records, function ($a, $b) {
+                            return $b['fechaObj']->getTimestamp() - $a['fechaObj']->getTimestamp();
+                        });
+                        
+                        foreach ($records as $row) {
                             $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
-                            $fechaObj = date_create_from_format('Y-m-d', $row["fecha_ingreso"]);
-                            $fechaFormateada = $fechaObj->format('d/m/Y');
+                            $fechaFormateada = $row['fechaObj']->format('d/m/Y');
                             echo "<tr>";
-                            echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto del empleado' class='foto-trabajador'></td>";
-                            echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                            echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto del " . $row['tipo'] . "' class='foto-trabajador'></td>";
+                            if ($row["estado"] == "Activo") {
+                                echo "<td data-label='Estado'><span class='estatus'><i class='fas fa-check-circle' style='color:green;'></i> " . $row["estado"] . "</span></td>";
+                            } elseif ($row["estado"] == "Inactivo") {
+                                echo "<td data-label='Estado'><span class='estatus'><i class='fas fa-times-circle' style='color:red;'></i> " . $row["estado"] . "</span></td>";
+                            } else {
+                                echo "<td data-label='Estado'><span class='estatus'>" . $row["estado"] . "</span></td>";
+                            }
                             echo "<td data-label='Tipo de Registro'>" . $row["tipo_ingreso"] . "</td>";
-                            echo "<td data-label='ID'>" . $row["id_trabajador"] . "</td>";
+                            if ($row['tipo'] == 'empleado') {
+                                echo "<td data-label='ID'>" . $row["id_trabajador"] . "</td>";
+                                echo "<td data-label='Area'>" . $row["area_trabajo"] . "</td>";
+                            } else {
+                                echo "<td data-label='ID'>" . $row["id_invitado"] . "</td>";
+                                echo "<td data-label='Area'>N/A</td>";
+                            }
                             echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
-                            echo "<td data-label='Area'>" . $row["area_trabajo"] . "</td>";
                             echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";
                             echo "<td data-label='Correo Electrónico'>" . $row["correo"] . "</td>";
                             echo "<td data-label='Fecha de Ingreso'>" . $fechaFormateada . "</td>";
                             echo "<td data-label='Acciones'><button class='accion-button' onclick='editarTrabajador(this)'>Editar</button></td>";
                             echo "</tr>";
                         }
-                    }
-                    if (!$result2 instanceof ArrayObject && $result2->num_rows > 0) {
-                        while ($row = $result2->fetch_assoc()) {
-                            $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
-                            $fechaObj = date_create_from_format('Y-m-d', $row["fecha_ingreso"]);
-                            $fechaFormateada = $fechaObj->format('d/m/Y');
-                            echo "<tr>";
-                            echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto del invitado' class='foto-trabajador'></td>";
-                            echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
-                            echo "<td data-label='Tipo de Registro'>" . $row["tipo_ingreso"] . "</td>";
-                            echo "<td data-label='ID'>" . $row["id_invitado"] . "</td>";
-                            echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
-                            echo "<td data-label='Area'>N/A</td>";
-                            echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";
-                            echo "<td data-label='Correo Electrónico'>" . $row["correo"] . "</td>";
-                            echo "<td data-label='Fecha de Ingreso'>" . $fechaFormateada . "</td>";
-                            echo "<td data-label='Acciones'><button class='accion-button' onclick='editarTrabajador(this)'>Editar</button></td>";
-                            echo "</tr>";
-                        }
-                    }
                     ?>
                 </tbody>
             </table>

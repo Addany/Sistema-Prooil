@@ -191,7 +191,11 @@
               echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
               echo "<td data-label='Color'>" . $row["color"] . "</td>";
               echo "<td data-label='Fecha de Registro'>" . $fechaFormateada . "</td>";
-              echo "<td data-label='Estatus'>" . $row["disponibilidad"] . "</td>";
+              if ($row["disponibilidad"] == "Disponible") {
+                echo "<td data-label='Estatus'><span class='estatus'><i class='fa fa-check-circle' style='color:green;'></i> " . $row["disponibilidad"] . "</span></td>";
+              } elseif ($row["disponibilidad"] == "En Prestamo") {
+                  echo "<td data-label='Estatus'><span class='estatus'><i class='fa-solid fa-handshake' style='color:red;'></i> " . $row["disponibilidad"] . "</span></td>";
+              }
               echo "<td data-label='Acciones'>";
               echo "<button class='accion-button' onclick='descargarQR(\"" . $row["identificador"] . "\")'>Descargar QR</button>";
               echo "<button class='accion-button' onclick='editarHerramienta(this)'>Editar</button>";

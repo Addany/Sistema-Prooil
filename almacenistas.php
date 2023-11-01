@@ -81,7 +81,12 @@
                         if ($conexion->connect_error) {
                             die();
                         }
-                        $sql = "SELECT * FROM almacenista LIMIT $inicio, $cantidadPorPagina";
+                        $orden = isset($_GET['orden']) ? $_GET['orden'] : 'reciente';
+                        if ($orden == 'reciente') {
+                            $sql = "SELECT * FROM almacenista ORDER BY fecha_ingreso DESC LIMIT $inicio, $cantidadPorPagina";
+                        } else {
+                            $sql = "SELECT * FROM almacenista ORDER BY fecha_ingreso ASC LIMIT $inicio, $cantidadPorPagina";
+                        }
                         $result = $conexion->query($sql);
     
                         if ($result->num_rows > 0) {
@@ -89,7 +94,13 @@
                                 $fechaObj = date_create_from_format('Y-m-d', $row["fecha_ingreso"]);
                                 $fechaFormateada = $fechaObj->format('d/m/Y');
                                 echo "<tr>";
-                                echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                                if ($row["estado"] == "Activo") {
+                                    echo "<td data-label='Estado'><span class='estatus'><i class='fas fa-check-circle' style='color:green;'></i> " . $row["estado"] . "</span></td>";
+                                } elseif ($row["estado"] == "Inactivo") {
+                                    echo "<td data-label='Estado'><span class='estatus'><i class='fas fa-times-circle' style='color:red;'></i> " . $row["estado"] . "</span></td>";
+                                } else {
+                                    echo "<td data-label='Estado'><span class='estatus'>" . $row["estado"] . "</span></td>";
+                                }                            
                                 echo "<td data-label='Usuario'>" . $row["usuario"] . "</td>";
                                 echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
                                 echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";

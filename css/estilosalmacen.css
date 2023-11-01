@@ -253,6 +253,12 @@ tr:nth-child(even) {
   border-radius: 5px; /* Bordes redondeados también para la página actual */
 }
 
+.estatus {
+  display: flex;
+  align-items: center; /* alinea verticalmente el icono con el texto */
+  justify-content: center; /* centra los elementos horizontalmente */
+  gap: 5px; /* agrega un espacio entre el icono y el texto */
+}
 
 @media (max-width: 768px) {
   .form-buscar {
