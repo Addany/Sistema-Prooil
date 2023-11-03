@@ -117,7 +117,14 @@
                                 echo "<td data-label='Fecha de Devolución'>" . $devolucion . "</td>";
                                 echo "<td data-label='Quien Autorizó'>" . $row["nombre_almacenista"] . "</td>";
                                 echo "<td data-label='Observaciones'>" . $row["observacion"] . "</td>";
-                                echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                                if ($row["estado"] == "Activo") {
+                                    echo "<td data-label='Estado'><i class='fas fa-check-circle' style='color:green;'></i> Activo</td>";
+                                } else if ($row["estado"] == "Inactivo") {
+                                    echo "<td data-label='Estado'><i class='fas fa-times-circle' style='color:red;'></i> Inactivo</td>";
+                                } else {
+                                    echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                                }
+
                                 echo "<td data-label='Acciones'>";
                                 echo "<button class='accion-button' onclick='verDetalles(" . $row["no_folio"] . ")'>Ver</button>";
                                 echo "<button class='accion-button'>Generar documento</button>";

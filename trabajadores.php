@@ -142,12 +142,13 @@
                             echo "<td data-label='Tipo de Registro'>" . $row["tipo_ingreso"] . "</td>";
                             if ($row['tipo'] == 'empleado') {
                                 echo "<td data-label='ID'>" . $row["id_trabajador"] . "</td>";
+                                echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
                                 echo "<td data-label='Area'>" . $row["area_trabajo"] . "</td>";
                             } else {
                                 echo "<td data-label='ID'>" . $row["id_invitado"] . "</td>";
+                                echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
                                 echo "<td data-label='Area'>N/A</td>";
                             }
-                            echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
                             echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";
                             echo "<td data-label='Correo Electrónico'>" . $row["correo"] . "</td>";
                             echo "<td data-label='Fecha de Ingreso'>" . $fechaFormateada . "</td>";

@@ -58,7 +58,13 @@ if ($result->num_rows > 0) {
         $fechaFormateada = $fechaObj->format('d/m/Y');
         echo "<tr>";
         echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto del empleado' class='foto-trabajador'></td>";
-        echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+        if ($row["estado"] == "Activo") {
+            echo "<td data-label='Estado'><span class='estatus'><i class='fas fa-check-circle' style='color:green;'></i> " . $row["estado"] . "</span></td>";
+        } elseif ($row["estado"] == "Inactivo") {
+            echo "<td data-label='Estado'><span class='estatus'><i class='fas fa-times-circle' style='color:red;'></i> " . $row["estado"] . "</span></td>";
+        } else {
+            echo "<td data-label='Estado'><span class='estatus'>" . $row["estado"] . "</span></td>";
+        }
         echo "<td data-label='Tipo de Registro'>" . $row["tipo_ingreso"] . "</td>";
         echo "<td data-label='ID'>" . $row["id_trabajador"] . "</td>";
         echo "<td data-label='Nombre'>" . $row["nombre"] . "</td>";
@@ -78,7 +84,13 @@ if ($area == 'todos' && $result2->num_rows > 0) {
         $fechaFormateada = $fechaObj->format('d/m/Y');
         echo "<tr>";
         echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto del invitado' class='foto-trabajador'></td>";
-        echo "<td data-label='Estado'>" . $row2["estado"] . "</td>";  // Cambiado $row a $row2
+        if ($row2["estado"] == "Activo") {
+            echo "<td data-label='Estado'><span class='estatus'><i class='fas fa-check-circle' style='color:green;'></i> " . $row2["estado"] . "</span></td>";
+        } elseif ($row2["estado"] == "Inactivo") {
+            echo "<td data-label='Estado'><span class='estatus'><i class='fas fa-times-circle' style='color:red;'></i> " . $row2["estado"] . "</span></td>";
+        } else {
+            echo "<td data-label='Estado'><span class='estatus'>" . $row2["estado"] . "</span></td>";
+        }
         echo "<td data-label='Tipo de Registro'>" . $row2["tipo_ingreso"] . "</td>";  // Cambiado $row a $row2
         echo "<td data-label='ID'>" . $row2["id_invitado"] . "</td>";  // Cambiado $row a $row2
         echo "<td data-label='Nombre'>" . $row2["nombre"] . "</td>";  // Cambiado $row a $row2
