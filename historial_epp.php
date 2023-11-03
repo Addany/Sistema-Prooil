@@ -55,7 +55,7 @@
                   <option value="todos">Todos</option>
                 </select>
               </div>
-              <div>
+              <div class="button-group"  id="filter">
                 <button type="button" id="generarReporte"  onclick="verDatos(this)">Generar Reporte</button>
                 <button type="button" id="eliminarBusqueda">Limpiar Búsqueda</button>
               </div>

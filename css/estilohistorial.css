@@ -257,19 +257,15 @@ tr:nth-child(even) {
   width: 95%;       
   margin: 10px auto;
   border-collapse: collapse;
-}
-
-#popupVer thead, 
-#popupVer tbody,  
-#popupVer tbody tr {
-  display: table; 
-  width: 100%; 
-  table-layout: fixed;
+  table-layout: fixed; 
 }
 
 #popupVer th, #popupVer td {
   padding: 6px;    
   border: 1px solid #ccc;
+  word-break: break-all; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 
 #popupVer td[data-label]:before {
@@ -301,6 +297,47 @@ tr:nth-child(even) {
   width: 70%; 
   max-width: 70%; 
   box-sizing: border-box; 
+}
+
+.pagination {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0;
+  background-color: #0f393bea;
+  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Sombra sutil para agregar profundidad */
+}
+
+.pagination a,
+.pagination span {
+  color: #ffffff;
+  padding: 3px 12px;
+  margin: 0 4px;
+  text-decoration: none;
+  font: bold 16px Arial, sans-serif;
+  transition: background-color 0.3s, transform 0.2s; /* Agrega transición de transform también */
+}
+
+.pagination a {
+  background-color: #1b797e;
+  border-radius: 5px;
+  border: 1px solid transparent; /* Border transparente para mantener el mismo tamaño al hacer hover */
+}
+
+.pagination a:hover {
+  background-color: #ffffff;
+  color: #0F393B;
+  transform: scale(1.05); /* Efecto de ampliación suave al pasar el ratón */
+  border: 1px solid #1b797e; /* Border del color de fondo original al hacer hover */
+}
+
+.pagination span.current-page {
+  pointer-events: none;
+  background-color: #2ba3a5; /* Color de fondo distintivo para la página actual */
+  border-radius: 5px; /* Bordes redondeados también para la página actual */
 }
 
 
@@ -382,35 +419,29 @@ tr:nth-child(even) {
   }
   #popupVer table {
     width: 100%;
-    border: 0;
+    border-collapse: collapse; /* Asegúrate de que la tabla no tenga espacios entre celdas */
   }
 
   #popupVer thead {
-    display: none; 
+    display: table-header-group; /* Muestra los encabezados de la tabla */
   }
 
-  #popupVer tbody tr {
-    margin-bottom: 0.625rem;
-    display: block;
-    border: 1px solid #ccc;
+  #popupVer tbody {
+    display: table-row-group; /* Muestra el cuerpo de la tabla */
+  }
+
+  #popupVer tr {
+    display: table-row; /* Muestra las filas de la tabla */
   }
 
   #popupVer td {
-    display: block; 
-    text-align: right; 
-    position: relative;
-    padding-left: 50%; 
+    display: table-cell; /* Muestra las celdas de la tabla */
+    text-align: left; /* Alinea el texto a la izquierda */
+    padding: 0.5em; /* Agrega algo de relleno dentro de las celdas */
   }
 
   #popupVer td[data-label]:before {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-    display: block; 
-    text-align: left; 
+    display: none; /* Oculta el contenido generado antes del td para dispositivos más pequeños */
   }
 
 }
@@ -458,10 +489,11 @@ tr:nth-child(even) {
   #popupEditar {
     max-width: 85%;
   }
-  #popupVer {
-    max-width: 85%;
+  #popupVer .table-container {
+    overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es más ancha que la pantalla */
   }
-  #popupVer td[data-label]:before {
-    display: block;
+
+  #popupVer table {
+    min-width: 600px; /* Establece un ancho mínimo para la tabla, puede requerir desplazamiento horizontal */
   }
 }

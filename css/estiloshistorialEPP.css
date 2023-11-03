@@ -5,6 +5,10 @@ body {
   padding-top: 58px;
 }
 
+#filter {
+  display: flex; 
+}
+
 #page-container {
   display: none;
 }
@@ -24,7 +28,7 @@ body {
 }
 
 .form-buscar button {
-  padding: 9px;
+  padding: 5px;
   background: #0F393B;
   color: white;
   border: none;

@@ -15,6 +15,24 @@
     <?php
     include 'php/session.php';
     include 'php/conexion_bd.php';
+
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $cantidadPorPagina = 20;
+    $inicio = ($pagina > 1) ? ($pagina * $cantidadPorPagina) - $cantidadPorPagina : 0;
+
+    $sql_total_prestamos = "
+        SELECT COUNT(DISTINCT folio_prestamo.no_folio) as total 
+        FROM historial_herramienta 
+        JOIN folio_prestamo ON historial_herramienta.no_folio = folio_prestamo.no_folio
+        LEFT JOIN empleado ON historial_herramienta.id_trabajador = empleado.id_trabajador
+        LEFT JOIN invitado ON historial_herramienta.id_invitado = invitado.id_invitado
+        JOIN almacenista ON historial_herramienta.usuario = almacenista.usuario
+    ";
+    $resultado_total_prestamos = $conexion->query($sql_total_prestamos);
+    $fila_total_prestamos = $resultado_total_prestamos->fetch_assoc();
+    $totalRegistros = $fila_total_prestamos['total'];
+
+    $totalPaginas = ceil($totalRegistros / $cantidadPorPagina);
     ?>
 
     <main>
@@ -65,23 +83,21 @@
                             die();
                         }
 
-                        $sql = "SELECT historial_herramienta.*, folio_prestamo.*,GROUP_CONCAT(historial_herramienta.identificador) AS identificadores,
+                        $sql = "
+                        SELECT historial_herramienta.*, folio_prestamo.*, GROUP_CONCAT(historial_herramienta.identificador) AS identificadores,
                         CASE
                         WHEN historial_herramienta.id_trabajador IS NOT NULL THEN empleado.nombre
                         WHEN historial_herramienta.id_invitado IS NOT NULL THEN invitado.nombre
                         END AS nombre_persona,
                         almacenista.nombre AS nombre_almacenista
                         FROM historial_herramienta
-                        JOIN folio_prestamo
-                        ON historial_herramienta.no_folio = folio_prestamo.no_folio
-                        LEFT JOIN empleado
-                        ON historial_herramienta.id_trabajador = empleado.id_trabajador
-                        LEFT JOIN invitado
-                        ON historial_herramienta.id_invitado = invitado.id_invitado
-                        JOIN almacenista
-                        ON historial_herramienta.usuario = almacenista.usuario
-                        GROUP BY 
-                        folio_prestamo.no_folio;
+                        JOIN folio_prestamo ON historial_herramienta.no_folio = folio_prestamo.no_folio
+                        LEFT JOIN empleado ON historial_herramienta.id_trabajador = empleado.id_trabajador
+                        LEFT JOIN invitado ON historial_herramienta.id_invitado = invitado.id_invitado
+                        JOIN almacenista ON historial_herramienta.usuario = almacenista.usuario
+                        GROUP BY folio_prestamo.no_folio
+                        ORDER BY folio_prestamo.no_folio
+                        LIMIT $cantidadPorPagina OFFSET $inicio
                         ";
                         $result = $conexion->query($sql);
                         if ($result->num_rows > 0) {
@@ -116,52 +132,33 @@
         </div>
     </main>
 
-    <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar', 'popupVer')"></div>
-    <div id="popupEditar">
-        <form id="editarPrestamoForm"> 
-            <h3>Editar datos</h3>
-            
-            <div class="field">
-                <label for="editFolio">Folio:</label>
-                <input type="text" id="editFolio" placeholder="Folio" readonly>
-            </div>
+        <div class="pagination">
+            <?php
+            $range = 5; 
+            $start = max(1, $pagina - floor($range / 2)); 
+            $end = min($totalPaginas, $start + $range - 1); 
 
-            <div class="field">
-                <label for="editNombreDelTrabajador">Nombre del Trabajador:</label>
-                <input type="text" id="editNombreDelTrabajador" placeholder="Nombre del Trabajador">
-            </div>
+            $start = max(1, $end - $range + 1);
+            ?>
 
-            <div class="field">
-                <label for="editFechaTransaccion">Fecha de Transacción:</label>
-                <input type="date" id="editFechaTransaccion">
-            </div>
+            <?php if($pagina > 1): ?>  
+                <a class="prev" href="?pagina=<?php echo $pagina-1; ?>">Anterior</a>
+            <?php endif; ?>
 
-            <div class="field">
-                <label for="editFechaDevolucion">Fecha de Devolución:</label>
-                <input type="date" id="editFechaDevolucion" placeholder="Fecha de Devolución">
-            </div>
+            <?php for($i = $start; $i <= $end; $i++): ?>
+                <?php if($i == $pagina): ?>
+                    <span class="current-page"><?php echo $i; ?></span> 
+                <?php else: ?>
+                    <a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                <?php endif; ?>
+            <?php endfor; ?>
 
-            <div class="field">
-                <label for="editQuienAutorizo">¿Quién Autorizó?:</label>
-                <select id="editQuienAutorizo">
-                    <option value="Persona 1">Persona 1</option>
-                    <option value="Persona 2">Persona 2</option>
-                </select>
-            </div>
+            <?php if($pagina < $totalPaginas): ?>  
+                <a class="next" href="?pagina=<?php echo $pagina+1; ?>">Siguiente</a>
+            <?php endif; ?>
+        </div>
 
-            <div class="field">
-                <label for="editestado">Status del prestamo:</label>
-                <select id="editestado">
-                    <option value="pendiente">Pendiente</option>
-                    <option value="completado">Completado</option>
-                </select>
-            </div>
-
-            <button type="submit" class="guardar">Guardar</button>
-            <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
-        </form>
-    </div>
-
+    <div id="overlay" onclick="cerrarSiEsFuera(event,'popupVer')"></div>
     <div id="popupVer" class="popup">
         <form id="verPrestamoForm"> 
             <h3>Detalles del Préstamo</h3>

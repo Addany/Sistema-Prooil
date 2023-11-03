@@ -24,7 +24,7 @@ body {
 }
 
 #filter {
-  display: flex; /* Cambia el layout a flexbox */
+  display: flex; 
 }
 
 .form-buscar button {
@@ -346,7 +346,7 @@ tr:nth-child(even) {
   }
 }
 
-@media (max-width: 600px) {  /* Ajusta el valor de 600px según sea necesario */
+@media (max-width: 600px) {  
   .pagination a:not(.prev):not(.next):not(.current-page),
   .pagination span:not(.current-page) {
     display: none;  /* Oculta todos los números de página excepto el actual, el anterior y el siguiente */
