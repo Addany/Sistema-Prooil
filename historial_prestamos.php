@@ -199,7 +199,7 @@
             <label for="observaciones">Observaciones:</label>
             <textarea id="observaciones" disabled></textarea>
             <div class="button-group">
-                <button type="button">Guardar</button> 
+                <button type="button" id="botonEnviar">Guardar</button> 
                 <button type="button" onclick="cerrarPopup('popupVer')">Cancelar</button> 
             </div> 
         </form>
@@ -209,6 +209,7 @@
     <script src="js/tablaHistorial.js"></script>
     <script src="js/popup.js"></script>
     <script src="js/renderModule/detallesPrestamo.js"></script>
+    <script src="js/renderModule/marcarHerramienta.js"></script>
 
 </body>
 </html>
