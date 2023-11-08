@@ -2,7 +2,7 @@ import { clearContainerAll } from "./renderDelete.js";
 import { renderElementDom } from "./renderTable.js";
 import { renderErrorDOM } from "./errorRendering.js";
 
-export const readerCode = (()=> { //Hecho por Jesus Rosml
+export const readerCode = (()=> {
     'use strict';
 
     const elementDOM = {
@@ -40,7 +40,7 @@ export const readerCode = (()=> { //Hecho por Jesus Rosml
                 url: "php/getData.php",
                 data: { code: content },
                 success: function(data){
-                    console.log("Respuesta del servidor:", data);
+                    //console.log("Respuesta del servidor:", data);
                     let toolInfo = JSON.parse(data);
                     
                     if(toolInfo.error){  // Verifica si la respuesta contiene un error

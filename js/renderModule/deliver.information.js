@@ -25,7 +25,7 @@ const selectBodyHTML = document.querySelector('body');
  */
 
 const returnInformationLoan = ( elementsIDs, nameStorer, nameApplicant, observation) => {
-    console.log(elementsIDs, nameStorer, nameApplicant, observation)
+    //console.log(elementsIDs, nameStorer, nameApplicant, observation) //TEST
     if(elementsIDs.length === 0) {
         alert('No se ha escaneado ningun codigo QR');
         return;
@@ -65,9 +65,8 @@ const createWindowNumFolio = ( numFolio ) => {
 buttomConfirm.addEventListener('click', ()=> {
     const objectInformation = returnInformationLoan(readerCode.firstCode, labelStorerName, labelApplicantName, observationLoan);
 
-    console.log(objectInformation)
+    //console.log(objectInformation) //TEST
     if(typeof objectInformation == 'undefined') {
-        console.log('Puta madre rellena la solicitud')
         return;
     }
     
@@ -80,7 +79,7 @@ buttomConfirm.addEventListener('click', ()=> {
 
     //Aqui estoy convirtiendo los datos en formato JSON antes de enviarlos 
     const dataJSON = JSON.stringify(objectInformation);
-    console.log(dataJSON);
+    //console.log(dataJSON); //test
 
     //Aqui estoy configurando la funcion de devolucion de llamada para la respuesta del servidor 
     xhr.onload = ()=> {
