@@ -1,5 +1,6 @@
 import { clearContainerAll } from "./renderDelete.js";
 import { renderElementDom } from "./renderTable.js";
+import { renderErrorDOM } from "./errorRendering.js";
 
 export const readerCode = (()=> { //Hecho por Jesus Rosml
     'use strict';
@@ -43,12 +44,12 @@ export const readerCode = (()=> { //Hecho por Jesus Rosml
                     let toolInfo = JSON.parse(data);
                     
                     if(toolInfo.error){  // Verifica si la respuesta contiene un error
-                        console.error(toolInfo.error);
+                        console.error(toolInfo.error, 'pipi');
                         return;
                     }
                     
                     if(toolInfo.alerta){  // Verifica si hay una alerta
-                        console.warn(toolInfo.alerta);
+                        renderErrorDOM( content );
                         return;
                     }
                     

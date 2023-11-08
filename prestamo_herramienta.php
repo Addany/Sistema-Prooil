@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/estilosprestamodevolucion.css">
     <link rel="icon" href="Resources/Icons/">
+    <link rel="stylesheet" href="css/container-windowFolio.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -38,7 +39,7 @@
                     $resultEmpleado = mysqli_query($conexion, $queryEmpleado);
 
                     //Muestra una lista desplegable con los nombres de los empleados
-                    $options = "<option value=''>Selecciona una persona</option>";
+                    $options = "<option id='one-elements' value=''>Selecciona una persona</option>";
                     while($row = mysqli_fetch_assoc($resultEmpleado)) {
                         $id = $row['id_trabajador'];
                         $nombre = $row['nombre'];

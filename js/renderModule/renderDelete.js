@@ -4,9 +4,13 @@ import { renderElementDom } from "./renderTable.js";
 const elementsDOM = {
     selectButtonDelete: '#deleteElementsDOM',
     containerTable: '#renderTable',
+    containerTextValue: '#observations',
+    elementOptionsList: '#one-elements',
 }
 
 const renderContainer = document.querySelector(elementsDOM.containerTable);
+const clearContainerText = document.querySelector(elementsDOM.containerTextValue);
+const elementOptiosList = document.querySelector(elementsDOM.elementOptionsList);
 
 export const renderDelete = () => { 
     const selectButtonDelete = document.querySelectorAll(elementsDOM.selectButtonDelete); //Esto es un array
@@ -32,9 +36,12 @@ export const renderDelete = () => {
 
 //Se encarga de limpiar el contenedor y los arrays al momento de dar click en el boton de limpiar campo
 export const clearContainerAll = (firstCode, nameTools, stateTools) => { 
+    elementOptiosList.removeAttribute('selected');
     firstCode.length = 0; //Limpiando el array
     nameTools.length = 0; //Limpiando el array
     stateTools.length = 0; //Limpiando el array
 
     renderContainer.textContent = ''; //Limpiando el contenedor
+    clearContainerText.value = '';
+    elementOptiosList.setAttribute('selected', 'selected');
 }
