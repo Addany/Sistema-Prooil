@@ -10,7 +10,6 @@ $(document).ready(function(){
 
 function buscar(){
     var texto = $('#buscador').val();
-    var fechaInicio = $('#fechaInicio').val();
     var categoria = $('#categoria').val();
     var orden = $('#Orden').val();  
 
@@ -19,7 +18,6 @@ function buscar(){
         type: 'POST',
         data: {
             texto: texto,
-            fechaInicio: fechaInicio,
             categoria: categoria,
             orden: orden  
         },

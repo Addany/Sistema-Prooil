@@ -24,8 +24,6 @@ function cargarFiltros(){
 
 function buscar(){
     var texto = $('#buscador').val();
-    var fechaInicio = $('#fechaInicio').val();
-    var fechaorden = $('#fechaorden').val();
     var clase = $('#clase').val();
     var talla = $('#talla').val();
     var marca = $('#marca').val();
@@ -35,8 +33,6 @@ function buscar(){
         type: 'POST',
         data: {
             texto: texto,
-            fechaInicio: fechaInicio,
-            fechaorden: fechaorden,
             clase: clase,
             talla: talla,
             marca: marca

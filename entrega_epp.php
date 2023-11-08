@@ -57,7 +57,7 @@
                                         <tr>
                                             <th>ID de EPP</th>
                                             <th>Nombre de EPP</th>
-                                            <th>Región Anatómica</th>
+                                            <th>Clase</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>

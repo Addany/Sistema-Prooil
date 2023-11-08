@@ -44,7 +44,10 @@
                                 <option value="Concretado">Concretado</option>
                                 <option value="No concretado">No concretado</option>
                             </select>
-                            <button type="button" onclick="buscar()">Limpiar Búsqueda</button>
+                        </div>
+                        <div class="button-group"  id="filter">
+                            <button type="button" id="generarReporte"  onclick="verGenerarReporte(this)">Generar Reporte</button>
+                            <button type="button" id="eliminarBusqueda">Limpiar Búsqueda</button>
                         </div>
                     </form>
                 </div>
@@ -54,9 +57,8 @@
                             <th>Folio</th>
                             <th>Fecha de Transacción</th>
                             <th>Trabajador Solicitante</th>
-                            <th>¿Quien Autorizó?</th>
+                            <th>Almacenista que Autoriza</th>
                             <th>Observaciones</th>
-                            <th>Status del proceso del entrega</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -65,9 +67,8 @@
                             <td data-label="Folio">12345</td>
                             <td data-label="Fecha de Transacción">20-02-2020</td>
                             <td data-label="Trabajador solicitante">Juan</td>
-                            <td data-label="¿Quien Autorizó?">Adrian</td>
+                            <td data-label="Almacenista que Autoriza">Adrian</td>
                             <td data-label="Observaciones">Perdida de las herramientas</td>
-                            <td data-label="Status del proceso del entrega">Pendiente</td>
                             <td data-label="Acciones">
                                 <button class="accion-button" onclick="verDatos()">Ver</button>
                                 <button class="accion-button">Generar documento</button>
@@ -78,75 +79,70 @@
             </section>
         </main>
 
-        <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupEditar', 'popupVer')"></div>
-        <div id="popupEditar">
-            <form id="editarPrestamoForm"> 
-                <h3>Editar datos</h3>
-                
-                <div class="field">
-                    <label for="editFolio">Folio:</label>
-                    <input type="text" id="editFolio" placeholder="Folio" readonly>
-                </div>
-
-                <div class="field">
-                    <label for="editFechaTransaccion">Fecha de Transacción:</label>
-                    <input type="date" id="editFechaTransaccion" placeholder="Fecha de Transacción">
-                </div>
-
-                <div class="field">
-                    <label for="edittrabajadorSolicitante">Trabajador solicitante:</label>
-                    <input type="text" id="edittrabajadorSolicitante" placeholder="Nombre del Trabajador">
-                </div>
-
-                <div class="field">
-                    <label for="editQuienAutorizo">¿Quién Autorizó?:</label>
-                    <input type="text" id="editQuienAutorizo" placeholder="Quien Autorizó">
-                </div>
-
-                <div class="field">
-                    <label for="editObservaciones">Observaciones:</label>
-                    <input type="text" id="editObservaciones" placeholder="Observaciones">
-                </div>
-
-                <div class="field">
-                    <label for="editEstadoproceso">Status del proceso del entrega:</label>
-                    <select id="editEstadoproceso">
-                        <option value="Pendiente">Pendiente</option>
-                        <option value="Completado">Completado</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="guardar">Guardar</button>
-                <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>  
-            </form>
-        </div>
-
+        <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupVer')"></div>
         <div id="popupVer" class="popup">
             <form id="verEntregaForm"> 
                 <h3>Detalles de la entrega</h3>
-                <label>EPP entregado:</label>
+                <label id="folio_numero"></label>
+                <label>Lista de EPP:</label>
                 <div class="table-container">
                     <table id="listaEPP">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
                                 <th>Modelo</th>
-                                <th>Tipo</th>
+                                <th>Marca</th>
+                                <th>Clase</th>
+                                <th>Talla de EPP</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td data-label="Nombre">Casco</td>
-                                <td data-label="Modelo">rj2343</td>
-                                <td data-label="Tipo">3M</td>
+                                <td data-label="Nombre">Vi</td>
+                                <td data-label="Modelo">Va</td>
+                                <td data-label="Marca">Tlal</td>
+                                <td data-label="Clase">Pan</td>
+                                <td data-label="Talla de EPP">xd</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>  
+                <div class="button-group">
+                    <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button> 
+                </div>
             </form>
         </div>
-    </div>
+
+        <div id="popupReporte" class="popup">
+            <form id="generarReporteForm"> 
+                <h3>Generar Reporte</h3>
+                
+                <div class="input-group">
+                    <label for="anioReporte">Selecciona el año:</label>
+                    <select id="anioReporte" name="anioReporte">
+                        <?php for($i = 2000; $i <= 2050; $i++): ?>
+                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php endfor; ?>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="mesReporte">Selecciona el mes (opcional):</label>
+                    <select id="mesReporte" name="mesReporte">
+                        <option value="" selected>Todo el año</option>
+                        <?php for($i = 1; $i <= 12; $i++): ?>
+                            <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
+                                <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
+                            </option>
+                        <?php endfor; ?>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button type="button" onclick="generarReporte()">Generar Reporte</button>
+                    <button type="button" onclick="cerrarPopup('popupReporte')">Cerrar</button>
+                </div>
+            </form>
+        </div>
 
 
     <script src="js/scriptnavegacion.js"></script>

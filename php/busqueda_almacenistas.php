@@ -2,7 +2,6 @@
 include 'conexion_bd.php';
 
 $texto = $_POST['texto'];
-$fechaInicio = $_POST['fechaInicio'];
 $categoria = $_POST['categoria'];
 $orden = $_POST['orden'];  
 
@@ -10,10 +9,6 @@ $condiciones = [];
 
 if ($texto) {
     $condiciones[] = "(nombre LIKE '%$texto%' OR usuario LIKE '%$texto%' OR correo LIKE '%$texto%')";
-}
-
-if ($fechaInicio) {
-    $condiciones[] = "(fecha_ingreso >= '$fechaInicio')";
 }
 
 if ($categoria && $categoria != 'todos') {

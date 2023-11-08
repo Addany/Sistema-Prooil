@@ -57,10 +57,6 @@
     <div id="navbar"></div>
     
     <form class="form-buscar" method="get">
-      <div class="input-group">
-        <label for="fechaInicio">Busqueda por Fecha:</label>
-        <input type="date" id="fechaInicio" name="fechaInicio" value="<?php echo htmlspecialchars($fechaInicio); ?>">
-      </div>
 
       <div class="input-group">
         <label for="tipo_herramienta">Tipo de herramienta:</label>
@@ -98,8 +94,8 @@
         </select>
       </div>
       <div class="button-group" id="filter">
-          <button type="button" id="resetear" onclick="resetearFiltros()">Resetear Filtro</button>
           <button type="submit" value="Filtrar">Filtrar</button>
+          <button type="button" id="resetear" onclick="resetearFiltros()">Resetear Filtro</button>
       </div>
     </form>
     <section class="seccion-tabla">
@@ -282,9 +278,10 @@
               <label for="editFecha">Fecha de Registro:</label>
               <input type="date" id="editFecha">
           </div>
-
-          <button type="submit" class="guardar">Guardar</button>
-          <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popup')">Cancelar</button>
+          <div class="button-group">
+            <button type="submit" class="guardar">Guardar</button>
+            <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popup')">Cancelar</button>
+          </div>
       </form>
     </div>
   </div>

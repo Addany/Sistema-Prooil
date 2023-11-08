@@ -2,8 +2,6 @@
 include 'conexion_bd.php';
 
 $texto = $_POST['texto'];
-$fechaInicio = $_POST['fechaInicio'];
-$fechaorden = $_POST['fechaorden'];
 $clase = $_POST['clase'];
 $talla = $_POST['talla'];
 $marca = $_POST['marca'];
@@ -12,10 +10,6 @@ $condiciones = [];
 
 if ($texto) {
     $condiciones[] = "(marca LIKE '%$texto%' OR modelo LIKE '%$texto%' OR tipo LIKE '%$texto%')";
-}
-
-if ($fechaInicio) {
-    $condiciones[] = "(fecha_registro >= '$fechaInicio')";
 }
 
 if ($clase && $clase != 'todos') {

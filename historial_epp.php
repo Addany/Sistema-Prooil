@@ -27,10 +27,6 @@
                 <input type="text" id="buscador" placeholder="Nombre, Cantidad, etc.">
               </div>
               <div class="input-group">
-                <label for="fechaInicio">Fecha:</label>
-                <input type="date" id="fechaInicio">
-              </div>
-              <div class="input-group">
                 <label for="fechaorden">Ordenar por fecha:</label>
                 <select id="fechaorden">
                   <option value="reciente">Más Reciente</option>
@@ -119,17 +115,6 @@
       <div id="popup">
         <form id="editarEPP">
             <h3>Editar datos</h3>
-            
-            <div class="field">
-                <label for="">Foto:</label>
-                <img id="editFoto" src="" alt="Foto del EPP" />
-                <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
-            </div>
-
-            <div class="field">
-                <label for="editId">ID:</label>
-                <input type="text" id="editId" placeholder="ID" readonly>
-            </div>
 
             <div class="field">
                 <label for="editNombre">Nombre:</label>
@@ -170,22 +155,42 @@
                 <label for="editFechaRegistro">Fecha de Registro:</label>
                 <input type="date" id="editFechaRegistro" placeholder="Fecha de Registro">
             </div>
-
-            <button type="submit" class="guardar">Guardar</button>
-            <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popup')">Cancelar</button>
+            <div class="button-group">
+              <button type="submit" class="guardar">Guardar</button>
+              <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popup')">Cancelar</button>
+            </div>
         </form>
     </div>
     <div id="popupVer" class="popup">
-    <form id="generarReporteForm"> 
-        <h3>Generar Reporte Mensual</h3>
-        
-          <label for="mesReporte">Selecciona el mes:</label>
-          <input type="month" id="mesReporte"  name="mesReporte">
-        
-        <button type="button" onclick="generarReporte()">Generar Reporte</button>
-        <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>
-    </form>
-</div>
+        <form id="generarReporteForm"> 
+            <h3>Generar Reporte</h3>
+            
+            <div class="input-group">
+                <label for="anioReporte">Selecciona el año:</label>
+                <select id="anioReporte" name="anioReporte">
+                    <?php for($i = 2000; $i <= 2050; $i++): ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="mesReporte">Selecciona el mes (opcional):</label>
+                <select id="mesReporte" name="mesReporte">
+                    <option value="" selected>Todo el año</option>
+                    <?php for($i = 1; $i <= 12; $i++): ?>
+                        <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
+                            <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <div class="button-group">
+              <button type="button" onclick="generarReporte()">Generar Reporte</button>
+              <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>
+            </div>
+        </form>
+    </div>
 
 
 

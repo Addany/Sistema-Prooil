@@ -43,10 +43,6 @@
                             <input type="text" id="buscador" placeholder="Nombre, Usuario, etc.">
                         </div>
                         <div class="input-group">
-                            <label for="fechaInicio">Fecha:</label>
-                            <input type="date" id="fechaInicio">
-                        </div>
-                        <div class="input-group">
                             <label for="Orden">Ordenar por fecha:</label>
                             <select id="Orden">
                                 <option value="reciente">Más Reciente</option>
@@ -59,8 +55,10 @@
                                 <option value="todos">Todos</option>
                                 <option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
-                            </select>  
-                        <button type="button" id="limpiarBtn">Limpiar Búsqueda</button>
+                            </select> 
+                        </div> 
+                        <div class="button-group">
+                            <button type="button" id="limpiarBtn">Limpiar Búsqueda</button>
                         </div>
                     </form>
                 </div>
@@ -174,9 +172,10 @@
                     <Label>Correo:</Label>
                     <input type="email" id="editCorreo" placeholder="Correo Electrónico">
                 </div>
-    
-                <button type="submit" class="guardar">Guardar</button>
-                <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
+                <div class="button-group">
+                    <button type="submit" class="guardar">Guardar</button>
+                    <button type="button" id="cancelarEdicion" onclick="cerrarPopup('popupEditar')">Cancelar</button>
+                <div></div>
             </form>
         </div>
     </div>

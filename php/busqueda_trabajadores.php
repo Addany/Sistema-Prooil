@@ -2,7 +2,6 @@
 include 'conexion_bd.php';
 
 $texto = $_POST['texto'];
-$fechaInicio = $_POST['fechaInicio'];
 $categoria = $_POST['categoria'];
 $tipoRegistro = $_POST['tipoRegistro'];
 $area = mysqli_real_escape_string($conexion, $_POST['Area']); 
@@ -13,11 +12,6 @@ $condicionesInvitado = [];
 if($texto){
     $condicionesEmpleado[] = "(nombre LIKE '%$texto%' OR id_trabajador LIKE '%$texto%' OR correo LIKE '%$texto%')";
     $condicionesInvitado[] = "(nombre LIKE '%$texto%' OR id_invitado LIKE '%$texto%' OR correo LIKE '%$texto%')";  
-}
-
-if($fechaInicio){
-    $condicionesEmpleado[] = "(fecha_ingreso >= '$fechaInicio')";
-    $condicionesInvitado[] = "(fecha_ingreso >= '$fechaInicio')";
 }
 
 if($categoria && $categoria != 'todos'){

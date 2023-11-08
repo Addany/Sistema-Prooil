@@ -26,7 +26,6 @@ function cargarAreas(){
 
 function buscar(){
     var texto = $('#buscador').val();
-    var fechaInicio = $('#fechaInicio').val();
     var categoria = $('#categoria').val();
     var tipoRegistro = $('#tipoRegistro').val();
     var area = $('#Area').val();
@@ -37,7 +36,7 @@ function buscar(){
     $.ajax({
         url: 'php/busqueda_trabajadores.php',
         type: 'POST',
-        data: {texto: texto, fechaInicio: fechaInicio, categoria: categoria, tipoRegistro: tipoRegistro, Area: area},  
+        data: {texto: texto, categoria: categoria, tipoRegistro: tipoRegistro, Area: area},  
         success: function(response){
             $('#tabla-trabajadores tbody').html(response);
         }

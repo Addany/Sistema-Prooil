@@ -18,6 +18,15 @@ async function verDatos() {
     }
 }
 
+async function verGenerarReporte() {
+  try {
+      abrirPopup('popupReporte');
+  } catch (error) {
+      console.error(error);
+  }
+}
+
+
 async function editarAlmacenista(button) {
   try {
       await solicitarNIP();
@@ -38,9 +47,7 @@ async function editarAlmacenista(button) {
 async function editarEPP(button) {
 
       let row = button.closest('tr');
-
-      document.getElementById("editFoto").src = row.querySelector('[data-label="Foto"] img').src;
-      document.getElementById("editId").value = row.querySelector('[data-label="ID"]').innerText;
+      
       document.getElementById("editNombre").value = row.querySelector('[data-label="Nombre"]').innerText;
       document.getElementById("editCantidad").value = row.querySelector('[data-label="Cantidad"]').innerText;
       document.getElementById("editMarca").value = row.querySelector('[data-label="Marca"]').innerText;
@@ -79,23 +86,31 @@ async function editarTrabajador(button) {
       await solicitarNIP();
 
       let row = button.closest('tr');
-      document.getElementById("editEstado").value = row.querySelector('[data-label="Estado"] span').innerText;
-      document.getElementById("editTipoRegistro").value = row.querySelector('[data-label="Tipo de Registro"]').innerText;
-      document.getElementById("editNombre").value = row.querySelector('[data-label="Nombre"]').innerText;
-      document.getElementById("editArea").value = row.querySelector('[data-label="Area"]').innerText;
-      document.getElementById("editTelefono").value = row.querySelector('[data-label="Teléfono"]').innerText;
-      document.getElementById("editCorreo").value = row.querySelector('[data-label="Correo Electrónico"]').innerText;
-     
-      if (row.querySelector('[data-label="Tipo de Registro"]').innerText.trim() === "Trabajador") {
-          document.getElementById("editTipoRegistro").disabled = true;
-      } else {
-          document.getElementById("editTipoRegistro").disabled = false;
-      }
+      let estado = row.querySelector('[data-label="Estado"] span').innerText;
+      let tipoRegistro = row.querySelector('[data-label="Tipo de Registro"]').innerText;
+      let nombre = row.querySelector('[data-label="Nombre"]').innerText;
+      let area = row.querySelector('[data-label="Area"]').innerText;
+      let telefono = row.querySelector('[data-label="Teléfono"]').innerText;
+      let correo = row.querySelector('[data-label="Correo Electrónico"]').innerText;
 
-      if (row.querySelector('[data-label="Tipo de Registro"]').innerText.trim() !== "Trabajador") {
-        document.querySelector('#editTipoRegistro option[value="Trabajador"]').style.display = 'none';
+      document.getElementById("editEstado").value = estado;
+      document.getElementById("editTipoRegistro").value = tipoRegistro;
+      document.getElementById("editNombre").value = nombre;
+      document.getElementById("editArea").value = area;
+      document.getElementById("editTelefono").value = telefono;
+      document.getElementById("editCorreo").value = correo;
+     
+      // Desactiva la selección de tipo de registro si no es un Trabajador
+      document.getElementById("editTipoRegistro").disabled = tipoRegistro.trim() !== "Trabajador";
+
+      // Oculta la opción de Trabajador si el tipo de registro actual no es Trabajador
+      document.querySelector('#editTipoRegistro option[value="Trabajador"]').style.display = tipoRegistro.trim() === "Trabajador" ? 'block' : 'none';
+
+      // Si el área es "N/A", deshabilita el select de área
+      if (area.trim() === "N/A") {
+          document.getElementById("editArea").disabled = true;
       } else {
-          document.querySelector('#editTipoRegistro option[value="Trabajador"]').style.display = 'block';
+          document.getElementById("editArea").disabled = false;
       }
 
       abrirPopup('popupEditar');
@@ -105,24 +120,8 @@ async function editarTrabajador(button) {
 }
 
 
-function actualizarFoto(event) {
-  let inputFile = event.target;
-  let fotoElement = document.getElementById("editFoto");
-  
-  if (inputFile.files && inputFile.files[0]) {
-      let reader = new FileReader();
-      
-      reader.onload = function (e) {
-          fotoElement.src = e.target.result;
-      }
-      
-      reader.readAsDataURL(inputFile.files[0]);
-  }
-}
-
 
 function resetearFiltros() {
-  document.getElementById('fechaInicio').value = '';
   document.getElementsByName('tipo_herramienta')[0].value = '';
   document.getElementsByName('marca')[0].value = '';
   document.getElementsByName('orden')[0].value = 'fecha_registro DESC';
@@ -132,3 +131,48 @@ function resetearFiltros() {
 }
 
 
+function zoomImagen(src) {
+  // Crear el elemento overlay si aún no existe
+  let overlay = document.getElementById('img-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'img-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    overlay.style.display = 'flex';
+    overlay.style.justifyContent = 'center';
+    overlay.style.alignItems = 'center';
+    overlay.style.zIndex = '10000';
+    overlay.style.cursor = 'zoom-out';
+    overlay.addEventListener('click', function() {
+      overlay.style.display = 'none';
+    });
+    document.body.appendChild(overlay);
+  }
+  
+  // Crear la imagen dentro del overlay
+  let img = document.createElement('img');
+  img.src = src;
+  img.style.maxWidth = '90%';
+  img.style.maxHeight = '90%';
+  img.style.margin = 'auto'; // Centra la imagen
+  
+  // Limpiar overlay y agregar la nueva imagen
+  overlay.innerHTML = '';
+  overlay.appendChild(img);
+  
+  // Mostrar el overlay
+  overlay.style.display = 'flex';
+}
+
+// Agregar el evento click a todas las imágenes de la clase 'foto-trabajador'
+document.querySelectorAll('.foto-trabajador, .imagen-herramienta, .imagen-epp').forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', function() {
+    zoomImagen(this.src); // Pasar el src de la imagen al hacer clic
+  });
+});

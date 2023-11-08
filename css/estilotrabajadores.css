@@ -11,27 +11,58 @@ body {
 
 .form-buscar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Mantenemos la disposición horizontal */
   padding: 20px;
-  background: #f1f1f1;
+  background: #f1f1f1; /* Podemos mantener el color o probar un gradiente suave */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sutil sombra para dar profundidad */
   font-weight: bold;
+  border-radius: 8px; /* Esquinas redondeadas para un look moderno */
 }
 
-.form-buscar input, .form-buscar select, .form-buscar button {
+.form-buscar input, 
+.form-buscar select {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd; /* Aumentamos el grosor del borde para más presencia */
+  transition: all 0.3s ease; /* Transición suave para interactuar con los campos */
+}
+
+/* Estilo cuando el usuario interactúa con el input */
+.form-buscar input:focus, 
+.form-buscar select:focus {
+  outline: none; /* Removemos el contorno predeterminado */
+  border-color: #10393b80; /* Cambiamos color de borde al enfocar */
+  box-shadow: 0 0 10px #194d50; /* Sombra exterior para resaltar el enfoque */
 }
 
 .form-buscar button {
-  background: #0F393B;
+  background: #2c9095; /* Podemos ajustar a un color más vibrante si se desea */
   color: white;
   border: none;
   font-weight: bold;
+  cursor: pointer; /* Indicamos que es un botón interactivo */
+  transition: background-color 0.3s; /* Suavizamos la transición del hover */
+  margin-right: 2px;
+  border-radius: 5px;
+}
+
+.form-buscar button:last-child {
+  margin-right: 0; /* Quita el margen al último botón */
 }
 
 .form-buscar button:hover {
-  background: #194d50;
+  background: #194d50; 
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.input-group label {
+    margin-left: 5px;  /* Ajusta el margen según sea necesario */
 }
 
 table {
@@ -43,40 +74,56 @@ table {
 }
 
 table tr:hover {
-  background-color: #194d5011;
+  background-color: #194d5011; /* Hover sutil para las filas */
 }
 
 th, 
 td {
-  padding: 8px;
-  text-align: center;
-  border: 1px solid #ddd;
+  padding: 12px; /* Aumenta el padding para más espacio */
+  text-align: center; /* Alineación a la izquierda para títulos y celdas, es más moderno */
+  border-bottom: 3px solid #2c909548; /* Se mantiene el borde para definir la barra */
 }
 
 th {
-  background-color: #0F393B;
+  background-color: #0F393B; /* Color existente para mantener la paleta */
   color: white;
+  font-size: 16px; /* Incrementa la fuente para mayor legibilidad */
+  font-weight: 600; /* Peso de fuente para títulos más definidos */
+  border-bottom: 3px solid #397D68; /* Se mantiene el borde para definir la barra */
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* Mantén el zebra striping para filas pares */
 }
 
 .accion-button {
-  padding: 7px;
-  border-radius: 5px;
-  border: none;
-  background-color: #0F393B;
+  padding: 8px 8px; /* Más padding para botones más grandes */
+  border-radius: 5px; /* Bordes redondeados existentes */
+  border: none; /* Borde removido para un botón más limpio */
+  background-color: #2c9095; /* Color existente para consistencia */
   color: white;
   margin-bottom: 0.2rem;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease; /* Transiciones suaves para hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidad */
   font-weight: bold;
+  cursor: pointer; /* Indica que es un botón interactivo */
 }
 
 .accion-button:hover {
-  background-color: #194d50;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #194d50; /* Color de hover actualizado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más prominente en hover */
+}
+
+.foto-trabajador {
+  width: 50px; /* Define un tamaño específico */
+  height: 50px; /* Mantiene la proporción */
+  border-radius: 50%; /* Hace la imagen circular */
+  object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+  transition: transform 0.3s; 
+}
+
+.foto-trabajador:hover {
+  transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
 }
 
 #overlay {
@@ -106,6 +153,8 @@ tr:nth-child(even) {
   width: 100%;
   max-width: 400px;
   z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+  border: none; /* Quitamos el borde para un look más limpio */
 }
 
 #popupEditar form input, #popupEditar form select {
@@ -115,7 +164,10 @@ tr:nth-child(even) {
   border-radius: 5px;
   border: 1px solid #ddd;
   box-sizing: border-box;
+  border: 1px solid #ccc; /* Color de borde más suave */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra interior sutil */
 }
+
 
 .guardar {
   width: 100%;
@@ -125,21 +177,29 @@ tr:nth-child(even) {
   border: 1px solid #ddd;
   background-color: #f1f1f1;
   color: #333;
+  background-color: #4CAF50; /* Verde moderno para el botón de guardar */
 }
 
 #popupEditar form button {
-  background-color: #0F393B;
+  background-color: #2c9095;
   color: white;
   font-weight: bold;
+  transition: background-color 0.2s ease-in-out; /* Transición suave para el hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para botones */
 }
 
 #popupEditar form H3 {
   text-align: center;
+  margin-bottom: 20px; /* Más espacio debajo del título para estructura */
+  color: #333; /* Color oscuro para contraste y legibilidad */
+  font-size: 1.25rem; /* Tamaño más grande para importancia */
 }
 
 #popupEditar form button:hover {
   background-color: #194d50;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más prominente en hover */
 }
+
 
 #popupEditar #cancelarEdicion {
   width: 100%;
@@ -148,10 +208,22 @@ tr:nth-child(even) {
   border: 1px solid #ddd;
   background-color: #f1f1f1;
   color: #333;
+  background-color: #2c9095; /* Rojo para el botón de cancelar para indicar una acción potencialmente negativa */
+  color: white; /* Texto blanco para contraste */
 }
 
 #popupEditar #cancelarEdicion:hover {
-  background-color: #ddd;
+  background-color: #194d50; /* Rojo más oscuro para hover en cancelar */
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-start; /* Esto alineará los botones a la izquierda con el input group */
+}
+
+.button-group button {
+  flex: 1; /* Esto hace que cada botón tenga el mismo ancho y ocupe el espacio disponible */
+  margin: 0 5px; /* Esto agrega un pequeño margen entre los botones */
 }
 
 .field {
@@ -178,19 +250,6 @@ tr:nth-child(even) {
   box-sizing: border-box;
 }
 
-#editFoto {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.foto-trabajador {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-}
-
 .pagination {
   position: fixed;
   bottom: 0;
@@ -198,7 +257,7 @@ tr:nth-child(even) {
   width: 100%;
   text-align: center;
   padding: 5px 0;
-  background-color: #0f393bea;
+  background-color: #0f393bc5;
   z-index: 1000;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Sombra sutil para agregar profundidad */
 }
@@ -239,10 +298,18 @@ tr:nth-child(even) {
   gap: 5px; /* agrega un espacio entre el icono y el texto */
 }
 
+#img-overlay img {
+  transition: transform 0.3s ease;
+}
+
+#img-overlay img:hover {
+  transform: scale(1.05);
+}
+
 @media (max-width: 768px) {
   .form-buscar {
     flex-direction: column;
-    align-items: stretch;
+    align-items: stretch; 
   }
 
   .form-buscar input, 
@@ -250,11 +317,20 @@ tr:nth-child(even) {
   .form-buscar button {
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10px;
+    margin-bottom: 10px; 
   }
 
   .form-buscar button {
-    margin-bottom: 0;
+    margin-bottom: 6px; 
+  }
+  
+  .input-group {
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos al inicio en el eje transversal */
+}
+
+  .input-group label {
+      margin-bottom: 1px; /* Agrega un margen en la parte inferior para separar el label del input */
   }
 
   #popupEditar {

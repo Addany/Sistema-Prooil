@@ -68,7 +68,9 @@
                             </div>
                             <div class="input-group">
                                 <label for="clase">Clase:</label>
-                                <input type="text" id="clase" name="class" required>
+                                <select id="clase" name="clase" required data-placeholder="Selecciona una clase">
+                                    <?php echo $options; ?>
+                                </select>
                             </div>
                             <div class="input-group">
                                 <label for="ordenCompra">Orden de Compra:</label>

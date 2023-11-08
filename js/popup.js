@@ -46,11 +46,11 @@ function cerrarSiEsFuera(event, ...idPopups) {
 
 
 document.getElementById('overlay').addEventListener('click', (event) => {
-  cerrarSiEsFuera(event, 'popupEditar', 'popupVer');
+  cerrarSiEsFuera(event, 'popupEditar', 'popupVer','popupReporte');
 });
 
 
-const popups = document.querySelectorAll('#popupEditar, #popupVer');
+const popups = document.querySelectorAll('#popupEditar, #popupVer,#popupVer');
 popups.forEach(popup => {
   popup.addEventListener('click', (event) => {
       event.stopPropagation();

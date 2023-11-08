@@ -60,7 +60,10 @@
                                 <option value="Concretado">Concretado</option>
                                 <option value="No concretado">No concretado</option>
                             </select>
-                            <button type="button">Limpiar Búsqueda</button>
+                        </div>
+                        <div class="button-group"  id="filter">
+                            <button type="button" id="generarReporte"  onclick="verGenerarReporte(this)">Generar Reporte</button>
+                            <button type="button" id="eliminarBusqueda">Limpiar Búsqueda</button>
                         </div>
                     </form>
                 </div>
@@ -71,7 +74,7 @@
                             <th>Nombre del Trabajador</th>
                             <th>Fecha de Transacción</th>
                             <th>Fecha de Devolución</th>
-                            <th>¿Quien Autorizó?</th>
+                            <th>Almacenista que Autoriza</th>
                             <th>Observaciones</th>
                             <th>Status del prestamo</th>
                             <th>Acciones</th>
@@ -118,9 +121,9 @@
                                 echo "<td data-label='Quien Autorizó'>" . $row["nombre_almacenista"] . "</td>";
                                 echo "<td data-label='Observaciones'>" . $row["observacion"] . "</td>";
                                 if ($row["estado"] == "Activo") {
-                                    echo "<td data-label='Estado'><i class='fas fa-check-circle' style='color:green;'></i> Activo</td>";
-                                } else if ($row["estado"] == "Inactivo") {
-                                    echo "<td data-label='Estado'><i class='fas fa-times-circle' style='color:red;'></i> Inactivo</td>";
+                                    echo "<td data-label='Estado'><i <i class='fa-solid fa-circle-exclamation' style='color:yellow;'></i> Activo</td>";
+                                } else if ($row["estado"] == "Concretado") {
+                                    echo "<td data-label='Estado'><i class='fas fa-check-circle' style='color:green;'></i> Concretado</td>";
                                 } else {
                                     echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
                                 }
@@ -175,12 +178,12 @@
                 <table id="listaHerramientas">
                     <thead>
                         <tr>
-                            <th>Marcar como entregado</th>
+                            <th>Checklist</th>
                             <th>Nombre</th>
                             <th>ID</th>
-                            <th>Número de Serie</th>
+                            <th>N.de Serie</th>
                             <th>Marca</th>
-                            <th>Fecha de devolución</th>
+                            <th>Fecha de Devolución</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -192,7 +195,6 @@
                             <td data-label="Marca"></td>
                             <td data-label="Fecha de devolución"></td>
                         </tr>
-     
                     </tbody>
                 </table>
             </div>
@@ -202,6 +204,37 @@
                 <button type="button" id="botonEnviar">Guardar</button> 
                 <button type="button" onclick="cerrarPopup('popupVer')">Cancelar</button> 
             </div> 
+        </form>
+    </div>
+
+    <div id="popupReporte" class="popup">
+        <form id="generarReporteForm"> 
+            <h3>Generar Reporte</h3>
+            
+            <div class="input-group">
+                <label for="anioReporte">Selecciona el año:</label>
+                <select id="anioReporte" name="anioReporte">
+                    <?php for($i = 2000; $i <= 2050; $i++): ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="mesReporte">Selecciona el mes (opcional):</label>
+                <select id="mesReporte" name="mesReporte">
+                    <option value="" selected>Todo el año</option>
+                    <?php for($i = 1; $i <= 12; $i++): ?>
+                        <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
+                            <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <div class="button-group">
+                <button type="button" onclick="generarReporte()">Generar Reporte</button>
+                <button type="button" onclick="cerrarPopup('popupReporte')">Cerrar</button>
+            </div>
         </form>
     </div>
 
