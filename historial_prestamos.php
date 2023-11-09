@@ -67,77 +67,79 @@
                         </div>
                     </form>
                 </div>
-                <table id="tabla-historial">
-                    <thead>
-                        <tr>
-                            <th>Folio</th>
-                            <th>Nombre del Trabajador</th>
-                            <th>Fecha de Transacción</th>
-                            <th>Fecha de Devolución</th>
-                            <th>Almacenista que Autoriza</th>
-                            <th>Observaciones</th>
-                            <th>Status del prestamo</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        if ($conexion->connect_error) {
-                            die();
-                        }
-
-                        $sql = "
-                        SELECT historial_herramienta.*, folio_prestamo.*, GROUP_CONCAT(historial_herramienta.identificador) AS identificadores,
-                        CASE
-                        WHEN historial_herramienta.id_trabajador IS NOT NULL THEN empleado.nombre
-                        WHEN historial_herramienta.id_invitado IS NOT NULL THEN invitado.nombre
-                        END AS nombre_persona,
-                        almacenista.nombre AS nombre_almacenista
-                        FROM historial_herramienta
-                        JOIN folio_prestamo ON historial_herramienta.no_folio = folio_prestamo.no_folio
-                        LEFT JOIN empleado ON historial_herramienta.id_trabajador = empleado.id_trabajador
-                        LEFT JOIN invitado ON historial_herramienta.id_invitado = invitado.id_invitado
-                        JOIN almacenista ON historial_herramienta.usuario = almacenista.usuario
-                        GROUP BY folio_prestamo.no_folio
-                        ORDER BY folio_prestamo.no_folio
-                        LIMIT $cantidadPorPagina OFFSET $inicio
-                        ";
-                        $result = $conexion->query($sql);
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                $fechaObj = date_create_from_format('Y-m-d', $row["fecha_transaccion"]);
-                                $transaccion = $fechaObj->format('d/m/Y');
-                                $fechaObj1 = null;
-                                $devolucion = '';
-                                if(isset($row["fecha_devolucion"]) && !is_null($row["fecha_devolucion"]) && $row["fecha_devolucion"] != '') {
-                                    $fechaObj1 = date_create_from_format('Y-m-d', $row["fecha_devolucion"]);
-                                    $devolucion = $fechaObj1->format('d/m/Y');
-                                }
-                                echo "<tr>";
-                                echo "<td data-label='Folio'>" . $row["no_folio"] . "</td>";
-                                echo "<td data-label='Nombre del Trabajador'>" . $row["nombre_persona"] . "</td>";
-                                echo "<td data-label='Fecha de Transacción'>" . $transaccion . "</td>";
-                                echo "<td data-label='Fecha de Devolución'>" . $devolucion . "</td>";
-                                echo "<td data-label='Quien Autorizó'>" . $row["nombre_almacenista"] . "</td>";
-                                echo "<td data-label='Observaciones'>" . $row["observacion"] . "</td>";
-                                if ($row["estado"] == "Activo") {
-                                    echo "<td data-label='Estado'><i <i class='fa-solid fa-circle-exclamation' style='color:yellow;'></i> Activo</td>";
-                                } else if ($row["estado"] == "Concretado") {
-                                    echo "<td data-label='Estado'><i class='fas fa-check-circle' style='color:green;'></i> Concretado</td>";
-                                } else {
-                                    echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
-                                }
-
-                                echo "<td data-label='Acciones'>";
-                                echo "<button class='accion-button' onclick='verDetalles(" . $row["no_folio"] . ")'>Ver</button>";
-                                echo "<button class='accion-button'>Generar documento</button>";
-                                echo "</td>";
-                                echo "</tr>";
+                <div class="tabla-contenedor">
+                    <table id="tabla-historial">
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Nombre del Trabajador</th>
+                                <th>Fecha de Transacción</th>
+                                <th>Fecha de Devolución</th>
+                                <th>Almacenista que Autoriza</th>
+                                <th>Observaciones</th>
+                                <th>Status del prestamo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if ($conexion->connect_error) {
+                                die();
                             }
-                        }
-                        ?>
-                    </tbody>
-                </table>
+
+                            $sql = "
+                            SELECT historial_herramienta.*, folio_prestamo.*, GROUP_CONCAT(historial_herramienta.identificador) AS identificadores,
+                            CASE
+                            WHEN historial_herramienta.id_trabajador IS NOT NULL THEN empleado.nombre
+                            WHEN historial_herramienta.id_invitado IS NOT NULL THEN invitado.nombre
+                            END AS nombre_persona,
+                            almacenista.nombre AS nombre_almacenista
+                            FROM historial_herramienta
+                            JOIN folio_prestamo ON historial_herramienta.no_folio = folio_prestamo.no_folio
+                            LEFT JOIN empleado ON historial_herramienta.id_trabajador = empleado.id_trabajador
+                            LEFT JOIN invitado ON historial_herramienta.id_invitado = invitado.id_invitado
+                            JOIN almacenista ON historial_herramienta.usuario = almacenista.usuario
+                            GROUP BY folio_prestamo.no_folio
+                            ORDER BY folio_prestamo.no_folio
+                            LIMIT $cantidadPorPagina OFFSET $inicio
+                            ";
+                            $result = $conexion->query($sql);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $fechaObj = date_create_from_format('Y-m-d', $row["fecha_transaccion"]);
+                                    $transaccion = $fechaObj->format('d/m/Y');
+                                    $fechaObj1 = null;
+                                    $devolucion = '';
+                                    if(isset($row["fecha_devolucion"]) && !is_null($row["fecha_devolucion"]) && $row["fecha_devolucion"] != '') {
+                                        $fechaObj1 = date_create_from_format('Y-m-d', $row["fecha_devolucion"]);
+                                        $devolucion = $fechaObj1->format('d/m/Y');
+                                    }
+                                    echo "<tr>";
+                                    echo "<td data-label='Folio'>" . $row["no_folio"] . "</td>";
+                                    echo "<td data-label='Nombre del Trabajador'>" . $row["nombre_persona"] . "</td>";
+                                    echo "<td data-label='Fecha de Transacción'>" . $transaccion . "</td>";
+                                    echo "<td data-label='Fecha de Devolución'>" . $devolucion . "</td>";
+                                    echo "<td data-label='Quien Autorizó'>" . $row["nombre_almacenista"] . "</td>";
+                                    echo "<td data-label='Observaciones'>" . $row["observacion"] . "</td>";
+                                    if ($row["estado"] == "Activo") {
+                                        echo "<td data-label='Estado'><i <i class='fa-solid fa-circle-exclamation' style='color:yellow;'></i> Activo</td>";
+                                    } else if ($row["estado"] == "Concretado") {
+                                        echo "<td data-label='Estado'><i class='fas fa-check-circle' style='color:green;'></i> Concretado</td>";
+                                    } else {
+                                        echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                                    }
+
+                                    echo "<td data-label='Acciones'>";
+                                    echo "<button class='accion-button' onclick='verDetalles(" . $row["no_folio"] . ")'>Ver</button>";
+                                    echo "<button class='accion-button'>Generar documento</button>";
+                                    echo "</td>";
+                                    echo "</tr>";
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </section>
         </div>
     </main>
@@ -212,30 +214,50 @@
             <h3>Generar Reporte</h3>
             
             <div class="input-group">
-                <label for="anioReporte">Selecciona el año:</label>
-                <select id="anioReporte" name="anioReporte">
-                    <?php for($i = 2000; $i <= 2050; $i++): ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                <label for="anioInicio">Fecha de inicio - Año:</label>
+                <select id="anioInicio" name="anioInicio">
+                    <?php for ($i = 2000; $i <= 2050; $i++): ?>
+                        <option value="<?php echo $i; ?>">
+                            <?php echo $i; ?>
+                        </option>
                     <?php endfor; ?>
                 </select>
-            </div>
 
-            <div class="input-group">
-                <label for="mesReporte">Selecciona el mes (opcional):</label>
-                <select id="mesReporte" name="mesReporte">
-                    <option value="" selected>Todo el año</option>
-                    <?php for($i = 1; $i <= 12; $i++): ?>
+                <label for="mesInicio">Mes:</label>
+                <select id="mesInicio" name="mesInicio">
+                    <?php for ($i = 1; $i <= 12; $i++): ?>
                         <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
                             <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
                         </option>
                     <?php endfor; ?>
                 </select>
             </div>
+
+            <!-- Selector de Fecha de Fin (Año y Mes) -->
+            <div class="input-group">
+                <label for="anioFin">Fecha de fin - Año:</label>
+                <select id="anioFin" name="anioFin">
+                    <?php for ($i = 2000; $i <= 2050; $i++): ?>
+                        <option value="<?php echo $i; ?>">
+                            <?php echo $i; ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
+
+                <label for="mesFin">Mes:</label>
+                <select id="mesFin" name="mesFin">
+                    <?php for ($i = 1; $i <= 12; $i++): ?>
+                        <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
+                            <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
+                        </option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+
             <div class="button-group">
                 <button type="button" onclick="generarReporte()">Generar Reporte</button>
                 <button type="button" onclick="cerrarPopup('popupReporte')">Cerrar</button>
             </div>
-        </form>
     </div>
 
     <script src="js/scriptnavegacion.js"></script>

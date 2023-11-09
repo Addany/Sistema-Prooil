@@ -80,7 +80,6 @@ async function editarHerramienta(button) {
 
 }
 
-
 async function editarTrabajador(button) {
   try {
       await solicitarNIP();
@@ -93,33 +92,32 @@ async function editarTrabajador(button) {
       let telefono = row.querySelector('[data-label="Teléfono"]').innerText;
       let correo = row.querySelector('[data-label="Correo Electrónico"]').innerText;
 
+      document.getElementById("editFoto").src = row.querySelector('[data-label="Foto"] img').src;
       document.getElementById("editEstado").value = estado;
       document.getElementById("editTipoRegistro").value = tipoRegistro;
       document.getElementById("editNombre").value = nombre;
       document.getElementById("editArea").value = area;
       document.getElementById("editTelefono").value = telefono;
       document.getElementById("editCorreo").value = correo;
-     
-      // Desactiva la selección de tipo de registro si no es un Trabajador
-      document.getElementById("editTipoRegistro").disabled = tipoRegistro.trim() !== "Trabajador";
+      
+      // Determina si el tipo de registro actual es Trabajador
+      let esTrabajador = tipoRegistro.trim() === "Trabajador";
+
+      // Desactiva la selección de tipo de registro solo si es un Trabajador
+      document.getElementById("editTipoRegistro").disabled = esTrabajador;
 
       // Oculta la opción de Trabajador si el tipo de registro actual no es Trabajador
-      document.querySelector('#editTipoRegistro option[value="Trabajador"]').style.display = tipoRegistro.trim() === "Trabajador" ? 'block' : 'none';
+      let opcionTrabajador = document.querySelector('#editTipoRegistro option[value="Trabajador"]');
+      opcionTrabajador.style.display = esTrabajador ? 'block' : 'none';
 
       // Si el área es "N/A", deshabilita el select de área
-      if (area.trim() === "N/A") {
-          document.getElementById("editArea").disabled = true;
-      } else {
-          document.getElementById("editArea").disabled = false;
-      }
+      document.getElementById("editArea").disabled = area.trim() === "N/A";
 
       abrirPopup('popupEditar');
   } catch (error) {
       console.error("Error al editar trabajador:", error);
   }
 }
-
-
 
 function resetearFiltros() {
   document.getElementsByName('tipo_herramienta')[0].value = '';
@@ -176,3 +174,19 @@ document.querySelectorAll('.foto-trabajador, .imagen-herramienta, .imagen-epp').
     zoomImagen(this.src); // Pasar el src de la imagen al hacer clic
   });
 });
+
+function actualizarFoto(event) {
+  let inputFile = event.target;
+  let fotoElement = document.getElementById("editFoto");
+  
+  if (inputFile.files && inputFile.files[0]) {
+      let reader = new FileReader();
+      
+      reader.onload = function (e) {
+          fotoElement.src = e.target.result;
+      }
+      
+      reader.readAsDataURL(inputFile.files[0]);
+  }
+}
+

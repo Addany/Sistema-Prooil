@@ -50,7 +50,7 @@
                             </div>
                             <div class="input-group">
                                 <label for="cantidad">Cantidad:</label>
-                                <input type="number" id="cantidad" name="amount" required>
+                                <input type="number" id="cantidad" name="amount"  min="0" oninput="validity.valid||(value='');" required>
                             </div>
                             <div class="input-group">
                                 <label for="marca">Marca:</label>
@@ -69,7 +69,13 @@
                             <div class="input-group">
                                 <label for="clase">Clase:</label>
                                 <select id="clase" name="clase" required data-placeholder="Selecciona una clase">
-                                    <?php echo $options; ?>
+                                    <option value="Cabeza">Cabeza</option>
+                                    <option value="Ojos y cara">Ojos y cara</option>
+                                    <option value="Oídos">Oídos</option>
+                                    <option value="Aparato respiratorio">Aparato respiratorio</option>
+                                    <option value="Extremidades superiores">Extremidades superiores</option>
+                                    <option value="Tronco">Tronco</option>
+                                    <option value="Extremidades inferiores">Extremidades inferiores</option>
                                 </select>
                             </div>
                             <div class="input-group">

@@ -37,7 +37,7 @@
 .navbar {
   box-sizing: border-box;
   background-color: #0f393b;
-  padding: 7px 20px;
+  padding: 1px 5px; /* Más reducido */
   display: flex;
   align-items: center;
   position: fixed;
@@ -45,14 +45,8 @@
   left: 0;
   width: 100%;
   z-index: 10;
-  background-image: linear-gradient(to right, #2c9095, #2c9095); /* Solo un gradiente */
-  background-repeat: no-repeat;
-  background-size: 100% 3px; /* El tamaño sigue siendo el mismo */
-  background-position: left bottom; /* La posición se ajusta para estar en la parte inferior */
-  animation: pulse 5s infinite ease-in-out;
+  animation: respirar 3s ease-in-out infinite; /* Aplica la animación aquí */
 }
-
-
 .logo {
   flex: 1;
   display: flex; 
@@ -60,9 +54,10 @@
 }
 
 .logo a img {
-  max-height: 40px; /* Se mantiene el tamaño del logo */
-  transition: transform 0.3s; 
+  max-height: 15px; /* Logo más pequeño */
+  transition: transform 0.3s;
 }
+
 
 .logo a img:hover {
   transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
@@ -77,14 +72,14 @@
 }
 
 .nav-list li {
-  margin: 0 15px; /* Se ajusta el margen para mantener el tamaño horizontal como estaba */
+  margin: 0 10px; /* Margen reducido */
 }
 
 .nav-list li a {
   text-decoration: none;
   color: #fff;
-  padding: 5px 10px; /* Se ajusta el padding para mantener el tamaño como estaba */
-  font-weight: bold; /* Se mantiene el peso de la fuente */
+  padding: 2px 7px; /* Padding reducido */
+  font-weight: bold;
   transition: color 0.3s, background-color 0.3s; 
 }
 
@@ -116,7 +111,7 @@
     overflow: hidden;
     flex-direction: column;
     position: absolute;
-    top: 53px; 
+    top: 20px;
     left: 0;
     width: 100%;
     background-color: #0f393b;
@@ -202,7 +197,9 @@
 .submenu-parent {
   position: relative;
 }
-
+.submenu-active {
+  z-index: 1000; /* Un valor alto para asegurarse de que esté por encima de otros elementos */
+}
 .submenu {
   width: max-content;
   list-style-type: none;
@@ -255,11 +252,11 @@
   }
 }
 
-@keyframes pulse {
+@keyframes respirar {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(44, 144, 149, 0.5);
+    background-color: #0f393b; /* Color original */
   }
   50% {
-    box-shadow: 0 0 10px 5px rgba(44, 144, 149, 0.75);
+    background-color: #034242; /* Un tono ligeramente diferente */
   }
 }

@@ -140,11 +140,11 @@ tr:nth-child(even) {
   padding-left: 5px;
   border-radius: 5px;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px; /* Tamaño más grande */
   z-index: 1000;
-  background: #fdfdfd; /* Un fondo más claro para un look fresco */
-  padding: 30px; /* Más espacio interno para una apariencia menos apretada */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombras más suaves */
+  background: #fdfdfd;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 #popupReporte {
@@ -245,11 +245,11 @@ tr:nth-child(even) {
 
 #popupVer table {
   width: 100%;       
-  margin: 20px 0; /* Espacio superior e inferior para la tabla */
-  border-collapse: separate; /* Elimina el borde doble que aparece en las celdas de las tablas */
-  border-spacing: 0; /* Espaciado entre celdas */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra sutil para dar profundidad */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna */
+  margin: 20px 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #popupVer th, #popupVer td {

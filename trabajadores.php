@@ -168,6 +168,21 @@
         <div id="popupEditar">
             <form id="editarTrabajadorForm">
                 <h3>Editar datos</h3>
+
+                <div class="field">
+                    <label>Foto:</label>
+                    <img id="editFoto" src="" >
+                    <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
+                </div>
+
+                <div class="field">
+                    <label>Estado:</label>
+                    <select id="editEstado">
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+
                 <div class="field">
                     <label>Estado:</label>
                     <select id="editEstado">

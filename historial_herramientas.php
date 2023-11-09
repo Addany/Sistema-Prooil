@@ -99,136 +99,137 @@
       </div>
     </form>
     <section class="seccion-tabla">
-      <table id="tabla-historial">
-        <thead>
-          <tr>
-            <th>Foto</th>
-            <th>ID</th>
-            <th>Tipo de herramienta</th>
-            <th>Marca</th>
-            <th>Orden de compra</th>
-            <th>Tamaño</th>
-            <th>No. Serie</th>
-            <th>Estado</th>
-            <th>Color</th>
-            <th>Fecha de Registro</th>
-            <th>Status</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          if ($conexion->connect_error) {
-            die();
-          }
-          
-          $sql = "SELECT herramientas_cantidad.*, herramientas.tipo_herramienta, herramientas.foto 
-          FROM herramientas_cantidad 
-          JOIN herramientas_tipo ON herramientas_cantidad.identificador = herramientas_tipo.identificador 
-          JOIN herramientas ON herramientas_tipo.id_herramienta = herramientas.id_herramienta
-          LIMIT $porPagina OFFSET $offset;";
-
-          //Filtros
-          $condiciones = [];
-          if ($tipoHerramienta) {
-            $condiciones[] = "herramientas.tipo_herramienta = '$tipoHerramienta'";
-          }
-          if ($status) {
-            $condiciones[] = "herramientas_cantidad.disponibilidad = '$status'";
-          }
-          if ($fechaInicio) {
-            $condiciones[] = "CAST(herramientas_cantidad.fecha_registro AS DATE) = '$fechaInicio'";
-          }
-          if ($marca) {
-            $condiciones[] = "herramientas_cantidad.marca = '$marca'";
-          }
-          $condicionSql = implode(' AND ', $condiciones);
-          if ($condicionSql) {
-            $condicionSql = "WHERE $condicionSql";
-          }
-
-          $sql_total = "SELECT COUNT(*) as total 
-          FROM herramientas_cantidad 
-          JOIN herramientas_tipo ON herramientas_cantidad.identificador = herramientas_tipo.identificador 
-          JOIN herramientas ON herramientas_tipo.id_herramienta = herramientas.id_herramienta 
-          $condicionSql;";
-
-          $result_total = $conexion->query($sql_total);
-
-          if ($result_total && $result_total->num_rows > 0) {
-            $row = $result_total->fetch_assoc();
-            $totalRegistros = $row['total'];
-            $totalPaginas = ceil($totalRegistros / $porPagina);
-          }
-
-          $sql = "SELECT herramientas_cantidad.*, herramientas.tipo_herramienta, herramientas.foto 
-          FROM herramientas_cantidad 
-          JOIN herramientas_tipo ON herramientas_cantidad.identificador = herramientas_tipo.identificador 
-          JOIN herramientas ON herramientas_tipo.id_herramienta = herramientas.id_herramienta
-          $condicionSql
-          ORDER BY $orden
-          LIMIT $porPagina OFFSET $offset;";
-          
-          $result = $conexion->query($sql);
-
-          if ($result->num_rows > 0){
-            while ($row = $result->fetch_assoc()) {
-              $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
-              $fechaObj = date_create_from_format('Y-m-d', $row["fecha_registro"]);
-              $fechaFormateada = $fechaObj->format('d/m/Y');
-              echo "<tr>";
-              echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto de' class='imagen-herramienta'></td>";
-              echo "<td data-label='ID'>" . $row["identificador"] . "</td>";
-              echo "<td data-label='Tipo de herramienta'>" . $row["tipo_herramienta"] . "</td>";
-              echo "<td data-label='Marca'>" . $row["marca"] . "</td>";
-              echo "<td data-label='Orden de compra'>" . $row["orden_compra"] . "</td>";
-              echo "<td data-label='Tamaño'>" . $row["tamaño"] . "cm</td>";
-              echo "<td data-label='No. Serie'>" . $row["no_serie"] . "</td>";
-              echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
-              echo "<td data-label='Color'>" . $row["color"] . "</td>";
-              echo "<td data-label='Fecha de Registro'>" . $fechaFormateada . "</td>";
-              if ($row["disponibilidad"] == "Disponible") {
-                echo "<td data-label='Estatus'><span class='estatus'><i class='fa fa-check-circle' style='color:green;'></i> " . $row["disponibilidad"] . "</span></td>";
-              } elseif ($row["disponibilidad"] == "En Prestamo") {
-                  echo "<td data-label='Estatus'><span class='estatus'><i class='fa-solid fa-handshake' style='color:red;'></i> " . $row["disponibilidad"] . "</span></td>";
-              }
-              echo "<td data-label='Acciones'>";
-              echo "<button class='accion-button' onclick='descargarQR(\"" . $row["identificador"] . "\")'>Descargar QR</button>";
-              echo "<button class='accion-button' onclick='editarHerramienta(this)'>Editar</button>";
-              echo "</td>";
-              echo "</tr>";
+     <div class="tabla-contenedor">
+        <table id="tabla-historial">
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>ID</th>
+              <th>Tipo de herramienta</th>
+              <th>Marca</th>
+              <th>Orden de compra</th>
+              <th>Tamaño</th>
+              <th>No. Serie</th>
+              <th>Estado</th>
+              <th>Color</th>
+              <th>Fecha de Registro</th>
+              <th>Status</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            if ($conexion->connect_error) {
+              die();
             }
-          }
-          $conexion->close();
+            
+            $sql = "SELECT herramientas_cantidad.*, herramientas.tipo_herramienta, herramientas.foto 
+            FROM herramientas_cantidad 
+            JOIN herramientas_tipo ON herramientas_cantidad.identificador = herramientas_tipo.identificador 
+            JOIN herramientas ON herramientas_tipo.id_herramienta = herramientas.id_herramienta
+            LIMIT $porPagina OFFSET $offset;";
+
+            //Filtros
+            $condiciones = [];
+            if ($tipoHerramienta) {
+              $condiciones[] = "herramientas.tipo_herramienta = '$tipoHerramienta'";
+            }
+            if ($status) {
+              $condiciones[] = "herramientas_cantidad.disponibilidad = '$status'";
+            }
+            if ($fechaInicio) {
+              $condiciones[] = "CAST(herramientas_cantidad.fecha_registro AS DATE) = '$fechaInicio'";
+            }
+            if ($marca) {
+              $condiciones[] = "herramientas_cantidad.marca = '$marca'";
+            }
+            $condicionSql = implode(' AND ', $condiciones);
+            if ($condicionSql) {
+              $condicionSql = "WHERE $condicionSql";
+            }
+
+            $sql_total = "SELECT COUNT(*) as total 
+            FROM herramientas_cantidad 
+            JOIN herramientas_tipo ON herramientas_cantidad.identificador = herramientas_tipo.identificador 
+            JOIN herramientas ON herramientas_tipo.id_herramienta = herramientas.id_herramienta 
+            $condicionSql;";
+
+            $result_total = $conexion->query($sql_total);
+
+            if ($result_total && $result_total->num_rows > 0) {
+              $row = $result_total->fetch_assoc();
+              $totalRegistros = $row['total'];
+              $totalPaginas = ceil($totalRegistros / $porPagina);
+            }
+
+            $sql = "SELECT herramientas_cantidad.*, herramientas.tipo_herramienta, herramientas.foto 
+            FROM herramientas_cantidad 
+            JOIN herramientas_tipo ON herramientas_cantidad.identificador = herramientas_tipo.identificador 
+            JOIN herramientas ON herramientas_tipo.id_herramienta = herramientas.id_herramienta
+            $condicionSql
+            ORDER BY $orden
+            LIMIT $porPagina OFFSET $offset;";
+            
+            $result = $conexion->query($sql);
+
+            if ($result->num_rows > 0){
+              while ($row = $result->fetch_assoc()) {
+                $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
+                $fechaObj = date_create_from_format('Y-m-d', $row["fecha_registro"]);
+                $fechaFormateada = $fechaObj->format('d/m/Y');
+                echo "<tr>";
+                echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto de' class='imagen-herramienta'></td>";
+                echo "<td data-label='ID'>" . $row["identificador"] . "</td>";
+                echo "<td data-label='Tipo de herramienta'>" . $row["tipo_herramienta"] . "</td>";
+                echo "<td data-label='Marca'>" . $row["marca"] . "</td>";
+                echo "<td data-label='Orden de compra'>" . $row["orden_compra"] . "</td>";
+                echo "<td data-label='Tamaño'>" . $row["tamaño"] . "cm</td>";
+                echo "<td data-label='No. Serie'>" . $row["no_serie"] . "</td>";
+                echo "<td data-label='Estado'>" . $row["estado"] . "</td>";
+                echo "<td data-label='Color'>" . $row["color"] . "</td>";
+                echo "<td data-label='Fecha de Registro'>" . $fechaFormateada . "</td>";
+                if ($row["disponibilidad"] == "Disponible") {
+                  echo "<td data-label='Estatus'><span class='estatus'><i class='fa fa-check-circle' style='color:green;'></i> " . $row["disponibilidad"] . "</span></td>";
+                } elseif ($row["disponibilidad"] == "En Prestamo") {
+                    echo "<td data-label='Estatus'><span class='estatus'><i class='fa-solid fa-handshake' style='color:red;'></i> " . $row["disponibilidad"] . "</span></td>";
+                }
+                echo "<td data-label='Acciones'>";
+                echo "<button class='accion-button' onclick='descargarQR(\"" . $row["identificador"] . "\")'>Descargar QR</button>";
+                echo "<button class='accion-button' onclick='editarHerramienta(this)'>Editar</button>";
+                echo "</td>";
+                echo "</tr>";
+              }
+            }
+            $conexion->close();
+            ?>
+          </tbody>
+        </table>
+        
+        <div class="pagination">
+          <?php
+            $range = 5; 
+            $start = max(1, $pagina - floor($range / 2));
+            $end = min($totalPaginas, $start + $range - 1);
+            $start = max(1, $end - $range + 1);
           ?>
-        </tbody>
-      </table>
-      
-      <div class="pagination">
-        <?php
-          $range = 5; 
-          $start = max(1, $pagina - floor($range / 2));
-          $end = min($totalPaginas, $start + $range - 1);
-          $start = max(1, $end - $range + 1);
-        ?>
 
-        <?php if($pagina > 1): ?>  
-            <a class="prev" href="?pagina=<?php echo $pagina-1; ?>&<?php echo $parametros_filtro; ?>">&lt; Anterior</a>
-        <?php endif; ?>
+          <?php if($pagina > 1): ?>  
+              <a class="prev" href="?pagina=<?php echo $pagina-1; ?>&<?php echo $parametros_filtro; ?>">&lt; Anterior</a>
+          <?php endif; ?>
 
-        <?php for($i = $start; $i <= $end; $i++): ?>
-            <?php if($i == $pagina): ?>
-                <span class="current-page"><?php echo $i; ?></span> 
-            <?php else: ?>
-                <a href="?pagina=<?php echo $i; ?>&<?php echo $parametros_filtro; ?>"><?php echo $i; ?></a>
-            <?php endif; ?>
-        <?php endfor; ?>
+          <?php for($i = $start; $i <= $end; $i++): ?>
+              <?php if($i == $pagina): ?>
+                  <span class="current-page"><?php echo $i; ?></span> 
+              <?php else: ?>
+                  <a href="?pagina=<?php echo $i; ?>&<?php echo $parametros_filtro; ?>"><?php echo $i; ?></a>
+              <?php endif; ?>
+          <?php endfor; ?>
 
-        <?php if($pagina < $totalPaginas): ?> 
-            <a class="next" href="?pagina=<?php echo $pagina+1; ?>&<?php echo $parametros_filtro; ?>">Siguiente &gt;</a>
-        <?php endif; ?>
+          <?php if($pagina < $totalPaginas): ?> 
+              <a class="next" href="?pagina=<?php echo $pagina+1; ?>&<?php echo $parametros_filtro; ?>">Siguiente &gt;</a>
+          <?php endif; ?>
+        </div>
       </div>
-
     </section>
     <div id="overlay" onclick="cerrarSiEsFuera(event, 'popup')"></div>
     <div id="popup">

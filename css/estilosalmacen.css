@@ -2,8 +2,9 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  padding-top: 58px;
+  padding-top: 45px;
 }
+
 
 #page-container {
   display: none;
@@ -12,7 +13,7 @@ body {
 .form-buscar {
   display: flex;
   justify-content: space-between; /* Mantenemos la disposición horizontal */
-  padding: 20px;
+  padding: 7px;
   background: #f1f1f1; /* Podemos mantener el color o probar un gradiente suave */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sutil sombra para dar profundidad */
   font-weight: bold;
@@ -69,52 +70,56 @@ body {
 }
 
 table {
-  transition: all 0.3s;
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0; /* Mantiene las filas juntas */
   margin-bottom: 20px;
-  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra sutil para la tabla */
 }
 
-table tr:hover {
-  background-color: #194d5011; /* Hover sutil para las filas */
-}
-
-th, 
-td {
-  padding: 12px; /* Aumenta el padding para más espacio */
-  text-align: center; /* Alineación a la izquierda para títulos y celdas, es más moderno */
-  border-bottom: 3px solid #2c909548; /* Se mantiene el borde para definir la barra */
+th, td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0; /* Borde más claro y fino */
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.2s; /* Transición suave para hover en celdas */
 }
 
 th {
-  background-color: #0F393B; /* Color existente para mantener la paleta */
+  background-color: #0F393B;
   color: white;
-  font-size: 16px; /* Incrementa la fuente para mayor legibilidad */
-  font-weight: 600; /* Peso de fuente para títulos más definidos */
-  border-bottom: 3px solid #397D68; /* Se mantiene el borde para definir la barra */
+  font-weight: 600;
+  position: sticky;
+  top: 0; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para el encabezado */
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9; /* Mantén el zebra striping para filas pares */
+  background-color: #f9f9f9;
+}
+
+td:hover {
+  background-color: #ecfdff; /* Cambio de color en el hover de cada celda */
+  transform: translateY(-1px); /* Eleva ligeramente la celda en hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para efecto 3D */
 }
 
 .accion-button {
-  padding: 8px 8px; /* Más padding para botones más grandes */
-  border-radius: 5px; /* Bordes redondeados existentes */
-  border: none; /* Borde removido para un botón más limpio */
-  background-color: #2c9095; /* Color existente para consistencia */
+  padding: 0.5em 1em; /* Unidades em basadas en el tamaño de fuente del elemento */
+  border-radius: 0.3em;
+  border: none;
+  background-color: #2c9095;
+  margin-left: 0.5em; /* Margen izquierdo más flexible */
   color: white;
-  margin-bottom: 0.2rem;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease; /* Transiciones suaves para hover */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidad */
-  font-weight: bold;
-  cursor: pointer; /* Indica que es un botón interactivo */
+  font-size: 0.9em; /* Tamaño de fuente adaptable */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  cursor: pointer;
+  outline: none;
 }
 
-.accion-button:hover {
-  background-color: #194d50; /* Color de hover actualizado */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más prominente en hover */
+.accion-button:hover, .accion-button:focus {
+  background-color: #194d50;
+  transform: scale(1.05);
 }
 
 .imagen-herramienta {
