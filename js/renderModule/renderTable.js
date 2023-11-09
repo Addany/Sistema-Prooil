@@ -16,13 +16,14 @@ export const renderElementDom = (elementArray, valueName, valueState) => {
         const newRowElement = document.createElement('tr');
 
         //Creando los elemento th en donde se va a visualizar los valores
-        const newValueElementIDs = document.createElement('th');
+        const newValueElementIDs = document.createElement('td');
         newValueElementIDs.classList.add('valueIDs');
 
-        const newValueElementName = document.createElement('th');
-        const newValueElementState = document.createElement('th');
-        const newValueElementAcciont = document.createElement('th');
+        const newValueElementName = document.createElement('td');
+        const newValueElementState = document.createElement('td');
+        const newValueElementAcciont = document.createElement('td');
         const createButtonDelete = document.createElement('button');
+        createButtonDelete.className = "delete-button";
         createButtonDelete.innerText = 'Eliminar herramienta';
         createButtonDelete.id = 'deleteElementsDOM';
 

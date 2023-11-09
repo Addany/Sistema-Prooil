@@ -19,7 +19,7 @@ export const renderDelete = () => {
         element.addEventListener('click', () => {   
             //Selecciona el elemento padre del elemento padre del elemento que se le dio click 
             const arrowtable = element.parentNode.parentNode; 
-            const firstArrow = arrowtable.querySelector('th');
+            const firstArrow = arrowtable.querySelector('td');
             let elementDelete = firstArrow.textContent;
             let indexElementDelete = readerCode.firstCode.indexOf(elementDelete);
 

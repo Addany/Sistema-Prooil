@@ -66,26 +66,20 @@
                         <!-- Contenedor de las herramientas escaneadas -->
 
                         <div class="container-renderTable">
-                            <table>
-                                <tr>
-                                    <th>
-                                        ID de la herramienta
-                                    </th>
-                                    <th>
-                                        Nombre de la herramienta
-                                    </th>
-                                    <th>
-                                        Estado de la herramienta
-                                    </th>
-                                    <th>
-                                        Acciones
-                                </th>
-                                </tr>
+                            <table id="scanned-tools-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID de la herramienta</th>
+                                        <th>Nombre de la herramienta</th>
+                                        <th>Estado de la herramienta</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
                             </table>
                             <table id="renderTable">    
-                                <div id="container-elementTR">
-                                    
-                                </div>
+                                <tbody id="container-elementTR">
+                                    <!-- Los datos del QR se interpretarán y mostrarán aquí -->
+                                </tbody>
                             </table>
                         </div>
 

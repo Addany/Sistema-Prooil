@@ -22,11 +22,16 @@
     margin-right: auto;
     margin-bottom: 20px;
     margin-top: 20px;
-    background: #212121;
+    background: #164d50;
     color: #FFFFFF;
     border: none;
     border-radius: 10px;
 }
+
+.containerWindow-existingCode button:hover {
+    background-color: #19575a /* Ligeramente más oscuro al pasar el mouse */
+}
+
 
 .container-windowFolio {
     width: 100%;
@@ -43,12 +48,46 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 2px solid #BDBDBD;
-    color: #212121;
+    color: #10393bb6;
     padding: 5px;
 }
 
 .container-windowFolio-none {
     display: none;
+}
+
+
+.container-windowFolio {
+    width: auto;
+    height: auto;
+    position: absolute;
+    z-index: 900;
+    background: #FFFFFF;
+    border: 2px solid #BDBDBD;
+    border-radius: 10px;
+    color: #212121; /* Color del texto */
+    padding: 10px; /* Añadido para tener algo de espacio dentro del contenedor */
+    box-sizing: border-box; /* Asegura que el padding y el borde estén incluidos en el ancho y alto */
+}
+
+.container-windowFolio p {
+    font-size: 16px;
+    margin: 10px;
+}
+
+.container-windowFolio button {
+    width: 90%;
+    height: 40px;
+    display: block;
+    margin: 20px auto; /* Margen superior e inferior de 20px, y auto para los lados */
+    background: #164d50;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.container-windowFolio button:hover {
+    background-color: #19575a; /* Ligeramente más oscuro al pasar el mouse */
 }
 

@@ -43,24 +43,32 @@ const returnInformationLoan = ( elementsIDs, nameStorer, nameApplicant, observat
     }
 }
 
-const createWindowNumFolio = ( numFolio ) => {
+const createWindowNumFolio = (numFolio) => {
     const createDivElement = document.createElement('div');
     createDivElement.setAttribute('class', 'container-windowFolio');
-    createDivElement.removeAttribute('container-windowFolio-none')
+    createDivElement.removeAttribute('container-windowFolio-none');
 
     const createParagraphElement = document.createElement('p');
-    createParagraphElement.innerText = numFolio.folio;
+    createParagraphElement.innerText = 'Folio Generado con numeración: ';
+
+    // Crear un span para el número y aplicar negritas
+    const folioNumberSpan = document.createElement('span');
+    folioNumberSpan.innerText = numFolio.folio;
+    folioNumberSpan.style.fontWeight = 'bold'; // Aplicar negritas
+
+    // Añadir el span al párrafo
+    createParagraphElement.appendChild(folioNumberSpan);
 
     const createButtonElement = document.createElement('button');
     createButtonElement.innerText = 'Aceptar';
 
-    createButtonElement.addEventListener('click', ()=> {
+    createButtonElement.addEventListener('click', () => {
         createDivElement.setAttribute('class', 'container-windowFolio-none');
-    })
+    });
 
     createDivElement.append(createParagraphElement, createButtonElement);
-    selectBodyHTML.append(createDivElement);
-} 
+    document.body.append(createDivElement);
+};
 
 buttomConfirm.addEventListener('click', ()=> {
     const objectInformation = returnInformationLoan(readerCode.firstCode, labelStorerName, labelApplicantName, observationLoan);
