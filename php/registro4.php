@@ -33,7 +33,7 @@ if ($resultado->num_rows > 0) {
 	}
 }
 # Ahora insertamos en la tabla hija
-$sql2 = "INSERT INTO cantidad_epp (cantidad, marca, modelo, tipo, talla, clase, orden_compra, fecha_registro) VALUES ('$cantidad', '$marca', '$modelo', 'tipo', '$talla', '$clase', '$orden_compra', '$fecha_registro')";
+$sql2 = "INSERT INTO cantidad_epp (cantidad, marca, modelo, talla, clase, orden_compra, fecha_registro) VALUES ('$cantidad', '$marca', '$modelo', '$talla', '$clase', '$orden_compra', '$fecha_registro')";
 if ($conexion->query($sql2) === TRUE) {
 	$last_id2 = $conexion->insert_id;
 
@@ -50,6 +50,6 @@ if ($conexion->query($sql2) === TRUE) {
 	#Descomentar para poder saber el error generado
 	#echo '<script language="javascript">alert("Error insertando en cantidad_epp: ' . $conexion->error . '");</script>';
 }
-echo '<script language="javascript">alert("Subido datos correctos de: ' . $nombre_epp . '");</script>';
+echo '<script language="javascript">alert("Capturado correctamente EPP: ' . $nombre_epp . '");</script>';
 echo '<script type="text/javascript">window.location.href="../registro_epp.php";</script>';
 ?>

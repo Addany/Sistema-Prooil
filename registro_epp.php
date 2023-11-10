@@ -36,7 +36,7 @@
                 while($row = mysqli_fetch_assoc($result)) {
                     $id = $row['id_epp'];
                     $nombre = $row['nombre_epp'];
-                    $options .= "<option value='$id'>$nombre</option>";
+                    $options .= "<option value='$nombre'>$nombre</option>";
                 }
                 ?>
                 <form class="form-registro" action="php/registro4.php" method="POST" enctype="multipart/form-data">
@@ -50,15 +50,15 @@
                             </div>
                             <div class="input-group">
                                 <label for="cantidad">Cantidad:</label>
-                                <input type="number" id="cantidad" name="amount"  min="0" oninput="validity.valid||(value='');" required>
+                                <input type="number" id="cantidad" name="amount"  min="1" oninput="validity.valid||(value='');" required>
                             </div>
                             <div class="input-group">
                                 <label for="marca">Marca:</label>
-                                <input type="text" id="marca" name="brand" required>
+                                <input type="text" id="marca" name="brand">
                             </div>
                             <div class="input-group">
                                 <label for="modelo">Modelo:</label>
-                                <input type="text" id="modelo" name="model" required>
+                                <input type="text" id="modelo" name="model">
                             </div>
                         </div>
                         <div class="right-section">
@@ -68,7 +68,7 @@
                             </div>
                             <div class="input-group">
                                 <label for="clase">Clase:</label>
-                                <select id="clase" name="clase" required data-placeholder="Selecciona una clase">
+                                <select id="clase" name="class" required data-placeholder="Selecciona una clase">
                                     <option value="Cabeza">Cabeza</option>
                                     <option value="Ojos y cara">Ojos y cara</option>
                                     <option value="Oídos">Oídos</option>

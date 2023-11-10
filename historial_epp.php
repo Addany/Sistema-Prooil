@@ -78,21 +78,25 @@
               if ($conexion->connect_error) {
                 die();
               }
-              $sql = "SELECT * FROM cantidad_epp";
+              $sql = "SELECT cantidad_epp.*, epp.nombre_epp, epp.foto 
+              FROM cantidad_epp 
+              JOIN epp_tipo ON cantidad_epp.identificador = epp_tipo.identificador
+              JOIN epp ON epp_tipo.id_epp = epp.id_epp";
               $result = $conexion->query($sql);
               $vacio = "pendiente";
 
               if ($result->num_rows > 0){
                 while ($row = $result->fetch_assoc()) {
+                  $foto = isset($row['foto']) && $row['foto'] != "" ? "data:image/jpeg;base64," . base64_encode($row['foto']) : 'Resources/Imagen1.webp';
                   $fechaObj = date_create_from_format('Y-m-d', $row["fecha_registro"]);
                   $fechaFormateada = $fechaObj->format('d/m/Y');
                   echo "<tr>";
-                  echo "<td data-label='Foto'><img src='Resources/Imagen1.webp' alt='Foto de ' class='imagen-epp' /></td>";
+                  echo "<td data-label='Foto'><img src='" . $foto . "' alt='Foto de ' class='imagen-epp'></td>";
                   echo "<td data-label='ID'>" . $row["identificador"] . "</td>";
-                  echo "<td data-label='Nombre'>" . $vacio . "</td>";
+                  echo "<td data-label='Nombre'>" . $row["nombre_epp"] . "</td>";
                   echo "<td data-label='Cantidad'>" . $row["cantidad"] . "</td>";
                   echo "<td data-label='Marca'>" . $row["marca"] . "</td>";
-                  echo "<td data-label='Modelo'>" . $row["modelo"] . "cm</td>";
+                  echo "<td data-label='Modelo'>" . $row["modelo"] . "</td>";
                   echo "<td data-label='Clase'>" . $row["clase"] . "</td>";
                   echo "<td data-label='Talla'>" . $row["talla"] . "</td>";
                   echo "<td data-label='Orden de compra'>" . $row["orden_compra"] . "</td>";
