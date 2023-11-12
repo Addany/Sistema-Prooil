@@ -235,9 +235,13 @@ td:hover {
 
 .field {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 3px;
+  justify-content: center; /* Centrar contenido horizontalmente */
+  align-items: center; /* Centrar contenido verticalmente */
+  margin-bottom: 8px; /* Margen inferior ligeramente reducido */
+  background-color: #f8f8f8; /* Color de fondo suave */
+  padding: 1px; /* Padding interno reducido para hacer el contenedor más pequeño */
+  border-radius: 8px; /* Bordes redondeados ligeramente más pequeños */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
 }
 
 .field label {
@@ -314,7 +318,7 @@ td:hover {
 }
 
 @media (max-width: 768px) {
-  .form-buscar {
+ .form-buscar {
     flex-direction: column;
     align-items: stretch; 
   }
@@ -324,20 +328,25 @@ td:hover {
   .form-buscar button {
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10px; 
+    margin-bottom: 5px; /* Margen aún más reducido */
+    height: 30px; /* Altura más reducida */
+    font-size: 12px; /* Tamaño de fuente más pequeño */
+    padding: 4px; /* Padding más reducido */
   }
 
   .form-buscar button {
-    margin-bottom: 6px; 
+    margin-bottom: 4px; /* Margen reducido para botones */
+    height: 32px; /* Altura específica para botones, un poco más alta que los inputs */
   }
   
   .input-group {
     flex-direction: column;
-    align-items: flex-start; /* Alinea los elementos al inicio en el eje transversal */
-}
+    align-items: flex-start; 
+  }
 
   .input-group label {
-      margin-bottom: 1px; /* Agrega un margen en la parte inferior para separar el label del input */
+      margin-bottom: 0; /* Eliminar margen adicional de las etiquetas */
+      font-size: 11px; /* Tamaño de fuente reducido para etiquetas */
   }
 
   #popup {

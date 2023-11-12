@@ -118,24 +118,26 @@
                 <h3>Generar Reporte</h3>
                 
                 <div class="input-group">
-                    <label for="anioReporte">Selecciona el año:</label>
-                    <select id="anioReporte" name="anioReporte">
-                        <?php for($i = 2000; $i <= 2050; $i++): ?>
-                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php endfor; ?>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label for="mesReporte">Selecciona el mes (opcional):</label>
-                    <select id="mesReporte" name="mesReporte">
-                        <option value="" selected>Todo el año</option>
-                        <?php for($i = 1; $i <= 12; $i++): ?>
-                            <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
-                                <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
-                            </option>
-                        <?php endfor; ?>
-                    </select>
+                    <div class="input-container">
+                        <label for="anioReporte">Selecciona el año:</label>
+                        <select id="anioReporte" name="anioReporte">
+                            <?php for($i = 2000; $i <= 2050; $i++): ?>
+                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+    
+                    <div class="input-container">
+                        <label for="mesReporte">Selecciona el mes:</label>
+                        <select id="mesReporte" name="mesReporte">
+                            <option value="" selected>Todo el año</option>
+                            <?php for($i = 1; $i <= 12; $i++): ?>
+                                <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
+                                    <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
+                                </option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
                 </div>
                 <div class="button-group">
                     <button type="button" onclick="generarReporte()">Generar Reporte</button>

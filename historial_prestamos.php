@@ -54,11 +54,18 @@
                             <input type="date" id="fechaFin">
                         </div>
                         <div class="input-group">
-                            <label for="categoria">Categoría:</label>
-                            <select id="categoria">
+                            <label for="status">Status:</label>
+                            <select id="status">
                                 <option value="todos">Todos</option>
-                                <option value="Concretado">Concretado</option>
-                                <option value="No concretado">No concretado</option>
+                                <option value="concretado">Concretado</option>
+                                <option value="activo">Activo</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="almacenista">Almacenista que Autoriza:</label>
+                            <select id="almacenista" name="almacenista">
+                                <option value="todos">Todos</option>
+                                <!-- Las opciones se llenarán dinámicamente usando JavaScript -->
                             </select>
                         </div>
                         <div class="button-group"  id="filter">
@@ -122,7 +129,7 @@
                                     echo "<td data-label='Quien Autorizó'>" . $row["nombre_almacenista"] . "</td>";
                                     echo "<td data-label='Observaciones'>" . $row["observacion"] . "</td>";
                                     if ($row["estado"] == "Activo") {
-                                        echo "<td data-label='Estado'><i <i class='fa-solid fa-circle-exclamation' style='color:yellow;'></i> Activo</td>";
+                                        echo "<td data-label='Estado'><i <i class='fa-solid fa-circle-exclamation' style='color:gray;'></i> Activo</td>";
                                     } else if ($row["estado"] == "Concretado") {
                                         echo "<td data-label='Estado'><i class='fas fa-check-circle' style='color:green;'></i> Concretado</td>";
                                     } else {
@@ -210,59 +217,43 @@
     </div>
 
     <div id="popupReporte" class="popup">
-        <form id="generarReporteForm"> 
-            <h3>Generar Reporte</h3>
-            
-            <div class="input-group">
-                <label for="anioInicio">Fecha de inicio - Año:</label>
-                <select id="anioInicio" name="anioInicio">
-                    <?php for ($i = 2000; $i <= 2050; $i++): ?>
-                        <option value="<?php echo $i; ?>">
-                            <?php echo $i; ?>
-                        </option>
-                    <?php endfor; ?>
-                </select>
-
-                <label for="mesInicio">Mes:</label>
-                <select id="mesInicio" name="mesInicio">
-                    <?php for ($i = 1; $i <= 12; $i++): ?>
-                        <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
-                            <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
-                        </option>
-                    <?php endfor; ?>
-                </select>
-            </div>
-
-            <!-- Selector de Fecha de Fin (Año y Mes) -->
-            <div class="input-group">
-                <label for="anioFin">Fecha de fin - Año:</label>
-                <select id="anioFin" name="anioFin">
-                    <?php for ($i = 2000; $i <= 2050; $i++): ?>
-                        <option value="<?php echo $i; ?>">
-                            <?php echo $i; ?>
-                        </option>
-                    <?php endfor; ?>
-                </select>
-
-                <label for="mesFin">Mes:</label>
-                <select id="mesFin" name="mesFin">
-                    <?php for ($i = 1; $i <= 12; $i++): ?>
-                        <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
-                            <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
-                        </option>
-                    <?php endfor; ?>
-                </select>
-            </div>
-
-            <div class="button-group">
-                <button type="button" onclick="generarReporte()">Generar Reporte</button>
-                <button type="button" onclick="cerrarPopup('popupReporte')">Cerrar</button>
-            </div>
+            <form id="generarReporteForm"> 
+                <h3>Generar Reporte</h3>
+                
+                <div class="input-group">
+                    <div class="input-container">
+                        <label for="anioReporte">Selecciona el año:</label>
+                        <select id="anioReporte" name="anioReporte">
+                            <?php for($i = 2000; $i <= 2050; $i++): ?>
+                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+    
+                    <div class="input-container">
+                        <label for="mesReporte">Selecciona el mes:</label>
+                        <select id="mesReporte" name="mesReporte">
+                            <option value="" selected>Todo el año</option>
+                            <?php for($i = 1; $i <= 12; $i++): ?>
+                                <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
+                                    <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
+                                </option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button type="button" onclick="generarReporte()">Generar Reporte</button>
+                    <button type="button" onclick="cerrarPopup('popupReporte')">Cerrar</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="js/scriptnavegacion.js"></script>
     <script src="js/tablaHistorial.js"></script>
     <script src="js/popup.js"></script>
+    <script src="js/prueba4.js"></script>
     <script src="js/renderModule/detallesPrestamo.js"></script>
     <script src="js/renderModule/marcarHerramienta.js"></script>
 

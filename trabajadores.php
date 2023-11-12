@@ -184,23 +184,6 @@
                 </div>
 
                 <div class="field">
-                    <label>Estado:</label>
-                    <select id="editEstado">
-                        <option value="Activo">Activo</option>
-                        <option value="Inactivo">Inactivo</option>
-                    </select>
-                </div>
-                
-                <div class="field">
-                    <label>Tipo de Registro:</label>
-                    <select id="editTipoRegistro">
-                        <option value="Visitante">Visitante</option>
-                        <option value="Becario">Becario</option>
-                        <option value="Trabajador">Trabajador</option>
-                    </select>
-                </div>
-
-                <div class="field">
                     <label>Nombre:</label>
                     <input type="text" id="editNombre" placeholder="Nombre">
                 </div>

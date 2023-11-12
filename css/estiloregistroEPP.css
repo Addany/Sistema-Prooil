@@ -142,13 +142,6 @@ h1 {
   line-height: 1.5;
 }
 
-.select2-dropdown {
-  max-height: 150px; 
-  overflow-y: auto; 
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
 .select-open {
   overflow: hidden;
 }

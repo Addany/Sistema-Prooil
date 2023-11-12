@@ -1,7 +1,8 @@
 <?php
 include 'conexion_bd.php';
 
-$sqlMarca = "SELECT DISTINCT marca FROM cantidad_epp WHERE marca IS NOT NULL AND marca <> ''";  // Cambiado "historial_epp" por "cantidad_epp"
+// Obtener marcas distintas
+$sqlMarca = "SELECT DISTINCT marca FROM cantidad_epp WHERE marca IS NOT NULL AND marca <> ''";
 $resultMarca = $conexion->query($sqlMarca);
 $marcas = array();
 if ($resultMarca->num_rows > 0) {
@@ -10,7 +11,8 @@ if ($resultMarca->num_rows > 0) {
     }
 }
 
-$sqlClase = "SELECT DISTINCT clase FROM cantidad_epp WHERE clase IS NOT NULL AND clase <> ''";  // Cambiado "historial_epp" por "cantidad_epp"
+// Obtener clases distintas
+$sqlClase = "SELECT DISTINCT clase FROM cantidad_epp WHERE clase IS NOT NULL AND clase <> ''";
 $resultClase = $conexion->query($sqlClase);
 $clases = array();
 if ($resultClase->num_rows > 0) {
@@ -19,7 +21,8 @@ if ($resultClase->num_rows > 0) {
     }
 }
 
-$sqlTalla = "SELECT DISTINCT talla FROM cantidad_epp WHERE talla IS NOT NULL AND talla <> ''";  // Cambiado "historial_epp" por "cantidad_epp"
+// Obtener tallas distintas
+$sqlTalla = "SELECT DISTINCT talla FROM cantidad_epp WHERE talla IS NOT NULL AND talla <> ''";
 $resultTalla = $conexion->query($sqlTalla);
 $tallas = array();
 if ($resultTalla->num_rows > 0) {
@@ -27,4 +30,13 @@ if ($resultTalla->num_rows > 0) {
         $tallas[] = $row['talla'];
     }
 }
+
+// Combinar todos los resultados en un solo array para JSON
+$filtros = array(
+    'marcas' => $marcas,
+    'clases' => $clases,
+    'tallas' => $tallas
+);
+
+echo json_encode($filtros);
 ?>

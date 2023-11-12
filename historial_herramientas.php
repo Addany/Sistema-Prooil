@@ -199,7 +199,9 @@
                 echo "</td>";
                 echo "</tr>";
               }
-            }
+            }else {
+              echo "<tr><td colspan='11'>No se encontraron resultados.</td></tr>";
+          }
             $conexion->close();
             ?>
           </tbody>

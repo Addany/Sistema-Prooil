@@ -1,6 +1,6 @@
 $(document).ready(function(){
     cargarAreas();
-    $('#buscador, #fechaInicio, #categoria, #tipoRegistro, #Area').on('input', function(){
+    $('#buscador, #fechaInicio, #categoria, #tipoRegistro, #Area, #Orden').on('input change', function(){
         buscar();
     });
     
@@ -29,21 +29,23 @@ function buscar(){
     var categoria = $('#categoria').val();
     var tipoRegistro = $('#tipoRegistro').val();
     var area = $('#Area').val();
-    $('#Area').change(function() {
-        console.log('Área cambiada:', $(this).val());
-    });
+    var orden = $('#Orden').val(); // Añadir esta línea para capturar el valor de orden
 
     $.ajax({
         url: 'php/busqueda_trabajadores.php',
         type: 'POST',
-        data: {texto: texto, categoria: categoria, tipoRegistro: tipoRegistro, Area: area},  
+        data: {
+            texto: texto, 
+            categoria: categoria, 
+            tipoRegistro: tipoRegistro, 
+            Area: area,
+            orden: orden  // Añadir 'orden' a la data enviada
+        },  
         success: function(response){
             $('#tabla-trabajadores tbody').html(response);
         }
     });
 }
-
-
 
 function limpiarBusqueda(){
     $('#buscador').val('');
@@ -51,6 +53,7 @@ function limpiarBusqueda(){
     $('#categoria').val('todos');  
     $('#tipoRegistro').val('todos'); 
     $('#Area').val('todos'); 
+    $('#Orden').val('reciente'); 
     
     buscar();  
 }

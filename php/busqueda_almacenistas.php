@@ -45,5 +45,8 @@ if ($result->num_rows > 0) {
         echo "<td data-label='Acciones'><button class='accion-button' onclick='editarAlmacenista(this)'>Editar</button></td>";
         echo "</tr>";
     }
-}
+}else {
+    echo "<tr><td colspan='8'>No se encontraron resultados.</td></tr>";
+}  
+$conexion->close();
 ?>

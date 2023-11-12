@@ -15,18 +15,36 @@ function cargarFiltros(){
         type: 'GET',
         success: function(response){
             var filtros = JSON.parse(response);
-            $('#marca').html(filtros.marcas);
-            $('#clase').html(filtros.clases);
-            $('#talla').html(filtros.tallas);
+            
+            var opcionesMarca = '<option value="todos">Todos</option>';
+            filtros.marcas.forEach(function(marca) {
+                opcionesMarca += '<option value="' + marca + '">' + marca + '</option>';
+            });
+            $('#marca').html(opcionesMarca);
+
+            // Cargar Clases
+            var opcionesClase = '<option value="todos">Todos</option>';
+            filtros.clases.forEach(function(clase) {
+                opcionesClase += '<option value="' + clase + '">' + clase + '</option>';
+            });
+            $('#clase').html(opcionesClase);
+
+            // Cargar Tallas
+            var opcionesTalla = '<option value="todos">Todos</option>';
+            filtros.tallas.forEach(function(talla) {
+                opcionesTalla += '<option value="' + talla + '">' + talla + '</option>';
+            });
+            $('#talla').html(opcionesTalla);
         }
     });
 }
 
-function buscar(){
+function buscar() {
     var texto = $('#buscador').val();
     var clase = $('#clase').val();
     var talla = $('#talla').val();
     var marca = $('#marca').val();
+    var fechaorden = $('#fechaorden').val();
 
     $.ajax({
         url: 'php/busqueda_epp.php',
@@ -35,10 +53,12 @@ function buscar(){
             texto: texto,
             clase: clase,
             talla: talla,
-            marca: marca
+            marca: marca,
+            fechaorden: fechaorden 
         },
-        success: function(response){
-            $('#tabla-items tbody').html(response);
+        success: function(response) {
+            console.log(response); // Esto mostrará la respuesta en la consola del navegador
+            $('#tabla-historial tbody').html(response); // Asegúrate de que este selector coincida con tu tabla HTML
         }
     });
 }
@@ -52,4 +72,5 @@ function limpiarBusqueda(){
     $('#marca').val('todos');
     
     buscar();  
+    
 }

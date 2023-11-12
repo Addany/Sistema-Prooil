@@ -302,12 +302,21 @@ td:hover {
   margin-bottom: 20px; /* Aumentado para dar más espacio debajo del h3 */
 }
 
+/* Estilos modificados para .input-group */
 #popupReporte .input-group {
   display: flex;
-  flex-direction: column; /* Establece los elementos en una dirección de columna */
-  align-items: flex-start; /* Alinea los elementos al inicio, lo que en columna significa arriba */
-  width: 100%; /* Asegura que el grupo de entrada ocupe todo el ancho disponible */
-  margin-bottom: 20px; /* Espacio debajo de cada grupo de entrada */
+  flex-direction: row; /* Cambiado de column a row */
+  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: space-between; /* Distribuye el espacio entre label e input */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Estilos para .input-container */
+#popupReporte .input-group .input-container {
+  display: flex;
+  flex-direction: column; /* Mantiene label sobre input */
+  width: 48%; /* Ajusta el ancho para permitir dos columnas */
 }
 #popupReporte .input-group label {
   margin-bottom: 5px; /* Espacio entre la etiqueta y el campo de entrada debajo */
@@ -351,9 +360,13 @@ td:hover {
 
 .field {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  justify-content: center; /* Centrar contenido horizontalmente */
+  align-items: center; /* Centrar contenido verticalmente */
+  margin-bottom: 8px; /* Margen inferior ligeramente reducido */
+  background-color: #f8f8f8; /* Color de fondo suave */
+  padding: 1px; /* Padding interno reducido para hacer el contenedor más pequeño */
+  border-radius: 8px; /* Bordes redondeados ligeramente más pequeños */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
 }
 
 .field label {
@@ -384,11 +397,25 @@ td:hover {
   .form-buscar button {
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10px; 
+    margin-bottom: 5px; /* Margen aún más reducido */
+    height: 30px; /* Altura más reducida */
+    font-size: 12px; /* Tamaño de fuente más pequeño */
+    padding: 4px; /* Padding más reducido */
   }
 
   .form-buscar button {
-    margin-bottom: 0; 
+    margin-bottom: 4px; /* Margen reducido para botones */
+    height: 32px; /* Altura específica para botones, un poco más alta que los inputs */
+  }
+  
+  .input-group {
+    flex-direction: column;
+    align-items: flex-start; 
+  }
+
+  .input-group label {
+      margin-bottom: 0; /* Eliminar margen adicional de las etiquetas */
+      font-size: 11px; /* Tamaño de fuente reducido para etiquetas */
   }
 
   #popupEditar,#popupVer {
@@ -408,36 +435,73 @@ td:hover {
     margin-bottom: 5px;
   }
   
+  #popupVer {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  #popupVer form, 
+  #popupVer textarea, 
+  #popupVer .button-group {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #popupVer .button-group button {
+    width: 48%; 
+    margin: 0;
+    margin-right: 1%; 
+    box-sizing: border-box;
+  }
+
+  #popupVer .button-group button:last-child {
+    margin-right: 0; 
+  }
+
+  #popupVer #listaHerramientas {
+    width: 100%;
+  }
+
+  #popupVer label,
+  #popupVer .field {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  #popupVer .field span, 
+  #popupVer .field select, 
+  #popupVer .field input[type="text"], 
+  #popupVer .field input[type="email"], 
+  #popupVer .field input[type="date"] {
+    width: 100%;
+    max-width: 100%;
+  }
   #popupVer table {
     width: 100%;
-    border: 0;
+    border-collapse: collapse; /* Asegúrate de que la tabla no tenga espacios entre celdas */
   }
 
   #popupVer thead {
-    display: none;
+    display: table-header-group; /* Muestra los encabezados de la tabla */
   }
 
-  #popupVer tbody tr {
-    margin-bottom: 0.625rem;
-    display: block;
-    border: 1px solid #ccc;
+  #popupVer tbody {
+    display: table-row-group; /* Muestra el cuerpo de la tabla */
+  }
+
+  #popupVer tr {
+    display: table-row; /* Muestra las filas de la tabla */
   }
 
   #popupVer td {
-    display: block;
-    text-align: right;
-    position: relative;
-    padding: 4px 10px 4px 60%;
+    display: table-cell; /* Muestra las celdas de la tabla */
+    text-align: left; /* Alinea el texto a la izquierda */
+    padding: 0.5em; /* Agrega algo de relleno dentro de las celdas */
   }
 
   #popupVer td[data-label]:before {
-    position: absolute;
-    top: 6px;
-    left: 10px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-    display: block;
+    display: none; /* Oculta el contenido generado antes del td para dispositivos más pequeños */
   }
 
   .field {
@@ -457,6 +521,15 @@ td:hover {
   .field input[type="email"], 
   .field input[type="date"] {
     width: 100%;
+  }
+
+  #popupReporte {
+    max-width: 300px; /* Reducir el ancho máximo para tabletas */
+    padding: 15px; /* Ajustar el relleno */
+  }
+
+  #popupReporte .input-group .input-container {
+      width: 100%; /* Hacer que los contenedores de entrada ocupen toda la fila */
   }
 }
 @media (max-width: 600px) {
@@ -497,5 +570,12 @@ td:hover {
 
   #popup {
     max-width: 85%;
+  }
+}
+
+@media (max-width: 600px) {  
+  .pagination a:not(.prev):not(.next):not(.current-page),
+  .pagination span:not(.current-page) {
+    display: none;  /* Oculta todos los números de página excepto el actual, el anterior y el siguiente */
   }
 }

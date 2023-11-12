@@ -9,12 +9,6 @@ body {
   display: none;
 }
 
-#editFoto {
-  width: 50px; /* Asegúrate de que estas dimensiones sean iguales */
-  height: 50px; /* para obtener una forma circular perfecta */
-  border-radius: 50%;
-  object-fit: cover; /* Esto hará que la imagen llene el contenedor sin deformarse */
-}
 
 .form-buscar {
   display: flex;
@@ -125,6 +119,16 @@ td:hover {
   transform: scale(1.05);
 }
 
+.button-group {
+  display: flex;
+  justify-content: flex-start; /* Esto alineará los botones a la izquierda con el input group */
+}
+
+.button-group button {
+  flex: 1; /* Esto hace que cada botón tenga el mismo ancho y ocupe el espacio disponible */
+  margin: 0 5px; /* Esto agrega un pequeño margen entre los botones */
+}
+
 .foto-trabajador {
   width: 50px; /* Define un tamaño específico */
   height: 50px; /* Mantiene la proporción */
@@ -135,6 +139,13 @@ td:hover {
 
 .foto-trabajador:hover {
   transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+}
+
+#editFoto {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 #overlay {
@@ -149,6 +160,7 @@ td:hover {
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
+
 
 #popupEditar {
   visibility: hidden;
@@ -178,7 +190,6 @@ td:hover {
   border: 1px solid #ccc; /* Color de borde más suave */
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra interior sutil */
 }
-
 
 .guardar {
   width: 100%;
@@ -227,21 +238,15 @@ td:hover {
   background-color: #194d50; /* Rojo más oscuro para hover en cancelar */
 }
 
-.button-group {
-  display: flex;
-  justify-content: flex-start; /* Esto alineará los botones a la izquierda con el input group */
-}
-
-.button-group button {
-  flex: 1; /* Esto hace que cada botón tenga el mismo ancho y ocupe el espacio disponible */
-  margin: 0 5px; /* Esto agrega un pequeño margen entre los botones */
-}
-
 .field {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  justify-content: center; /* Centrar contenido horizontalmente */
+  align-items: center; /* Centrar contenido verticalmente */
+  margin-bottom: 8px; /* Margen inferior ligeramente reducido */
+  background-color: #f8f8f8; /* Color de fondo suave */
+  padding: 1px; /* Padding interno reducido para hacer el contenedor más pequeño */
+  border-radius: 8px; /* Bordes redondeados ligeramente más pequeños */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
 }
 
 .field label {
@@ -254,7 +259,8 @@ td:hover {
 .field select, 
 .field input[type="text"], 
 .field input[type="email"], 
-.field input[type="date"] {
+.field input[type="date"], 
+.field input[type="file"] {
   flex: 6;
   width: 75%;
   max-width: 75%;
@@ -328,22 +334,26 @@ td:hover {
   .form-buscar button {
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10px; 
+    margin-bottom: 5px; /* Margen aún más reducido */
+    height: 30px; /* Altura más reducida */
+    font-size: 12px; /* Tamaño de fuente más pequeño */
+    padding: 4px; /* Padding más reducido */
   }
 
   .form-buscar button {
-    margin-bottom: 6px; 
+    margin-bottom: 4px; /* Margen reducido para botones */
+    height: 32px; /* Altura específica para botones, un poco más alta que los inputs */
   }
   
   .input-group {
     flex-direction: column;
-    align-items: flex-start; /* Alinea los elementos al inicio en el eje transversal */
-}
-
-  .input-group label {
-      margin-bottom: 1px; /* Agrega un margen en la parte inferior para separar el label del input */
+    align-items: flex-start; 
   }
 
+  .input-group label {
+      margin-bottom: 0; /* Eliminar margen adicional de las etiquetas */
+      font-size: 11px; /* Tamaño de fuente reducido para etiquetas */
+  }
   #popupEditar {
     max-width: 90%;
     padding: 10px;

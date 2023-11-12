@@ -69,6 +69,7 @@
                             <div class="input-group">
                                 <label for="clase">Clase:</label>
                                 <select id="clase" name="class" required data-placeholder="Selecciona una clase">
+                                    <option value="" disabled selected>Selecciona una clase</option>
                                     <option value="Cabeza">Cabeza</option>
                                     <option value="Ojos y cara">Ojos y cara</option>
                                     <option value="Oídos">Oídos</option>

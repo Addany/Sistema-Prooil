@@ -14,6 +14,18 @@
   <?php
   include 'php/session.php';
   include 'php/conexion_bd.php';
+
+  $cantidadPorPagina = 20;
+
+  $sql_total = "SELECT COUNT(*) as total 
+              FROM cantidad_epp 
+              JOIN epp_tipo ON cantidad_epp.identificador = epp_tipo.identificador
+              JOIN epp ON epp_tipo.id_epp = epp.id_epp";
+  $resultado_total = $conexion->query($sql_total);
+  $fila_total = $resultado_total->fetch_assoc();
+  $totalRegistros = $fila_total['total'];
+  $totalPaginas = ceil($totalRegistros / $cantidadPorPagina);
+
   ?>
 
   <div id="page-container">
@@ -78,10 +90,14 @@
               if ($conexion->connect_error) {
                 die();
               }
+              $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+              $inicio = ($pagina - 1) * $cantidadPorPagina;
               $sql = "SELECT cantidad_epp.*, epp.nombre_epp, epp.foto 
-              FROM cantidad_epp 
-              JOIN epp_tipo ON cantidad_epp.identificador = epp_tipo.identificador
-              JOIN epp ON epp_tipo.id_epp = epp.id_epp";
+                      FROM cantidad_epp 
+                      JOIN epp_tipo ON cantidad_epp.identificador = epp_tipo.identificador
+                      JOIN epp ON epp_tipo.id_epp = epp.id_epp
+                      ORDER BY cantidad_epp.fecha_registro DESC
+                      LIMIT $inicio, $cantidadPorPagina";
               $result = $conexion->query($sql);
               $vacio = "pendiente";
 
@@ -114,6 +130,32 @@
           </table>
         </section>
       </main>
+
+      <div class="pagination">
+            <?php
+            $range = 5; 
+            $start = max(1, $pagina - floor($range / 2)); 
+            $end = min($totalPaginas, $start + $range - 1); 
+
+            $start = max(1, $end - $range + 1);
+            ?>
+
+            <?php if($pagina > 1): ?>  
+                <a class="prev" href="?pagina=<?php echo $pagina-1; ?>">Anterior</a>
+            <?php endif; ?>
+
+            <?php for($i = $start; $i <= $end; $i++): ?>
+                <?php if($i == $pagina): ?>
+                    <span class="current-page"><?php echo $i; ?></span> 
+                <?php else: ?>
+                    <a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                <?php endif; ?>
+            <?php endfor; ?>
+
+            <?php if($pagina < $totalPaginas): ?>  
+                <a class="next" href="?pagina=<?php echo $pagina+1; ?>">Siguiente</a>
+            <?php endif; ?>
+      </div>
 
       <div id="overlay" onclick="cerrarSiEsFuera(event, 'popup', 'popupVer')"></div>
       <div id="popup">
@@ -166,36 +208,38 @@
         </form>
     </div>
     <div id="popupVer" class="popup">
-        <form id="generarReporteForm"> 
-            <h3>Generar Reporte</h3>
-            
-            <div class="input-group">
-                <label for="anioReporte">Selecciona el año:</label>
-                <select id="anioReporte" name="anioReporte">
-                    <?php for($i = 2000; $i <= 2050; $i++): ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                    <?php endfor; ?>
-                </select>
-            </div>
-
-            <div class="input-group">
-                <label for="mesReporte">Selecciona el mes (opcional):</label>
-                <select id="mesReporte" name="mesReporte">
-                    <option value="" selected>Todo el año</option>
-                    <?php for($i = 1; $i <= 12; $i++): ?>
-                        <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
-                            <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
-                        </option>
-                    <?php endfor; ?>
-                </select>
-            </div>
-            <div class="button-group">
-              <button type="button" onclick="generarReporte()">Generar Reporte</button>
-              <button type="button" onclick="cerrarPopup('popupVer')">Cerrar</button>
-            </div>
-        </form>
+            <form id="generarReporteForm"> 
+                <h3>Generar Reporte</h3>
+                
+                <div class="input-group">
+                    <div class="input-container">
+                        <label for="anioReporte">Selecciona el año:</label>
+                        <select id="anioReporte" name="anioReporte">
+                            <?php for($i = 2000; $i <= 2050; $i++): ?>
+                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+    
+                    <div class="input-container">
+                        <label for="mesReporte">Selecciona el mes:</label>
+                        <select id="mesReporte" name="mesReporte">
+                            <option value="" selected>Todo el año</option>
+                            <?php for($i = 1; $i <= 12; $i++): ?>
+                                <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?>">
+                                    <?php echo date('F', mktime(0, 0, 0, $i, 10)); ?>
+                                </option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button type="button" onclick="generarReporte()">Generar Reporte</button>
+                    <button type="button" onclick="cerrarPopup('popupReporte')">Cerrar</button>
+                </div>
+            </form>
+        </div>
     </div>
-
 
 
   <script src="js/scriptnavegacion.js"></script>

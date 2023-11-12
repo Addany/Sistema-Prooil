@@ -287,7 +287,6 @@ td:hover {
   background-color: #f1f1f1; /* Color de fondo al pasar el mouse para resaltar la fila */
 }
 
-
 #popupReporte form {
   display: flex;
   flex-direction: column;
@@ -301,12 +300,21 @@ td:hover {
   margin-bottom: 20px; /* Aumentado para dar más espacio debajo del h3 */
 }
 
+/* Estilos modificados para .input-group */
 #popupReporte .input-group {
   display: flex;
-  flex-direction: column; /* Establece los elementos en una dirección de columna */
-  align-items: flex-start; /* Alinea los elementos al inicio, lo que en columna significa arriba */
-  width: 100%; /* Asegura que el grupo de entrada ocupe todo el ancho disponible */
-  margin-bottom: 20px; /* Espacio debajo de cada grupo de entrada */
+  flex-direction: row; /* Cambiado de column a row */
+  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: space-between; /* Distribuye el espacio entre label e input */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Estilos para .input-container */
+#popupReporte .input-group .input-container {
+  display: flex;
+  flex-direction: column; /* Mantiene label sobre input */
+  width: 48%; /* Ajusta el ancho para permitir dos columnas */
 }
 #popupReporte .input-group label {
   margin-bottom: 5px; /* Espacio entre la etiqueta y el campo de entrada debajo */
@@ -350,9 +358,13 @@ td:hover {
 
 .field {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  justify-content: center; /* Centrar contenido horizontalmente */
+  align-items: center; /* Centrar contenido verticalmente */
+  margin-bottom: 8px; /* Margen inferior ligeramente reducido */
+  background-color: #f8f8f8; /* Color de fondo suave */
+  padding: 1px; /* Padding interno reducido para hacer el contenedor más pequeño */
+  border-radius: 8px; /* Bordes redondeados ligeramente más pequeños */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
 }
 
 .field label {
@@ -424,20 +436,25 @@ td:hover {
   .form-buscar button {
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10px; 
+    margin-bottom: 5px; /* Margen aún más reducido */
+    height: 30px; /* Altura más reducida */
+    font-size: 12px; /* Tamaño de fuente más pequeño */
+    padding: 4px; /* Padding más reducido */
   }
 
   .form-buscar button {
-    margin-bottom: 6px; 
+    margin-bottom: 4px; /* Margen reducido para botones */
+    height: 32px; /* Altura específica para botones, un poco más alta que los inputs */
   }
   
   .input-group {
     flex-direction: column;
-    align-items: flex-start; /* Alinea los elementos al inicio en el eje transversal */
-}
+    align-items: flex-start; 
+  }
 
   .input-group label {
-      margin-bottom: 1px; /* Agrega un margen en la parte inferior para separar el label del input */
+      margin-bottom: 0; /* Eliminar margen adicional de las etiquetas */
+      font-size: 11px; /* Tamaño de fuente reducido para etiquetas */
   }
 
   #popupEditar {
@@ -525,7 +542,16 @@ td:hover {
     display: none; /* Oculta el contenido generado antes del td para dispositivos más pequeños */
   }
 
+  #popupReporte {
+    max-width: 300px; /* Reducir el ancho máximo para tabletas */
+    padding: 15px; /* Ajustar el relleno */
+  }
+
+  #popupReporte .input-group .input-container {
+      width: 100%; /* Hacer que los contenedores de entrada ocupen toda la fila */
+  }
 }
+
 @media (max-width: 600px) {
   table {
     width: 100%;
@@ -576,5 +602,12 @@ td:hover {
 
   #popupVer table {
     min-width: 600px; /* Establece un ancho mínimo para la tabla, puede requerir desplazamiento horizontal */
+  }
+}
+
+@media (max-width: 600px) {  
+  .pagination a:not(.prev):not(.next):not(.current-page),
+  .pagination span:not(.current-page) {
+    display: none;  /* Oculta todos los números de página excepto el actual, el anterior y el siguiente */
   }
 }
