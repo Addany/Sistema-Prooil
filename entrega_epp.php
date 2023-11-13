@@ -45,7 +45,6 @@
                         <br>
                         <label for="eppList">Selecciona el EPP:</label>
                         <select id="eppList" class="eppList" required onchange="onEPPSelected(this.value)">
-                            <option value="">Selecciona un EPP</option>
                             <?php echo $options; ?>
                         </select>
                         <div class="selected-epp">
