@@ -23,9 +23,14 @@ if ($almacenista != 'todos') {
     $condiciones[] = "almacenista.nombre = '$almacenista'";
 }
 
-// Condición para fechas
-if ($fechaInicio && $fechaFin) {
-    $condiciones[] = "folio_prestamo.fecha_transaccion BETWEEN '$fechaInicio' AND '$fechaFin'";
+// Condición para fecha de transacción
+if ($fechaInicio) {
+    $condiciones[] = "folio_prestamo.fecha_transaccion >= '$fechaInicio'";
+}
+
+// Condición para fecha de devolución
+if ($fechaFin) {
+    $condiciones[] = "folio_prestamo.fecha_devolucion <= '$fechaFin'";
 }
 
 // Condición para el status

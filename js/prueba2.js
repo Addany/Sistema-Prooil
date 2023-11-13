@@ -8,7 +8,6 @@ $(document).ready(function(){
         limpiarBusqueda();
     });
 });
-
 function cargarAreas(){
     $.ajax({
         url: 'php/obtener_areas.php',
@@ -27,9 +26,9 @@ function cargarAreas(){
 function buscar(){
     var texto = $('#buscador').val();
     var categoria = $('#categoria').val();
-    var tipoRegistro = $('#tipoRegistro').val();
+    var tipoRegistro = $('#tipoRegistro').val(); // Captura el valor seleccionado de tipo de registro
     var area = $('#Area').val();
-    var orden = $('#Orden').val(); // Añadir esta línea para capturar el valor de orden
+    var orden = $('#Orden').val();
 
     $.ajax({
         url: 'php/busqueda_trabajadores.php',
@@ -37,10 +36,10 @@ function buscar(){
         data: {
             texto: texto, 
             categoria: categoria, 
-            tipoRegistro: tipoRegistro, 
+            tipoRegistro: tipoRegistro, // Envía el tipo de registro
             Area: area,
-            orden: orden  // Añadir 'orden' a la data enviada
-        },  
+            orden: orden
+        },
         success: function(response){
             $('#tabla-trabajadores tbody').html(response);
         }
@@ -50,10 +49,10 @@ function buscar(){
 function limpiarBusqueda(){
     $('#buscador').val('');
     $('#fechaInicio').val('');
-    $('#categoria').val('todos');  
-    $('#tipoRegistro').val('todos'); 
-    $('#Area').val('todos'); 
-    $('#Orden').val('reciente'); 
+    $('#categoria').val('todos');
+    $('#tipoRegistro').val('todos'); // Resetea el selector de tipo de registro
+    $('#Area').val('todos');
+    $('#Orden').val('reciente');
     
-    buscar();  
+    buscar();
 }

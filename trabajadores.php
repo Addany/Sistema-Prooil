@@ -64,7 +64,8 @@
                         </div>
                         <div class="input-group">
                             <label>Tipo de Registro:</label>
-                            <select id="editTipoRegistro">
+                            <select id="tipoRegistro">
+                                <option value="todos">Todos</option>
                                 <option value="Visitante">Visitante</option>
                                 <option value="Becario">Becario</option>
                                 <option value="Trabajador">Trabajador</option>
@@ -175,6 +176,15 @@
                 <div class="field">
                     <label>Cambiar Foto:</label>
                     <input type="file" id="editFotoInput" onchange="actualizarFoto(event)">
+                </div>
+
+                <div class="field">
+                    <label>Tipo de Registro:</label>
+                    <select id="editTipoRegistro">
+                        <option value="Visitante">Visitante</option>
+                        <option value="Becario">Becario</option>
+                        <option value="Trabajador">Trabajador</option>
+                    </select>
                 </div>
 
                 <div class="field">

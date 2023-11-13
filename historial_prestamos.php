@@ -42,7 +42,7 @@
                 <div class="form-container">
                     <form class="form-buscar">
                         <div class="input-group">
-                            <label for="buscador">Buscar por texto:</label>
+                            <label for="buscador">Buscar:</label>
                             <input type="text" id="buscador" placeholder="Nombre del Trabajador, Folio, etc.">
                         </div>
                         <div class="input-group">
@@ -62,7 +62,7 @@
                             </select>
                         </div>
                         <div class="input-group">
-                            <label for="almacenista">Almacenista que Autoriza:</label>
+                            <label for="almacenista">Almacenista:</label>
                             <select id="almacenista" name="almacenista">
                                 <option value="todos">Todos</option>
                                 <!-- Las opciones se llenarán dinámicamente usando JavaScript -->

@@ -9,61 +9,78 @@ body {
   display: none;
 }
 
-
 .form-buscar {
   display: flex;
-  justify-content: space-between; /* Mantenemos la disposición horizontal */
-  padding: 7px;
-  background: #f1f1f1; /* Podemos mantener el color o probar un gradiente suave */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sutil sombra para dar profundidad */
+  justify-content: space-between;
+  padding: 5px; /* Reducimos el padding */
+  background: #f1f1f1;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   font-weight: bold;
-  border-radius: 8px; /* Esquinas redondeadas para un look moderno */
+  border-radius: 5px; /* Esquinas menos redondeadas */
 }
 
-.form-buscar input, 
+.form-buscar input,
 .form-buscar select {
-  padding: 10px;
-  border-radius: 5px;
-  border: 2px solid #ddd; /* Aumentamos el grosor del borde para más presencia */
-  transition: all 0.3s ease; /* Transición suave para interactuar con los campos */
+  padding: 8px; /* Padding más pequeño */
+  border-radius: 3px; /* Menor redondez */
+  border: 2px solid #ddd;
+  transition: all 0.3s ease;
+  font-size: 14px; /* Tamaño de fuente más pequeño */
 }
 
-/* Estilo cuando el usuario interactúa con el input */
-.form-buscar input:focus, 
+.form-buscar input:focus,
 .form-buscar select:focus {
-  outline: none; /* Removemos el contorno predeterminado */
-  border-color: #10393b80; /* Cambiamos color de borde al enfocar */
-  box-shadow: 0 0 10px #194d50; /* Sombra exterior para resaltar el enfoque */
+  outline: none;
+  border-color: #10393b80;
+  box-shadow: 0 0 8px #194d50; /* Sombra ligeramente más sutil */
 }
 
 .form-buscar button {
-  background: #2c9095; /* Podemos ajustar a un color más vibrante si se desea */
+  background: #237175;
   color: white;
   border: none;
   font-weight: bold;
-  cursor: pointer; /* Indicamos que es un botón interactivo */
-  transition: background-color 0.3s; /* Suavizamos la transición del hover */
+  cursor: pointer;
+  transition: background-color 0.3s;
   margin-right: 2px;
-  border-radius: 5px;
+  border-radius: 3px; /* Menor redondez */
+  padding: 8px 12px; /* Padding ajustado */
+  font-size: 14px; /* Tamaño de fuente más pequeño */
 }
 
 .form-buscar button:last-child {
-  margin-right: 0; /* Quita el margen al último botón */
+  margin-right: 0;
 }
 
 .form-buscar button:hover {
-  background: #194d50; 
+  background: #194d50;
 }
 
 .input-group {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-right: 10px;
-    margin-left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 8px;
+  margin-left: 3px;
 }
+
+.input-group input {
+  font-size: 13px; /* Reducir el tamaño de la fuente */
+  width: 140px; /* Altura más pequeña si es necesario */
+}
+
 .input-group label {
-    margin-left: 5px;  /* Ajusta el margen según sea necesario */
+  margin-left: 3px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button-group button {
+  flex: 1;
+  margin: 0 3px;
 }
 
 table {
@@ -105,7 +122,7 @@ td:hover {
   padding: 0.5em 1em; /* Unidades em basadas en el tamaño de fuente del elemento */
   border-radius: 0.3em;
   border: none;
-  background-color: #2c9095;
+  background-color: #237175;
   margin-left: 0.5em; /* Margen izquierdo más flexible */
   color: white;
   font-size: 0.9em; /* Tamaño de fuente adaptable */

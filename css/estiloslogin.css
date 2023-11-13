@@ -46,7 +46,7 @@ input,select {
 }
 
 button {
-  background-color: #0F393B;
+  background-color: #237175;
   color: #fff;
   padding: 0.5rem;
   border: none;
@@ -56,7 +56,7 @@ button {
 }
 
 button:hover {
-  background-color: #555;
+  background-color: #0F393B;
 }
 
 
