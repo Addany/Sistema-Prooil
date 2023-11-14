@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/estilosentregaEPP.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/modalEPP/numberFolio.css">
     <link rel="icon" href="Resources/Icons/Manos.ico">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="css/modalEPP/style.css">
 </head>
 
 <body>
@@ -31,21 +34,48 @@
                 <div class="form-container">
                     <h3>Formulario de Entrega de Equipo EPP</h3>
                     <?php
-                    $queryepp = "SELECT id_epp, nombre_epp FROM epp";
+                    $queryepp = "SELECT epp_tipo.id_epp, epp.nombre_epp, SUM(cantidad_epp.cantidad) AS total_cantidad, COALESCE(SUM(historial_epp.cantidad), 0) AS cantidad_entregada, (SUM(cantidad_epp.cantidad) - COALESCE(SUM(historial_epp.cantidad), 0)) AS cantidad_disponible
+                    FROM epp_tipo
+                    JOIN cantidad_epp ON epp_tipo.identificador = cantidad_epp.identificador
+                    JOIN epp ON epp_tipo.id_epp = epp.id_epp
+                    LEFT JOIN historial_epp ON cantidad_epp.identificador = historial_epp.identificador
+                    GROUP BY epp_tipo.id_epp";
                     $resultepp = mysqli_query($conexion, $queryepp);
-                    $options = "<option value=''>Selecciona un EPP</option>";
+                    $options = "<option id='firstElement' value=''>Selecciona un EPP</option>";
                     while($row = mysqli_fetch_assoc($resultepp)) {
                         $id = $row['id_epp'];
                         $nombre = $row['nombre_epp'];
-                        $options .= "<option value='$id'>$id - $nombre</option>";
+                        $disponible = $row['cantidad_disponible'];
+                        $options .= "<option value='$id'>$nombre - Disponible: $disponible </option>";
+                    }
+                    $queryEmpleado = "SELECT id_trabajador, nombre FROM empleado";
+                    $resultEmpleado = mysqli_query($conexion, $queryEmpleado);
+
+                    //Muestra una lista desplegable con los nombres de los empleados
+                    $options1 = "<option id='secondElement' value=''>Selecciona una persona</option>";
+                    while($row = mysqli_fetch_assoc($resultEmpleado)) {
+                        $id = $row['id_trabajador'];
+                        $nombre = $row['nombre'];
+                        $options1 .= "<option value='e_$id'>Empleado: $id - $nombre</option>";
+                    }
+                    //Muestra una lista desplegable con los nombres de los invitados
+                    $queryInvitado = "SELECT id_invitado, nombre FROM invitado";
+                    $resultInvitado = mysqli_query($conexion, $queryInvitado);
+                    while($row = mysqli_fetch_assoc($resultInvitado)) {
+                        $id = $row['id_invitado'];
+                        $nombre = $row['nombre'];
+                        $options1 .= "<option value='i_$id'>Invitado: $id - $nombre</option>";
                     }
                     ?>
                     <form id="deliveryForm">
-                        <label for="almacenName">Almacenista en Solicitud: <?php echo "$almacenista";?></label>
+                        <label for="almacenName">Almacenista en Solicitud: <span id="nameStorer"><?php echo "$almacenista";?></span></label>
                         <br>
                         <label for="eppList">Selecciona el EPP:</label>
-                        <select id="eppList" class="eppList" required onchange="onEPPSelected(this.value)">
+                        <select id="eppList" class="eppList" required>
                             <?php echo $options; ?>
+                        </select>
+                        <select id="personSelect" class="" required>
+                            <?php echo $options1; ?>
                         </select>
                         <div class="selected-epp">
                             <br>
@@ -54,14 +84,17 @@
                                 <table id="selected-epp-table">
                                     <thead>
                                         <tr>
-                                            <th>ID de EPP</th>
+                                            <th>Cantida disponible</th>
                                             <th>Nombre de EPP</th>
                                             <th>Clase</th>
-                                            <th>Acciones</th>
+                                            <th>Marca</th>
+                                            <th>Modelo</th>
+                                            <th>Talla</th>
+                                            <th>Epp solicitados</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="selected-epp-tbody">
-                                        <!-- Los EPP seleccionados se mostrarán aquí -->
+                                    <tbody id="render-elements-tool">
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -71,8 +104,8 @@
                         <textarea id="observations"></textarea>
 
                         <div class="delivery-buttons">
-                            <button type="submit">Solicitar Entrega</button>
-                            <button type="button" onclick="cancelDelivery()">Borrar campo</button>
+                            <button type="button" id="confirmData">Solicitar Entrega</button>
+                            <button type="button" id="deleteData">Borrar campo</button>
                         </div>
                     </form>
                 </div>
@@ -87,7 +120,7 @@
     <script src="js/scriptnavegacion.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script src="js/scriptspentregaEPP.js"></script>
+    <script type="module" src="js/moduleDeliveryEPP/index.js"></script>
 </body>
 
 </html>

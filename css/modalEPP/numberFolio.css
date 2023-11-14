@@ -1,0 +1,32 @@
+.container-numberFolio {
+    height: auto;
+    width: 30%;
+    margin: auto;
+    z-index: 900;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 2px solid #212121;
+    background: #FFFFFF;
+}
+
+.container-numberFolio span {
+    color: #212121;
+    font-size: 18px;
+    font-weight: 600;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.container-numberFolio button {
+    width: 40%;
+    height: 30px;
+    border: none;
+    background: #004D40;
+    color: #FFFFFF;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}

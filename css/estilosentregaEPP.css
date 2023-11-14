@@ -15,14 +15,13 @@ body {
 }
 #page-container {
   display: none;
+  width: 100%;
 }
 
 .form-container {
-  width: 100%;
-  max-width: 400px;
+  width: 80%;
   padding: 20px;
-  margin: 10px;
-  margin-top: 60px;
+  margin: 60px auto 0px;
   border-radius: 26px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
@@ -117,25 +116,9 @@ body {
   border-radius: 4px;
   color: #fff;
 }
-@media screen and (max-width: 600px) {
+@media (max-width: 768px) {
   .form-container {
-      max-width: 90%;
-      margin: 10px auto; /* Centra el contenedor */
-  }
-}
-@media screen and (max-width: 600px) {
-  .delivery-buttons {
-      flex-direction: column;
-  }
-  .delivery-buttons button {
-      margin-bottom: 10px;
-  }
-}@media screen and (max-width: 600px) {
-  .table-container {
-      overflow-x: auto;
-  }
-}@media screen and (max-width: 600px) {
-  .form-container label, .form-container select, .form-container textarea {
-      font-size: 1rem; /* Ajusta según sea necesario */
+      margin-left: 60px;
+      margin-right: 15px;
   }
 }
