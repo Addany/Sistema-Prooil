@@ -133,6 +133,28 @@ td:hover {
   transform: translateY(-1px); /* Eleva ligeramente la celda en hover */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para efecto 3D */
 }
+/* Estilo para la animación de cada celda de cualquier tabla */
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Clase inicial para celdas ocultas */
+.celda-oculta {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Clase para animar celdas cuando están en el campo de visión */
+.celda-visible {
+  animation: fadeInUp 0.2s ease-out forwards;
+}
 
 .accion-button {
   padding: 0.5em 1em; /* Unidades em basadas en el tamaño de fuente del elemento */

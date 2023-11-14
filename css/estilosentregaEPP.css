@@ -117,9 +117,25 @@ body {
   border-radius: 4px;
   color: #fff;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .form-container {
-      margin-left: 60px;
-      margin-right: 15px;
+      max-width: 90%;
+      margin: 10px auto; /* Centra el contenedor */
+  }
+}
+@media screen and (max-width: 600px) {
+  .delivery-buttons {
+      flex-direction: column;
+  }
+  .delivery-buttons button {
+      margin-bottom: 10px;
+  }
+}@media screen and (max-width: 600px) {
+  .table-container {
+      overflow-x: auto;
+  }
+}@media screen and (max-width: 600px) {
+  .form-container label, .form-container select, .form-container textarea {
+      font-size: 1rem; /* Ajusta según sea necesario */
   }
 }

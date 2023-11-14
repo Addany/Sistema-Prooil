@@ -190,3 +190,29 @@ function actualizarFoto(event) {
   }
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Selecciona todas las celdas de todas las tablas
+  var celdas = document.querySelectorAll('td');
+  
+  // Agrega la clase inicial a todas las celdas
+  celdas.forEach(function(celda) {
+      celda.classList.add('celda-oculta');
+  });
+
+  // Función para observar las celdas
+  var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('celda-visible');
+              observer.unobserve(entry.target);
+          }
+      });
+  }, { threshold: 0.1 });
+
+  // Observa cada celda
+  celdas.forEach(function(celda) {
+      observer.observe(celda);
+  });
+});
+
