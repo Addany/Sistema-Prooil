@@ -2,7 +2,7 @@ export let arrayToolIDs = [];
 
 const buttonSumNext = ( paragraph, buttonParent ) => {
     const fatherElement = buttonParent.parentNode.parentNode;
-    const childElement = fatherElement.querySelector('th'); //Cantidad disponible
+    const childElement = fatherElement.querySelector('td'); //Cantidad disponible
     let amountElements = parseInt(paragraph.textContent)
 
     if(amountElements >= childElement.textContent) return;
@@ -29,12 +29,16 @@ export const renderBodyTable = ( elementRender, arrayIDS, ...arrayElements ) => 
     arrayToolIDs.push(arrayIDS);
 
     const createTableRow = document.createElement('tr');
-    const createElementOneTH = document.createElement('th');
-    const createElementTwoTH = document.createElement('th');
+    const createElementOneTH = document.createElement('td');
+    const createElementTwoTH = document.createElement('td');
     const createButtoPrev = document.createElement('button');
     const createButtonNext = document.createElement('button');
     const createParagraph = document.createElement('p');
     const createButtonDelete = document.createElement('button');
+
+    createButtoPrev.id = 'button-prev-id';
+    createButtonNext.id = 'button-next-id';
+    createButtonDelete.id = 'button-delete-id';
 
     createParagraph.setAttribute('class', 'counterTools');
     createButtoPrev.setAttribute('type', 'button');
@@ -53,7 +57,7 @@ export const renderBodyTable = ( elementRender, arrayIDS, ...arrayElements ) => 
     createElementTwoTH.append(createButtonDelete);
 
     arrayElements.forEach( (elements) => {
-        const createElementTH = document.createElement('th');
+        const createElementTH = document.createElement('td');
         createElementTH.setAttribute('class', `prefix${arrayIDS}`);
         createElementTH.textContent = elements;
 

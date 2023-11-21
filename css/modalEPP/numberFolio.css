@@ -1,32 +1,36 @@
 .container-numberFolio {
+    width: auto;
     height: auto;
-    width: 30%;
-    margin: auto;
-    z-index: 900;
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    border: 2px solid #212121;
+    z-index: 900;
     background: #FFFFFF;
+    border: 2px solid #BDBDBD;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex; /* Añadido para estructurar los hijos en una columna */
+    flex-direction: column; /* Asegura que los elementos se alineen verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
 }
 
 .container-numberFolio span {
     color: #212121;
-    font-size: 18px;
-    font-weight: 600;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px; /* Espacio entre el texto y el botón */
 }
 
 .container-numberFolio button {
-    width: 40%;
-    height: 30px;
+    width: 90%;
+    height: 40px;
     border: none;
-    background: #004D40;
+    background: #164d50;
     color: #FFFFFF;
-    border-radius: 5px;
-    margin-bottom: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.container-numberFolio button:hover {
+    background-color: #19575a;
 }

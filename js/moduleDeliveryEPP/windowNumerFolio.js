@@ -10,9 +10,9 @@ export const windowFolioDOM = ( folioIDs ) => {
     createDivElement.style.display = 'flex';
     createButtonAccept.setAttribute('id', 'accept-folio');
 
-    createSpanElement.textContent = `El numero de folio es el siguiente: ${folioIDs.folio}`;
+    createSpanElement.innerHTML = `El numero de folio es el siguiente: <strong>${folioIDs.folio}</strong>`;
     createButtonAccept.innerText = 'Aceptar';
-
+    
     createDivElement.append( createSpanElement, createButtonAccept );
     selectBodyElement.append( createDivElement );
 

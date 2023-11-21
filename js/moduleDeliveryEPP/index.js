@@ -58,5 +58,5 @@ selectButtonConfirmloan.addEventListener('click', ()=> {
     xhr.send(dataJSON);
 
     clearFieldData( selectFirstList, selectSecondList, selectRenderBodyTable, selectContainerText );
-    setInterval("location.reload()",1000);
+    setInterval("location.reload()",1500);
 });

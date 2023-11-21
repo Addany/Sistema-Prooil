@@ -14,7 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="css/modalEPP/style.css">
 </head>
 
 <body>
@@ -85,6 +84,7 @@
                         <select id="eppList" class="eppList" required>
                             <?php echo $options; ?>
                         </select>
+                        <label for="eppList">Selecciona el Trabajador:</label>
                         <select id="personSelect" class="" required>
                             <?php echo $options1; ?>
                         </select>
@@ -102,6 +102,7 @@
                                             <th>Modelo</th>
                                             <th>Talla</th>
                                             <th>Epp solicitados</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody id="render-elements-tool">

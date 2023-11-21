@@ -70,11 +70,19 @@ body {
 }
 
 .loan-buttons button:nth-child(1) {
-  background-color: #C8A21A;
+  background-color: #0F393B;
+}
+.loan-buttons button:nth-child(1):hover {
+  /* Estilos de hover para el primer botón */
+  background-color: #19575a; /* Ejemplo: un tono más oscuro */
 }
 
 .loan-buttons button:nth-child(2) {
-  background-color: #0F393B;
+  background-color: #C8A21A;
+}
+.loan-buttons button:nth-child(2):hover {
+  /* Estilos de hover para el segundo botón */
+  background-color: #aa8816; /* Ejemplo: un tono más oscuro */
 }
 
 /* Estilos para el contenedor de video */

@@ -4,6 +4,7 @@ body, html {
   font-family: 'Poppins', sans-serif;
 }
 
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -82,12 +83,22 @@ body {
   background-color: #0F393B;
 }
 
+.delivery-buttons button:nth-child(1):hover {
+  /* Estilos de hover para el primer botón */
+  background-color: #19575a; /* Ejemplo: un tono más oscuro */
+}
+
 .delivery-buttons button:nth-child(2) {
   background-color: #C8A21A;
 }
 
+.delivery-buttons button:nth-child(2):hover {
+  /* Estilos de hover para el segundo botón */
+  background-color: #aa8816; /* Ejemplo: un tono más oscuro */
+}
+
 .table-container {
-  max-height: 200px;
+  max-height: 130px;
   overflow-y: auto;
 }
 
@@ -98,27 +109,160 @@ body {
 
 #selected-epp-table th, #selected-epp-table td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 1px;
+  text-align: center;
 }
 
 #selected-epp-table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: center;
   background-color: #f2f2f2;
   color: black;
   font-weight: normal;
 }
 
-.buttonform {
-  background-color:#5C6969;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
+.container-countTools {
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
 }
+
+#button-prev-id {
+  padding: 5px 15px;
+  border: none;
+  background-color: #164d50; /* Color rojo */
+  color: #fff;               /* Texto blanco */
+  border-radius: 5px;        /* Bordes redondeados */
+  cursor: pointer;           /* Cambio de cursor al pasar el ratón por encima */
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+  font-size: 0.9em;          /* Tamaño de letra */
+}
+
+#button-next-id {
+  padding: 5px 15px;
+  border: none;
+  background-color: #164d50; /* Color rojo */
+  color: #fff;               /* Texto blanco */
+  border-radius: 5px;        /* Bordes redondeados */
+  cursor: pointer;           /* Cambio de cursor al pasar el ratón por encima */
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+  font-size: 0.9em;          /* Tamaño de letra */
+}
+
+#button-delete-id {
+  padding: 5px 15px;
+  border: none;
+  background-color: #e74c3c; /* Color rojo */
+  color: #fff;               /* Texto blanco */
+  border-radius: 5px;        /* Bordes redondeados */
+  cursor: pointer;           /* Cambio de cursor al pasar el ratón por encima */
+  transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+  font-size: 0.9em;          /* Tamaño de letra */
+}
+
+#button-prev-id:hover {
+  background-color: #19575a;
+}
+
+#button-next-id:hover {
+  background-color: #19575a;
+}
+
+#button-delete-id:hover {
+  background-color: #c0392b;
+}
+
+
 @media (max-width: 768px) {
   .form-container {
-      margin-left: 60px;
-      margin-right: 15px;
+    width: 90%; /* Ajusta el ancho según la necesidad */
+    margin: 20px auto; /* Margen superior e inferior de 20px y centrado horizontalmente */
+    padding: 10px;
+    /* Resto de tus estilos... */
+  }
+
+  .delivery-buttons button {
+    padding: 8px 10px; /* Ajuste el relleno según la necesidad */
+    font-size: 0.8em; /* Ajuste el tamaño de fuente según la necesidad */
+  }
+
+  .table-container {
+    max-height: 100px; /* Ajuste la altura máxima del contenedor de la tabla */
+  }
+
+  #selected-epp-table th, #selected-epp-table td {
+    padding: 4px; /* Ajuste el relleno según la necesidad */
+    font-size: 0.8em; /* Ajuste el tamaño de fuente según la necesidad */
+  }
+
+  .form-container textarea {
+    height: 80px; /* Establece una altura fija para el textarea */
+    padding: 4px; /* Ajuste el relleno según la necesidad */
+  }
+  #button-prev-id, #button-next-id, #button-delete-id {
+    padding: 5px 10px; /* Un poco menos de relleno para botones más pequeños */
+    font-size: 0.8em; /* Tamaño de fuente más pequeño para que se ajuste mejor */
+  }
+  
+}
+
+/* Estilos para dispositivos con un ancho máximo de 480px (teléfonos móviles) */
+@media (max-width: 480px) {
+  .form-container {
+    width: 90%; /* Ajusta el ancho según la necesidad */
+    margin: 10px auto; /* Margen superior e inferior de 10px y centrado horizontalmente */
+    padding: 10px;
+    /* Resto de tus estilos... */
+  }
+
+  .delivery-buttons {
+    flex-direction: column; /* Apila los botones verticalmente */
+    margin-top: 10px;
+  }
+
+  .delivery-buttons button {
+    margin-top: 10px; /* Añade espacio entre botones cuando están apilados */
+    width: 100%; /* Hace que los botones se expandan para llenar el contenedor */
+  }
+
+  #selected-epp-table th, #selected-epp-table td {
+    font-size: 0.7em; /* Ajuste el tamaño de fuente según la necesidad */
+  }
+
+  .form-container select, .form-container textarea {
+    padding: 4px; /* Aumenta el relleno para una mejor legibilidad */
+  }
+
+  .form-container textarea {
+    height: 30px; /* Reduce la altura del textarea */
+    width: 100%; /* Reduce la altura del textarea */
+  }
+  #button-prev-id, #button-next-id, #button-delete-id {
+    padding: 4px 8px; /* Relleno aún menor para pantallas muy pequeñas */
+    font-size: 0.7em; /* Tamaño de fuente más pequeño para mayor compatibilidad */
+    margin-bottom: 5px; /* Espacio adicional debajo de cada botón si están apilados */
+  }
+
+  /* Para mejorar la accesibilidad en dispositivos táctiles, puedes aumentar el tamaño de los botones */
+  #button-prev-id, #button-next-id {
+    background-color: #164d50; /* Ajustes específicos para los botones 'prev' y 'next' si es necesario */
+  }
+
+  #button-delete-id {
+    background-color: #e74c3c; /* Ajustes específicos para el botón 'delete' si es necesario */
+  }
+}
+@media (max-width: 768px) {
+  .container-countTools {
+    flex-direction: column; /* Cambia a disposición vertical */
+    align-items: flex-start; /* Alinea los elementos al inicio para una mejor legibilidad */
+  }
+}
+
+/* Estilos para dispositivos con un ancho máximo de 480px (teléfonos móviles) */
+@media (max-width: 480px) {
+  .container-countTools {
+    flex-direction: column; /* Mantiene la disposición vertical */
+    align-items: flex-start; /* Alinea los elementos al inicio */
   }
 }
