@@ -9,10 +9,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 try {
-    $stmt = $conexion->prepare("SELECT epp.id_epp,epp.nombre_epp, epp_tipo.*, cantidad_epp.* FROM epp
-                                JOIN epp_tipo ON epp.id_epp = epp_tipo.id_epp
-                                JOIN cantidad_epp ON epp_tipo.identificador = cantidad_epp.identificador
-                                WHERE epp.id_epp = ?");
+    $stmt = $conexion->prepare("SELECT epp.id_epp, epp.nombre_epp, epp_tipo.*, cantidad_epp.*, 
+                            COALESCE(SUM(historial_epp.cantidad), 0) AS cantidad_entregada,
+                            (SUM(cantidad_epp.cantidad) - COALESCE(SUM(historial_epp.cantidad), 0)) AS cantidad_disponible
+                            FROM epp
+                            JOIN epp_tipo ON epp.id_epp = epp_tipo.id_epp
+                            JOIN cantidad_epp ON epp_tipo.identificador = cantidad_epp.identificador
+                            LEFT JOIN historial_epp ON cantidad_epp.identificador = historial_epp.identificador
+                            WHERE epp.id_epp = ?
+                            GROUP BY epp_tipo.identificador");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     if (!$stmt->execute()) {

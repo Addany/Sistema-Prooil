@@ -34,19 +34,30 @@
                 <div class="form-container">
                     <h3>Formulario de Entrega de Equipo EPP</h3>
                     <?php
-                    $queryepp = "SELECT epp_tipo.id_epp, epp.nombre_epp, SUM(cantidad_epp.cantidad) AS total_cantidad, COALESCE(SUM(historial_epp.cantidad), 0) AS cantidad_entregada, (SUM(cantidad_epp.cantidad) - COALESCE(SUM(historial_epp.cantidad), 0)) AS cantidad_disponible
+                    $queryepp = "SELECT epp_tipo.id_epp, epp_tipo.identificador, epp.nombre_epp, 
+                    cantidad_epp.marca, cantidad_epp.modelo,
+                    SUM(cantidad_epp.cantidad) AS total_cantidad, 
+                    COALESCE(SUM(historial_epp.cantidad), 0) AS cantidad_entregada, 
+                    (SUM(cantidad_epp.cantidad) - COALESCE(SUM(historial_epp.cantidad), 0)) AS cantidad_disponible
                     FROM epp_tipo
                     JOIN cantidad_epp ON epp_tipo.identificador = cantidad_epp.identificador
                     JOIN epp ON epp_tipo.id_epp = epp.id_epp
                     LEFT JOIN historial_epp ON cantidad_epp.identificador = historial_epp.identificador
-                    GROUP BY epp_tipo.id_epp";
+                    GROUP BY epp_tipo.id_epp, epp_tipo.identificador, cantidad_epp.marca, cantidad_epp.modelo
+                    HAVING (SUM(cantidad_epp.cantidad) - COALESCE(SUM(historial_epp.cantidad), 0)) > 0";
                     $resultepp = mysqli_query($conexion, $queryepp);
                     $options = "<option id='firstElement' value=''>Selecciona un EPP</option>";
                     while($row = mysqli_fetch_assoc($resultepp)) {
                         $id = $row['id_epp'];
+                        $identificador = $row['identificador'];
                         $nombre = $row['nombre_epp'];
+                        $marca = $row['marca'];
+                        if ($marca == "") {
+                            $marca = "N/A";
+                        }
+                        $modelo = $row['modelo'];
                         $disponible = $row['cantidad_disponible'];
-                        $options .= "<option value='$id'>$nombre - Disponible: $disponible </option>";
+                        $options .= "<option value='$id'>$identificador - $nombre - $marca - $modelo - Disponible: $disponible </option>";
                     }
                     $queryEmpleado = "SELECT id_trabajador, nombre FROM empleado";
                     $resultEmpleado = mysqli_query($conexion, $queryEmpleado);

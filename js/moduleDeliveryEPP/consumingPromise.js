@@ -4,7 +4,7 @@ import { renderBodyTable } from "./renderBodyTable.js";
 export const consumingPromiseData = async( valueElementHTML, elementRender ) => {
     try {
         const { 
-            cantidad: toolQuantity, 
+            cantidad_disponible: toolQuantity, 
             nombre_epp: toolName,
             clase: toolClass, 
             marca: toolBrand, 
