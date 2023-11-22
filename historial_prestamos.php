@@ -137,8 +137,10 @@
                                     }
 
                                     echo "<td data-label='Acciones'>";
+                                    echo "<div class='botones-flex'>";
                                     echo "<button class='accion-button' onclick='verDetalles(" . $row["no_folio"] . ")'>Ver</button>";
                                     echo "<button class='accion-button'>Generar documento</button>";
+                                    echo "</div>";
                                     echo "</td>";
                                     echo "</tr>";
                                 }

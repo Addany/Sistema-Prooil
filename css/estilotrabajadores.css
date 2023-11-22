@@ -140,6 +140,18 @@ td:hover {
   animation: fadeInUp 0.2s ease-out forwards;
 }
 
+.botones-contenedor {
+  text-align: center; /* Centra el contenedor de botones dentro de la celda */
+}
+
+.botones-flex {
+  display: flex;
+  justify-content: center; /* Centra los botones dentro del contenedor */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1px;
+}
+
 .accion-button {
   padding: 0.5em 1em; /* Unidades em basadas en el tamaño de fuente del elemento */
   border-radius: 0.3em;

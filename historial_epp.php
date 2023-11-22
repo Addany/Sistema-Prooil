@@ -117,9 +117,10 @@
                   echo "<td data-label='Talla'>" . $row["talla"] . "</td>";
                   echo "<td data-label='Orden de compra'>" . $row["orden_compra"] . "</td>";
                   echo "<td data-label='Fecha de Registro'>" . $fechaFormateada . "</td>";
-                  
                   echo "<td data-label='Acciones'>";
+                  echo "<div class='botones-flex'>";
                   echo "<button class='accion-button' onclick='editarEPP(this)'>Editar</button>";
+                  echo "</div>";
                   echo "</td>";
                   echo "</tr>";
                 }

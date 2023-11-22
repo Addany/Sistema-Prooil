@@ -130,7 +130,9 @@
                         echo "<td data-label='Teléfono'>" . htmlspecialchars($row["telefono"]) . "</td>";
                         echo "<td data-label='Correo Electrónico'>" . htmlspecialchars($row["correo"]) . "</td>";
                         echo "<td data-label='Fecha de Ingreso'>" . $fechaFormateada . "</td>";
+                        echo "<div class='botones-flex'>";
                         echo "<td data-label='Acciones'><button class='accion-button' onclick='editarTrabajador(this)'>Editar</button></td>";
+                        echo "</div>";
                         echo "</tr>";
                     }
                     ?>

@@ -104,7 +104,9 @@
                                 echo "<td data-label='Teléfono'>" . $row["telefono"] . "</td>";
                                 echo "<td data-label='Correo'>" . $row["correo"] . "</td>";
                                 echo "<td data-label='Fecha de Ingreso'>" . $fechaFormateada . "</td>";
+                                echo "<div class='botones-flex'>";
                                 echo "<td data-label='Acciones'><button class='accion-button' onclick='editarAlmacenista(this)'>Editar</button></td>";
+                                echo "</div>";
                                 echo "</tr>";
                             }
                         }

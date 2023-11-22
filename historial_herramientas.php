@@ -193,9 +193,11 @@
                 } elseif ($row["disponibilidad"] == "En Prestamo") {
                     echo "<td data-label='Estatus'><span class='estatus'><i class='fa-solid fa-handshake' style='color:red;'></i> " . $row["disponibilidad"] . "</span></td>";
                 }
-                echo "<td data-label='Acciones'>";
+                echo "<td data-label='Acciones' class='botones-contenedor'>";
+                echo "<div class='botones-flex'>";
                 echo "<button class='accion-button' onclick='descargarQR(\"" . $row["identificador"] . "\")'>Descargar QR</button>";
                 echo "<button class='accion-button' onclick='editarHerramienta(this)'>Editar</button>";
+                echo "</div>";
                 echo "</td>";
                 echo "</tr>";
               }
