@@ -77,7 +77,9 @@
                         JOIN cantidad_epp ON historial_epp.identificador = cantidad_epp.identificador
                         JOIN folio_epp ON historial_epp.no_folio = folio_epp.no_folio
                         LEFT JOIN empleado ON historial_epp.id_trabajador = empleado.id_trabajador
-                        LEFT JOIN invitado ON historial_epp.id_invitado = invitado.id_invitado";
+                        LEFT JOIN invitado ON historial_epp.id_invitado = invitado.id_invitado
+                        GROUP BY folio_epp.no_folio
+                        ORDER BY folio_epp.no_folio";
                         $result = $conexion->query($sql);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
@@ -92,24 +94,13 @@
                                 echo "<td>";
                                 //TODO
                                 //VER DATOS AGREGAR ID y su respectiva funcion
-                                echo "<button class='accion-button' onclick='verDatos()'>Ver</button>";
+                                echo "<button class='accion-button' onclick='verDatos(" . $row["no_folio"] . ")'>Ver</button>";
                                 echo "<button class='accion-button'>Generar documento</button>";
                                 echo "</td>";
                                 echo "</tr>";
                             }
                         }
                         ?>
-                        <tr>
-                            <td data-label="Folio">12345</td>
-                            <td data-label="Fecha de Transacción">20-02-2020</td>
-                            <td data-label="Trabajador solicitante">Juan</td>
-                            <td data-label="Almacenista que Autoriza">Adrian</td>
-                            <td data-label="Observaciones">Perdida de las herramientas</td>
-                            <td data-label="Acciones">
-                                <button class="accion-button" onclick="verDatos()">Ver</button>
-                                <button class="accion-button">Generar documento</button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -184,8 +175,9 @@
 
 
     <script src="js/scriptnavegacion.js"></script>
-    <script src="js/tablaHistorial.js"></script>
+    <!--<script src="js/tablaHistorial.js"></script>-->
     <script src="js/popup.js"></script>
+    <script src="js/moduleDeliveryEPP/detallesPrestamo.js"></script>
 
 </body>
 </html>

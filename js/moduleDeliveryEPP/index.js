@@ -44,6 +44,7 @@ selectButtonConfirmloan.addEventListener('click', ()=> {
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     const dataJSON = JSON.stringify(informationloan);
+    //console.log(dataJSON)
 
     xhr.onload = ()=> {
         if(xhr.status === 200) {

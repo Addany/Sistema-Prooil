@@ -12,6 +12,7 @@ export const fetchEPPData = async(id) => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const textResponse = await response.text();
+        //console.log(textResponse);
         
         try {
             const data = JSON.parse(textResponse);

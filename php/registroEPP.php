@@ -1,4 +1,4 @@
-<?php
+    <?php
 include 'conexion_bd.php';
 header('Content-Type: application/json');
 

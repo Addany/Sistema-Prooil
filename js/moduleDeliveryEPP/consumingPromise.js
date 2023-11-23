@@ -10,7 +10,7 @@ export const consumingPromiseData = async( valueElementHTML, elementRender ) => 
             marca: toolBrand, 
             modelo: toolModel,
             talla: toolSize,
-            id_epp: toolID
+            identificador: toolID
         } = await fetchEPPData( valueElementHTML );
 
         renderBodyTable(elementRender, toolID,parseInt(toolQuantity), toolName, toolClass, toolBrand, toolModel, toolSize);
