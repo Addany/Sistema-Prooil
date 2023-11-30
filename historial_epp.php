@@ -64,7 +64,7 @@
                 </select>
               </div>
               <div class="button-group"  id="filter">
-                <button type="button" id="generarReporte"  onclick="verDatos(this)">Generar Reporte</button>
+                <button type="button" id="generarReporte"  onclick="verGenerarReporte(this)">Generar Reporte</button>
                 <button type="button" id="eliminarBusqueda">Limpiar Búsqueda</button>
               </div>
             </form>
@@ -208,7 +208,7 @@
             </div>
         </form>
     </div>
-    <div id="popupVer" class="popup">
+    <div id="popupReporte" class="popup">
             <form id="generarReporteForm"> 
                 <h3>Generar Reporte</h3>
                 
@@ -235,7 +235,7 @@
                     </div>
                 </div>
                 <div class="button-group">
-                    <button type="button" onclick="generarReporte()">Generar Reporte</button>
+                    <button type="button" onclick="generarReporte('popupReporte')">Generar Reporte</button>
                     <button type="button" onclick="cerrarPopup('popupReporte')">Cerrar</button>
                 </div>
             </form>

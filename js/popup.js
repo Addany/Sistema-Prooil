@@ -56,3 +56,11 @@ popups.forEach(popup => {
       event.stopPropagation();
   });
 });
+
+async function verGenerarReporte() {
+  try {
+      abrirPopup('popupReporte');
+  } catch (error) {
+      console.error(error);
+  }
+}

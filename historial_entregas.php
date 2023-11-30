@@ -106,7 +106,7 @@
             </section>
         </main>
 
-        <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupVer')"></div>
+    <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupVer')"></div>
         <div id="popupVer" class="popup">
             <form id="verEntregaForm"> 
                 <h3>Detalles de la entrega</h3>
@@ -117,6 +117,7 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Cantidad</th>
                                 <th>Modelo</th>
                                 <th>Marca</th>
                                 <th>Clase</th>
@@ -125,11 +126,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td data-label="Nombre">Vi</td>
-                                <td data-label="Modelo">Va</td>
-                                <td data-label="Marca">Tlal</td>
-                                <td data-label="Clase">Pan</td>
-                                <td data-label="Talla de EPP">xd</td>
+
                             </tr>
                         </tbody>
                     </table>
@@ -172,7 +169,6 @@
                 </div>
             </form>
         </div>
-
 
     <script src="js/scriptnavegacion.js"></script>
     <!--<script src="js/tablaHistorial.js"></script>-->

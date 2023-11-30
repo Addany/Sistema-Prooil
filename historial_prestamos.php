@@ -97,8 +97,8 @@
                             $sql = "
                             SELECT historial_herramienta.*, folio_prestamo.*, GROUP_CONCAT(historial_herramienta.identificador) AS identificadores,
                             CASE
-                            WHEN historial_herramienta.id_trabajador IS NOT NULL THEN empleado.nombre
-                            WHEN historial_herramienta.id_invitado IS NOT NULL THEN invitado.nombre
+                                WHEN historial_herramienta.id_trabajador IS NOT NULL THEN empleado.nombre
+                                WHEN historial_herramienta.id_invitado IS NOT NULL THEN invitado.nombre
                             END AS nombre_persona,
                             almacenista.nombre AS nombre_almacenista
                             FROM historial_herramienta
@@ -107,7 +107,7 @@
                             LEFT JOIN invitado ON historial_herramienta.id_invitado = invitado.id_invitado
                             JOIN almacenista ON historial_herramienta.usuario = almacenista.usuario
                             GROUP BY folio_prestamo.no_folio
-                            ORDER BY folio_prestamo.no_folio
+                            ORDER BY folio_prestamo.fecha_transaccion DESC
                             LIMIT $cantidadPorPagina OFFSET $inicio
                             ";
                             $result = $conexion->query($sql);
@@ -129,7 +129,7 @@
                                     echo "<td data-label='Quien Autorizó'>" . $row["nombre_almacenista"] . "</td>";
                                     echo "<td data-label='Observaciones'>" . $row["observacion"] . "</td>";
                                     if ($row["estado"] == "Activo") {
-                                        echo "<td data-label='Estado'><i <i class='fa-solid fa-circle-exclamation' style='color:gray;'></i> Activo</td>";
+                                        echo "<td data-label='Estado'><i class='fa-solid fa-handshake' style='color:red;'></i> Activo</td>";
                                     } else if ($row["estado"] == "Concretado") {
                                         echo "<td data-label='Estado'><i class='fas fa-check-circle' style='color:green;'></i> Concretado</td>";
                                     } else {

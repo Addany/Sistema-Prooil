@@ -216,7 +216,7 @@ td:hover {
   border: none; /* Quitamos el borde para un look más limpio */
 }
 
-#popupVer {
+#popupReporte {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -225,13 +225,14 @@ td:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #fff;
   padding: 20px;
   border-radius: 5px;
   width: 100%;
   max-width: 400px;
   z-index: 1000;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: #F9FAFB; /* Un fondo más claro para una apariencia fresca */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); /* Sombra más suave para dar una sensación de flotación */
+  border: 1px solid #E1E1E1; /* Un borde sutil para definir el popup */
 }
 
 #popup form input, #popup form select {
@@ -291,21 +292,21 @@ td:hover {
 #popup #cancelarEdicion:hover {
   background-color: #194d50; /* Rojo más oscuro para hover en cancelar */
 }
-#popupVer form {
+#popupReporte form {
   display: flex;
   flex-direction: column;
   align-items: center; /* Cambiado de flex-start a center para centrar todos los elementos del formulario */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#popupVer h3 {
+#popupReporte h3 {
   color: #333333;
   text-align: center; /* Esto asegura que el texto del h3 esté centrado */
   margin-bottom: 20px; /* Aumentado para dar más espacio debajo del h3 */
 }
 
 /* Estilos modificados para .input-group */
-#popupVer .input-group {
+#popupReporte .input-group {
   display: flex;
   flex-direction: row; /* Cambiado de column a row */
   align-items: center; /* Centra los elementos verticalmente */
@@ -315,21 +316,21 @@ td:hover {
 }
 
 /* Estilos para .input-container */
-#popupVer .input-group .input-container {
+#popupReporte .input-group .input-container {
   display: flex;
   flex-direction: column; /* Mantiene label sobre input */
   width: 48%; /* Ajusta el ancho para permitir dos columnas */
 }
-#popupVer .input-group label {
+#popupReporte .input-group label {
   margin-bottom: 5px; /* Espacio entre la etiqueta y el campo de entrada debajo */
 }
 
-#popupVer label {
+#popupReporte label {
   color: #555555; /* Color más suave que el negro para el texto */
   font-weight: normal; /* Menos enfático que negrita */
 }
 
-#popupVer select {
+#popupReporte select {
   width: 100%; /* Aprovecha todo el ancho disponible */
   padding: 12px; /* Espaciado interno más grande para una fácil interacción */
   border-radius: 5px; /* Bordes redondeados para una estética moderna */
@@ -337,7 +338,7 @@ td:hover {
   background-color: #FFFFFF; /* Fondo blanco para que el select resalte sobre el fondo del popup */
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075); /* Sombra interior sutil para profundidad */
 }
-#popupVer button {
+#popupReporte button {
   width: 100%;
   padding: 10px;
   margin-left: 0; /* Ajusté el margen izquierdo a 0 */
@@ -349,11 +350,11 @@ td:hover {
   font-weight: bold;
 }
 
-#popupVere button:hover {
+#popupReporte button:hover {
   background-color: #194d50;
 }
 
-#popupVer .button-group {
+#popupReporte .button-group {
   display: flex;
   justify-content: space-between;
   width: calc(100% - 20px); 

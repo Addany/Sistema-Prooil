@@ -77,6 +77,12 @@ body {
   margin-left: 3px;
 }
 
+.input-group select#almacenista {
+  width: auto; /* Permite que el select crezca según el contenido */
+  min-width: 150px; /* Tamaño mínimo */
+  max-width: 200px; /* Tamaño máximo */
+}
+
 .button-group {
   display: flex;
   justify-content: flex-start;
