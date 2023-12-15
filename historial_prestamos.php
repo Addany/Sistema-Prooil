@@ -65,7 +65,6 @@
                             <label for="almacenista">Almacenista:</label>
                             <select id="almacenista" name="almacenista">
                                 <option value="todos">Todos</option>
-                                <!-- Las opciones se llenarán dinámicamente usando JavaScript -->
                             </select>
                         </div>
                         <div class="button-group"  id="filter">

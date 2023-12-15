@@ -1,9 +1,9 @@
 $(document).ready(function(){
     cargarAlmacenistas();
-    $('#buscador, #fechaInicio, #fechaFin, #status, #almacenista').on('input change', function(){
+    $('#buscador, #almacenista').on('input change', function(){
         buscar();
     });
-    
+
     $('#eliminarBusqueda').click(function(){
         limpiarBusqueda();
     });
@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 function cargarAlmacenistas() {
     $.ajax({
-        url: 'php/obtener_almacenistas.php',
+        url: 'php/obtener_almacenistas_entregas.php',
         type: 'GET',
         success: function(response) {
             var almacenistas = JSON.parse(response);
@@ -26,19 +26,13 @@ function cargarAlmacenistas() {
 
 function buscar() {
     var texto = $('#buscador').val();
-    var fechaInicio = $('#fechaInicio').val();
-    var fechaFin = $('#fechaFin').val();
-    var status = $('#status').val();
     var almacenista = $('#almacenista').val();
 
     $.ajax({
-        url: 'php/busqueda_prestamo.php',
+        url: 'php/busqueda_entregas.php',
         type: 'POST',
         data: {
             texto: texto,
-            fechaInicio: fechaInicio,
-            fechaFin: fechaFin,
-            status: status,
             almacenista: almacenista
         },
         success: function(response) {
@@ -50,10 +44,6 @@ function buscar() {
 
 function limpiarBusqueda(){
     $('#buscador').val('');
-    $('#fechaInicio').val('');
-    $('#fechaFin').val('');
-    $('#status').val('todos');
     $('#almacenista').val('todos');
-    
     buscar();  
 }

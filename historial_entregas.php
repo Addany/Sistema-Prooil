@@ -14,6 +14,20 @@
     <?php
     include 'php/session.php';
     include 'php/conexion_bd.php';
+
+    $cantidadPorPagina =20;
+
+    $sql_total = "SELECT COUNT(DISTINCT folio_epp.no_folio) as total 
+              FROM historial_epp
+              JOIN cantidad_epp ON historial_epp.identificador = cantidad_epp.identificador
+              JOIN folio_epp ON historial_epp.no_folio = folio_epp.no_folio
+              LEFT JOIN empleado ON historial_epp.id_trabajador = empleado.id_trabajador
+              LEFT JOIN invitado ON historial_epp.id_invitado = invitado.id_invitado";
+    $resultado_total = $conexion->query($sql_total);
+    $fila_total = $resultado_total->fetch_assoc();
+    $totalRegistros = $fila_total['total'];
+
+    $totalPaginas = ceil($totalRegistros / $cantidadPorPagina);
     ?>
     <header>
 
@@ -30,20 +44,11 @@
                             <label for="buscador">Buscar por texto:</label>
                             <input type="text" id="buscador" placeholder="Trabajador Solicitante, Folio, etc.">
                         </div>
+    
                         <div class="input-group">
-                            <label for="fechaInicio">Fecha inicio:</label>
-                            <input type="date" id="fechaInicio" onchange="buscar()">
-                        </div>
-                        <div class="input-group">
-                            <label for="fechaFin">Fecha final:</label>
-                            <input type="date" id="fechaFin" onchange="buscar()">
-                        </div>
-                        <div class="input-group">
-                            <label for="categoria">Categoría:</label>
-                            <select id="categoria" onchange="buscar()">
+                            <label for="almacenista">Almacenista que Autoriza:</label>
+                            <select id="almacenista" name="almacenista">
                                 <option value="todos">Todos</option>
-                                <option value="Concretado">Concretado</option>
-                                <option value="No concretado">No concretado</option>
                             </select>
                         </div>
                         <div class="button-group"  id="filter">
@@ -68,18 +73,21 @@
                         if ($conexion->connect_error) {
                             die();
                         }
-                        $sql="SELECT historial_epp.*, folio_epp.*, cantidad_epp.*,
-                        CASE
-                        WHEN historial_epp.id_trabajador IS NOT NULL THEN empleado.nombre
-                        WHEN historial_epp.id_invitado IS NOT NULL THEN invitado.nombre
-                        END AS nombre_persona
-                        FROM historial_epp
-                        JOIN cantidad_epp ON historial_epp.identificador = cantidad_epp.identificador
-                        JOIN folio_epp ON historial_epp.no_folio = folio_epp.no_folio
-                        LEFT JOIN empleado ON historial_epp.id_trabajador = empleado.id_trabajador
-                        LEFT JOIN invitado ON historial_epp.id_invitado = invitado.id_invitado
-                        GROUP BY folio_epp.no_folio
-                        ORDER BY folio_epp.no_folio";
+                        $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+                        $inicio = ($pagina - 1) * $cantidadPorPagina;
+                        $sql = "SELECT historial_epp.*, folio_epp.*, cantidad_epp.*,
+                                CASE
+                                WHEN historial_epp.id_trabajador IS NOT NULL THEN empleado.nombre
+                                WHEN historial_epp.id_invitado IS NOT NULL THEN invitado.nombre
+                                END AS nombre_persona
+                                FROM historial_epp
+                                JOIN cantidad_epp ON historial_epp.identificador = cantidad_epp.identificador
+                                JOIN folio_epp ON historial_epp.no_folio = folio_epp.no_folio
+                                LEFT JOIN empleado ON historial_epp.id_trabajador = empleado.id_trabajador
+                                LEFT JOIN invitado ON historial_epp.id_invitado = invitado.id_invitado
+                                GROUP BY folio_epp.no_folio
+                                ORDER BY folio_epp.no_folio
+                                LIMIT $inicio, $cantidadPorPagina";
                         $result = $conexion->query($sql);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
@@ -105,6 +113,24 @@
                 </table>
             </section>
         </main>
+
+    <div class="pagination">
+        <?php if($pagina > 1): ?>
+            <a href="?pagina=<?php echo $pagina - 1; ?>">&laquo; Anterior</a>
+        <?php endif; ?>
+
+        <?php for($i = 1; $i <= $totalPaginas; $i++): ?>
+            <?php if($i == $pagina): ?>
+                <span class="current-page"><?php echo $i; ?></span>
+            <?php else: ?>
+                <a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+            <?php endif; ?>
+        <?php endfor; ?>
+
+        <?php if($pagina < $totalPaginas): ?>
+            <a href="?pagina=<?php echo $pagina + 1; ?>">Siguiente &raquo;</a>
+        <?php endif; ?>
+    </div>
 
     <div id="overlay" onclick="cerrarSiEsFuera(event, 'popupVer')"></div>
         <div id="popupVer" class="popup">
@@ -171,9 +197,9 @@
         </div>
 
     <script src="js/scriptnavegacion.js"></script>
-    <!--<script src="js/tablaHistorial.js"></script>-->
     <script src="js/popup.js"></script>
     <script src="js/moduleDeliveryEPP/detallesPrestamo.js"></script>
+    <script src="js/prueba5.js"></script>
 
 </body>
 </html>

@@ -426,6 +426,47 @@ td:hover {
   max-width: 70%;
   box-sizing: border-box;
 }
+.pagination {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0;
+  background-color: #0f393bc5;
+  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Sombra sutil para agregar profundidad */
+}
+
+.pagination a,
+.pagination span {
+  color: #ffffff;
+  padding: 3px 12px;
+  margin: 0 4px;
+  text-decoration: none;
+  font: bold 16px Arial, sans-serif;
+  transition: background-color 0.3s, transform 0.2s; /* Agrega transición de transform también */
+}
+
+.pagination a {
+  background-color: #1b797e;
+  border-radius: 5px;
+  border: 1px solid transparent; /* Border transparente para mantener el mismo tamaño al hacer hover */
+}
+
+.pagination a:hover {
+  background-color: #ffffff;
+  color: #0F393B;
+  transform: scale(1.05); /* Efecto de ampliación suave al pasar el ratón */
+  border: 1px solid #1b797e; /* Border del color de fondo original al hacer hover */
+}
+
+.pagination span.current-page {
+  pointer-events: none;
+  background-color: #2ba3a5; /* Color de fondo distintivo para la página actual */
+  border-radius: 5px; /* Bordes redondeados también para la página actual */
+}
+
 
 @media (max-width: 768px) {
   .form-buscar {
