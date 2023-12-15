@@ -80,7 +80,7 @@ if ($result->num_rows > 0) {
         echo "<td data-label='Quien Autorizó'>" . $row["nombre_almacenista"] . "</td>";
         echo "<td data-label='Observaciones'>" . $row["observacion"] . "</td>";
         if ($row["estado"] == "Activo") {
-            echo "<td data-label='Estado'><i <i class='fa-solid fa-circle-exclamation' style='color:gray;'></i> Activo</td>";
+            echo "<td data-label='Estado'><i class='fa-solid fa-handshake' style='color:red;'></i> Activo</td>";
         } else if ($row["estado"] == "Concretado") {
             echo "<td data-label='Estado'><i class='fas fa-check-circle' style='color:green;'></i> Concretado</td>";
         } else {
